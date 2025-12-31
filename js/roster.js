@@ -227,7 +227,6 @@ function setupHeaderSorting() {
   });
 }
 
-
 function getInitials(firstName, lastName) {
   const firstInitial = firstName?.trim().charAt(0) || '';
   const lastInitial = lastName?.trim().charAt(0) || '';
@@ -276,7 +275,7 @@ function renderRosterTable(rosterRows) {
 
     // 1) Icon / initials
     const iconTd = document.createElement('td');
-    iconTd.className = 'px-4 py-3';
+    iconTd.className = 'px-2 py-3';
     const iconDiv = document.createElement('div');
     iconDiv.className =
       'mx-auto h-9 w-9 rounded-full bg-green-900 text-white flex items-center justify-center text-xs font-semibold';
