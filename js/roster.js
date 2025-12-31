@@ -275,7 +275,7 @@ function renderRosterTable(rosterRows) {
 
     // 1) Icon / initials
     const iconTd = document.createElement('td');
-    iconTd.className = 'px-2 py-3';
+    iconTd.className = 'px-1 py-3';
     const iconDiv = document.createElement('div');
     iconDiv.className =
       'mx-auto h-9 w-9 rounded-full bg-green-900 text-white flex items-center justify-center text-xs font-semibold';
@@ -284,7 +284,7 @@ function renderRosterTable(rosterRows) {
 
     // 2) Athlete name + team label
     const nameTd = document.createElement('td');
-    nameTd.className = 'px-4 py-3';
+    nameTd.className = 'px-2 py-3';
 
     const nameDiv = document.createElement('div');
     nameDiv.className = 'font-medium text-gray-900';
@@ -299,7 +299,7 @@ function renderRosterTable(rosterRows) {
 
     // 3) Captain column
     const captainTd = document.createElement('td');
-    captainTd.className = 'px-4 py-3 text-center md:text-left';
+    captainTd.className = 'px-2 py-3 text-center md:text-left';
 
     if (isCaptain) {
       const badge = document.createElement('span');
@@ -311,12 +311,12 @@ function renderRosterTable(rosterRows) {
 
     // 4) Class
     const classTd = document.createElement('td');
-    classTd.className = 'px-4 py-3 text-gray-700';
+    classTd.className = 'px-2 py-3 text-gray-700';
     classTd.textContent = classYear || '';
 
     // 5) Years on Team
     const yearsTd = document.createElement('td');
-    yearsTd.className = 'hidden md:table-cell md:px-4 md:py-3 md:text-gray-700';
+    yearsTd.className = 'hidden md:table-cell md:px-2 md:py-3 md:text-gray-700';
     yearsTd.textContent = yearsOnTeam || '';
 
     // Append all cells to the row
