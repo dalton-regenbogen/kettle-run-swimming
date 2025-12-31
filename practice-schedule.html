@@ -8,7 +8,7 @@
 </head>
 <body>
   <!-- Header -->
-   <header class="bg-black border-b-4 border-gray-400 sticky top-0 z-50">
+    <header class="bg-black border-b-4 border-gray-400 sticky top-0 z-50">
 
       <div class="border-y border-white">
         <div class="max-w-6xl mx-auto px-4 py-0">
@@ -63,13 +63,29 @@
     </header>
 
     <!-- Main -->
-    <main class="max-w-6xl mx-auto px-4 py-12">
-      <div class="bg-white border border-gray-200 rounded-2xl p-8">
-        <h1 class="text-3xl font-bold tracking-tight">More</h1>
-        <p class="mt-2 text-gray-700">
-          Additional information and resources will be available here soon.
-        </p>
-      </div>
+    <main>
+
+      <section class="max-w-6xl mx-auto my-6">
+
+        <div class="sm:rounded-2xl sm:border sm:border-gray-200 sm:shadow-xs sm:mx-2 sm:p-6 p-4 bg-white">
+          
+          <h1 class="text-3xl font-medium text-center pb-4">
+            Practice Schedule
+          </h1>
+
+            <div class="px-2 py-4 text-lg font-medium text-left">
+            2025-2026 Season
+            <p class="mt-1.5 text-sm font-light hidden sm:block">Practice schedule including dates, times, and locations.</p>
+            <p class="mt-1.5 text-sm font-light italic sm:hidden">*All practices: 3:30 - 4:30pm @ WARF unless otherwise noted.</p>
+            </div>
+
+          <div id="practice-schedule-weeks" class="space-y-6">
+            <!-- JS will inject one section per week here -->
+          </div>
+            
+        </div>
+      </section>
+      
     </main>
 
     <!-- Footer -->
@@ -94,6 +110,8 @@
         });
       }
     </script>
+
+    <script src="./js/practice-schedule.js"></script>
 
 </body>
 </html> 

@@ -18,20 +18,24 @@ function renderSchedule(rows) {
   const tbody = document.getElementById("schedule-body");
   tbody.innerHTML = "";
 
-  rows.forEach(meet => {
+  rows.forEach((meet, index) => {
+    const isLast = index === rows.length -1;
+
     const tr = document.createElement("tr");
-    tr.className = "border-b border-gray-800 hover:bg-gray-900/40";
+    tr.className = "border-t border-gray-200" + (isLast ? "" : " border-b");
 
     tr.innerHTML = `
-      <td class="py-3 text-center whitespace-nowrap">${meet["Date"] || ""}</td>
-      <td class="py-3 text-center whitespace-nowrap">${meet["Format"] || ""}</td>
-      <td class="py-3 text-center whitespace-nowrap">${meet["Opponent"] || ""}</td>
-      <td class="py-3 text-center whitespace-nowrap">${meet["Home/Away"] || ""}</td>
-      <td class="py-3 text-center whitespace-nowrap">${meet["Location"] || ""}</td>
+      <td class="py-3 px-4 text-left whitespace-nowrap ${isLast ? "rounded-bl-lg" : ""}"> ${meet["Date"] || ""}</td>
+      <td class="py-3 px-4 text-left whitespace-nowrap hidden sm:inline-block">${meet["Format"] || ""}</td>
+      <td class="py-3 px-4 text-left whitespace-nowrap">${meet["Opponent"] || ""}</td>
+      <td class="py-3 px-4 text-left whitespace-nowrap hidden sm:inline-block">${meet["Home/Away"] || ""}</td>
+      <td class="py-3 px-4 text-left whitespace-nowrap ${isLast ? "rounded-br-lg" : ""}">${meet["Location"] || ""}</td>
     `;
 
     tbody.appendChild(tr);
+    
   });
+
 }
 
 async function loadSchedule() {
