@@ -25,11 +25,11 @@ function renderSchedule(rows) {
     tr.className = "border-t border-gray-200" + (isLast ? "" : " border-b");
 
     tr.innerHTML = `
-      <td class="py-3 px-4 text-left whitespace-nowrap ${isLast ? "rounded-bl-lg" : ""}"> ${meet["Date"] || ""}</td>
-      <td class="py-3 px-4 text-left whitespace-nowrap hidden sm:inline-block">${meet["Format"] || ""}</td>
-      <td class="py-3 px-4 text-left whitespace-nowrap">${meet["Opponent"] || ""}</td>
-      <td class="py-3 px-4 text-left whitespace-nowrap hidden sm:inline-block">${meet["Home/Away"] || ""}</td>
-      <td class="py-3 px-4 text-left whitespace-nowrap ${isLast ? "rounded-br-lg" : ""}">${meet["Location"] || ""}</td>
+      <td class="py-3 md:px-4 px-2 text-left whitespace-nowrap ${isLast ? "rounded-bl-lg" : ""}"> ${meet["Date"] || ""}</td>
+      <td class="py-3 md:px-4 px-2 text-left whitespace-nowrap hidden sm:inline-block">${meet["Format"] || ""}</td>
+      <td class="py-3 md:px-4 px-2 text-left whitespace-nowrap">${meet["Opponent"] || ""}</td>
+      <td class="py-3 md:px-4 px-2 text-left whitespace-nowrap hidden sm:inline-block">${meet["Home/Away"] || ""}</td>
+      <td class="py-3 md:px-4 px-2 text-left whitespace-nowrap ${isLast ? "rounded-br-lg" : ""}">${meet["Location"] || ""}</td>
     `;
 
     tbody.appendChild(tr);
