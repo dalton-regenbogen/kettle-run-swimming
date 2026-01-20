@@ -1,11 +1,17 @@
 export default {
   content: [
-    "./index.html",
-    "./**/*.html",
-    "./js/**/*.js"
+  "./index.html",
+  "./**/*.{html,js}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        brand: {
+          DEFAULT: "#005130",
+          light: "#F37322",
+        },
+      },
+    },
   },
   plugins: [],
 }
