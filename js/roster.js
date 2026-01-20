@@ -29,18 +29,20 @@ function normalizeRosterRows(rows) {
       const firstName = row['First Name'] || '';
       const lastName = row['Last Name'] || '';
       const team = row['Team'] || ''; // Expect: "Girls" or "Boys"
+      const captain = row['Captain'] || ''; // e.g. "Captain" or ""
       const classYear = row['Class'] || ''; // e.g. "Fr.", "So.", etc.
       const yearsOnTeam = row['Years on Team'] || ''; // e.g. "1st", "2nd"
-      const captainRaw = row['Captain'] || ''; // e.g. "Yes" or ""
+      const stroke = row['Stroke'] || ''; // e.g. "Yes" or ""
       const activeRaw = row['Active'] || ''; // e.g. "Yes" or ""
 
       return {
         firstName,
         lastName,
         team,
+        captain,
         classYear,
         yearsOnTeam,
-        isCaptain: captainRaw.toLowerCase() === 'yes',
+        stroke,
         isActive:
           activeRaw === '' || activeRaw.toLowerCase() === 'yes', // treat blank as active
       };
@@ -88,6 +90,16 @@ function sortRoster(rows) {
         const bName = `${b.lastName || ''} ${b.firstName || ''}`.trim().toLowerCase();
         aVal = aName;
         bVal = bName;
+        break;
+      }
+      case 'stroke': {
+        const order = ['Free', 'Fly', 'IM', 'Back', 'Breast'];
+        const indexOrEnd = (val) => {
+          const idx = order.indexOf(val);
+          return idx === -1 ? order.length : idx;
+        };
+        aVal = indexOrEnd(a.stroke);
+        bVal = indexOrEnd(b.stroke);
         break;
       }
       case 'classYear': {
@@ -262,9 +274,10 @@ function renderRosterTable(rosterRows) {
       firstName,
       lastName,
       team,
+      captain,
       classYear,
       yearsOnTeam,
-      isCaptain,
+      stroke,
     } = athlete;
 
     const initials = getInitials(firstName, lastName);
@@ -282,7 +295,7 @@ function renderRosterTable(rosterRows) {
     iconDiv.textContent = initials || '?';
     iconTd.appendChild(iconDiv);
 
-    // 2) Athlete name + team label
+    // 2) Athlete name + team label + captain label
     const nameTd = document.createElement('td');
     nameTd.className = 'px-2 py-3';
 
@@ -294,20 +307,19 @@ function renderRosterTable(rosterRows) {
     teamDiv.className = 'text-xs text-gray-500';
     teamDiv.textContent = team ? `${team} Team` : '';
 
+    const captainDiv = document.createElement('div');
+    captainDiv.className = 'text-xs font-medium text-orange-600';
+    captainDiv.textContent = captain ? `${captain}` : '';
+
     nameTd.appendChild(nameDiv);
+    nameTd.appendChild(captainDiv);
     nameTd.appendChild(teamDiv);
+    
 
-    // 3) Captain column
-    const captainTd = document.createElement('td');
-    captainTd.className = 'px-2 py-3 text-center md:text-left';
-
-    if (isCaptain) {
-      const badge = document.createElement('span');
-      badge.className =
-        'inline-flex items-center rounded-full bg-amber-600 px-2 py-1 text-[11px] font-bold font-mono text-white';
-      badge.textContent = 'C';
-      captainTd.appendChild(badge);
-    }
+    // 3) Stroke column
+    const strokeTd = document.createElement('td');
+    strokeTd.className = 'px-2 py-3 text-gray-700';
+    strokeTd.textContent = stroke || '';
 
     // 4) Class
     const classTd = document.createElement('td');
@@ -322,7 +334,7 @@ function renderRosterTable(rosterRows) {
     // Append all cells to the row
     tr.appendChild(iconTd);
     tr.appendChild(nameTd);
-    tr.appendChild(captainTd);
+    tr.appendChild(strokeTd);
     tr.appendChild(classTd);
     tr.appendChild(yearsTd);
 
