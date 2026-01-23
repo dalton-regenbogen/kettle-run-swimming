@@ -1,982 +1,1492 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kettle Run Swimming | Results</title>
-  <link rel="stylesheet" href="./css/output.css" />
-</head>
-<body>
-  <!-- Header -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kettle Run Swimming | Results</title>
+    <link rel="stylesheet" href="./css/output.css" />
+  </head>
+  <body>
+    <!-- Header -->
     <header class="bg-black border-b-4 border-gray-400 sticky top-0 z-50">
-
       <div class="border-y border-white">
         <div class="max-w-6xl mx-auto px-4 py-0">
-          <p class="text-center text-sm font-normal text-white">KETTLE RUN HIGH SCHOOL</p>
+          <p class="text-center text-sm font-normal text-white">
+            KETTLE RUN HIGH SCHOOL
+          </p>
         </div>
       </div>
       <div class="max-w-6xl mx-auto px-4 py-4 md:flex md:items-center">
         <nav class="hidden md:flex mx-auto items-center gap-28 font-medium">
-          <a class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200" href="./about.html">About</a>
-          <a class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200" href="./schedule.html">Schedule</a>
-          <a class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200" href="./news.html">News</a>
+          <a
+            class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200"
+            href="./about.html"
+            >About</a
+          >
+          <a
+            class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200"
+            href="./schedule.html"
+            >Schedule</a
+          >
+          <a
+            class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200"
+            href="./news.html"
+            >News</a
+          >
           <a href="./index.html">
-            <img src="./assets/kr-logo.svg" alt="Kettle Run Logo" class="h-20 w-20 object-contain" />
+            <img
+              src="./assets/kr-logo.svg"
+              alt="Kettle Run Logo"
+              class="h-20 w-20 object-contain"
+            />
           </a>
-          <a class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200" href="./roster.html">Roster</a>
-          <a class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200" href="./results.html">Results</a>
-          <a class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200" href="./more.html">More</a>
+          <a
+            class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200"
+            href="./roster.html"
+            >Roster</a
+          >
+          <a
+            class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200"
+            href="./results.html"
+            >Results</a
+          >
+          <a
+            class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200"
+            href="./more.html"
+            >More</a
+          >
         </nav>
 
-        <div class="md:hidden mx-auto px-4 flex items-center justify-between w-full">
+        <div
+          class="md:hidden mx-auto px-4 flex items-center justify-between w-full"
+        >
           <div>
             <a href="./index.html">
-              <img src="./assets/kr-logo.svg" alt="Kettle Run Logo" class="h-14 w-14 object-contain" />
+              <img
+                src="./assets/kr-logo.svg"
+                alt="Kettle Run Logo"
+                class="h-14 w-14 object-contain"
+              />
             </a>
           </div>
 
           <div>
             <button id="mobile-menu-button" class="mt-2 text-white">
-              <svg id="icon-hamburger" class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              <svg
+                id="icon-hamburger"
+                class="h-8 w-8"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
 
-              <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              <svg
+                id="icon-close"
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8 hidden"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
           </div>
         </div>
 
-        <div id="mobile-menu" class="md:hidden hidden fixed inset-x-0 top-24 bottom-0 z-40 w-full border-t border-gray-700 bg-black">
+        <div
+          id="mobile-menu"
+          class="md:hidden hidden fixed inset-x-0 top-24 bottom-0 z-40 w-full border-t border-gray-700 bg-black"
+        >
           <nav class="flex flex-col">
-            <a class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900" href="./about.html">About</a>
-            <a class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900" href="./schedule.html">Schedule</a>
-            <a class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900" href="./news.html">News</a>
-            <a class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900" href="./roster.html">Roster</a>
-            <a class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900" href="./results.html">Results</a>
-            <a class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900" href="./more.html">More</a>
+            <a
+              class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900"
+              href="./about.html"
+              >About</a
+            >
+            <a
+              class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900"
+              href="./schedule.html"
+              >Schedule</a
+            >
+            <a
+              class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900"
+              href="./news.html"
+              >News</a
+            >
+            <a
+              class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900"
+              href="./roster.html"
+              >Roster</a
+            >
+            <a
+              class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900"
+              href="./results.html"
+              >Results</a
+            >
+            <a
+              class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900"
+              href="./more.html"
+              >More</a
+            >
           </nav>
         </div>
       </div>
-      
     </header>
 
     <!-- Main -->
     <main class="max-w-6xl mx-auto md:px-4 px-1 md:py-12 py-6">
-      <div class="md:rounded-2xl md:border md:border-gray-200 md:shadow-xs p-4 md:p-6 bg-white">
+      <div
+        class="md:rounded-2xl md:border md:border-gray-200 md:shadow-xs p-4 md:p-6 bg-white"
+      >
         <h1 class="text-3xl font-medium text-center pb-8">
           Competition Results
         </h1>
 
-        <div class="rounded-xl overflow-x-auto not-last:border border-gray-200 shadow-xs mb-14">
+        <!-- Season Snapshot Card -->
+        <section class="mb-14">
+          <div class="rounded-2xl border border-gray-200 bg-white overflow-hidden">
 
-          <table class="w-full table-fixed md:text-sm text-xs rounded-xl bg-white">
-            <thead class="bg-black text-sm font-semibold uppercase tracking-wide text-white text-center">
-              <tr>
-                <th class="py-4 md:px-4 px-2">Team</th>
-                <th class="py-4 md:px-4 px-2 ">Overall</th>
-                <th class="py-4 md:px-4 px-2">PCT</th> 
-                <th class="py-4 md:px-4 px-2">Streak</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border border-gray-200 text-center text-base md:text-lg font-semibold uppercase tracking-wide">
-                  <td class="py-2 md:px-4 px-2 text-gray-800 border border-gray-200 bg-gray-50">Boys</td>
-                  <td class="py-2 md:px-4 px-2 text-gray-800 border border-gray-200 bg-gray-50">6-7</td>
-                  <td class="py-2 md:px-4 px-2 text-gray-800 border border-gray-200 bg-gray-50">0.461</td>
-                  <td class="py-2 md:px-4 px-2 text-gray-800 border border-gray-200 bg-gray-50">W2</td>
-                </tr>
-                <tr class="border border-gray-200 text-center text-base md:text-lg font-semibold uppercase tracking-wide">
-                  <td class="py-2 md:px-4 px-2 text-gray-800 border border-gray-200 bg-gray-50">Girls</td>
-                  <td class="py-2 md:px-4 px-2 text-gray-800 border border-gray-200 bg-gray-50">12-1</td>
-                  <td class="py-2 md:px-4 px-2 text-gray-800 border border-gray-200 bg-gray-50">0.923</td>
-                  <td class="py-2 md:px-4 px-2 text-gray-800 border border-gray-200 bg-gray-50">W9</td>
-                </tr>
-            </tbody>
-          </table>
-        </div>
-        
+            <!-- Header strip -->
+            <div class="bg-[#005130] px-4 py-3 md:px-6 md:py-2">
+
+              <div class="flex flex-col md:items-start md:justify-between gap-0.5">
+                <h2 class="text-sm font-semibold tracking-wide text-white">
+                  2025-2026 Season
+                </h2>
+
+                <!-- Clarifier (optional but recommended for UX) -->
+                <p class="mt-0.5 text-xs text-white">
+                  Result records as of 1/16/2026
+                </p>
+              </div>
+
+            </div>
+
+            <!-- Content -->
+            <div class="p-4 md:p-6">
+
+              <!-- Dual Meet Summary -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <!-- Boys Card -->
+                <div class="rounded-xl border border-gray-200 bg-gray-50 p-4">
+                  <div class="flex items-start justify-between gap-4">
+                    <div>
+                      <p class="text-xs font-semibold uppercase tracking-wider text-gray-600">Boys</p>
+                      <p class="mt-1 text-2xl font-bold text-gray-900 leading-none">
+                        <span class="sr-only">Dual meet record: </span>
+                        6–7
+                      </p>
+                    </div>
+
+                    <!-- Right-side stats -->
+                    <div class="flex gap-2">
+                      <div class="text-center">
+                        <p class="text-[11px] font-semibold uppercase tracking-wider text-gray-600">Streak</p>
+                        <p class="mt-1 inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-bold text-gray-900">
+                          W2
+                        </p>
+                      </div>
+
+                      <div class="text-center">
+                        <p class="text-[11px] font-semibold uppercase tracking-wider text-gray-600">Win %</p>
+                        <p class="mt-1 inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-bold text-gray-900">
+                          46%
+                        </p>
+                      </div>
+                    </div>
+                    
+                  </div>
+
+                </div>
+
+                <!-- Girls Card -->
+                <div class="rounded-xl border border-gray-200 bg-gray-50 p-4">
+                  <div class="flex items-start justify-between gap-4">
+                    <div>
+                      <p class="text-xs font-semibold uppercase tracking-wider text-gray-600">Girls</p>
+                      <p class="mt-1 text-2xl font-bold text-gray-900 leading-none">
+                        <span class="sr-only">Dual meet record: </span>
+                        12–1
+                      </p>
+                    </div>
+
+                    <div class="flex gap-2">
+                      <div class="text-center">
+                        <p class="text-[11px] font-semibold uppercase tracking-wider text-gray-600">Streak</p>
+                        <p class="mt-1 inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-bold text-gray-900">
+                          W9
+                        </p>
+                      </div>
+
+                      <div class="text-center">
+                        <p class="text-[11px] font-semibold uppercase tracking-wider text-gray-600">Win %</p>
+                        <p class="mt-1 inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-bold text-gray-900">
+                          92%
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Postseason Tracker -->
+              <div class="mt-6 rounded-2xl border border-gray-200 bg-white overflow-hidden">
+                <div class="px-4 py-3 md:px-5 md:py-4 border-b border-gray-200 bg-gray-50">
+                  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-1">
+                    <h3 class="text-sm font-bold tracking-wide text-gray-900 text-center md:text-left">
+                      Postseason
+                    </h3>
+                    <p class="text-xs font-semibold text-gray-600">
+                      
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Rows: Boys + Girls -->
+                <div class="grid grid-cols-1 md:grid-cols-2">
+
+                  <!-- Boys postseason row -->
+                  <div class="px-1 py-4 md:px-5 border-b md:border-b-0 md:border-r border-gray-200">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-3">
+                      <p class="text-xs font-semibold uppercase tracking-wider text-gray-600">Boys</p>
+
+                      <div class="flex flex-wrap justify-center gap-2 md:gap-2">
+                        <div class="inline-flex items-center rounded-full border border-gray-200 bg-white px-1.5 md:px-3 py-1">
+                          <span class="text-[11px] font-semibold text-gray-600">Districts</span>
+                          <span class="mx-1 md:mx-2 h-3 w-px bg-gray-200"></span>
+                          <span class="text-[11px] font-bold text-gray-900">TBD</span>
+                        </div>
+
+                        <div class="inline-flex items-center rounded-full border border-gray-200 bg-white px-1.5 md:px-3 py-1">
+                          <span class="text-[11px] font-semibold text-gray-600">Regionals</span>
+                          <span class="mx-1 md:mx-2 h-3 w-px bg-gray-200"></span>
+                          <span class="text-[11px] font-bold text-gray-900">TBD</span>
+                        </div>
+
+                        <div class="inline-flex items-center rounded-full border border-gray-200 bg-white px-1.5 md:px-3 py-1">
+                          <span class="text-[11px] font-semibold text-gray-600">States</span>
+                          <span class="mx-1 md:mx-2 h-3 w-px bg-gray-200"></span>
+                          <span class="text-[11px] font-bold text-gray-900">TBD</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Girls postseason row -->
+                  <div class="px-1 py-4 md:px-5">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-3">
+                      <p class="text-xs font-semibold uppercase tracking-wider text-gray-600">Girls</p>
+
+                      <div class="flex flex-wrap justify-center gap-2 md:gap-2">
+                        <div class="inline-flex items-center rounded-full border border-gray-200 bg-white px-1.5 md:px-3 py-1">
+                          <span class="text-[11px] font-semibold text-gray-600">Districts</span>
+                          <span class="mx-1 md:mx-2 h-3 w-px bg-gray-200"></span>
+                          <span class="text-[11px] font-bold text-gray-900">TBD</span>
+                        </div>
+
+                        <div class="inline-flex items-center rounded-full border border-gray-200 bg-white px-1.5 md:px-3 py-1">
+                          <span class="text-[11px] font-semibold text-gray-600">Regionals</span>
+                          <span class="mx-1 md:mx-2 h-3 w-px bg-gray-200"></span>
+                          <span class="text-[11px] font-bold text-gray-900">TBD</span>
+                        </div>
+
+                        <div class="inline-flex items-center rounded-full border border-gray-200 bg-white px-1.5 md:px-3 py-1">
+                          <span class="text-[11px] font-semibold text-gray-600">States</span>
+                          <span class="mx-1 md:mx-2 h-3 w-px bg-gray-200"></span>
+                          <span class="text-[11px] font-bold text-gray-900">TBD</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Optional tiny legend tying to your home/away/neutral rails without copying card layout -->
+              <div class="mt-4 flex flex-wrap gap-3 justify-center md:justify-start">
+                <span class="inline-flex items-center gap-2 text-[11px] font-semibold text-gray-600">
+                  <span class="h-2 w-2 rounded-full" style="background:#F37322;"></span> Home
+                </span>
+                <span class="inline-flex items-center gap-2 text-[11px] font-semibold text-gray-600">
+                  <span class="h-2 w-2 rounded-full" style="background:#005130;"></span> Away
+                </span>
+                <span class="inline-flex items-center gap-2 text-[11px] font-semibold text-gray-600">
+                  <span class="h-2 w-2 rounded-full bg-black"></span> Neutral
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+
+
         <!-- Meet #1 Card -->
-        <div class="rounded-xl border-2 border-[#005130] overflow-hidden flex flex-col md:flex-row mb-5 bg-white">
-
-          <!-- 1) Rail -->
-          <div class="bg-[#005130] order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0">
-            <p class="text-xs font-semibold uppercase tracking-wide text-white md:-rotate-90">Away</p>
+        <div
+          class="rounded-xl border-2 border-[#005130] overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+        >
+          <!-- Rail -->
+          <div
+            class="bg-[#005130] order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0"
+          >
+            <p
+              class="text-[11px] font-semibold uppercase tracking-wider text-white md:-rotate-90"
+            >
+              Away
+            </p>
           </div>
 
-          <!-- 2) Date -->
-          <div class="order-3 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300">
-            <!-- Desktop (stacked) -->
-            <div class="hidden md:flex flex-col gap-1 px-3 text-xs font-semibold tracking-wide">
-              <span class="text-gray-600">Saturday</span>
-              <span class="text-lg text-gray-900">Dec 6</span>
-              <span class="text-gray-600">6:00 PM</span>
+          <!-- Date (compact) -->
+          <div
+            class="order-2 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-200"
+          >
+            <!-- Desktop -->
+            <div
+              class="hidden md:flex flex-col gap-0.5 px-3 text-[11px] font-semibold tracking-wide text-left"
+            >
+              <span class="text-gray-500">Saturday</span>
+              <span class="text-base font-bold text-gray-900 leading-none"
+                >Dec 6</span
+              >
+              <span class="text-gray-500">6:00 PM</span>
             </div>
-            <!-- Mobile (single line) -->
-            <div class="md:hidden px-4 py-0 text-sm font-semibold tracking-wide text-center text-black">
+            <!-- Mobile -->
+            <div
+              class="md:hidden px-3 py-1 text-sm font-semibold tracking-wide text-center text-gray-900"
+            >
               Saturday, Dec 6, 6:00 PM
             </div>
           </div>
 
-          <!-- 3) Logo -->
-          <div class="order-2 md:order-3 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 border-gray-300 px-4 md:px-0 py-0 md:py-0">
-            <img
-              src="./assets/Brentsville.svg"
-              alt="Host Logo"
-              class="h-14 w-14 md:h-20 md:w-20 object-contain"
-            />
-          </div>
-
-          <!-- 4) Meet Info -->
-          <div class="order-4 md:order-4 shrink-0 w-full md:w-72 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300 px-4 md:px-2 py-2 md:py-0 text-center md:text-left">
+          <!-- Meet Info (tight + chip for location) -->
+          <div
+            class="order-3 md:order-3 shrink-0 w-full md:w-80 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-200 px-3 py-2 text-center md:text-left"
+          >
             <div class="flex flex-col">
-              <span class="text-sm md:text-lg font-semibold tracking-wide leading-tight text-gray-900">Double Dual</span>
-              <span class="text-xs md:text-sm font-semibold tracking-wide text-gray-600">vs. Brentsville &amp; Sherando</span>
-              <span class="text-xs font-semibold tracking-wide text-gray-600">PWAC</span>
+              <span
+                class="text-sm md:text-base font-bold text-gray-900 leading-tight"
+                >Double Dual</span
+              >
+              <span class="text-xs font-medium text-gray-600"
+                >vs. Brentsville &amp; Sherando</span
+              >
+
+              <div class="flex flex-row gap-1">
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-1.5 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    PWAC
+                  </span>
+                </div>
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-2 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    Host: Brentsville
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- 5) Results (content variant: score lines) -->
-          <div class="order-5 md:order-5w-full md:flex-1 flex items-center  md:border-r border-gray-300 px-4 md:px-0 py-2 md:py-6">
-            <div class="w-full grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-1 text-center md:text-left">
-
+          <!-- Results (compact panels) -->
+          <div
+            class="order-4 md:order-4 w-full md:flex-1 flex items-center md:border-r border-gray-200 px-3 py-2"
+          >
+            <div class="w-full grid grid-cols-2 gap-2 text-center md:text-left">
               <!-- Boys -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <div class="text-sm font-bold tracking-wide md:pt-0">Boys Team</div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-red-700">KRHS-90 vs. BDHS-130</span>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <div
+                  class="text-[11px] font-bold uppercase tracking-wider text-gray-900"
+                >
+                  Boys
                 </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS-117 vs. SHS-99</span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-red-700">KRHS-90 vs. BDHS-130</div>
+                  <div class="text-[#005130]">KRHS-117 vs. SHS-99</div>
                 </div>
               </div>
 
               <!-- Girls -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <div class="text-sm font-bold tracking-wide md:pt-0">Girls Team</div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS-159 vs. BDHS-88</span>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <div
+                  class="text-[11px] font-bold uppercase tracking-wider text-gray-900"
+                >
+                  Girls
                 </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS-165 vs. SHS-103</span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-[#005130]">KRHS-159 vs. BDHS-88</div>
+                  <div class="text-[#005130]">KRHS-165 vs. SHS-103</div>
                 </div>
               </div>
-
             </div>
           </div>
 
-          <!-- 6) CTA -->
-          <div class="order-6 md:order-6 shrink-0 w-full md:w-52 flex items-center justify-center px-2 pt-2 pb-4 md:py-0">
+          <!-- CTA (tight) -->
+          <div
+            class="order-5 md:order-5 shrink-0 w-full md:w-48 flex items-center justify-center px-2 pt-2 pb-4 md:py-0"
+          >
             <a
-              class="inline-flex items-center rounded-full border-2 border-gray-600 px-4 py-1 text-xs font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors"
+              class="inline-flex items-center rounded-full border border-gray-300 px-3 py-1 text-[11px] font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-[#005130] transition-colors"
               href="https://drive.google.com/file/d/1oWQ1uB0nyT3YHvgDV9jr17bnQvRDN355/view?usp=sharing"
               target="_blank"
               rel="noreferrer"
             >
-              Full Meet Results (PDF)
+              Full Results (PDF)
             </a>
           </div>
-
         </div>
 
         <!-- Meet #2 Card -->
-        <div class="rounded-xl border-2 border-[#005130] overflow-hidden flex flex-col md:flex-row mb-5 bg-white">
-
-          <!-- 1) Rail -->
-          <div class="bg-[#005130] order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0">
-            <p class="text-xs font-semibold uppercase tracking-wide text-white md:-rotate-90">Away</p>
+        <div
+          class="rounded-xl border-2 border-[#005130] overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+        >
+          <!-- Rail -->
+          <div
+            class="bg-[#005130] order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0"
+          >
+            <p
+              class="text-[11px] font-semibold uppercase tracking-wider text-white md:-rotate-90"
+            >
+              Away
+            </p>
           </div>
 
-          <!-- 2) Date -->
-          <div class="order-3 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300">
-            <!-- Desktop (stacked) -->
-            <div class="hidden md:flex flex-col gap-1 px-3 text-xs font-semibold tracking-wide">
-              <span class="text-gray-600">Tuesday</span>
-              <span class="text-lg text-gray-900">Dec 9</span>
-              <span class="text-gray-600">7:00 PM</span>
+          <!-- Date (compact) -->
+          <div
+            class="order-2 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-200"
+          >
+            <!-- Desktop -->
+            <div
+              class="hidden md:flex flex-col gap-0.5 px-3 text-[11px] font-semibold tracking-wide text-left"
+            >
+              <span class="text-gray-500">Tuesday</span>
+              <span class="text-base font-bold text-gray-900 leading-none"
+                >Dec 9</span
+              >
+              <span class="text-gray-500">7:00 PM</span>
             </div>
-            <!-- Mobile (single line) -->
-            <div class="md:hidden px-4 py-0 text-sm font-semibold tracking-wide text-center text-black">
+            <!-- Mobile -->
+            <div
+              class="md:hidden px-3 py-1 text-sm font-semibold tracking-wide text-center text-gray-900"
+            >
               Tuesday, Dec 9, 7:00 PM
             </div>
           </div>
 
-          <!-- 3) Logo -->
-          <div class="order-2 md:order-3 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 border-gray-300 px-4 md:px-0 py-0 md:py-0">
-            <img
-              src="./assets/Millbrook.svg"
-              alt="Host Logo"
-              class="h-14 w-14 md:h-20 md:w-20 object-contain"
-            />
-          </div>
-
-          <!-- 4) Meet Info -->
-          <div class="order-4 md:order-4 shrink-0 w-full md:w-72 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300 px-4 md:px-2 py-2 md:py-0 text-center md:text-left">
+          <!-- Meet Info (tight + chip for location) -->
+          <div
+            class="order-3 md:order-3 shrink-0 w-full md:w-80 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-200 px-3 py-2 text-center md:text-left"
+          >
             <div class="flex flex-col">
-              <span class="text-sm md:text-lg font-semibold tracking-wide leading-tight text-gray-900">Double Dual</span>
-              <span class="text-xs md:text-sm font-semibold tracking-wide text-gray-600">vs. Millbrook &amp; John Handley</span>
-              <span class="text-xs font-semibold tracking-wide text-gray-600">JBP</span>
+              <span
+                class="text-sm md:text-base font-bold text-gray-900 leading-tight"
+                >Double Dual</span
+              >
+              <span class="text-xs font-medium text-gray-600"
+                >vs. Millbrook &amp; John Handley</span
+              >
+
+              <div class="flex flex-row gap-1">
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-1.5 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    JBP
+                  </span>
+                </div>
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-2 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    Host: Millbrook
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- 5) Results (content variant: score lines) -->
-          <div class="order-5 md:order-5w-full md:flex-1 flex items-center  md:border-r border-gray-300 px-4 md:px-0 py-2 md:py-6">
-            <div class="w-full grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-1 text-center md:text-left">
-
+          <!-- Results (compact panels) -->
+          <div
+            class="order-4 md:order-4 w-full md:flex-1 flex items-center md:border-r border-gray-200 px-3 py-2"
+          >
+            <div class="w-full grid grid-cols-2 gap-2 text-center md:text-left">
               <!-- Boys -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <div class="text-sm font-bold tracking-wide md:pt-0">Boys Team</div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-red-700">KRHS-33 vs. MBHS-56</span>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <div
+                  class="text-[11px] font-bold uppercase tracking-wider text-gray-900"
+                >
+                  Boys
                 </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS-53 vs. JHHS-32</span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-red-700">KRHS-33 vs. MBHS-56</div>
+                  <div class="text-[#005130]">KRHS-53 vs. JHHS-32</div>
                 </div>
               </div>
 
               <!-- Girls -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <div class="text-sm font-bold tracking-wide md:pt-0">Girls Team</div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-red-700">KRHS-35 vs. MBHS-57</span>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <div
+                  class="text-[11px] font-bold uppercase tracking-wider text-gray-900"
+                >
+                  Girls
                 </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS-55 vs. JHHS-38 </span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-red-700">KRHS-35 vs. MBHS-57</div>
+                  <div class="text-[#005130]">KRHS-55 vs. JHHS-38</div>
                 </div>
               </div>
-
             </div>
           </div>
 
-          <!-- 6) CTA -->
-          <div class="order-6 md:order-6 shrink-0 w-full md:w-52 flex items-center justify-center px-2 pt-2 pb-4 md:py-0">
+          <!-- CTA (tight) -->
+          <div
+            class="order-5 md:order-5 shrink-0 w-full md:w-48 flex items-center justify-center px-2 pt-2 pb-4 md:py-0"
+          >
             <a
-              class="inline-flex items-center rounded-full border-2 border-gray-600 px-4 py-1 text-xs font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors"
+              class="inline-flex items-center rounded-full border border-gray-300 px-3 py-1 text-[11px] font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-[#005130] transition-colors"
               href="https://drive.google.com/file/d/1EYrpQ4DkM1AROQQrLqDdzCvbJGGK3z-u/view?usp=share_link"
               target="_blank"
               rel="noreferrer"
             >
-              Full Meet Results (PDF)
+              Full Results (PDF)
             </a>
           </div>
-
-        </div> 
+        </div>
 
         <!-- Meet #3 Card -->
-        <div class="rounded-xl border-2 border-[#005130] overflow-hidden flex flex-col md:flex-row mb-5 bg-white">
-
-          <!-- 1) Rail -->
-          <div class="bg-[#005130] order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0">
-            <p class="text-xs font-semibold uppercase tracking-wide text-white md:-rotate-90">Away</p>
+        <div
+          class="rounded-xl border-2 border-[#005130] overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+        >
+          <!-- Rail -->
+          <div
+            class="bg-[#005130] order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0"
+          >
+            <p
+              class="text-[11px] font-semibold uppercase tracking-wider text-white md:-rotate-90"
+            >
+              Away
+            </p>
           </div>
 
-          <!-- 2) Date -->
-          <div class="order-3 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300">
-            <!-- Desktop (stacked) -->
-            <div class="hidden md:flex flex-col gap-1 px-3 text-xs font-semibold tracking-wide">
-              <span class="text-gray-600">Saturday</span>
-              <span class="text-lg text-gray-900">Dec 20</span>
-              <span class="text-gray-600">7:00 PM</span>
+          <!-- Date (compact) -->
+          <div
+            class="order-2 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-200"
+          >
+            <!-- Desktop -->
+            <div
+              class="hidden md:flex flex-col gap-0.5 px-3 text-[11px] font-semibold tracking-wide text-left"
+            >
+              <span class="text-gray-500">Saturday</span>
+              <span class="text-base font-bold text-gray-900 leading-none"
+                >Dec 20</span
+              >
+              <span class="text-gray-500">7:00 PM</span>
             </div>
-            <!-- Mobile (single line) -->
-            <div class="md:hidden px-4 py-0 text-sm font-semibold tracking-wide text-center text-black">
+            <!-- Mobile -->
+            <div
+              class="md:hidden px-3 py-1 text-sm font-semibold tracking-wide text-center text-gray-900"
+            >
               Saturday, Dec 20, 7:00 PM
             </div>
           </div>
 
-          <!-- 3) Logo -->
-          <div class="order-2 md:order-3 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 border-gray-300 px-4 md:px-0 py-0 md:py-0">
-            <img
-              src="./assets/Liberty.svg"
-              alt="Host Logo"
-              class="h-14 w-14 md:h-20 md:w-20 object-contain"
-            />
-          </div>
-
-          <!-- 4) Meet Info -->
-          <div class="order-4 md:order-4 shrink-0 w-full md:w-72 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300 px-4 md:px-2 py-2 md:py-0 text-center md:text-left">
+          <!-- Meet Info (tight + chip for location) -->
+          <div
+            class="order-3 md:order-3 shrink-0 w-full md:w-80 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-200 px-3 py-2 text-center md:text-left"
+          >
             <div class="flex flex-col">
-              <span class="text-sm md:text-lg font-semibold tracking-wide leading-tight text-gray-900">Double Dual</span>
-              <span class="text-xs md:text-sm font-semibold tracking-wide text-gray-600">vs. Liberty &amp; Fauquier</span>
-              <span class="text-xs font-semibold tracking-wide text-gray-600">WARF</span>
+              <span
+                class="text-sm md:text-base font-bold text-gray-900 leading-tight"
+                >Double Dual</span
+              >
+              <span class="text-xs font-medium text-gray-600"
+                >vs. Liberty &amp; Fauquier</span
+              >
+
+              <div class="flex flex-row gap-1">
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-1.5 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    WARF
+                  </span>
+                </div>
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-2 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    Host: Liberty
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- 5) Results (content variant: score lines) -->
-          <div class="order-5 md:order-5w-full md:flex-1 flex items-center  md:border-r border-gray-300 px-4 md:px-0 py-2 md:py-6">
-            <div class="w-full grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-1 text-center md:text-left">
-
+          <!-- Results (compact panels) -->
+          <div
+            class="order-4 md:order-4 w-full md:flex-1 flex items-center md:border-r border-gray-200 px-3 py-2"
+          >
+            <div class="w-full grid grid-cols-2 gap-2 text-center md:text-left">
               <!-- Boys -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <div class="text-sm font-bold tracking-wide md:pt-0">Boys Team</div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-red-700">KRHS-95 vs. LHS-167</span>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <div
+                  class="text-[11px] font-bold uppercase tracking-wider text-gray-900"
+                >
+                  Boys
                 </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-red-700">KRHS-100 vs. FHS-125</span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-red-700">KRHS-95 vs. LHS-167</div>
+                  <div class="text-red-700">KRHS-100 vs. FHS-125</div>
                 </div>
               </div>
 
               <!-- Girls -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <div class="text-sm font-bold tracking-wide md:pt-0">Girls Team</div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS-178 vs. LHS-103</span>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <div
+                  class="text-[11px] font-bold uppercase tracking-wider text-gray-900"
+                >
+                  Girls
                 </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS-159 vs. FHS-117 </span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-[#005130]">KRHS-178 vs. LHS-103</div>
+                  <div class="text-[#005130]">KRHS-159 vs. FHS-117</div>
                 </div>
               </div>
-
             </div>
           </div>
 
-          <!-- 6) CTA -->
-          <div class="order-6 md:order-6 shrink-0 w-full md:w-52 flex items-center justify-center px-2 pt-2 pb-4 md:py-0">
+          <!-- CTA (tight) -->
+          <div
+            class="order-5 md:order-5 shrink-0 w-full md:w-48 flex items-center justify-center px-2 pt-2 pb-4 md:py-0"
+          >
             <a
-              class="inline-flex items-center rounded-full border-2 border-gray-600 px-4 py-1 text-xs font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors"
+              class="inline-flex items-center rounded-full border border-gray-300 px-3 py-1 text-[11px] font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-[#005130] transition-colors"
               href="https://drive.google.com/file/d/17DJV-0o_q6dwO9wtcD4lTPsTaVcBBNh-/view?usp=sharing"
               target="_blank"
               rel="noreferrer"
             >
-              Full Meet Results (PDF)
+              Full Results (PDF)
             </a>
           </div>
-
         </div>
 
         <!-- Meet #4 Card -->
-        <div class="rounded-xl border-2 border-[#F37322] overflow-hidden flex flex-col md:flex-row mb-5 bg-white">
-
-          <!-- 1) Rail -->
-          <div class="bg-[#F37322] order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0">
-            <p class="text-xs font-semibold uppercase tracking-wide text-white md:-rotate-90">Home</p>
+        <div
+          class="rounded-xl border-2 border-[#F37322] overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+        >
+          <!-- Rail -->
+          <div
+            class="bg-[#F37322] order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0"
+          >
+            <p
+              class="text-[11px] font-semibold uppercase tracking-wider text-white md:-rotate-90"
+            >
+              Home
+            </p>
           </div>
 
-          <!-- 2) Date -->
-          <div class="order-3 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300">
-            <!-- Desktop (stacked) -->
-            <div class="hidden md:flex flex-col gap-1 px-3 text-xs font-semibold tracking-wide">
-              <span class="text-gray-600">Saturday</span>
-              <span class="text-lg text-gray-900">Jan 3</span>
-              <span class="text-gray-600">7:00 PM</span>
+          <!-- Date (compact) -->
+          <div
+            class="order-2 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-200"
+          >
+            <!-- Desktop -->
+            <div
+              class="hidden md:flex flex-col gap-0.5 px-3 text-[11px] font-semibold tracking-wide text-left"
+            >
+              <span class="text-gray-500">Saturday</span>
+              <span class="text-base font-bold text-gray-900 leading-none"
+                >Jan 3</span
+              >
+              <span class="text-gray-500">7:00 PM</span>
             </div>
-            <!-- Mobile (single line) -->
-            <div class="md:hidden px-4 py-0 text-sm font-semibold tracking-wide text-center text-black">
+            <!-- Mobile -->
+            <div
+              class="md:hidden px-3 py-1 text-sm font-semibold tracking-wide text-center text-gray-900"
+            >
               Saturday, Jan 3, 7:00 PM
             </div>
           </div>
 
-          <!-- 3) Logo -->
-          <div class="order-2 md:order-3 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 border-gray-300 px-4 md:px-0 py-0 md:py-0">
-            <img
-              src="./assets/Kettle Run.svg"
-              alt="Host Logo"
-              class="h-14 w-14 md:h-20 md:w-20 object-contain"
-            />
-          </div>
-
-          <!-- 4) Meet Info -->
-          <div class="order-4 md:order-4 shrink-0 w-full md:w-72 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300 px-4 md:px-2 py-2 md:py-0 text-center md:text-left">
+          <!-- Meet Info (tight + chip for location) -->
+          <div
+            class="order-3 md:order-3 shrink-0 w-full md:w-80 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-200 px-3 py-2 text-center md:text-left"
+          >
             <div class="flex flex-col">
-              <span class="text-sm md:text-lg font-semibold tracking-wide leading-tight text-gray-900">Double Dual</span>
-              <span class="text-xs md:text-sm font-semibold tracking-wide text-gray-600">vs. James Wood &amp; Sherando</span>
-              <span class="text-xs font-semibold tracking-wide text-gray-600">WARF</span>
+              <span
+                class="text-sm md:text-base font-bold text-gray-900 leading-tight"
+                >Double Dual</span
+              >
+              <span class="text-xs font-medium text-gray-600"
+                >vs. James Wood &amp; Sherando</span
+              >
+
+              <div class="flex flex-row gap-1">
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-1.5 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    WARF
+                  </span>
+                </div>
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-2 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    Host: Kettle Run
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- 5) Results (content variant: score lines) -->
-          <div class="order-5 md:order-5w-full md:flex-1 flex items-center  md:border-r border-gray-300 px-4 md:px-0 py-2 md:py-6">
-            <div class="w-full grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-1 text-center md:text-left">
-
+          <!-- Results (compact panels) -->
+          <div
+            class="order-4 md:order-4 w-full md:flex-1 flex items-center md:border-r border-gray-200 px-3 py-2"
+          >
+            <div class="w-full grid grid-cols-2 gap-2 text-center md:text-left">
               <!-- Boys -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <div class="text-sm font-bold tracking-wide md:pt-0">Boys Team</div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS-133 vs. JWHS-87</span>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <div
+                  class="text-[11px] font-bold uppercase tracking-wider text-gray-900"
+                >
+                  Boys
                 </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS-141 vs. SHS-99</span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-[#005130]">KRHS-133 vs. JWHS-87</div>
+                  <div class="text-[#005130]">KRHS-141 vs. SHS-99</div>
                 </div>
               </div>
 
               <!-- Girls -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <div class="text-sm font-bold tracking-wide md:pt-0">Girls Team</div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS-169 vs. JWHS-106</span>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <div
+                  class="text-[11px] font-bold uppercase tracking-wider text-gray-900"
+                >
+                  Girls
                 </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS-183 vs. SHS-87</span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-[#005130]">KRHS-169 vs. JWHS-106</div>
+                  <div class="text-[#005130]">KRHS-183 vs. SHS-87</div>
                 </div>
               </div>
-
             </div>
           </div>
 
-          <!-- 6) CTA -->
-          <div class="order-6 md:order-6 shrink-0 w-full md:w-52 flex items-center justify-center px-2 pt-2 pb-4 md:py-0">
+          <!-- CTA (tight) -->
+          <div
+            class="order-5 md:order-5 shrink-0 w-full md:w-48 flex items-center justify-center px-2 pt-2 pb-4 md:py-0"
+          >
             <a
-              class="inline-flex items-center rounded-full border-2 border-gray-600 px-4 py-1 text-xs font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors"
+              class="inline-flex items-center rounded-full border border-gray-300 px-3 py-1 text-[11px] font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-[#005130] transition-colors"
               href="https://drive.google.com/file/d/1CI8e3eZJbnpgSpUcN6W3pZa9BGbDEtBY/view?usp=share_link"
               target="_blank"
               rel="noreferrer"
             >
-              Full Meet Results (PDF)
+              Full Results (PDF)
             </a>
           </div>
-
         </div>
 
         <!-- Meet #5 Card -->
-        <div class="rounded-xl border-2 border-[#F37322] overflow-hidden flex flex-col md:flex-row mb-5 bg-white">
-
-          <!-- 1) Rail -->
-          <div class="bg-[#F37322] order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0">
-            <p class="text-xs font-semibold uppercase tracking-wide text-white md:-rotate-90">Home</p>
+        <div
+          class="rounded-xl border-2 border-[#F37322] overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+        >
+          <!-- Rail -->
+          <div
+            class="bg-[#F37322] order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0"
+          >
+            <p
+              class="text-[11px] font-semibold uppercase tracking-wider text-white md:-rotate-90"
+            >
+              Home
+            </p>
           </div>
 
-          <!-- 2) Date -->
-          <div class="order-3 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300">
-            <!-- Desktop (stacked) -->
-            <div class="hidden md:flex flex-col gap-1 px-3 text-xs font-semibold tracking-wide">
-              <span class="text-gray-600">Saturday</span>
-              <span class="text-lg text-gray-900">Jan 9</span>
-              <span class="text-gray-600">8:00 PM</span>
+          <!-- Date (compact) -->
+          <div
+            class="order-2 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-200"
+          >
+            <!-- Desktop -->
+            <div
+              class="hidden md:flex flex-col gap-0.5 px-3 text-[11px] font-semibold tracking-wide text-left"
+            >
+              <span class="text-gray-500">Saturday</span>
+              <span class="text-base font-bold text-gray-900 leading-none"
+                >Jan 9</span
+              >
+              <span class="text-gray-500">8:00 PM</span>
             </div>
-            <!-- Mobile (single line) -->
-            <div class="md:hidden px-4 py-0 text-sm font-semibold tracking-wide text-center text-black">
+            <!-- Mobile -->
+            <div
+              class="md:hidden px-3 py-1 text-sm font-semibold tracking-wide text-center text-gray-900"
+            >
               Saturday, Jan 9, 8:00 PM
             </div>
           </div>
 
-          <!-- 3) Logo -->
-          <div class="order-2 md:order-3 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 border-gray-300 px-4 md:px-0 py-0 md:py-0">
-            <img
-              src="./assets/Kettle Run.svg"
-              alt="Host Logo"
-              class="h-14 w-14 md:h-20 md:w-20 object-contain"
-            />
-          </div>
-
-          <!-- 4) Meet Info -->
-          <div class="order-4 md:order-4 shrink-0 w-full md:w-72 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300 px-4 md:px-2 py-2 md:py-0 text-center md:text-left">
+          <!-- Meet Info (tight + chip for location) -->
+          <div
+            class="order-3 md:order-3 shrink-0 w-full md:w-80 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-200 px-3 py-2 text-center md:text-left"
+          >
             <div class="flex flex-col">
-              <span class="text-sm md:text-lg font-semibold tracking-wide leading-tight text-gray-900">Triple Dual</span>
-              <span class="text-xs md:text-sm font-semibold tracking-wide text-gray-600">vs. Brentsville, Fauquier, &amp; Liberty</span>
-              <span class="text-xs font-semibold tracking-wide text-gray-600">WARF</span>
+              <span
+                class="text-sm md:text-base font-bold text-gray-900 leading-tight"
+                >Triple Dual</span
+              >
+              <span class="text-xs font-medium text-gray-600"
+                >vs. Brentsville, Fauquier, &amp; Liberty</span
+              >
+
+              <div class="flex flex-row gap-1">
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-1.5 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    WARF
+                  </span>
+                </div>
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-2 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    Host: Kettle Run
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- 5) Results (content variant: score lines) -->
-          <div class="order-5 md:order-5w-full md:flex-1 flex items-center  md:border-r border-gray-300 px-4 md:px-0 py-2 md:py-6">
-            <div class="w-full grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-1 text-center md:text-left">
-
+          <!-- Results (compact panels) -->
+          <div
+            class="order-4 md:order-4 w-full md:flex-1 flex items-center md:border-r border-gray-200 px-3 py-2"
+          >
+            <div class="w-full grid grid-cols-2 gap-2 text-center md:text-left">
               <!-- Boys -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <div class="text-sm font-bold tracking-wide md:pt-0">Boys Team</div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-red-700">KRHS-79 vs. LHS-177</span>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <div
+                  class="text-[11px] font-bold uppercase tracking-wider text-gray-900"
+                >
+                  Boys
                 </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-red-700">KRHS-78 vs. FHS-172</span>
-                </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-red-700">KRHS-72 vs. BDHS-122</span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-red-700">KRHS-79 vs. LHS-177</div>
+                  <div class="text-red-700">KRHS-78 vs. FHS-172</div>
+                  <div class="text-red-700">KRHS-72 vs. BDHS-122</div>
                 </div>
               </div>
 
               <!-- Girls -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <div class="text-sm font-bold tracking-wide md:pt-0">Girls Team</div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS-192 vs. LHS-94</span>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <div
+                  class="text-[11px] font-bold uppercase tracking-wider text-gray-900"
+                >
+                  Girls
                 </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS-163 vs. FHS-123</span>
-                </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS-178 vs. BDHS-86</span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-[#005130]">KRHS-192 vs. LHS-94</div>
+                  <div class="text-[#005130]">KRHS-163 vs. FHS-123</div>
+                  <div class="text-[#005130]">KRHS-178 vs. BDHS-86</div>
                 </div>
               </div>
-
             </div>
           </div>
 
-          <!-- 6) CTA -->
-          <div class="order-6 md:order-6 shrink-0 w-full md:w-52 flex items-center justify-center px-2 pt-2 pb-4 md:py-0">
+          <!-- CTA (tight) -->
+          <div
+            class="order-5 md:order-5 shrink-0 w-full md:w-48 flex items-center justify-center px-2 pt-2 pb-4 md:py-0"
+          >
             <a
-              class="inline-flex items-center rounded-full border-2 border-gray-600 px-4 py-1 text-xs font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors"
+              class="inline-flex items-center rounded-full border border-gray-300 px-3 py-1 text-[11px] font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-[#005130] transition-colors"
               href="https://drive.google.com/file/d/1l5qky4N3OLyMzNyh9pLFQY7YzHaSEZ1c/view?usp=sharing"
               target="_blank"
               rel="noreferrer"
             >
-              Full Meet Results (PDF)
+              Full Results (PDF)
             </a>
           </div>
-
         </div>
 
         <!-- Meet #6 Card -->
-        <div class="rounded-xl border-2 border-[#005130] overflow-hidden flex flex-col md:flex-row mb-5 bg-white">
-
-          <!-- 1) Rail -->
-          <div class="bg-[#005130] order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0">
-            <p class="text-xs font-semibold uppercase tracking-wide text-white md:-rotate-90">Away</p>
+        <div
+          class="rounded-xl border-2 border-[#005130] overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+        >
+          <!-- Rail -->
+          <div
+            class="bg-[#005130] order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0"
+          >
+            <p
+              class="text-[11px] font-semibold uppercase tracking-wider text-white md:-rotate-90"
+            >
+              Away
+            </p>
           </div>
 
-          <!-- 2) Date -->
-          <div class="order-3 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300">
-            <!-- Desktop (stacked) -->
-            <div class="hidden md:flex flex-col gap-1 px-3 text-xs font-semibold tracking-wide">
-              <span class="text-gray-600">Friday</span>
-              <span class="text-lg text-gray-900">Jan 16</span>
-              <span class="text-gray-600">7:30 PM</span>
+          <!-- Date (compact) -->
+          <div
+            class="order-2 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-200"
+          >
+            <!-- Desktop -->
+            <div
+              class="hidden md:flex flex-col gap-0.5 px-3 text-[11px] font-semibold tracking-wide text-left"
+            >
+              <span class="text-gray-500">Friday</span>
+              <span class="text-base font-bold text-gray-900 leading-none"
+                >Jan 16</span
+              >
+              <span class="text-gray-500">7:30 PM</span>
             </div>
-            <!-- Mobile (single line) -->
-            <div class="md:hidden px-4 py-0 text-sm font-semibold tracking-wide text-center text-black">
+            <!-- Mobile -->
+            <div
+              class="md:hidden px-3 py-1 text-sm font-semibold tracking-wide text-center text-gray-900"
+            >
               Friday, Jan 16, 7:30 PM
             </div>
           </div>
 
-          <!-- 3) Logo -->
-          <div class="order-2 md:order-3 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 border-gray-300 px-4 md:px-0 py-0 md:py-0">
-            <img
-              src="./assets/Manassas Park.svg"
-              alt="Host Logo"
-              class="h-14 w-14 md:h-20 md:w-20 object-contain"
-            />
-          </div>
-
-          <!-- 4) Meet Info -->
-          <div class="order-4 md:order-4 shrink-0 w-full md:w-72 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300 px-4 md:px-2 py-2 md:py-0 text-center md:text-left">
+          <!-- Meet Info (tight + chip for location) -->
+          <div
+            class="order-3 md:order-3 shrink-0 w-full md:w-80 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-200 px-3 py-2 text-center md:text-left"
+          >
             <div class="flex flex-col">
-              <span class="text-sm md:text-lg font-semibold tracking-wide leading-tight text-gray-900">Double Dual</span>
-              <span class="text-xs md:text-sm font-semibold tracking-wide text-gray-600">vs. Manassas Park &amp; Sherando</span>
-              <span class="text-xs font-semibold tracking-wide text-gray-600">MPCC</span>
+              <span
+                class="text-sm md:text-base font-bold text-gray-900 leading-tight"
+                >Double Dual</span
+              >
+              <span class="text-xs font-medium text-gray-600"
+                >vs. Manassas Park &amp; Sherando</span
+              >
+
+              <div class="flex flex-row gap-1">
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-1.5 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    MPCC
+                  </span>
+                </div>
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-2 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    Host: Manassas Park
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- 5) Results (content variant: score lines) -->
-          <div class="order-5 md:order-5w-full md:flex-1 flex items-center  md:border-r border-gray-300 px-4 md:px-0 py-2 md:py-6">
-            <div class="w-full grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-1 text-center md:text-left">
-
+          <!-- Results (compact panels) -->
+          <div
+            class="order-4 md:order-4 w-full md:flex-1 flex items-center md:border-r border-gray-200 px-3 py-2"
+          >
+            <div class="w-full grid grid-cols-2 gap-2 text-center md:text-left">
               <!-- Boys -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <div class="text-sm font-bold tracking-wide md:pt-0">Boys Team</div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS-104 vs. MPHS-38</span>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <div
+                  class="text-[11px] font-bold uppercase tracking-wider text-gray-900"
+                >
+                  Boys
                 </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS- 96 vs. SHS-56</span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-[#005130]">KRHS-104 vs. MPHS-38</div>
+                  <div class="text-[#005130]">KRHS- 96 vs. SHS-56</div>
                 </div>
               </div>
 
               <!-- Girls -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <div class="text-sm font-bold tracking-wide md:pt-0">Girls Team</div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS-106 vs. MPHS-48</span>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <div
+                  class="text-[11px] font-bold uppercase tracking-wider text-gray-900"
+                >
+                  Girls
                 </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS-97 vs. SHS-55 </span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-[#005130]">KRHS-106 vs. MPHS-48</div>
+                  <div class="text-[#005130]">KRHS-97 vs. SHS-55</div>
                 </div>
               </div>
-
             </div>
           </div>
 
-          <!-- 6) CTA -->
-          <div class="order-6 md:order-6 shrink-0 w-full md:w-52 flex items-center justify-center px-2 pt-2 pb-4 md:py-0">
+          <!-- CTA (tight) -->
+          <div
+            class="order-5 md:order-5 shrink-0 w-full md:w-48 flex items-center justify-center px-2 pt-2 pb-4 md:py-0"
+          >
             <a
-              class="inline-flex items-center rounded-full border-2 border-gray-600 px-4 py-1 text-xs font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors"
+              class="inline-flex items-center rounded-full border border-gray-300 px-3 py-1 text-[11px] font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-[#005130] transition-colors"
               href="https://drive.google.com/file/d/1NvBthvEJ46lJeGOqatm_ZleMGR6oLit4/view?usp=sharing"
               target="_blank"
               rel="noreferrer"
             >
-              Full Meet Results (PDF)
+              Full Results (PDF)
             </a>
           </div>
-
         </div>
 
         <!-- Meet #7 Card -->
-        <div class="rounded-xl border-2 border-[#005130] overflow-hidden flex flex-col md:flex-row mb-5 bg-white">
-
-          <!-- 1) Rail -->
-          <div class="bg-[#005130] order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0">
-            <p class="text-xs font-semibold uppercase tracking-wide text-white md:-rotate-90">Away</p>
+        <div
+          class="rounded-xl border-2 border-[#005130] overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+        >
+          <!-- Rail -->
+          <div
+            class="bg-[#005130] order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0"
+          >
+            <p
+              class="text-[11px] font-semibold uppercase tracking-wider text-white md:-rotate-90"
+            >
+              Away
+            </p>
           </div>
 
-          <!-- 2) Date -->
-          <div class="order-3 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300">
-            <!-- Desktop (stacked) -->
-            <div class="hidden md:flex flex-col gap-1 px-3 text-xs font-semibold tracking-wide">
-              <span class="text-gray-600">Friday</span>
-              <span class="text-lg text-gray-900">Jan 23</span>
-              <span class="text-gray-600">7:00 PM</span>
+          <!-- Date (compact) -->
+          <div
+            class="order-2 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-200"
+          >
+            <!-- Desktop -->
+            <div
+              class="hidden md:flex flex-col gap-0.5 px-3 text-[11px] font-semibold tracking-wide text-left"
+            >
+              <span class="text-gray-500">Friday</span>
+              <span class="text-base font-bold text-gray-900 leading-none"
+                >Jan 23</span
+              >
+              <span class="text-gray-500">7:00 PM</span>
             </div>
-            <!-- Mobile (single line) -->
-            <div class="md:hidden px-4 py-0 text-sm font-semibold tracking-wide text-center text-black">
+            <!-- Mobile -->
+            <div
+              class="md:hidden px-3 py-1 text-sm font-semibold tracking-wide text-center text-gray-900"
+            >
               Friday, Jan 23, 7:00 PM
             </div>
           </div>
 
-          <!-- 3) Logo -->
-          <div class="order-2 md:order-3 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 border-gray-300 px-4 md:px-0 py-0 md:py-0">
-            <img
-              src="./assets/Liberty.svg"
-              alt="Host Logo"
-              class="h-14 w-14 md:h-20 md:w-20 object-contain"
-            />
-          </div>
-
-          <!-- 4) Meet Info -->
-          <div class="order-4 md:order-4 shrink-0 w-full md:w-72 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300 px-4 md:px-2 py-2 md:py-0 text-center md:text-left">
+          <!-- Meet Info (tight + chip for location) -->
+          <div
+            class="order-3 md:order-3 shrink-0 w-full md:w-80 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-200 px-3 py-2 text-center md:text-left"
+          >
             <div class="flex flex-col">
-              <span class="text-sm md:text-lg font-semibold tracking-wide leading-tight text-gray-900">Quintuple Dual</span>
-              <span class="text-xs md:text-sm font-semibold tracking-wide text-gray-600">vs. LHS, BDHS, FHS, MPHS, &amp; MHS</span>
-              <span class="text-xs font-semibold tracking-wide text-gray-600">WARF</span>
+              <span
+                class="text-sm md:text-base font-bold text-gray-900 leading-tight"
+                >Quintuple Dual</span
+              >
+              <span class="text-xs font-medium text-gray-600"
+                >vs. Liberty, Brentsville, Fauquier, <br />
+                Manassas Park, &amp; Meridian</span
+              >
+
+              <div class="flex flex-row gap-1">
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-1.5 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    WARF
+                  </span>
+                </div>
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-2 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    Host: Liberty
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- 5) Results (content variant: score lines) -->
-          <div class="order-5 md:order-5w-full md:flex-1 flex items-center  md:border-r border-gray-300 px-4 md:px-0 py-2 md:py-6">
-            <div class="w-full grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-1 text-center md:text-left">
-
+          <!-- Results (compact panels) -->
+          <div
+            class="order-4 md:order-4 w-full md:flex-1 flex items-center md:border-r border-gray-200 px-3 py-2"
+          >
+            <div class="w-full grid grid-cols-2 gap-2 text-center md:text-left">
               <!-- Boys -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <!--<div class="text-sm font-bold tracking-wide md:pt-0">Boys Team</div>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <!--<div class="text-[11px] font-bold uppercase tracking-wider text-gray-900">Boys</div>
 
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS- vs. LHS-</span>
-                </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS- vs. BDHS-</span>
-                </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS- vs. FHS-</span>
-                </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS- vs. MPHS-</span>
-                </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS- vs. MHS-</span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-[#005130]">KRHS- vs. LHS-</div>
+                  <div class="text-[#005130]">KRHS- vs. BDHS-</div>
+                  <div class="text-[#005130]">KRHS- vs. FHS-</div>
+                  <div class="text-[#005130]">KRHS- vs. MPHS-</div>
+                  <div class="text-[#005130]">KRHS- vs. MHS-</div>
                 </div>-->
               </div>
 
               <!-- Girls -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <!---<div class="text-sm font-bold tracking-wide md:pt-0">Girls Team</div>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <!---<div class="text-[11px] font-bold uppercase tracking-wider text-gray-900">Girls</div>
 
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS- vs. LHS-</span>
-                </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS- vs. BDHS-</span>
-                </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS- vs. FHS-</span>
-                </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS- vs. MPHS-</span>
-                </div>
-
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS- vs. MHS-</span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-[#005130]">KRHS- vs. LHS-</div>
+                  <div class="text-[#005130]">KRHS- vs. BDHS-</div>
+                  <div class="text-[#005130]">KRHS- vs. FHS-</div>
+                  <div class="text-[#005130]">KRHS- vs. MPHS-</div>
+                  <div class="text-[#005130]">KRHS- vs. MHS-</div>
                 </div>-->
               </div>
-
             </div>
           </div>
 
-          <!-- 6) CTA -->
-          <div class="order-6 md:order-6 shrink-0 w-full md:w-52 flex items-center justify-center px-2 pt-2 pb-4 md:py-0">
+          <!-- CTA (tight) -->
+          <div
+            class="order-5 md:order-5 shrink-0 w-full md:w-48 flex items-center justify-center px-2 pt-2 pb-4 md:py-0"
+          >
             <!--<a
-              class="inline-flex items-center rounded-full border-2 border-gray-600 px-4 py-1 text-xs font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors"
+              class="inline-flex items-center rounded-full border border-gray-300 px-3 py-1 text-[11px] font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-[#005130] transition-colors"
               href=""
               target="_blank"
               rel="noreferrer"
             >
-              Full Meet Results (PDF)
+              Full Results (PDF)
             </a>-->
           </div>
-
         </div>
 
         <!-- Meet #8 Card -->
-        <div class="rounded-xl border-2 border-black overflow-hidden flex flex-col md:flex-row mb-5 bg-white">
-
-          <!-- 1) Rail -->
-          <div class="bg-black order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0">
-            <p class="text-xs font-semibold uppercase tracking-wide text-white md:-rotate-90">Neutral</p>
+        <div
+          class="rounded-xl border-2 border-black overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+        >
+          <!-- Rail -->
+          <div
+            class="bg-black order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0"
+          >
+            <p
+              class="text-[11px] font-semibold uppercase tracking-wider text-white md:-rotate-90"
+            >
+              Neutral
+            </p>
           </div>
 
-          <!-- 2) Date -->
-          <div class="order-3 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300">
-            <!-- Desktop (stacked) -->
-            <div class="hidden md:flex flex-col gap-1 px-3 text-xs font-semibold tracking-wide">
-              <span class="text-gray-600">Friday</span>
-              <span class="text-lg text-gray-900">Jan 30</span>
-              <span class="text-gray-600">11:00 AM</span>
+          <!-- Date (compact) -->
+          <div
+            class="order-2 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-200"
+          >
+            <!-- Desktop -->
+            <div
+              class="hidden md:flex flex-col gap-0.5 px-3 text-[11px] font-semibold tracking-wide text-left"
+            >
+              <span class="text-gray-500">Friday</span>
+              <span class="text-base font-bold text-gray-900 leading-none"
+                >Jan 30</span
+              >
+              <span class="text-gray-500">11:00 AM</span>
             </div>
-            <!-- Mobile (single line) -->
-            <div class="md:hidden px-4 py-0 text-sm font-semibold tracking-wide text-center text-black">
+            <!-- Mobile -->
+            <div
+              class="md:hidden px-3 py-1 text-sm font-semibold tracking-wide text-center text-gray-900"
+            >
               Friday, Jan 30, 11:00 AM
             </div>
           </div>
 
-          <!-- 3) Logo -->
-          <div class="order-2 md:order-3 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 border-gray-300 px-4 md:px-0 py-0 md:py-0">
-            <img
-              src="./assets/Brentsville.svg"
-              alt="Host Logo"
-              class="h-14 w-14 md:h-20 md:w-20 object-contain"
-            />
-          </div>
-
-          <!-- 4) Meet Info -->
-          <div class="order-4 md:order-4 shrink-0 w-full md:w-72 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300 px-4 md:px-2 py-2 md:py-0 text-center md:text-left">
+          <!-- Meet Info (tight + chip for location) -->
+          <div
+            class="order-3 md:order-3 shrink-0 w-full md:w-80 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-200 px-3 py-2 text-center md:text-left"
+          >
             <div class="flex flex-col">
-              <span class="text-sm md:text-lg font-semibold tracking-wide leading-tight text-gray-900">Northwestern District</span>
-              <span class="text-xs md:text-sm font-semibold tracking-wide text-gray-600">vs. Northwestern District</span>
-              <span class="text-xs font-semibold tracking-wide text-gray-600">PWAC</span>
+              <span
+                class="text-sm md:text-base font-bold text-gray-900 leading-tight"
+                >Northwestern District</span
+              >
+              <span class="text-xs font-medium text-gray-600"
+                >vs. Northwestern District</span
+              >
+
+              <div class="flex flex-row gap-1">
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-1.5 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    PWAC
+                  </span>
+                </div>
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-2 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    Host: Brentsville
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- 5) Results (content variant: score lines) -->
-          <div class="order-5 md:order-5w-full md:flex-1 flex items-center  md:border-r border-gray-300 px-4 md:px-0 py-2 md:py-6">
-            <div class="w-full grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-1 text-center md:text-left">
-
+          <!-- Results (compact panels) -->
+          <div
+            class="order-4 md:order-4 w-full md:flex-1 flex items-center md:border-r border-gray-200 px-3 py-2"
+          >
+            <div class="w-full grid grid-cols-2 gap-2 text-center md:text-left">
               <!-- Boys -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <!--<div class="text-sm font-bold tracking-wide md:pt-0">Boys Team</div>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <!--<div class="text-[11px] font-bold uppercase tracking-wider text-gray-900">Boys</div>
 
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS- vs. LHS-</span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-[#005130]">KRHS- vs. LHS-</div>
                 </div>-->
               </div>
 
               <!-- Girls -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <!---<div class="text-sm font-bold tracking-wide md:pt-0">Girls Team</div>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <!---<div class="text-[11px] font-bold uppercase tracking-wider text-gray-900">Girls</div>
 
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS- vs. LHS-</span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-[#005130]">KRHS- vs. LHS-</div>
                 </div>-->
               </div>
-
             </div>
           </div>
 
-          <!-- 6) CTA -->
-          <div class="order-6 md:order-6 shrink-0 w-full md:w-52 flex items-center justify-center px-2 pt-2 pb-4 md:py-0">
+          <!-- CTA (tight) -->
+          <div
+            class="order-5 md:order-5 shrink-0 w-full md:w-48 flex items-center justify-center px-2 pt-2 pb-4 md:py-0"
+          >
             <!--<a
-              class="inline-flex items-center rounded-full border-2 border-gray-600 px-4 py-1 text-xs font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors"
+              class="inline-flex items-center rounded-full border border-gray-300 px-3 py-1 text-[11px] font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-[#005130] transition-colors"
               href=""
               target="_blank"
               rel="noreferrer"
             >
-              Full Meet Results (PDF)
+              Full Results (PDF)
             </a>-->
           </div>
-
         </div>
 
         <!-- Meet #9 Card -->
-        <div class="rounded-xl border-2 border-black overflow-hidden flex flex-col md:flex-row mb-5 bg-white">
-
-          <!-- 1) Rail -->
-          <div class="bg-black order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0">
-            <p class="text-xs font-semibold uppercase tracking-wide text-white md:-rotate-90">Neutral</p>
+        <div
+          class="rounded-xl border-2 border-black overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+        >
+          <!-- Rail -->
+          <div
+            class="bg-black order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0"
+          >
+            <p
+              class="text-[11px] font-semibold uppercase tracking-wider text-white md:-rotate-90"
+            >
+              Neutral
+            </p>
           </div>
 
-          <!-- 2) Date -->
-          <div class="order-3 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300">
-            <!-- Desktop (stacked) -->
-            <div class="hidden md:flex flex-col gap-1 px-3 text-xs font-semibold tracking-wide">
-              <span class="text-gray-600">Saturday</span>
-              <span class="text-lg text-gray-900">Feb 7</span>
-              <span class="text-gray-600">2:15 PM</span>
+          <!-- Date (compact) -->
+          <div
+            class="order-2 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-200"
+          >
+            <!-- Desktop -->
+            <div
+              class="hidden md:flex flex-col gap-0.5 px-3 text-[11px] font-semibold tracking-wide text-left"
+            >
+              <span class="text-gray-500">Saturday</span>
+              <span class="text-base font-bold text-gray-900 leading-none"
+                >Feb 7</span
+              >
+              <span class="text-gray-500">2:15 PM</span>
             </div>
-            <!-- Mobile (single line) -->
-            <div class="md:hidden px-4 py-0 text-sm font-semibold tracking-wide text-center text-black">
+            <!-- Mobile -->
+            <div
+              class="md:hidden px-3 py-1 text-sm font-semibold tracking-wide text-center text-gray-900"
+            >
               Saturday, Feb 7, 2:15 PM
             </div>
           </div>
 
-          <!-- 3) Logo -->
-          <div class="order-2 md:order-3 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 border-gray-300 px-4 md:px-0 py-0 md:py-0">
-            <img
-              src="./assets/Maggie.svg"
-              alt="Host Logo"
-              class="h-14 w-14 md:h-20 md:w-20 object-contain"
-            />
-          </div>
-
-          <!-- 4) Meet Info -->
-          <div class="order-4 md:order-4 shrink-0 w-full md:w-72 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300 px-4 md:px-2 py-2 md:py-0 text-center md:text-left">
+          <!-- Meet Info (tight + chip for location) -->
+          <div
+            class="order-3 md:order-3 shrink-0 w-full md:w-80 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-200 px-3 py-2 text-center md:text-left"
+          >
             <div class="flex flex-col">
-              <span class="text-sm md:text-lg font-semibold tracking-wide leading-tight text-gray-900">Region 3B Championship</span>
-              <span class="text-xs md:text-sm font-semibold tracking-wide text-gray-600">vs. Class 3 Region B</span>
-              <span class="text-xs font-semibold tracking-wide text-gray-600">CSAC</span>
+              <span
+                class="text-sm md:text-base font-bold text-gray-900 leading-tight"
+                >Region 3B Championship</span
+              >
+              <span class="text-xs font-medium text-gray-600"
+                >vs. Class 3 Region B</span
+              >
+
+              <div class="flex flex-row gap-1">
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-1.5 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    CSAC
+                  </span>
+                </div>
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-2 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    Host: Maggie L. Walker
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- 5) Results (content variant: score lines) -->
-          <div class="order-5 md:order-5w-full md:flex-1 flex items-center  md:border-r border-gray-300 px-4 md:px-0 py-2 md:py-6">
-            <div class="w-full grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-1 text-center md:text-left">
-
+          <!-- Results (compact panels) -->
+          <div
+            class="order-4 md:order-4 w-full md:flex-1 flex items-center md:border-r border-gray-200 px-3 py-2"
+          >
+            <div class="w-full grid grid-cols-2 gap-2 text-center md:text-left">
               <!-- Boys -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <!--<div class="text-sm font-bold tracking-wide md:pt-0">Boys Team</div>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <!--<div class="text-[11px] font-bold uppercase tracking-wider text-gray-900">Boys</div>
 
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS- vs. LHS-</span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-[#005130]">KRHS- vs. LHS-</div>
                 </div>-->
               </div>
 
               <!-- Girls -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <!---<div class="text-sm font-bold tracking-wide md:pt-0">Girls Team</div>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <!---<div class="text-[11px] font-bold uppercase tracking-wider text-gray-900">Girls</div>
 
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS- vs. LHS-</span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-[#005130]">KRHS- vs. LHS-</div>
                 </div>-->
               </div>
-
             </div>
           </div>
 
-          <!-- 6) CTA -->
-          <div class="order-6 md:order-6 shrink-0 w-full md:w-52 flex items-center justify-center px-2 pt-2 pb-4 md:py-0">
+          <!-- CTA (tight) -->
+          <div
+            class="order-5 md:order-5 shrink-0 w-full md:w-48 flex items-center justify-center px-2 pt-2 pb-4 md:py-0"
+          >
             <!--<a
-              class="inline-flex items-center rounded-full border-2 border-gray-600 px-4 py-1 text-xs font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors"
+              class="inline-flex items-center rounded-full border border-gray-300 px-3 py-1 text-[11px] font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-[#005130] transition-colors"
               href=""
               target="_blank"
               rel="noreferrer"
             >
-              Full Meet Results (PDF)
+              Full Results (PDF)
             </a>-->
           </div>
-
         </div>
 
         <!-- Meet #10 Card -->
-        <div class="rounded-xl border-2 border-black overflow-hidden flex flex-col md:flex-row mb-5 bg-white">
-
-          <!-- 1) Rail -->
-          <div class="bg-black order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0">
-            <p class="text-xs font-semibold uppercase tracking-wide text-white md:-rotate-90">Neutral</p>
+        <div
+          class="rounded-xl border-2 border-black overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+        >
+          <!-- Rail -->
+          <div
+            class="bg-black order-1 md:order-1 shrink-0 w-full md:w-8 flex items-center justify-center py-2 md:py-0"
+          >
+            <p
+              class="text-[11px] font-semibold uppercase tracking-wider text-white md:-rotate-90"
+            >
+              Neutral
+            </p>
           </div>
 
-          <!-- 2) Date -->
-          <div class="order-3 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300">
-            <!-- Desktop (stacked) -->
-            <div class="hidden md:flex flex-col gap-1 px-3 text-xs font-semibold tracking-wide">
-              <span class="text-gray-600">Thursday</span>
-              <span class="text-lg text-gray-900">Feb 19</span>
-              <span class="text-gray-600">9:00 AM</span>
+          <!-- Date (compact) -->
+          <div
+            class="order-2 md:order-2 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-200"
+          >
+            <!-- Desktop -->
+            <div
+              class="hidden md:flex flex-col gap-0.5 px-3 text-[11px] font-semibold tracking-wide text-left"
+            >
+              <span class="text-gray-500">Thursday</span>
+              <span class="text-base font-bold text-gray-900 leading-none"
+                >Feb 19</span
+              >
+              <span class="text-gray-500">9:00 AM</span>
             </div>
-            <!-- Mobile (single line) -->
-            <div class="md:hidden px-4 py-0 text-sm font-semibold tracking-wide text-center text-black">
+            <!-- Mobile -->
+            <div
+              class="md:hidden px-3 py-1 text-sm font-semibold tracking-wide text-center text-gray-900"
+            >
               Thursday, Feb 19, 9:00 AM
             </div>
           </div>
 
-          <!-- 3) Logo -->
-          <div class="order-2 md:order-3 shrink-0 w-full md:w-24 flex items-center justify-center border-b md:border-b-0 border-gray-300 px-4 md:px-0 py-0 md:py-0">
-            <img
-              src="./assets/VHSL.svg"
-              alt="Host Logo"
-              class="h-14 w-14 md:h-20 md:w-20 object-contain"
-            />
-          </div>
-
-          <!-- 4) Meet Info -->
-          <div class="order-4 md:order-4 shrink-0 w-full md:w-72 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-300 px-4 md:px-2 py-2 md:py-0 text-center md:text-left">
+          <!-- Meet Info (tight + chip for location) -->
+          <div
+            class="order-3 md:order-3 shrink-0 w-full md:w-80 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-200 px-3 py-2 text-center md:text-left"
+          >
             <div class="flex flex-col">
-              <span class="text-sm md:text-lg font-semibold tracking-wide leading-tight text-gray-900">VHSL Class 3 Championship</span>
-              <span class="text-xs md:text-sm font-semibold tracking-wide text-gray-600">vs. VHSL Class 3 </span>
-              <span class="text-xs font-semibold tracking-wide text-gray-600">CSAC</span>
+              <span
+                class="text-sm md:text-base font-bold text-gray-900 leading-tight"
+                >VHSL Class 3 Championship</span
+              >
+              <span class="text-xs font-medium text-gray-600"
+                >vs. VHSL Class 3
+              </span>
+
+              <div class="flex flex-row gap-1">
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-1.5 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    CSAC
+                  </span>
+                </div>
+                <div class="mt-1 flex justify-center md:justify-start">
+                  <span
+                    class="rounded-md bg-gray-100 px-2 py-1 text-[11px] font-semibold text-gray-700"
+                  >
+                    Host: Maggie L. Walker
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- 5) Results (content variant: score lines) -->
-          <div class="order-5 md:order-5w-full md:flex-1 flex items-center  md:border-r border-gray-300 px-4 md:px-0 py-2 md:py-6">
-            <div class="w-full grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-1 text-center md:text-left">
-
+          <!-- Results (compact panels) -->
+          <div
+            class="order-4 md:order-4 w-full md:flex-1 flex items-center md:border-r border-gray-200 px-3 py-2"
+          >
+            <div class="w-full grid grid-cols-2 gap-2 text-center md:text-left">
               <!-- Boys -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <!--<div class="text-sm font-bold tracking-wide md:pt-0">Boys Team</div>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <!--<div class="text-[11px] font-bold uppercase tracking-wider text-gray-900">Boys</div>
 
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS- vs. LHS-</span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-[#005130]">KRHS- vs. LHS-</div>
                 </div>-->
               </div>
 
               <!-- Girls -->
-              <div class="flex flex-col gap-1 md:mx-auto">
-                <!---<div class="text-sm font-bold tracking-wide md:pt-0">Girls Team</div>
+              <div class="rounded-lg border border-gray-200 px-2 py-2">
+                <!---<div class="text-[11px] font-bold uppercase tracking-wider text-gray-900">Girls</div>
 
-                <div class="flex items-center justify-center md:justify-start">
-                  <span class="text-xs font-bold tracking-wide text-[#005130]">KRHS- vs. LHS-</span>
+                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
+                  <div class="text-[#005130]">KRHS- vs. LHS-</div>
                 </div>-->
               </div>
-
             </div>
           </div>
 
-          <!-- 6) CTA -->
-          <div class="order-6 md:order-6 shrink-0 w-full md:w-52 flex items-center justify-center px-2 pt-2 pb-4 md:py-0">
+          <!-- CTA (tight) -->
+          <div
+            class="order-5 md:order-5 shrink-0 w-full md:w-48 flex items-center justify-center px-2 pt-2 pb-4 md:py-0"
+          >
             <!--<a
-              class="inline-flex items-center rounded-full border-2 border-gray-600 px-4 py-1 text-xs font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors"
+              class="inline-flex items-center rounded-full border border-gray-300 px-3 py-1 text-[11px] font-semibold tracking-wide text-gray-800 hover:bg-[#005130] hover:text-white hover:border-[#005130] transition-colors"
               href=""
               target="_blank"
               rel="noreferrer"
             >
-              Full Meet Results (PDF)
+              Full Results (PDF)
             </a>-->
           </div>
-
         </div>
-
       </div>
-
     </main>
 
     <!-- Footer -->
@@ -987,20 +1497,19 @@
     </footer>
 
     <script>
-      const menuButton = document.getElementById('mobile-menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
+      const menuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
 
-      const iconHamburger = document.getElementById('icon-hamburger');
-      const iconClose = document.getElementById('icon-close');
+      const iconHamburger = document.getElementById("icon-hamburger");
+      const iconClose = document.getElementById("icon-close");
 
       if (menuButton && mobileMenu) {
-        menuButton.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden');
-          iconHamburger.classList.toggle('hidden');
-          iconClose.classList.toggle('hidden');
+        menuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+          iconHamburger.classList.toggle("hidden");
+          iconClose.classList.toggle("hidden");
         });
       }
     </script>
-
-</body>
-</html> 
+  </body>
+</html>
