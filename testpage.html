@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vanilla Mobile Menu</title>
+    <link rel="stylesheet" href="./css/output.css" />
+  </head>
+  <body class="bg-gray-100">
+    <!-- Header -->
+    <header class="flex items-center justify-between p-4 bg-white shadow-md">
+      <div class="text-xl font-bold">MyLogo</div>
+
+      <!-- Hamburger -->
+      <button
+        id="menu-btn"
+        class="relative z-50 flex flex-col justify-between w-8 h-8 focus:outline-none"
+      >
+        <span
+          class="block w-full h-0.5 bg-black transition-all duration-300 origin-center"
+          id="line1"
+        ></span>
+        <span
+          class="block w-full h-0.5 bg-black transition-all duration-300"
+          id="line2"
+        ></span>
+        <span
+          class="block w-full h-0.5 bg-black transition-all duration-300 origin-center"
+          id="line3"
+        ></span>
+      </button>
+    </header>
+
+    <!-- Overlay -->
+    <div
+      id="overlay"
+      class="fixed inset-0 bg-black bg-opacity-50 opacity-0 pointer-events-none transition-opacity duration-300 z-40"
+    ></div>
+
+    <!-- Mobile Menu -->
+    <nav
+      id="mobile-menu"
+      class="fixed top-0 right-0 h-full w-3/4 bg-white transform translate-x-full transition-transform duration-300 z-50 p-6 space-y-4 overflow-y-auto"
+    >
+      <a
+        href="#"
+        class="test-base font-semibold uppercase tracking-wide text-black hover:text-blue-600 block"
+        >About</a
+      >
+      <a
+        href="#"
+        class="test-base font-semibold uppercase tracking-wide text-black hover:text-blue-600 block"
+        >Roster</a
+      >
+
+      <!-- Schedule with submenu -->
+      <div>
+        <button
+          id="schedule-toggle"
+          class="w-full text-left flex text-black items-center justify-between test-base font-semibold uppercase tracking-wide hover:text-blue-600 focus:outline-none"
+        >
+          Schedule
+          <svg
+            id="schedule-arrow"
+            class="w-5 h-5 transform transition-transform rotate-270 duration-300"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
+
+        <div
+          id="schedule-submenu"
+          class="pl-4 mt-0 space-y-2 max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+        >
+          <a
+            href="#"
+            class="block text-base font-semibold text-black/90 hover:text-blue-500"
+            >Competition Schedule</a
+          >
+          <a
+            href="#"
+            class="block text-base font-semibold text-black/90 hover:text-blue-500"
+            >Practice Schedule</a
+          >
+        </div>
+      </div>
+
+      <!-- Results with submenu -->
+      <div>
+        <button
+          id="results-toggle"
+          class="w-full text-left flex items-center justify-between test-base font-semibold uppercase tracking-wide text-black hover:text-blue-600 focus:outline-none"
+        >
+          Results
+          <svg
+            id="results-arrow"
+            class="w-5 h-5 transform transition-transform rotate-270 duration-300"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
+
+        <div
+          id="results-submenu"
+          class="pl-4 mt-0 space-y-2 max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+        >
+          <a
+            href="#"
+            class="block text-base font-semibold text-black/90 hover:text-blue-500"
+            >2025-2026 Season</a
+          >
+          <a
+            href="#"
+            class="block text-base font-semibold text-black/90 hover:text-blue-500"
+            >2024-2025 Season</a
+          >
+          <a
+            href="#"
+            class="block text-base font-semibold text-black/90 hover:text-blue-500"
+            >Top 10 All Time Performances</a
+          >
+        </div>
+      </div>
+
+      <a
+        href="#"
+        class="test-base font-semibold uppercase tracking-wide text-black hover:text-blue-600 block"
+        >Team Records</a
+      >
+
+      <!-- Resources with submenu -->
+      <div>
+        <button
+          id="resources-toggle"
+          class="w-full text-left flex items-center justify-between test-base font-semibold uppercase tracking-wide text-black hover:text-blue-600 focus:outline-none"
+        >
+          Resources
+          <svg
+            id="resources-arrow"
+            class="w-5 h-5 transform transition-transform rotate-270 duration-300"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
+
+        <div
+          id="resources-submenu"
+          class="pl-4 mt-2 space-y-2 max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+        >
+          <a
+            href="#"
+            class="block text-base font-semibold text-black/90 hover:text-blue-500"
+            >Team Handbook</a
+          >
+          <a
+            href="#"
+            class="block text-base font-semibold text-black/90 hover:text-blue-500"
+            >VHSL Class 3 Qualifying Times</a
+          >
+          <a
+            href="#"
+            class="block text-base font-semibold text-black/90 hover:text-blue-500"
+            >Top 10 All Time Performances</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- JS -->
+    <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const overlay = document.getElementById("overlay");
+      const line1 = document.getElementById("line1");
+      const line2 = document.getElementById("line2");
+      const line3 = document.getElementById("line3");
+
+      const scheduleToggle = document.getElementById("schedule-toggle");
+      const scheduleSubmenu = document.getElementById("schedule-submenu");
+      const scheduleArrow = document.getElementById("schedule-arrow");
+
+      const resultsToggle = document.getElementById("results-toggle");
+      const resultsSubmenu = document.getElementById("results-submenu");
+      const resultsArrow = document.getElementById("results-arrow");
+
+      const resourcesToggle = document.getElementById("resources-toggle");
+      const resourcesSubmenu = document.getElementById("resources-submenu");
+      const resourcesArrow = document.getElementById("resources-arrow");
+
+      let menuOpen = false;
+      let schedulesubmenuOpen = false;
+      let resultssubmenuOpen = false;
+      let resourcessubmenuOpen = false;
+
+      const toggleMenu = () => {
+        menuOpen = !menuOpen;
+
+        line1.classList.toggle("rotate-45");
+        line1.classList.toggle("translate-y-2");
+        line3.classList.toggle("-rotate-45");
+        line3.classList.toggle("-translate-y-2");
+        line2.classList.toggle("opacity-0");
+
+        mobileMenu.classList.toggle("translate-x-0");
+        mobileMenu.classList.toggle("translate-x-full");
+
+        overlay.classList.toggle("opacity-100");
+        overlay.classList.toggle("opacity-0");
+        overlay.classList.toggle("pointer-events-none");
+      };
+
+      menuBtn.addEventListener("click", toggleMenu);
+      overlay.addEventListener("click", () => {
+        if (schedulesubmenuOpen) scheduletoggleSubmenu();
+        if (resultssubmenuOpen) resultstoggleSubmenu();
+        if (resourcessubmenuOpen) resourcestoggleSubmenu();
+        toggleMenu();
+      });
+
+      const scheduletoggleSubmenu = () => {
+        schedulesubmenuOpen = !schedulesubmenuOpen;
+        if (schedulesubmenuOpen) {
+          scheduleSubmenu.classList.remove("max-h-0");
+          scheduleSubmenu.classList.add("max-h-40");
+          scheduleArrow.classList.add("rotate-180");
+        } else {
+          scheduleSubmenu.classList.remove("max-h-40");
+          scheduleSubmenu.classList.add("max-h-0");
+          scheduleArrow.classList.remove("rotate-180");
+        }
+      };
+
+      const resultstoggleSubmenu = () => {
+        resultssubmenuOpen = !resultssubmenuOpen;
+        if (resultssubmenuOpen) {
+          resultsSubmenu.classList.remove("max-h-0");
+          resultsSubmenu.classList.add("max-h-40");
+          resultsArrow.classList.add("rotate-180");
+        } else {
+          resultsSubmenu.classList.remove("max-h-40");
+          resultsSubmenu.classList.add("max-h-0");
+          resultsArrow.classList.remove("rotate-180");
+        }
+      };
+
+      const resourcestoggleSubmenu = () => {
+        resourcessubmenuOpen = !resourcessubmenuOpen;
+        if (resourcessubmenuOpen) {
+          resourcesSubmenu.classList.remove("max-h-0");
+          resourcesSubmenu.classList.add("max-h-40");
+          resourcesArrow.classList.add("rotate-180");
+        } else {
+          resourcesSubmenu.classList.remove("max-h-40");
+          resourcesSubmenu.classList.add("max-h-0");
+          resourcesArrow.classList.remove("rotate-180");
+        }
+      };
+
+      scheduleToggle.addEventListener("click", scheduletoggleSubmenu);
+      resultsToggle.addEventListener("click", resultstoggleSubmenu);
+      resourcesToggle.addEventListener("click", resourcestoggleSubmenu);
+    </script>
+  </body>
+</html>

@@ -1,91 +1,1931 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kettle Run Swimming | Schedule</title>
-  <link rel="stylesheet" href="./css/output.css" />
-</head>
-<body>
-  <!-- Header -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kettle Run Swimming | Practice Schedule</title>
+    <link rel="stylesheet" href="./css/output.css" />
+  </head>
+  <body>
+    <!-- Header -->
     <header class="bg-black border-b-4 border-gray-400 sticky top-0 z-50">
-
       <div class="border-y border-white">
         <div class="max-w-6xl mx-auto px-4 py-0">
-          <p class="text-center text-sm font-normal text-white">KETTLE RUN HIGH SCHOOL</p>
+          <p class="text-center text-sm font-normal text-white">
+            KETTLE RUN HIGH SCHOOL
+          </p>
         </div>
       </div>
       <div class="max-w-6xl mx-auto px-4 py-4 md:flex md:items-center">
         <nav class="hidden md:flex mx-auto items-center gap-28 font-medium">
-          <a class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200" href="./about.html">About</a>
-          <a class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200" href="./schedule.html">Schedule</a>
-          <a class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200" href="./news.html">News</a>
+          <a
+            class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200"
+            href="./about.html"
+            >About</a
+          >
+
+          <div class="relative group">
+            <button
+              type="button"
+              class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200 flex items-center gap-1"
+              aria-haspopup="true"
+            >
+              Schedule
+            </button>
+
+            <div
+              class="absolute left-1/2 top-full z-50 mt-2 w-56 -translate-x-1/2 rounded-lg bg-black shadow-l hidden group-hover:block group-focus-within:block"
+            >
+              <a
+                class="block px-2 py-2 text-sm text-center font-medium text-white hover:bg-gray-100"
+                href="./competition-schedule.html"
+              >
+                Competition Schedule
+              </a>
+
+              <a
+                class="block px-2 py-2 text-sm text-center font-medium text-white hover:bg-gray-100"
+                href="./practice-schedule.html"
+              >
+                Practice Schedule
+              </a>
+            </div>
+          </div>
+
+          <a
+            class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200"
+            href="./news.html"
+            >News</a
+          >
           <a href="./index.html">
-            <img src="./assets/kr-logo.svg" alt="Kettle Run Logo" class="h-20 w-20 object-contain" />
+            <img
+              src="./assets/kr-logo.svg"
+              alt="Kettle Run Logo"
+              class="h-20 w-20 object-contain"
+            />
           </a>
-          <a class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200" href="./roster.html">Roster</a>
-          <a class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200" href="./results.html">Results</a>
-          <a class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200" href="./more.html">More</a>
+          <a
+            class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200"
+            href="./roster.html"
+            >Roster</a
+          >
+          <a
+            class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200"
+            href="./results.html"
+            >Results</a
+          >
+          <a
+            class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-[#F37322] transition-colors duration-200"
+            href="./more.html"
+            >More</a
+          >
         </nav>
 
-        <div class="md:hidden mx-auto px-4 flex items-center justify-between w-full">
+        <div
+          class="md:hidden mx-auto px-4 flex items-center justify-between w-full"
+        >
           <div>
             <a href="./index.html">
-              <img src="./assets/kr-logo.svg" alt="Kettle Run Logo" class="h-14 w-14 object-contain" />
+              <img
+                src="./assets/kr-logo.svg"
+                alt="Kettle Run Logo"
+                class="h-14 w-14 object-contain"
+              />
             </a>
           </div>
 
           <div>
             <button id="mobile-menu-button" class="mt-2 text-white">
-              <svg id="icon-hamburger" class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              <svg
+                id="icon-hamburger"
+                class="h-8 w-8"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
 
-              <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              <svg
+                id="icon-close"
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8 hidden"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
           </div>
         </div>
 
-        <div id="mobile-menu" class="md:hidden hidden fixed inset-x-0 top-24 bottom-0 z-40 w-full border-t border-gray-700 bg-black">
+        <div
+          id="mobile-menu"
+          class="md:hidden hidden fixed inset-x-0 top-24 bottom-0 z-40 w-full border-t border-gray-700 bg-black"
+        >
           <nav class="flex flex-col">
-            <a class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900" href="./about.html">About</a>
-            <a class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900" href="./schedule.html">Schedule</a>
-            <a class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900" href="./news.html">News</a>
-            <a class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900" href="./roster.html">Roster</a>
-            <a class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900" href="./results.html">Results</a>
-            <a class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900" href="./more.html">More</a>
+            <a
+              class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900"
+              href="./about.html"
+              >About</a
+            >
+            <a
+              class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900"
+              href="./schedule.html"
+              >Schedule</a
+            >
+            <a
+              class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900"
+              href="./news.html"
+              >News</a
+            >
+            <a
+              class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900"
+              href="./roster.html"
+              >Roster</a
+            >
+            <a
+              class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900"
+              href="./results.html"
+              >Results</a
+            >
+            <a
+              class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900"
+              href="./more.html"
+              >More</a
+            >
           </nav>
         </div>
       </div>
-      
     </header>
 
     <!-- Main -->
-    <main>
-
-      <section class="max-w-6xl mx-auto my-6">
-
-        <div class="sm:rounded-2xl sm:border sm:border-gray-200 sm:shadow-xs sm:mx-2 sm:p-6 p-4 bg-white">
-          
-          <h1 class="text-3xl font-medium text-center pb-4">
+    <main class="max-w-6xl mx-auto md:px-4 px-1 md:py-12 py-6">
+      <section>
+        <div
+          class="md:rounded-2xl md:border md:border-gray-200 md:shadow-xs p-4 md:p-6 bg-white"
+        >
+          <!-- Page Title -->
+          <h1 class="text-3xl font-medium text-center pb-8">
             Practice Schedule
           </h1>
 
-            <div class="px-2 py-4 text-lg font-medium text-left">
-            2025-2026 Season
-            <p class="mt-1.5 text-sm font-light hidden sm:block">Practice schedule including dates, times, and locations.</p>
-            <p class="mt-1.5 text-sm font-light italic sm:hidden">*All practices: 3:30 - 4:30pm @ WARF unless otherwise noted.</p>
+          <!-- Season Meta -->
+          <div class="rounded-xl border border-gray-200 shadow-xs mb-6">
+            <div class="md:px-4 px-2 py-3 border-b border-gray-200">
+              <h2 class="text-sm font-semibold tracking-wide text-gray-700">
+                2025–2026 Season
+              </h2>
+              <p class="mt-0.5 text-xs text-gray-500">
+                Updated as of 1/27/2026
+              </p>
+            </div>
+            <div class="md:px-4 px-2 py-3">
+              <p class="text-xs md:text-sm text-gray-700">
+                This page shows our standard weekly practice schedule, and full
+                season practice breakdown by week.
+              </p>
+            </div>
+          </div>
+
+          <table
+            role="presentation"
+            width="100%"
+            cellspacing="0"
+            cellpadding="0"
+            border="0"
+            style="border-collapse: collapse"
+          >
+            <tr>
+              <td
+                style="
+                  border-top: 1px solid #d9d9d9;
+                  font-size: 0;
+                  line-height: 0;
+                "
+              >
+                &nbsp;
+              </td>
+            </tr>
+          </table>
+
+          <div
+            class="rounded-xl overflow-x-auto border border-gray-200 shadow-xs my-6"
+          >
+            <div class="md:px-4 px-2 py-3 border-b border-gray-200">
+              <h2 class="text-sm font-semibold tracking-wide text-gray-700">
+                Standard Weekly Practice Schedule
+              </h2>
+              <p class="mt-0.5 text-xs text-gray-500">
+                Assume this schedule unless otherwise noted below.
+              </p>
             </div>
 
-          <div id="practice-schedule-weeks" class="space-y-6">
-            <!-- JS will inject one section per week here -->
+            <table class="min-w-full md:text-sm text-xs bg-white">
+              <thead
+                class="bg-[#005130] text-xs font-semibold uppercase tracking-wide text-white text-left"
+              >
+                <tr>
+                  <th scope="col" class="py-3 md:px-4 px-2">Day</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Time</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Location</th>
+                  <th
+                    scope="col"
+                    class="py-3 md:px-4 px-2 hidden md:table-cell"
+                  >
+                    Notes
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Monday</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Tuesday</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Wednesday</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Thursday</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-            
+
+          <table
+            role="presentation"
+            width="100%"
+            cellspacing="0"
+            cellpadding="0"
+            border="0"
+            style="border-collapse: collapse"
+          >
+            <tr>
+              <td
+                style="
+                  border-top: 1px solid #d9d9d9;
+                  font-size: 0;
+                  line-height: 0;
+                "
+              >
+                &nbsp;
+              </td>
+            </tr>
+          </table>
+
+          <!-- Week 1 (Collapsible + Chevron + Badge) -->
+          <details
+            id="w1"
+            open
+            data-week-start="2025-11-10"
+            class="mt-6 scroll-mt-28 rounded-xl border border-gray-200 shadow-xs bg-white group overflow-hidden"
+          >
+            <summary
+              class="cursor-pointer select-none list-none md:px-4 px-2 py-3"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-sm font-semibold tracking-wide text-gray-700">
+                    Week 1
+                  </h3>
+                  <p class="mt-0.5 text-xs text-gray-500">Nov 10 – Nov 13</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <!-- Badge (swap classes for meet/holiday/normal) -->
+                  <span
+                    class="rounded-full border border-gray-300 bg-gray-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-gray-700"
+                  >
+                    Normal Week
+                  </span>
+
+                  <!-- Chevron (rotates when open) -->
+                  <svg
+                    class="h-5 w-5 text-gray-500 transition-transform duration-200 group-open:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </summary>
+
+            <!-- Week Table -->
+            <table class="min-w-full md:text-sm text-xs bg-white">
+              <thead
+                class="bg-[#005130] text-xs font-semibold uppercase tracking-wide text-white text-left"
+              >
+                <tr>
+                  <th scope="col" class="py-3 md:px-4 px-2">Day</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Time</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Location</th>
+                  <th
+                    scope="col"
+                    class="py-3 md:px-4 px-2 hidden md:table-cell"
+                  >
+                    Notes
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Mon</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600 italic"
+                  >
+                    First Practice (Tryouts)
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Tue</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600 italic"
+                  >
+                    Tryouts
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Wed</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600 italic"
+                  >
+                    Tryouts
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Thu</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600 italic"
+                  >
+                    Tryouts
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+
+          <!-- Week 2 (Collapsible + Chevron + Badge) -->
+          <details
+            id="w2"
+            data-week-start="2025-11-17"
+            class="mt-4 scroll-mt-28 rounded-xl border border-gray-200 shadow-xs bg-white group overflow-hidden"
+          >
+            <summary
+              class="cursor-pointer select-none list-none md:px-4 px-2 py-3"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-sm font-semibold tracking-wide text-gray-700">
+                    Week 2
+                  </h3>
+                  <p class="mt-0.5 text-xs text-gray-500">Nov 17 – Nov 20</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <!-- Badge (swap classes for meet/holiday/normal) -->
+                  <span
+                    class="rounded-full border border-gray-300 bg-gray-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-gray-700"
+                  >
+                    Adjusted Week
+                  </span>
+
+                  <!-- Chevron (rotates when open) -->
+                  <svg
+                    class="h-5 w-5 text-gray-500 transition-transform duration-200 group-open:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </summary>
+
+            <!-- Week Table -->
+            <table class="min-w-full md:text-sm text-xs bg-white">
+              <thead
+                class="bg-[#005130] text-xs font-semibold uppercase tracking-wide text-white text-left"
+              >
+                <tr>
+                  <th scope="col" class="py-3 md:px-4 px-2">Day</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Time</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Location</th>
+                  <th
+                    scope="col"
+                    class="py-3 md:px-4 px-2 hidden md:table-cell"
+                  >
+                    Notes
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Mon</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Tue</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Wed</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200 text-gray-600 italic">
+                  <td class="py-3 md:px-4 px-2 line-through">Thu</td>
+                  <td class="py-3 md:px-4 px-2 line-through">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2 line-through">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    No Practice (Picture Day)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+
+          <!-- Week 3 (Collapsible + Chevron + Badge) -->
+          <details
+            id="w3"
+            data-week-start="2025-11-24"
+            class="mt-4 scroll-mt-28 rounded-xl border border-gray-200 shadow-xs bg-white group overflow-hidden"
+          >
+            <summary
+              class="cursor-pointer select-none list-none md:px-4 px-2 py-3"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-sm font-semibold tracking-wide text-gray-700">
+                    Week 3
+                  </h3>
+                  <p class="mt-0.5 text-xs text-gray-500">Nov 24 – Nov 27</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <!-- Badge (swap classes for meet/holiday/normal) -->
+                  <span
+                    class="rounded-full border border-gray-300 bg-gray-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-gray-700"
+                  >
+                    Adjusted Week
+                  </span>
+
+                  <!-- Chevron (rotates when open) -->
+                  <svg
+                    class="h-5 w-5 text-gray-500 transition-transform duration-200 group-open:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </summary>
+
+            <!-- Week Table -->
+            <table class="min-w-full md:text-sm text-xs bg-white">
+              <thead
+                class="bg-[#005130] text-xs font-semibold uppercase tracking-wide text-white text-left"
+              >
+                <tr>
+                  <th scope="col" class="py-3 md:px-4 px-2">Day</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Time</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Location</th>
+                  <th
+                    scope="col"
+                    class="py-3 md:px-4 px-2 hidden md:table-cell"
+                  >
+                    Notes
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Mon</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Tue</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200 italic text-gray-600">
+                  <td class="py-3 md:px-4 px-2 line-through">Wed</td>
+                  <td class="py-3 md:px-4 px-2 line-through">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2 line-through">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    No Practice (Thanksgiving break)
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200 italic text-gray-600">
+                  <td class="py-3 md:px-4 px-2 line-through">Thu</td>
+                  <td class="py-3 md:px-4 px-2 line-through">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2 line-through">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    No Practice (Thanksgiving break)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+
+          <!-- Week 4 (Collapsible + Chevron + Badge) -->
+          <details
+            id="w4"
+            data-week-start="2025-12-01"
+            class="mt-4 scroll-mt-28 rounded-xl border border-gray-200 shadow-xs bg-white group overflow-hidden"
+          >
+            <summary
+              class="cursor-pointer select-none list-none md:px-4 px-2 py-3"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-sm font-semibold tracking-wide text-gray-700">
+                    Week 4
+                  </h3>
+                  <p class="mt-0.5 text-xs text-gray-500">Dec 1 – Dec 4</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <!-- Badge (swap classes for meet/holiday/normal) -->
+                  <span
+                    class="rounded-full border border-gray-300 bg-gray-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-gray-700"
+                  >
+                    Meet Week
+                  </span>
+
+                  <!-- Chevron (rotates when open) -->
+                  <svg
+                    class="h-5 w-5 text-gray-500 transition-transform duration-200 group-open:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </summary>
+
+            <!-- Week Table -->
+            <table class="min-w-full md:text-sm text-xs bg-white">
+              <thead
+                class="bg-[#005130] text-xs font-semibold uppercase tracking-wide text-white text-left"
+              >
+                <tr>
+                  <th scope="col" class="py-3 md:px-4 px-2">Day</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Time</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Location</th>
+                  <th
+                    scope="col"
+                    class="py-3 md:px-4 px-2 hidden md:table-cell"
+                  >
+                    Notes
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Mon</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Tue</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Wed</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Thu</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+
+          <!-- Week 5 (Collapsible + Chevron + Badge) -->
+          <details
+            id="w5"
+            data-week-start="2025-12-08"
+            class="mt-4 scroll-mt-28 rounded-xl border border-gray-200 shadow-xs bg-white group overflow-hidden"
+          >
+            <summary
+              class="cursor-pointer select-none list-none md:px-4 px-2 py-3"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-sm font-semibold tracking-wide text-gray-700">
+                    Week 5
+                  </h3>
+                  <p class="mt-0.5 text-xs text-gray-500">Dec 8 – Dec 11</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <!-- Badge (swap classes for meet/holiday/normal) -->
+                  <span
+                    class="rounded-full border border-gray-300 bg-gray-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-gray-700"
+                  >
+                    Meet Week
+                  </span>
+
+                  <!-- Chevron (rotates when open) -->
+                  <svg
+                    class="h-5 w-5 text-gray-500 transition-transform duration-200 group-open:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </summary>
+
+            <!-- Week Table -->
+            <table class="min-w-full md:text-sm text-xs bg-white">
+              <thead
+                class="bg-[#005130] text-xs font-semibold uppercase tracking-wide text-white text-left"
+              >
+                <tr>
+                  <th scope="col" class="py-3 md:px-4 px-2">Day</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Time</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Location</th>
+                  <th
+                    scope="col"
+                    class="py-3 md:px-4 px-2 hidden md:table-cell"
+                  >
+                    Notes
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Mon</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200 italic text-gray-600">
+                  <td class="py-3 md:px-4 px-2 line-through">Tue</td>
+                  <td class="py-3 md:px-4 px-2 line-through">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2 line-through">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    No Practice (Swim Meet)
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Wed</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Thu</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+
+          <!-- Week 6 (Collapsible + Chevron + Badge) -->
+          <details
+            id="w6"
+            closeddata-week-start="2025-12-15"
+            class="mt-4 scroll-mt-28 rounded-xl border border-gray-200 shadow-xs bg-white group overflow-hidden"
+          >
+            <summary
+              class="cursor-pointer select-none list-none md:px-4 px-2 py-3"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-sm font-semibold tracking-wide text-gray-700">
+                    Week 6
+                  </h3>
+                  <p class="mt-0.5 text-xs text-gray-500">Dec 15 – Dec 18</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <!-- Badge (swap classes for meet/holiday/normal) -->
+                  <span
+                    class="rounded-full border border-gray-300 bg-gray-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-gray-700"
+                  >
+                    Meet Week
+                  </span>
+
+                  <!-- Chevron (rotates when open) -->
+                  <svg
+                    class="h-5 w-5 text-gray-500 transition-transform duration-200 group-open:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </summary>
+
+            <!-- Week Table -->
+            <table class="min-w-full md:text-sm text-xs bg-white">
+              <thead
+                class="bg-[#005130] text-xs font-semibold uppercase tracking-wide text-white text-left"
+              >
+                <tr>
+                  <th scope="col" class="py-3 md:px-4 px-2">Day</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Time</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Location</th>
+                  <th
+                    scope="col"
+                    class="py-3 md:px-4 px-2 hidden md:table-cell"
+                  >
+                    Notes
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Mon</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Tue</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Wed</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Thu</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+
+          <!-- Week 7 (Collapsible + Chevron + Badge) -->
+          <details
+            id="w7"
+            data-week-start="2025-12-22"
+            class="mt-4 scroll-mt-28 rounded-xl border border-gray-200 shadow-xs bg-white group overflow-hidden"
+          >
+            <summary
+              class="cursor-pointer select-none list-none md:px-4 px-2 py-3"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-sm font-semibold tracking-wide text-gray-700">
+                    Week 7
+                  </h3>
+                  <p class="mt-0.5 text-xs text-gray-500">Dec 22 – Dec 25</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <!-- Badge (swap classes for meet/holiday/normal) -->
+                  <span
+                    class="rounded-full border border-gray-300 bg-gray-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-gray-700"
+                  >
+                    Adjusted Week
+                  </span>
+
+                  <!-- Chevron (rotates when open) -->
+                  <svg
+                    class="h-5 w-5 text-gray-500 transition-transform duration-200 group-open:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </summary>
+
+            <!-- Week Table -->
+            <table class="min-w-full md:text-sm text-xs bg-white">
+              <thead
+                class="bg-[#005130] text-xs font-semibold uppercase tracking-wide text-white text-left"
+              >
+                <tr>
+                  <th scope="col" class="py-3 md:px-4 px-2">Day</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Time</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Location</th>
+                  <th
+                    scope="col"
+                    class="py-3 md:px-4 px-2 hidden md:table-cell"
+                  >
+                    Notes
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Mon</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Tue</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200 italic text-gray-600">
+                  <td class="py-3 md:px-4 px-2 line-through">Wed</td>
+                  <td class="py-3 md:px-4 px-2 line-through">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2 line-through">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    No Practice (Winter Break)
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200 italic text-gray-600">
+                  <td class="py-3 md:px-4 px-2 line-through">Thu</td>
+                  <td class="py-3 md:px-4 px-2 line-through">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2 line-through">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    No Practice (Winter Break)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+
+          <!-- Week 8 (Collapsible + Chevron + Badge) -->
+          <details
+            id="w8"
+            data-week-start="2025-12-29"
+            class="mt-4 scroll-mt-28 rounded-xl border border-gray-200 shadow-xs bg-white group overflow-hidden"
+          >
+            <summary
+              class="cursor-pointer select-none list-none md:px-4 px-2 py-3"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-sm font-semibold tracking-wide text-gray-700">
+                    Week 8
+                  </h3>
+                  <p class="mt-0.5 text-xs text-gray-500">Dec 29 – Jan 1</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <!-- Badge (swap classes for meet/holiday/normal) -->
+                  <span
+                    class="rounded-full border border-gray-300 bg-gray-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-gray-700"
+                  >
+                    Adjusted Week
+                  </span>
+
+                  <!-- Chevron (rotates when open) -->
+                  <svg
+                    class="h-5 w-5 text-gray-500 transition-transform duration-200 group-open:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </summary>
+
+            <!-- Week Table -->
+            <table class="min-w-full md:text-sm text-xs bg-white">
+              <thead
+                class="bg-[#005130] text-xs font-semibold uppercase tracking-wide text-white text-left"
+              >
+                <tr>
+                  <th scope="col" class="py-3 md:px-4 px-2">Day</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Time</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Location</th>
+                  <th
+                    scope="col"
+                    class="py-3 md:px-4 px-2 hidden md:table-cell"
+                  >
+                    Notes
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-gray-200 italic text-gray-600">
+                  <td class="py-3 md:px-4 px-2 line-through">Mon</td>
+                  <td class="py-3 md:px-4 px-2 line-through">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2 line-through">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    No Practice (Winter Break)
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200 italic text-gray-600">
+                  <td class="py-3 md:px-4 px-2 line-through">Tue</td>
+                  <td class="py-3 md:px-4 px-2 line-through">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2 line-through">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    No Practice (Winter Break)
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200 italic text-gray-600">
+                  <td class="py-3 md:px-4 px-2 line-through">Wed</td>
+                  <td class="py-3 md:px-4 px-2 line-through">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2 line-through">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    No Practice (Winter Break)
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200 italic text-gray-600">
+                  <td class="py-3 md:px-4 px-2 line-through">Thu</td>
+                  <td class="py-3 md:px-4 px-2 line-through">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2 line-through">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    No Practice (Winter Break)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+
+          <!-- Week 9 (Collapsible + Chevron + Badge) -->
+          <details
+            id="w9"
+            data-week-start="2026-01-05"
+            class="mt-4 scroll-mt-28 rounded-xl border border-gray-200 shadow-xs bg-white group overflow-hidden"
+          >
+            <summary
+              class="cursor-pointer select-none list-none md:px-4 px-2 py-3"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-sm font-semibold tracking-wide text-gray-700">
+                    Week 9
+                  </h3>
+                  <p class="mt-0.5 text-xs text-gray-500">Jan 5 – Jan 8</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <!-- Badge (swap classes for meet/holiday/normal) -->
+                  <span
+                    class="rounded-full border border-gray-300 bg-gray-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-gray-700"
+                  >
+                    Meet Week
+                  </span>
+
+                  <!-- Chevron (rotates when open) -->
+                  <svg
+                    class="h-5 w-5 text-gray-500 transition-transform duration-200 group-open:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </summary>
+
+            <!-- Week Table -->
+            <table class="min-w-full md:text-sm text-xs bg-white">
+              <thead
+                class="bg-[#005130] text-xs font-semibold uppercase tracking-wide text-white text-left"
+              >
+                <tr>
+                  <th scope="col" class="py-3 md:px-4 px-2">Day</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Time</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Location</th>
+                  <th
+                    scope="col"
+                    class="py-3 md:px-4 px-2 hidden md:table-cell"
+                  >
+                    Notes
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Mon</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Tue</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Wed</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Thu</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+
+          <!-- Week 10 (Collapsible + Chevron + Badge) -->
+          <details
+            id="w10"
+            data-week-start="2026-01-12"
+            class="mt-4 scroll-mt-28 rounded-xl border border-gray-200 shadow-xs bg-white group overflow-hidden"
+          >
+            <summary
+              class="cursor-pointer select-none list-none md:px-4 px-2 py-3"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-sm font-semibold tracking-wide text-gray-700">
+                    Week 10
+                  </h3>
+                  <p class="mt-0.5 text-xs text-gray-500">Jan 12 – Jan 15</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <!-- Badge (swap classes for meet/holiday/normal) -->
+                  <span
+                    class="rounded-full border border-gray-300 bg-gray-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-gray-700"
+                  >
+                    Meet Week
+                  </span>
+
+                  <!-- Chevron (rotates when open) -->
+                  <svg
+                    class="h-5 w-5 text-gray-500 transition-transform duration-200 group-open:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </summary>
+
+            <!-- Week Table -->
+            <table class="min-w-full md:text-sm text-xs bg-white">
+              <thead
+                class="bg-[#005130] text-xs font-semibold uppercase tracking-wide text-white text-left"
+              >
+                <tr>
+                  <th scope="col" class="py-3 md:px-4 px-2">Day</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Time</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Location</th>
+                  <th
+                    scope="col"
+                    class="py-3 md:px-4 px-2 hidden md:table-cell"
+                  >
+                    Notes
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Mon</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Tue</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Wed</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Thu</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+
+          <!-- Week 11 (Collapsible + Chevron + Badge) -->
+          <details
+            id="w11"
+            data-week-start="2026-01-19"
+            class="mt-4 scroll-mt-28 rounded-xl border border-gray-200 shadow-xs bg-white group overflow-hidden"
+          >
+            <summary
+              class="cursor-pointer select-none list-none md:px-4 px-2 py-3"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-sm font-semibold tracking-wide text-gray-700">
+                    Week 11
+                  </h3>
+                  <p class="mt-0.5 text-xs text-gray-500">Jan 19 – Jan 22</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <!-- Badge (swap classes for meet/holiday/normal) -->
+                  <span
+                    class="rounded-full border border-gray-300 bg-gray-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-gray-700"
+                  >
+                    Meet Week
+                  </span>
+
+                  <!-- Chevron (rotates when open) -->
+                  <svg
+                    class="h-5 w-5 text-gray-500 transition-transform duration-200 group-open:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </summary>
+
+            <!-- Week Table -->
+            <table class="min-w-full md:text-sm text-xs bg-white">
+              <thead
+                class="bg-[#005130] text-xs font-semibold uppercase tracking-wide text-white text-left"
+              >
+                <tr>
+                  <th scope="col" class="py-3 md:px-4 px-2">Day</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Time</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Location</th>
+                  <th
+                    scope="col"
+                    class="py-3 md:px-4 px-2 hidden md:table-cell"
+                  >
+                    Notes
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Mon</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Tue</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Wed</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Thu</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+
+          <!-- Week 12 (Collapsible + Chevron + Badge) -->
+          <details
+            id="w12"
+            data-week-start="2026-01-26"
+            class="mt-4 scroll-mt-28 rounded-xl border border-gray-200 shadow-xs bg-white group overflow-hidden"
+          >
+            <summary
+              class="cursor-pointer select-none list-none md:px-4 px-2 py-3"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-sm font-semibold tracking-wide text-gray-700">
+                    Week 12
+                  </h3>
+                  <p class="mt-0.5 text-xs text-gray-500">Jan 26 – Jan 29</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <!-- Badge (swap classes for meet/holiday/normal) -->
+                  <span
+                    class="rounded-full border border-gray-300 bg-gray-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-gray-700"
+                  >
+                    Meet Week
+                  </span>
+
+                  <!-- Chevron (rotates when open) -->
+                  <svg
+                    class="h-5 w-5 text-gray-500 transition-transform duration-200 group-open:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </summary>
+
+            <!-- Week Table -->
+            <table class="min-w-full md:text-sm text-xs bg-white">
+              <thead
+                class="bg-[#005130] text-xs font-semibold uppercase tracking-wide text-white text-left"
+              >
+                <tr>
+                  <th scope="col" class="py-3 md:px-4 px-2">Day</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Time</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Location</th>
+                  <th
+                    scope="col"
+                    class="py-3 md:px-4 px-2 hidden md:table-cell"
+                  >
+                    Notes
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Mon</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Tue</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Wed</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Thu</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+
+          <!-- Week 13 (Collapsible + Chevron + Badge) -->
+          <details
+            id="w13"
+            data-week-start="2026-02-02"
+            class="mt-4 scroll-mt-28 rounded-xl border border-gray-200 shadow-xs bg-white group overflow-hidden"
+          >
+            <summary
+              class="cursor-pointer select-none list-none md:px-4 px-2 py-3"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-sm font-semibold tracking-wide text-gray-700">
+                    Week 13
+                  </h3>
+                  <p class="mt-0.5 text-xs text-gray-500">Feb 02 – Feb 05</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <!-- Badge (swap classes for meet/holiday/normal) -->
+                  <span
+                    class="rounded-full border border-gray-300 bg-gray-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-gray-700"
+                  >
+                    Meet Week
+                  </span>
+
+                  <!-- Chevron (rotates when open) -->
+                  <svg
+                    class="h-5 w-5 text-gray-500 transition-transform duration-200 group-open:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </summary>
+
+            <!-- Week Table -->
+            <table class="min-w-full md:text-sm text-xs bg-white">
+              <thead
+                class="bg-[#005130] text-xs font-semibold uppercase tracking-wide text-white text-left"
+              >
+                <tr>
+                  <th scope="col" class="py-3 md:px-4 px-2">Day</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Time</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Location</th>
+                  <th
+                    scope="col"
+                    class="py-3 md:px-4 px-2 hidden md:table-cell"
+                  >
+                    Notes
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Mon</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Tue</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Wed</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Thu</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+
+          <!-- Week 14 (Collapsible + Chevron + Badge) -->
+          <details
+            id="w14"
+            data-week-start="2026-02-09"
+            class="mt-4 scroll-mt-28 rounded-xl border border-gray-200 shadow-xs bg-white group overflow-hidden"
+          >
+            <summary
+              class="cursor-pointer select-none list-none md:px-4 px-2 py-3"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-sm font-semibold tracking-wide text-gray-700">
+                    Week 14
+                  </h3>
+                  <p class="mt-0.5 text-xs text-gray-500">Feb 09 – Feb 12</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <!-- Badge (swap classes for meet/holiday/normal) -->
+                  <span
+                    class="rounded-full border border-gray-300 bg-gray-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-gray-700"
+                  >
+                    Normal Week
+                  </span>
+
+                  <!-- Chevron (rotates when open) -->
+                  <svg
+                    class="h-5 w-5 text-gray-500 transition-transform duration-200 group-open:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </summary>
+
+            <!-- Week Table -->
+            <table class="min-w-full md:text-sm text-xs bg-white">
+              <thead
+                class="bg-[#005130] text-xs font-semibold uppercase tracking-wide text-white text-left"
+              >
+                <tr>
+                  <th scope="col" class="py-3 md:px-4 px-2">Day</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Time</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Location</th>
+                  <th
+                    scope="col"
+                    class="py-3 md:px-4 px-2 hidden md:table-cell"
+                  >
+                    Notes
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Mon</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Tue</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Wed</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Thu</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+
+          <!-- Week 15 (Collapsible + Chevron + Badge) -->
+          <details
+            id="w15"
+            data-week-start="2026-02-16"
+            class="mt-4 scroll-mt-28 rounded-xl border border-gray-200 shadow-xs bg-white group overflow-hidden"
+          >
+            <summary
+              class="cursor-pointer select-none list-none md:px-4 px-2 py-3"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-sm font-semibold tracking-wide text-gray-700">
+                    Week 15
+                  </h3>
+                  <p class="mt-0.5 text-xs text-gray-500">Feb 16 – Feb 19</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <!-- Badge (swap classes for meet/holiday/normal) -->
+                  <span
+                    class="rounded-full border border-gray-300 bg-gray-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-gray-700"
+                  >
+                    Meet Week
+                  </span>
+
+                  <!-- Chevron (rotates when open) -->
+                  <svg
+                    class="h-5 w-5 text-gray-500 transition-transform duration-200 group-open:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </summary>
+
+            <!-- Week Table -->
+            <table class="min-w-full md:text-sm text-xs bg-white">
+              <thead
+                class="bg-[#005130] text-xs font-semibold uppercase tracking-wide text-white text-left"
+              >
+                <tr>
+                  <th scope="col" class="py-3 md:px-4 px-2">Day</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Time</th>
+                  <th scope="col" class="py-3 md:px-4 px-2">Location</th>
+                  <th
+                    scope="col"
+                    class="py-3 md:px-4 px-2 hidden md:table-cell"
+                  >
+                    Notes
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Mon</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Tue</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    —
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="py-3 md:px-4 px-2">Wed</td>
+                  <td class="py-3 md:px-4 px-2">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600 italic"
+                  >
+                    Last Practice
+                  </td>
+                </tr>
+                <tr class="border-t border-gray-200 italic text-gray-600">
+                  <td class="py-3 md:px-4 px-2 line-through">Thu</td>
+                  <td class="py-3 md:px-4 px-2 line-through">3:30–4:30 PM</td>
+                  <td class="py-3 md:px-4 px-2 line-through">WARF</td>
+                  <td
+                    class="py-3 md:px-4 px-2 hidden md:table-cell text-gray-600"
+                  >
+                    No Practice (Swim Meet)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+
+          <p class="mt-4 md:text-sm text-xs text-gray-600 italic">
+            *Practice schedule is subject to change.
+          </p>
         </div>
       </section>
-      
     </main>
 
     <!-- Footer -->
@@ -96,22 +1936,21 @@
     </footer>
 
     <script>
-      const menuButton = document.getElementById('mobile-menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
+      const menuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
 
-      const iconHamburger = document.getElementById('icon-hamburger');
-      const iconClose = document.getElementById('icon-close');
+      const iconHamburger = document.getElementById("icon-hamburger");
+      const iconClose = document.getElementById("icon-close");
 
       if (menuButton && mobileMenu) {
-        menuButton.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden');
-          iconHamburger.classList.toggle('hidden');
-          iconClose.classList.toggle('hidden');
+        menuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+          iconHamburger.classList.toggle("hidden");
+          iconClose.classList.toggle("hidden");
         });
       }
     </script>
 
     <script src="./js/practice-schedule.js"></script>
-
-</body>
-</html> 
+  </body>
+</html>

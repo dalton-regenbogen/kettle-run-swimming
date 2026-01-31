@@ -1,1 +1,75 @@
 @import "tailwindcss";
+
+@theme {
+  --color-brand: #005130;
+  --color-brand-light: #F37322;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@layer utilities {
+  .marquee::before,
+  .marquee::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 3rem;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .marquee::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-red-700), transparent);
+  }
+
+  .marquee::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-red-700), transparent);
+  }
+
+  .marquee {
+    --gap: 1rem;
+    --duration: 20s; /* change this to speed up / slow down */
+    position: relative;
+  }
+
+  .marquee__inner {
+    display: flex;
+    width: max-content;
+    gap: var(--gap);
+    animation: marquee-scroll var(--duration) linear infinite;
+    will-change: transform;
+  }
+
+  .marquee__track {
+    display: flex;
+    gap: var(--gap);
+    width: max-content;
+  }
+
+  .marquee__item {
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .marquee__item::after {
+    content: "—";
+    margin-left: var(--gap);
+    opacity: 0.6;
+  }
+
+  .marquee:hover .marquee__inner,
+  .marquee:focus-within .marquee__inner {
+  animation-play-state: paused;
+  }
+
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__inner { animation: none; }
+  }
+}
