@@ -351,7 +351,7 @@
         <!-- Mobile Menu Shell (overlay + sliding panel) -->
         <div
           id="mobile-menu"
-          class="md:hidden pointer-events-none"
+          class="md:hidden pointer-events-none overflow-x-hidden"
           aria-hidden="true"
         >
           <!-- panel -->
@@ -587,7 +587,9 @@
         iconHamburger?.classList.toggle("hidden", open);
         iconClose?.classList.toggle("hidden", !open);
 
-        // Optional: close all submenus when opening/closing menu
+        // ✅ lock background scrolling (kills most horizontal scroll too)
+        document.body.classList.toggle("overflow-hidden", open);
+
         if (!open) closeAllSubmenus();
       }
 
