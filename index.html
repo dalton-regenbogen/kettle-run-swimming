@@ -351,7 +351,7 @@
         <!-- Mobile Menu Shell (overlay + sliding panel) -->
         <div
           id="mobile-menu"
-          class="md:hidden fixed inset-0 z-40 pointer-events-none"
+          class="md:hidden pointer-events-none"
           aria-hidden="true"
         >
           <!-- panel -->
@@ -656,9 +656,8 @@
         submenu.classList.remove("opacity-100");
       }
 
-      // Open/close menu button
       menuButton?.addEventListener("click", () => {
-        const isOpen = panel && panel.classList.contains("translate-x-0");
+        const isOpen = mobileMenu?.getAttribute("aria-hidden") === "false";
         setMenuOpen(!isOpen);
       });
 
