@@ -6,6 +6,7 @@ async function initRecordsMeta() {
 
     const lastUpdatedElBoys = document.getElementById("recordsLastUpdatedBoys");
     const lastUpdatedElGirls = document.getElementById("recordsLastUpdatedGirls");
+    const lastUpdatedElMobile = document.getElementById("recordsLastUpdatedMobile");
     const pdfLink = document.getElementById("recordsPdfLink");
 
     if (lastUpdatedElBoys && meta.lastUpdated) {
@@ -16,6 +17,11 @@ async function initRecordsMeta() {
     if (lastUpdatedElGirls && meta.lastUpdated) {
       // Display as-is (you can format later)
       lastUpdatedElGirls.textContent = `Last updated: ${meta.lastUpdated}`;
+    }
+
+    if (lastUpdatedElMobile && meta.lastUpdated) {
+      // Display as-is (you can format later)
+      lastUpdatedElMobile.textContent = `Last updated: ${meta.lastUpdated}`;
     }
 
     if (pdfLink && meta.version) {

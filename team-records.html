@@ -545,11 +545,11 @@
             ></div>
 
             <div
-              class="relative flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
+              class="relative flex flex-col gap-4 text-center md:text-start md:flex-row md:items-end md:justify-between"
             >
               <div>
                 <p
-                  class="text-xs font-semibold uppercase tracking-[0.22em] text-white/80"
+                  class="text-[10px] md:text-xs font-semibold uppercase tracking-[0.22em] text-white/80"
                 >
                   Kettle Run Swimming
                 </p>
@@ -558,13 +558,15 @@
                 >
                   Team Records
                 </h1>
-                <p class="mt-2 text-sm text-white/80">
-                  Official KRHS high school meet records (Yards).
+                <p class="mt-2 text-xs md:text-sm text-white/80">
+                  Official KRHS team records (Yards).
                 </p>
               </div>
 
+              <div class="md:hidden border-b border-gray-400 w-64 m-auto"></div>
+
               <!-- quick stat pills -->
-              <div class="flex flex-wrap gap-2">
+              <div class="">
                 <a
                   id="recordsPdfLink"
                   href="./assets/records/krhs-records.pdf"
@@ -574,6 +576,10 @@
                   Download Records (PDF)
                 </a>
               </div>
+              <p
+                  id="recordsLastUpdatedMobile"
+                  class="md:hidden text-[10px] md:text-[11px] font-semibold text-white text-center"
+                ></p>
             </div>
           </div>
         </section>
@@ -584,35 +590,39 @@
         >
           <!-- Section header bar -->
           <div
-            class="flex items-center justify-between border-b border-gray-200 bg-background-50 px-5 py-4"
+            class="flex items-center justify-between border-b border-gray-200 bg-background-50 px-3 md:px-5 py-4"
           >
             <div class="flex items-center gap-3">
               <div class="h-9 w-1.5 rounded-full bg-brand"></div>
               <div>
-                <h2 class="text-lg font-bold tracking-tight text-black">
+                <h2
+                  class="text-base md:text-lg font-bold tracking-tight text-black"
+                >
                   Boys Team Records
                 </h2>
-                <p class="text-xs text-gray-700">All-time best performances</p>
+                <p class="text-[11px] text-gray-700">
+                  All-time best performances
+                </p>
               </div>
             </div>
 
             <p
               id="recordsLastUpdatedBoys"
-              class="rounded-md bg-gray-50 px-2 py-1 text-[11px] font-semibold text-black text-center"
+              class="hidden md:flex rounded-md bg-gray-100 px-2 py-1 text-[10px] md:text-[11px] font-semibold text-black text-center"
             ></p>
           </div>
 
           <!-- Table wrapper -->
           <div class="overflow-x-auto">
-            <table class="min-w-full text-sm">
-              <thead class="sticky top-0 z-10 bg-brand text-white">
+            <table class="min-w-full text-xs md:text-sm whitespace-nowrap">
+              <thead class="bg-brand text-white">
                 <tr
-                  class="[&>th]:px-4 [&>th]:py-2.5 [&>th]:text-left [&>th]:font-semibold [&>th]:tracking-wide"
+                  class="[&>th]:px-3 md:[&>th]:px-4 [&>th]:py-2.5 [&>th]:text-left [&>th]:font-semibold [&>th]:tracking-wide"
                 >
-                  <th class="w-48">Event</th>
-                  <th class="w-48">Time</th>
-                  <th class="min-w-32">Record Holder</th>
-                  <th class="w-48">Date</th>
+                  <th class="w-40 md:w-48">Event</th>
+                  <th class="w-28 md:w-48">Time</th>
+                  <th class="min-w-40">Record Holder</th>
+                  <th class="w-32 md:w-48">Date</th>
                 </tr>
               </thead>
 
@@ -648,23 +658,20 @@
 
             <p
               id="recordsLastUpdatedGirls"
-              class="rounded-md bg-gray-50 px-2 py-1 text-[11px] font-semibold text-black text-center"
+              class="hidden md:flex rounded-md bg-gray-100 px-2 py-1 text-[11px] font-semibold text-black text-center"
             ></p>
           </div>
 
-          <!-- Table wrapper -->
           <div class="overflow-x-auto">
-            <table class="min-w-full text-sm">
-              <thead
-                class="sticky top-0 z-10 bg-brand text-white mdfont-semibold md:tracking-wide"
-              >
+            <table class="min-w-full text-xs md:text-sm whitespace-nowrap">
+              <thead class="bg-brand text-white">
                 <tr
-                  class="[&>th]:px-4 [&>th]:py-2.5 [&>th]:text-left [&>th]:font-semibold [&>th]:tracking-wide"
+                  class="[&>th]:px-3 md:[&>th]:px-4 [&>th]:py-2.5 [&>th]:text-left [&>th]:font-semibold [&>th]:tracking-wide"
                 >
-                  <th class="w-48">Event</th>
-                  <th class="w-48">Time</th>
-                  <th class="min-w-32">Record Holder</th>
-                  <th class="w-48">Date</th>
+                  <th class="w-40 md:w-48">Event</th>
+                  <th class="w-28 md:w-48">Time</th>
+                  <th class="min-w-40">Record Holder</th>
+                  <th class="w-32 md:w-48">Date</th>
                 </tr>
               </thead>
 
@@ -690,5 +697,6 @@
 
     <script src="./scripts/mobile-menu.js"></script>
     <script src="./js/team-records.js"></script>
+    <script src="./js/records-meta.js"></script>
   </body>
 </html>
