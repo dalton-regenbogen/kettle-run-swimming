@@ -9,6 +9,18 @@
   <body>
     <!-- Header -->
     <header class="bg-black border-b-4 border-gray-400 sticky top-0 z-50">
+      <div
+        class="hidden marquee marquee:hover marquee::before marquee::after bg-red-700 w-full overflow-hidden py-2 md:py-3 text-xs md:text-sm font-semibold uppercase tracking-wide text-white"
+      >
+        <div class="marquee__inner" role="status" aria-live="polite">
+          <div class="marquee__track" data-marquee-track>
+            <span class="marquee__item marquee__item::after"
+              >1/30, District Meet CANCELED</span
+            >
+          </div>
+        </div>
+      </div>
+
       <div class="border-y border-white">
         <div class="max-w-6xl mx-auto px-4 py-0">
           <p class="text-center text-sm font-normal text-white">
@@ -16,49 +28,278 @@
           </p>
         </div>
       </div>
-      <div class="max-w-6xl mx-auto px-4 py-4 md:flex md:items-center">
-        <nav class="hidden md:flex mx-auto items-center gap-28 font-medium">
-          <a
-            class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-brand-light transition-colors duration-200"
-            href="./about.html"
-            >About</a
-          >
-          <a
-            class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-brand-light transition-colors duration-200"
-            href="./schedule.html"
-            >Schedule</a
-          >
-          <a
-            class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-brand-light transition-colors duration-200"
-            href="./news.html"
-            >News</a
-          >
-          <a href="./index.html">
+
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="hidden md:flex items-center py-3">
+          <!-- LEFT: Nav (flex-1 so it takes equal space as right) -->
+          <nav class="md:flex flex-1 justify-end" aria-label="Primary (left)">
+            <ul class="flex w-full items-center justify-around">
+              <!-- Schedule dropdown (top-level styled like your links) -->
+              <li class="relative group">
+                <!-- IMPORTANT: make this visually match your <a> links -->
+                <button
+                  type="button"
+                  class="relative text-sm font-semibold uppercase tracking-wide text-white transition-colors duration-200 inline-flex items-center group-hover:text-brand-light"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <span
+                    class="relative inline-block leading-normal after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-brand-light after:scale-x-0 after:origin-left after:transition-transform after:duration-300 group-hover:after:scale-x-100"
+                  >
+                    About
+                  </span>
+                  <!-- optional chevron; keep it subtle so it doesn't “widen” this item too much -->
+                  <svg
+                    class="ml-1 h-4 w-4 transition-transform duration-200 group-hover:rotate-180"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+                <!-- Dropdown -->
+                <div
+                  class="absolute left-0 top-full z-50 mt-2 w-56 border border-white/10 bg-brand shadow-lg hidden group-hover:block"
+                >
+                  <!-- hover bridge -->
+                  <div class="absolute -top-2 left-0 h-2 w-full"></div>
+
+                  <ul class="py-2">
+                    <li>
+                      <a
+                        href=""
+                        class="block px-4 py-2 text-sm font-semibold text-white/90 hover:text-white hover:bg-white/10"
+                      >
+                        Staff
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <a
+                  href="./roster.html"
+                  class="text-sm font-semibold uppercase tracking-wide text-white hover:text-brand-light transition-colors duration-200"
+                >
+                  <span
+                    class="relative inline-block leading-normal after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-brand-light after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+                  >
+                    Roster
+                  </span>
+                </a>
+              </li>
+              <!-- Schedule dropdown (top-level styled like your links) -->
+              <li class="relative group">
+                <!-- IMPORTANT: make this visually match your <a> links -->
+                <button
+                  type="button"
+                  class="relative text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent transition-colors duration-200 inline-flex items-center group-hover:text-brand-light"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <span
+                    class="relative inline-block leading-normal after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-brand-light after:scale-x-0 after:origin-left after:transition-transform after:duration-300 group-hover:after:scale-x-100"
+                  >
+                    Schedule
+                  </span>
+                  <!-- optional chevron; keep it subtle so it doesn't “widen” this item too much -->
+                  <svg
+                    class="ml-1 h-4 w-4 transition-transform duration-200 group-hover:rotate-180"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+                <!-- Dropdown -->
+                <div
+                  class="absolute left-0 top-full z-50 mt-2 w-56 border border-white/10 bg-brand shadow-lg hidden group-hover:block"
+                >
+                  <!-- hover bridge -->
+                  <div class="absolute -top-2 left-0 h-2 w-full"></div>
+
+                  <ul class="py-2">
+                    <li>
+                      <a
+                        href="./competition-schedule.html"
+                        class="block px-4 py-2 text-sm font-semibold text-white/90 hover:text-white hover:bg-white/10"
+                      >
+                        Competition Schedule
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="./practice-schedule.html"
+                        class="block px-4 py-2 text-sm font-semibold text-white/90 hover:text-white hover:bg-white/10"
+                      >
+                        Practice Schedule
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- CENTER: Logo (always perfectly centered because left/right are flex-1) -->
+          <a href="./index.html" class="hidden md:block mx-10 shrink-0">
             <img
               src="./assets/kr-logo.svg"
-              alt="Kettle Run Logo"
-              class="h-20 w-20 object-contain"
+              alt="KRHS Swim"
+              class="h-20 w-auto"
             />
           </a>
-          <a
-            class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-brand-light transition-colors duration-200"
-            href="./roster.html"
-            >Roster</a
-          >
-          <a
-            class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-brand-light transition-colors duration-200"
-            href="./results.html"
-            >Results</a
-          >
-          <a
-            class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-brand-light transition-colors duration-200"
-            href="./more.html"
-            >More</a
-          >
-        </nav>
+
+          <!-- RIGHT: Nav (flex-1) -->
+          <nav class="hidden md:flex flex-1" aria-label="Primary (right)">
+            <ul class="flex w-full items-center justify-around">
+              <!-- Schedule dropdown (top-level styled like your links) -->
+              <li class="relative group">
+                <!-- IMPORTANT: make this visually match your <a> links -->
+                <button
+                  type="button"
+                  class="relative text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent transition-colors duration-200 inline-flex items-center group-hover:text-brand-light"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <span
+                    class="relative inline-block leading-normal after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-brand-light after:scale-x-0 after:origin-left after:transition-transform after:duration-300 group-hover:after:scale-x-100"
+                  >
+                    Results
+                  </span>
+                  <!-- optional chevron; keep it subtle so it doesn't “widen” this item too much -->
+                  <svg
+                    class="ml-1 h-4 w-4 transition-transform duration-200 group-hover:rotate-180"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+                <!-- Dropdown -->
+                <div
+                  class="absolute left-0 top-full z-50 mt-2 w-56 border border-white/10 bg-brand shadow-lg hidden group-hover:block"
+                >
+                  <!-- hover bridge -->
+                  <div class="absolute -top-2 left-0 h-2 w-full"></div>
+
+                  <ul class="py-2">
+                    <li>
+                      <a
+                        href="./2025-2026-results.html"
+                        class="block px-4 py-2 text-sm font-semibold text-white/90 hover:text-white hover:bg-white/10"
+                      >
+                        2025-2026 Results
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="block px-4 py-2 text-sm font-semibold text-white/90 hover:text-white hover:bg-white/10"
+                      >
+                        2024-2025 Results
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <a
+                  href="./team-records.html"
+                  class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-brand-light transition-colors duration-200"
+                >
+                  <span
+                    class="relative inline-block leading-normal after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-brand-light after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+                  >
+                    Team Records
+                  </span>
+                </a>
+              </li>
+              <!-- Schedule dropdown (top-level styled like your links) -->
+              <li class="relative group">
+                <!-- IMPORTANT: make this visually match your <a> links -->
+                <button
+                  type="button"
+                  class="relative text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent transition-colors duration-200 inline-flex items-center group-hover:text-brand-light"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <span
+                    class="relative inline-block leading-normal after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-brand-light after:scale-x-0 after:origin-left after:transition-transform after:duration-300 group-hover:after:scale-x-100"
+                  >
+                    Resources
+                  </span>
+                  <!-- optional chevron; keep it subtle so it doesn't “widen” this item too much -->
+                  <svg
+                    class="ml-1 h-4 w-4 transition-transform duration-200 group-hover:rotate-180"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+
+                <!-- Dropdown -->
+                <div
+                  class="absolute left-0 top-full z-50 mt-2 w-56 border border-white/10 bg-brand shadow-lg hidden group-hover:block"
+                >
+                  <!-- hover bridge -->
+                  <div class="absolute -top-2 left-0 h-2 w-full"></div>
+
+                  <ul class="py-2">
+                    <li>
+                      <a
+                        href=""
+                        class="block px-4 py-2 text-sm font-semibold text-white/90 hover:text-white hover:bg-white/10"
+                      >
+                        Team Handbook
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href=""
+                        class="block px-4 py-2 text-sm font-semibold text-white/90 hover:text-white hover:bg-white/10"
+                      >
+                        VHSL Class 3 State Qualifying Standards
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href=""
+                        class="block px-4 py-2 text-sm font-semibold text-white/90 hover:text-white hover:bg-white/10"
+                      >
+                        Top 10 All-Time Performences
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </nav>
+        </div>
 
         <div
-          class="md:hidden mx-auto px-4 flex items-center justify-between w-full"
+          class="md:hidden px-4 py-4 flex items-center justify-between w-full"
         >
           <div>
             <a href="./index.html">
@@ -83,7 +324,7 @@
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  stroke-width="2"
+                  stroke-width="1"
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
@@ -99,7 +340,7 @@
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  stroke-width="2"
+                  stroke-width="1"
                   d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
@@ -107,42 +348,174 @@
           </div>
         </div>
 
+        <!-- Mobile Menu Shell (overlay + sliding panel) -->
         <div
           id="mobile-menu"
-          class="md:hidden hidden fixed inset-x-0 top-24 bottom-0 z-40 w-full border-t border-gray-700 bg-black"
+          class="md:hidden pointer-events-none overflow-x-hidden"
+          aria-hidden="true"
         >
-          <nav class="flex flex-col">
-            <a
-              class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900"
-              href="./about.html"
-              >About</a
+          <!-- panel -->
+          <div
+            id="mobile-menu-panel"
+            class="border-t-4 border-gray-400 absolute right-0 top-full h-[calc(100vh-100%)] w-screen bg-white translate-x-full transition-transform duration-300 ease-out overflow-y-auto overscroll-contain"
+          >
+            <nav
+              class="flex flex-col text-center text-black text-base font-semibold tracking-wide"
             >
-            <a
-              class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900"
-              href="./schedule.html"
-              >Schedule</a
-            >
-            <a
-              class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900"
-              href="./news.html"
-              >News</a
-            >
-            <a
-              class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900"
-              href="./roster.html"
-              >Roster</a
-            >
-            <a
-              class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900"
-              href="./results.html"
-              >Results</a
-            >
-            <a
-              class="px-4 py-3 text-center text-white text-base border-b border-gray-800 hover:bg-gray-900"
-              href="./more.html"
-              >More</a
-            >
-          </nav>
+              <ul class="">
+                <li>
+                  <button
+                    type="button"
+                    data-mobile-toggle
+                    aria-expanded="false"
+                    class="px-8 py-3 w-full flex justify-between items-center"
+                  >
+                    <span>About</span>
+
+                    <!-- chevron -->
+                    <svg
+                      data-chevron
+                      class="h-5 w-5 text-gray-400 transition-transform duration-200"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                  <ul
+                    class="submenu px-9 text-left text-black/70 text-sm font-normal overflow-hidden max-h-0 opacity-0 transition-[max-height,opacity] duration-300 ease-out"
+                  >
+                    <li>
+                      <a class="" href="#">Staff</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="px-8 py-3 text-black text-left">
+                  <a class="" href="./roster.html">Roster</a>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    data-mobile-toggle
+                    aria-expanded="false"
+                    class="flex justify-between px-8 py-3 w-full"
+                  >
+                    Schedule
+
+                    <!-- chevron -->
+                    <svg
+                      data-chevron
+                      class="h-5 w-5 text-gray-400 transition-transform duration-200"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                  <ul
+                    class="submenu px-9 text-left text-black/70 text-sm font-normal overflow-hidden max-h-0 opacity-0 transition-[max-height,opacity] duration-300 ease-out"
+                  >
+                    <li class="py-3">
+                      <a href="./competition-schedule.html">
+                        Competition Schedule
+                      </a>
+                    </li>
+                    <li class="py-3">
+                      <a href="./practice-schedule.html"> Practice Schedule </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    data-mobile-toggle
+                    aria-expanded="false"
+                    class="px-8 py-3 w-full flex justify-between text-left"
+                  >
+                    Results
+
+                    <!-- chevron -->
+                    <svg
+                      data-chevron
+                      class="h-5 w-5 text-gray-400 transition-transform duration-200"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                  <ul
+                    class="submenu px-9 text-left text-black/70 text-sm font-normal overflow-hidden max-h-0 opacity-0 transition-[max-height,opacity] duration-300 ease-out"
+                  >
+                    <li class="py-3">
+                      <a href="./2025-2026-results.html"> 2025-2026 Season </a>
+                    </li>
+                    <li class="py-3">
+                      <a href="#"> 2024-2025 Season </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="px-8 py-3 w-full flex text-left">
+                  <a class="" href="./team-records.html"> Team Records </a>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    data-mobile-toggle
+                    aria-expanded="false"
+                    class="px-8 py-3 w-full flex justify-between text-left"
+                  >
+                    Resources
+
+                    <!-- chevron -->
+                    <svg
+                      data-chevron
+                      class="h-5 w-5 text-gray-400 transition-transform duration-200"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                  <ul
+                    class="submenu px-9 text-left text-black/70 text-sm font-normal overflow-hidden max-h-0 opacity-0 transition-[max-height,opacity] duration-300 ease-out"
+                  >
+                    <li class="py-3">
+                      <a class="" href="#"> Team Handbook </a>
+                    </li>
+                    <li class="py-3">
+                      <a class="" href="#">
+                        VHSL Class 3 State Qualifying Standards
+                      </a>
+                    </li>
+                    <li class="py-3">
+                      <a href="#"> Top 10 All-Time Performances </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </header>
@@ -152,12 +525,12 @@
       <div
         class="md:rounded-2xl md:border md:border-gray-200 md:shadow-xs p-4 md:p-6 bg-white"
       >
-        <h1 class="text-3xl font-medium text-center pb-8">
-          Competition Results
+        <h1 class="text-3xl font-semibold text-center pb-8">
+          2025-2026 Season
         </h1>
 
         <!-- Season Snapshot Card -->
-        <section class="mb-14">
+        <section class="mb-6">
           <div
             class="rounded-2xl border border-gray-200 bg-white overflow-hidden"
           >
@@ -167,12 +540,12 @@
                 class="flex flex-col md:items-start md:justify-between gap-0.5"
               >
                 <h2 class="text-sm font-semibold tracking-wide text-white">
-                  2025-2026 Season
+                  Results Breakdown
                 </h2>
 
                 <!-- Clarifier (optional but recommended for UX) -->
                 <p class="mt-0.5 text-xs text-white">
-                  Result records as of 1/23/2026
+                  Completed Meets through 1/30/2026
                 </p>
               </div>
             </div>
@@ -243,14 +616,15 @@
                         <div
                           class="inline-flex items-center rounded-full border border-gray-200 bg-white px-1.5 md:px-3 py-1"
                         >
-                          <span class="text-[11px] font-semibold text-gray-600"
+                          <span
+                            class="text-[11px] font-semibold text-gray-600 line-through"
                             >Districts</span
                           >
                           <span
                             class="mx-1 md:mx-2 h-3 w-px bg-gray-200"
                           ></span>
-                          <span class="text-[11px] font-bold text-gray-900"
-                            >TBD</span
+                          <span class="text-[11px] font-bold text-red-700"
+                            >N/A</span
                           >
                         </div>
 
@@ -347,14 +721,15 @@
                         <div
                           class="inline-flex items-center rounded-full border border-gray-200 bg-white px-1.5 md:px-3 py-1"
                         >
-                          <span class="text-[11px] font-semibold text-gray-600"
+                          <span
+                            class="text-[11px] font-semibold text-gray-600 line-through"
                             >Districts</span
                           >
                           <span
                             class="mx-1 md:mx-2 h-3 w-px bg-gray-200"
                           ></span>
-                          <span class="text-[11px] font-bold text-gray-900"
-                            >TBD</span
+                          <span class="text-[11px] font-bold text-red-700"
+                            >N/A</span
                           >
                         </div>
 
@@ -423,9 +798,17 @@
           </div>
         </section>
 
+        <div class="my-6 border-t border-gray-300"></div>
+
+        <h2
+          class="text-lg font-semibold uppercase tracking-wide text-gray-800 pl-4 mb-6"
+        >
+          Regular Season
+        </h2>
+
         <!-- Meet #1 Card -->
         <div
-          class="rounded-xl border-2 border-brand overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+          class="rounded-xl border-2 border-brand overflow-hidden bg-white mb-6 flex flex-col md:flex-row"
         >
           <!-- Rail -->
           <div
@@ -506,9 +889,11 @@
                 >
                   Boys
                 </div>
-                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
-                  <div class="text-red-700">(L) KRHS 90–130 BDHS</div>
-                  <div class="text-brand">(W) KRHS 117–99 SHS</div>
+                <div class="mt-1 text-[11px] font-semibold" data-score-list>
+                  <div class="space-y-0.5">
+                    <div class="text-red-700">(L) KRHS 90–130 BDHS</div>
+                    <div class="text-brand">(W) KRHS 117–99 SHS</div>
+                  </div>
                 </div>
               </div>
 
@@ -519,9 +904,11 @@
                 >
                   Girls
                 </div>
-                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
-                  <div class="text-brand">(W) KRHS 159–88 BDHS</div>
-                  <div class="text-brand">(W) KRHS 165–103 SHS</div>
+                <div class="mt-1 text-[11px] font-semibold" data-score-list>
+                  <div class="space-y-0.5">
+                    <div class="text-brand">(W) KRHS 159–88 BDHS</div>
+                    <div class="text-brand">(W) KRHS 165–103 SHS</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -544,7 +931,7 @@
 
         <!-- Meet #2 Card -->
         <div
-          class="rounded-xl border-2 border-brand overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+          class="rounded-xl border-2 border-brand overflow-hidden bg-white mb-6 flex flex-col md:flex-row"
         >
           <!-- Rail -->
           <div
@@ -627,9 +1014,11 @@
                 >
                   Boys
                 </div>
-                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
-                  <div class="text-red-700">(L) KRHS 33–56 MBHS</div>
-                  <div class="text-brand">(W) KRHS 53–32 JHHS</div>
+                <div class="mt-1 text-[11px] font-semibold" data-score-list>
+                  <div class="space-y-0.5">
+                    <div class="text-red-700">(L) KRHS 33–56 MBHS</div>
+                    <div class="text-brand">(W) KRHS 53–32 JHHS</div>
+                  </div>
                 </div>
               </div>
 
@@ -640,9 +1029,11 @@
                 >
                   Girls
                 </div>
-                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
-                  <div class="text-red-700">(L) KRHS 35–57 MBHS</div>
-                  <div class="text-brand">(W) KRHS 55–38 JHHS</div>
+                <div class="mt-1 text-[11px] font-semibold" data-score-list>
+                  <div class="space-y-0.5">
+                    <div class="text-red-700">(L) KRHS 35–57 MBHS</div>
+                    <div class="text-brand">(W) KRHS 55–38 JHHS</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -665,7 +1056,7 @@
 
         <!-- Meet #3 Card -->
         <div
-          class="rounded-xl border-2 border-brand overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+          class="rounded-xl border-2 border-brand overflow-hidden bg-white mb-6 flex flex-col md:flex-row"
         >
           <!-- Rail -->
           <div
@@ -748,9 +1139,11 @@
                 >
                   Boys
                 </div>
-                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
-                  <div class="text-red-700">(L) KRHS 95–167 LHS</div>
-                  <div class="text-red-700">(L) KRHS 100–125 FHS</div>
+                <div class="mt-1 text-[11px] font-semibold" data-score-list>
+                  <div class="space-y-0.5">
+                    <div class="text-red-700">(L) KRHS 95–167 LHS</div>
+                    <div class="text-red-700">(L) KRHS 100–125 FHS</div>
+                  </div>
                 </div>
               </div>
 
@@ -761,9 +1154,11 @@
                 >
                   Girls
                 </div>
-                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
-                  <div class="text-brand">(W) KRHS 178–103 LHS</div>
-                  <div class="text-brand">(W) KRHS 159–117 FHS</div>
+                <div class="mt-1 text-[11px] font-semibold" data-score-list>
+                  <div class="space-y-0.5">
+                    <div class="text-brand">(W) KRHS 178–103 LHS</div>
+                    <div class="text-brand">(W) KRHS 159–117 FHS</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -786,7 +1181,7 @@
 
         <!-- Meet #4 Card -->
         <div
-          class="rounded-xl border-2 border-brand-light overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+          class="rounded-xl border-2 border-brand-light overflow-hidden bg-white mb-6 flex flex-col md:flex-row"
         >
           <!-- Rail -->
           <div
@@ -869,9 +1264,11 @@
                 >
                   Boys
                 </div>
-                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
-                  <div class="text-brand">(W) KRHS 133–87 JWHS</div>
-                  <div class="text-brand">(W) KRHS 141–99 SHS</div>
+                <div class="mt-1 text-[11px] font-semibold" data-score-list>
+                  <div class="space-y-0.5">
+                    <div class="text-brand">(W) KRHS 133–87 JWHS</div>
+                    <div class="text-brand">(W) KRHS 141–99 SHS</div>
+                  </div>
                 </div>
               </div>
 
@@ -882,9 +1279,11 @@
                 >
                   Girls
                 </div>
-                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
-                  <div class="text-brand">(W) KRHS 169–106 JWHS</div>
-                  <div class="text-brand">(W) KRHS 183–87 SHS</div>
+                <div class="mt-1 text-[11px] font-semibold" data-score-list>
+                  <div class="space-y-0.5">
+                    <div class="text-brand">(W) KRHS 169–106 JWHS</div>
+                    <div class="text-brand">(W) KRHS 183–87 SHS</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -907,7 +1306,7 @@
 
         <!-- Meet #5 Card -->
         <div
-          class="rounded-xl border-2 border-brand-light overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+          class="rounded-xl border-2 border-brand-light overflow-hidden bg-white mb-6 flex flex-col md:flex-row"
         >
           <!-- Rail -->
           <div
@@ -990,10 +1389,12 @@
                 >
                   Boys
                 </div>
-                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
-                  <div class="text-red-700">(L) KRHS 79–177 LHS</div>
-                  <div class="text-red-700">(L) KRHS 78–172 FHS</div>
-                  <div class="text-red-700">(L) KRHS 72–122 BDHS</div>
+                <div class="mt-1 text-[11px] font-semibold" data-score-list>
+                  <div class="space-y-0.5">
+                    <div class="text-red-700">(L) KRHS 79–177 LHS</div>
+                    <div class="text-red-700">(L) KRHS 78–172 FHS</div>
+                    <div class="text-red-700">(L) KRHS 72–122 BDHS</div>
+                  </div>
                 </div>
               </div>
 
@@ -1004,10 +1405,12 @@
                 >
                   Girls
                 </div>
-                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
-                  <div class="text-brand">(W) KRHS 192–94 LHS</div>
-                  <div class="text-brand">(W) KRHS 163–123 FHS</div>
-                  <div class="text-brand">(W) KRHS 178–86 BDHS</div>
+                <div class="mt-1 text-[11px] font-semibold" data-score-list>
+                  <div class="space-y-0.5">
+                    <div class="text-brand">(W) KRHS 192–94 LHS</div>
+                    <div class="text-brand">(W) KRHS 163–123 FHS</div>
+                    <div class="text-brand">(W) KRHS 178–86 BDHS</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1030,7 +1433,7 @@
 
         <!-- Meet #6 Card -->
         <div
-          class="rounded-xl border-2 border-brand- overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+          class="rounded-xl border-2 border-brand- overflow-hidden bg-white mb-6 flex flex-col md:flex-row"
         >
           <!-- Rail -->
           <div
@@ -1113,9 +1516,11 @@
                 >
                   Boys
                 </div>
-                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
-                  <div class="text-brand">(W) KRHS 104–38 MPHS</div>
-                  <div class="text-brand">(W) KRHS 96–56 SHS</div>
+                <div class="mt-1 text-[11px] font-semibold" data-score-list>
+                  <div class="space-y-0.5">
+                    <div class="text-brand">(W) KRHS 104–38 MPHS</div>
+                    <div class="text-brand">(W) KRHS 96–56 SHS</div>
+                  </div>
                 </div>
               </div>
 
@@ -1126,9 +1531,11 @@
                 >
                   Girls
                 </div>
-                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
-                  <div class="text-brand">(W) KRHS 106–48 MPHS</div>
-                  <div class="text-brand">(W) KRHS 97–55 SHS</div>
+                <div class="mt-1 text-[11px] font-semibold" data-score-list>
+                  <div class="space-y-0.5">
+                    <div class="text-brand">(W) KRHS 106–48 MPHS</div>
+                    <div class="text-brand">(W) KRHS 97–55 SHS</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1151,7 +1558,7 @@
 
         <!-- Meet #7 Card -->
         <div
-          class="rounded-xl border-2 border-brand overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+          class="rounded-xl border-2 border-brand overflow-hidden bg-white mb-6 flex flex-col md:flex-row"
         >
           <!-- Rail -->
           <div
@@ -1235,13 +1642,14 @@
                 >
                   Boys
                 </div>
-
-                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
-                  <div class="text-red-700">(L) KRHS 107–171 LHS</div>
-                  <div class="text-brand">(W) KRHS 121–98 BDHS</div>
-                  <div class="text-red-700">(L) KRHS 116–152 FHS</div>
-                  <div class="text-brand">(W) KRHS 135–98 MPHS</div>
-                  <div class="text-red-700">(L) KRHS 98–147 MHS</div>
+                <div class="mt-1 text-[11px] font-semibold" data-score-list>
+                  <div class="space-y-0.5">
+                    <div class="text-red-700">(L) KRHS 107–171 LHS</div>
+                    <div class="text-brand">(W) KRHS 121–98 BDHS</div>
+                    <div class="text-red-700">(L) KRHS 116–152 FHS</div>
+                    <div class="text-brand">(W) KRHS 135–98 MPHS</div>
+                    <div class="text-red-700">(L) KRHS 98–147 MHS</div>
+                  </div>
                 </div>
               </div>
 
@@ -1252,13 +1660,14 @@
                 >
                   Girls
                 </div>
-
-                <div class="mt-1 space-y-0.5 text-[11px] font-semibold">
-                  <div class="text-brand">(W) KRHS 163–122 LHS</div>
-                  <div class="text-brand">(W) KRHS 182–62 BDHS</div>
-                  <div class="text-red-700">(L) KRHS 120–181 FHS</div>
-                  <div class="text-brand">(W) KRHS 186–80 MPHS</div>
-                  <div class="text-red-700">(L) KRHS 114–165 MHS</div>
+                <div class="mt-1 text-[11px] font-semibold" data-score-list>
+                  <div class="space-y-0.5">
+                    <div class="text-brand">(W) KRHS 163–122 LHS</div>
+                    <div class="text-brand">(W) KRHS 182–62 BDHS</div>
+                    <div class="text-red-700">(L) KRHS 120–181 FHS</div>
+                    <div class="text-brand">(W) KRHS 186–80 MPHS</div>
+                    <div class="text-red-700">(L) KRHS 114–165 MHS</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1279,9 +1688,17 @@
           </div>
         </div>
 
+        <div class="my-6 border-t border-gray-300"></div>
+
+        <h3
+          class="text-lg font-semibold uppercase tracking-wide text-gray-800 pl-4 mb-6"
+        >
+          Postseason
+        </h3>
+
         <!-- Meet #8 Card -->
         <div
-          class="rounded-xl border-2 border-black overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+          class="rounded-xl border-2 border-black overflow-hidden bg-white mb-6 flex flex-col md:flex-row"
         >
           <!-- Rail -->
           <div
@@ -1318,7 +1735,7 @@
 
           <!-- Meet Info (tight + chip for location) -->
           <div
-            class="order-3 md:order-3 shrink-0 w-full md:w-80 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-200 px-3 py-2 text-center md:text-left"
+            class="order-3 md:order-3 shrink-0 w-full md:w-80 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-200 px-3 py-4 text-center md:text-left"
           >
             <div class="flex flex-col">
               <span
@@ -1394,7 +1811,7 @@
 
         <!-- Meet #9 Card -->
         <div
-          class="rounded-xl border-2 border-black overflow-hidden bg-white mb-5 flex flex-col md:flex-row"
+          class="rounded-xl border-2 border-black overflow-hidden bg-white mb-6 flex flex-col md:flex-row"
         >
           <!-- Rail -->
           <div
@@ -1431,7 +1848,7 @@
 
           <!-- Meet Info (tight + chip for location) -->
           <div
-            class="order-3 md:order-3 shrink-0 w-full md:w-80 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-200 px-3 py-2 text-center md:text-left"
+            class="order-3 md:order-3 shrink-0 w-full md:w-80 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-200 px-3 py-4 text-center md:text-left"
           >
             <div class="flex flex-col">
               <span
@@ -1552,7 +1969,7 @@
 
           <!-- Meet Info (tight + chip for location) -->
           <div
-            class="order-3 md:order-3 shrink-0 w-full md:w-80 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-200 px-3 py-2 text-center md:text-left"
+            class="order-3 md:order-3 shrink-0 w-full md:w-80 flex items-center justify-center md:justify-start border-b md:border-b-0 md:border-r border-gray-200 px-3 py-4 text-center md:text-left"
           >
             <div class="flex flex-col">
               <span
@@ -1643,20 +2060,93 @@
       </div>
     </footer>
 
+    <script src="./scripts/mobile-menu.js"></script>
+
     <script>
-      const menuButton = document.getElementById("mobile-menu-button");
-      const mobileMenu = document.getElementById("mobile-menu");
+      document.querySelectorAll("[data-score-list]").forEach((container) => {
+        const list = container.querySelector("div");
+        if (!list) return;
 
-      const iconHamburger = document.getElementById("icon-hamburger");
-      const iconClose = document.getElementById("icon-close");
+        const items = Array.from(list.children);
+        const MAX_VISIBLE = 1;
 
-      if (menuButton && mobileMenu) {
-        menuButton.addEventListener("click", () => {
-          mobileMenu.classList.toggle("hidden");
-          iconHamburger.classList.toggle("hidden");
-          iconClose.classList.toggle("hidden");
+        if (items.length <= MAX_VISIBLE) return;
+
+        // Split items
+        const visible = items.slice(0, MAX_VISIBLE);
+        const extra = items.slice(MAX_VISIBLE);
+        const hiddenCount = extra.length;
+
+        // Clear the list and re-add only the visible items
+        list.innerHTML = "";
+        visible.forEach((node) => list.appendChild(node));
+
+        // Build a smooth expander using CSS grid rows (0fr -> 1fr)
+        const expander = document.createElement("div");
+        expander.className =
+          "mt-1 grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-in-out";
+
+        const expanderInner = document.createElement("div");
+        expanderInner.className =
+          "overflow-hidden transition-opacity duration-300 ease-in-out opacity-0";
+
+        // Put the extra items into an inner stack
+        const extraStack = document.createElement("div");
+        extraStack.className = "space-y-0.5";
+        extra.forEach((node) => extraStack.appendChild(node));
+
+        expanderInner.appendChild(extraStack);
+        expander.appendChild(expanderInner);
+        container.appendChild(expander);
+
+        // Toggle button
+        const toggle = document.createElement("button");
+        toggle.type = "button";
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.className =
+          "mt-1 text-[11px] font-semibold text-gray-500 hover:text-gray-900 underline underline-offset-2";
+
+        toggle.textContent = `+${hiddenCount} more`;
+        container.appendChild(toggle);
+
+        const setExpanded = (expanded) => {
+          toggle.dataset.expanded = String(expanded);
+          toggle.setAttribute("aria-expanded", String(expanded));
+
+          if (expanded) {
+            expander.classList.remove("grid-rows-[0fr]");
+            expander.classList.add("grid-rows-[1fr]");
+
+            // Slightly delay opacity so it fades after expansion starts
+            requestAnimationFrame(() => {
+              expanderInner.classList.remove("opacity-0");
+              expanderInner.classList.add("opacity-100");
+            });
+
+            toggle.textContent = "Show less";
+          } else {
+            // Fade out first, then collapse
+            expanderInner.classList.remove("opacity-100");
+            expanderInner.classList.add("opacity-0");
+
+            // Wait for fade to finish, then collapse height
+            window.setTimeout(() => {
+              expander.classList.remove("grid-rows-[1fr]");
+              expander.classList.add("grid-rows-[0fr]");
+            }, 150);
+
+            toggle.textContent = `+${hiddenCount} more`;
+          }
+        };
+
+        toggle.addEventListener("click", () => {
+          const isExpanded = toggle.dataset.expanded === "true";
+          setExpanded(!isExpanded);
         });
-      }
+
+        // initial state
+        setExpanded(false);
+      });
     </script>
   </body>
 </html>

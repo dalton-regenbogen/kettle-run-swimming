@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./css/output.css --watch",
-    "build": "npx @tailwindcss/cli -i ./src/input.css -o ./css/output.css --minify"
+    "build": "npx @tailwindcss/cli -i ./src/input.css -o ./css/output.css --minify",
+    "records:meta": "node scripts/update-records-meta.mjs"
   },
   "repository": {
     "type": "git",
