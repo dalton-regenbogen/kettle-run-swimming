@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kettle Run Swimming | *New* Competition Schedule</title>
+    <title>Season Best Times</title>
     <link rel="stylesheet" href="./css/output.css" />
   </head>
   <body class="min-h-screen bg-gray-50 text-gray-900 overflow-x-hidden">
@@ -220,7 +220,7 @@
               </li>
               <li>
                 <a
-                  href="./team-records.html"
+                  href=""
                   class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-brand-light transition-colors duration-200"
                 >
                   <span
@@ -519,7 +519,6 @@
         </div>
       </div>
     </header>
-
     <main class="max-w-6xl mx-auto md:px-4 px-1 md:py-12 py-6">
       <!-- Page header -->
       <div
@@ -557,137 +556,48 @@
                 <h1
                   class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight"
                 >
-                  Competition Schedule
+                  Season Best Times
                 </h1>
                 <p class="mt-2 text-xs md:text-sm text-white/80">
-                  Official 2025-2026 competition schedule.
+                  Official KRHS 2025-2026Season Best times (Yards).
                 </p>
               </div>
 
               <div class="md:hidden border-b border-gray-400 w-64 m-auto"></div>
 
               <!-- quick stat pills -->
-              <div class="">
+              <!--<div class="">
                 <a
                   id="recordsPdfLink"
-                  href=""
+                  href="./assets/records/krhs-records.pdf"
                   class="rounded-md bg-gray-50 px-2 py-1 text-xs font-semibold text-black"
                   download
                 >
-                  Download Schedule (PDF)
+                  Download Records (PDF)
                 </a>
               </div>
-              <p
-                id=""
-                class="md:hidden text-[10px] md:text-[11px] font-semibold text-white text-center"
-              ></p>
+                  id="recordsLastUpdatedMobile"
+                  class="md:hidden text-[10px] md:text-[11px] font-semibold text-white text-center"
+                ></p>-->
             </div>
           </div>
         </section>
 
-        <!-- Schedule -->
+        <!-- Best Times -->
         <section
-          class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
+          class="mb-8 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
         >
-          <!-- Section header bar -->
-          <div
-            class="flex items-center justify-between border-b border-gray-200 bg-background-50 px-3 md:px-5 py-4"
-          >
-            <div class="flex items-center gap-3">
-              <div class="h-9 w-1.5 rounded-full bg-brand"></div>
-              <div>
-                <h2
-                  class="text-base md:text-lg font-bold tracking-tight text-black"
-                >
-                  Competition Schedule
-                </h2>
-                <p class="text-[11px] text-gray-700">
-                  Official 2025-2026 competition schedule
-                </p>
-              </div>
-            </div>
-
-            <p
-              id="scheduleLastUpdated"
-              class="hidden md:flex rounded-md bg-gray-100 px-2 py-1 text-[10px] md:text-[11px] font-semibold text-black text-center"
-            ></p>
-          </div>
-
-          <!-- Table wrapper -->
-          <div class="overflow-x-auto">
-            <table class="min-w-full text-xs md:text-sm whitespace-nowrap">
-              <thead class="bg-brand text-white">
-                <tr
-                  class="[&>th]:px-3 md:[&>th]:px-4 [&>th]:py-2.5 [&>th]:text-left [&>th]:font-semibold [&>th]:tracking-wide"
-                >
-                  <th class="w-24 md:w-36">Date</th>
-                  <th class="w-24 md:w-56">Format</th>
-                  <th class="min-w-48">Opponent</th>
-                  <th class="w-24 md:w-48">Home/Away</th>
-                  <th class="w-24 md:w-48">Location</th>
-                </tr>
-              </thead>
-
-              <tbody
-                id="competitionScheduleBody"
-                class="divide-y divide-gray-100 [&>tr:nth-child(even)]:bg-gray-50/60"
-              >
-                <tr>
-                  <td colspan="5" class="px-4 py-6 text-gray-500">Loading…</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <iframe
+            id="preview-frame"
+            src="https://www.swimcloud.com/times/iframe/?gender=M&team=9024"
+            width="100%"
+            height="500px"
+            frameborder="0"
+          ></iframe>
         </section>
-        <p class="md:text-sm text-xs text-gray-600 italic md:p-4 p-2">
-          *Schedule is subject to change.
-          <span class="hidden md:inline-block"
-            >Please check back periodically for updates.</span
-          >
-        </p>
-        <!-- Pool Key (collapsible) -->
-        <details
-          open="false"
-          class="md:mx-4 mx-2 rounded-lg border border-gray-200 bg-white"
-        >
-          <summary
-            class="cursor-pointer select-none px-3 py-2 text-xs md:text-sm font-semibold text-gray-700"
-          >
-            Pool Key
-          </summary>
-
-          <div class="px-3 pb-3 text-xs md:text-sm text-gray-600">
-            <ul class="space-y-1">
-              <li>
-                <span class="font-semibold">CSAC</span> = Collegiate School
-                Aquatic Center (SwimRVA)
-              </li>
-              <li><span class="font-semibold">JBP</span> = Jim Barnett Park</li>
-              <li>
-                <span class="font-semibold">MPCC</span> = Manassas Park
-                Community Center
-              </li>
-              <li>
-                <span class="font-semibold">PWAC</span> = PWCS Aquatics Center
-              </li>
-              <li>
-                <span class="font-semibold">WARF</span> = Warrenton Aquatic and
-                Recreation Facility
-              </li>
-            </ul>
-          </div>
-        </details>
       </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-gray-200 bg-white">
-      <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-gray-600">
-        &copy; <span id="year">2025</span> Kettle Run Swimming
-      </div>
-    </footer>
-
     <script src="./scripts/mobile-menu.js"></script>
-    <script src="./js/renderCompetitionSchedule.js"></script>
   </body>
 </html>

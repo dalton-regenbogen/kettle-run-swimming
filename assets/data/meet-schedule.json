@@ -1,0 +1,137 @@
+{
+  "season": "2026",
+  "updated": "2026-02-11",
+  "meets": [
+    {
+      "date": "2025-12-06",
+      "type": "Double Dual",
+      "opponents": [
+        { "short": "BDHS", "full": "Brentsville District High School"},
+        { "short": "SHS", "full": "Sherando High School"}
+      ],
+      "homeAway": "Away",
+      "hostSchool": "Brentsville",
+      "location": "PWAC",
+      "startTime": "18:00",
+      "seasonDesignation": "Regular Season"
+    },
+    {
+      "date": "2025-12-09",
+      "type": "Double Dual",
+      "opponents": [
+        { "short": "MHS", "full": "Millbrook High School"},
+        { "short": "JHHS", "full": "John Handley High School"}
+      ],
+      "homeAway": "Away",
+      "hostSchool": "Millbrook",
+      "location": "JBP",
+      "startTime": "19:00",
+      "seasonDesignation": "Regular Season"
+    },
+    {
+      "date": "2025-12-20",
+      "type": "Double Dual",
+      "opponents": [
+        { "short": "FHS", "full": "Fauquier High School"},
+        { "short": "LHS", "full": "Liberty High School"}
+      ],
+      "homeAway": "Away",
+      "hostSchool": "Liberty",
+      "location": "WARF",
+      "startTime": "18:00",
+      "seasonDesignation": "Regular Season"
+    },
+    {
+      "date": "2026-01-03",
+      "type": "Double Dual",
+      "opponents": [
+        { "short": "JWS", "full": "James Wood High School"},
+        { "short": "SHS", "full": "Sherando High School"}
+      ],
+      "homeAway": "Home",
+      "hostSchool": "Kettle Run",
+      "location": "WARF",
+      "startTime": "18:00",
+      "seasonDesignation": "Regular Season"
+    },
+    {
+      "date": "2026-01-09",
+      "type": "Triple Dual",
+      "opponents": [
+        { "short": "BDHS", "full": "Brentsville District High School"},
+        { "short": "FHS", "full": "Fauquier High School"},
+        { "short": "LHS", "full": "Liberty High School"}
+      ],
+      "homeAway": "Home",
+      "hostSchool": "Kettle Run",
+      "location": "WARF",
+      "startTime": "19:00",
+      "seasonDesignation": "Regular Season"
+    },
+    {
+      "date": "2026-01-16",
+      "type": "Double Dual",
+      "opponents": [
+        { "short": "MPHS", "full": "Manassas Park High School"},
+        { "short": "SHS", "full": "Sherando High School"}
+      ],
+      "homeAway": "Away",
+      "hostSchool": "Manassas Park",
+      "location": "MPCC",
+      "startTime": "19:00",
+      "seasonDesignation": "Regular Season"
+    },
+    {
+      "date": "2026-01-23",
+      "type": "Multi-team Dual",
+      "opponents": [
+        { "short": "BDHS", "full": "Brentsville District High School"},
+        { "short": "FHS", "full": "Fauquier High School"},
+        { "short": "LHS", "full": "Liberty High School"},
+        { "short": "MPHS", "full": "Manassas Park High School"},
+        { "short": "MHS", 	"full": 	"Meridian High School"}
+      ],
+      "homeAway": "Away",
+      "hostSchool": "Liberty",
+      "location": "WARF",
+      "startTime": "18:00",
+      "seasonDesignation": "Regular Season"
+    },
+    {
+      "date": "2026-01-30",
+      "type": "District Championship",
+      "opponents": [
+        { "short": "Northwestern District", "full": "Northwestern District Schools"}
+      ],
+      "homeAway": "Neutral",
+      "hostSchool": "Brentsville",
+      "location": "PWAC",
+      "startTime": "11:00",
+      "seasonDesignation": "Post Season"
+    },
+    {
+      "date": "2026-02-07",
+      "type": "Regional Championship",
+     "opponents": [
+        { "short": "Class 3 Region B", "full": "Class 3 Region B Schools"}
+      ],
+      "homeAway": "Neutral",
+      "hostSchool": "Maggie L. Walker",
+      "location": "CSAC",
+      "startTime": "14:00",
+      "seasonDesignation": "Post Season"
+    },
+    {
+      "date": "2026-02-19",
+      "type": "State Championship",
+      "opponents": [
+        { "short": "VHSL Class 3", "full": "VHSL Class 3 Schools"}
+      ],
+      "homeAway": "Neutral",
+      "hostSchool": "Maggie L. Walker",
+      "location": "CSAC",
+      "startTime": "9:00",
+      "seasonDesignation": "Post Season"
+    }
+  ]
+}

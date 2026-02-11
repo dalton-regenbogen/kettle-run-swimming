@@ -83,8 +83,8 @@ def parse_pdf(pdf_path: Path) -> list[dict]:
 def write_meta():
     today = date.today()
     meta = {
-        "lastUpdated": today.strftime("%Y-%m-%d"),
-        "version": today.strftime("%Y%m%d"),
+        "lastUpdated": today.strftime("%m/%d/%Y"),
+        "version": today.strftime("%m%d%Y"),
         "sourcePdf": str(PDF_PATH).replace("\\", "/"),
     }
     META_OUT.parent.mkdir(parents=True, exist_ok=True)
