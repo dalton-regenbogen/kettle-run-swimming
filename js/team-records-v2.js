@@ -31,13 +31,29 @@ function render() {
   });
 
   boysbodyEl.innerHTML = boysfiltered.map(r => `
-    <tr class="[&>td]:px-3 md:[&>td]:px-4 [&>td]:py-2.5 [&>td]:text-left">
-      <td>${escapeHtml(r.Event)}</td>
-      <td>${escapeHtml(r.RecordTime)}</td>
-      <td>${escapeHtml(r.RecordHolder)}</td>
-      <td>${escapeHtml(r.RecordDate)}</td>
-    </tr>
-  `).join("");
+  <tr class="block md:table-row border-b border-gray-200 bg-white md:border-0 md:bg-transparent [&>td]:px-3 md:[&>td]:px-4 [&>td]:py-2.5 [&>td]:text-left">
+    <td class="block md:table-cell">
+      <!-- Mobile stacked layout -->
+      <div class="md:hidden">
+        <div class="flex items-start justify-between gap-3">
+          <div class="font-semibold text-sm text-black leading-snug">${escapeHtml(r.Event)}</div>
+          <div class="text-sm font-semibold tabular-nums text-black">${escapeHtml(r.RecordTime)}</div>
+        </div>
+        <div class="mt-1 text-[11px] text-gray-700 leading-snug wrap-break-word">${escapeHtml(r.RecordHolder)}</div>
+        <div class="mt-1 text-[10px] text-gray-500">${escapeHtml(r.RecordDate)}</div>
+      </div>
+
+      <!-- Desktop normal cell -->
+      <div class="hidden md:block">${escapeHtml(r.Event)}</div>
+    </td>
+
+    <!-- Desktop-only columns -->
+    <td class="hidden md:table-cell">${escapeHtml(r.RecordTime)}</td>
+    <td class="hidden md:table-cell">${escapeHtml(r.RecordHolder)}</td>
+    <td class="hidden md:table-cell">${escapeHtml(r.RecordDate)}</td>
+  </tr>
+`).join("");
+
 
   girlsbodyEl.innerHTML = girlsfiltered.map(r => `
     <tr class="[&>td]:px-3 md:[&>td]:px-4 [&>td]:py-2.5 [&>td]:text-left">

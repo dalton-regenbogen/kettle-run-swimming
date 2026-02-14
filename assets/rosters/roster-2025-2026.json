@@ -1,0 +1,296 @@
+{
+  "season": "2025-2026",
+  "updated": "2026-02-11",
+  "athletes": [
+    {
+      "first": "Mckenzie",
+      "middle": "R",
+      "last": "Allen",
+      "team": "Girls",
+      "class": "Fr.",
+      "yearOnTeam": "1st",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Amelia",
+      "middle": "A",
+      "last": "Anderson",
+      "team": "Girls",
+      "class": "So.",
+      "yearOnTeam": "2nd",
+      "stroke": "Fly",
+      "roles": [""]
+    },
+    {
+      "first": "Raina",
+      "middle": "I",
+      "last": "Black",
+      "team": "Girls",
+      "class": "So.",
+      "yearOnTeam": "1st",
+      "stroke": "Back",
+      "roles": [""]
+    },
+    {
+      "first": "Emma",
+      "middle": "E",
+      "last": "Bovear",
+      "team": "Girls",
+      "class": "Fr.",
+      "yearOnTeam": "1st",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Emma",
+      "middle": "C",
+      "last": "Cigna",
+      "team": "Girls",
+      "class": "Sr.",
+      "yearOnTeam": "4th",
+      "stroke": "IM",
+      "roles": [""]
+    },
+    {
+      "first": "Averie",
+      "middle": "N",
+      "last": "Davis",
+      "team": "Girls",
+      "class": "Jr.",
+      "yearOnTeam": "3rd",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Audrey",
+      "middle": "A",
+      "last": "Dufault",
+      "team": "Girls",
+      "class": "Fr.",
+      "yearOnTeam": "2nd",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Chris",
+      "middle": "W",
+      "last": "Ege",
+      "team": "Boys",
+      "class": "So.",
+      "yearOnTeam": "2nd",
+      "stroke": "IM",
+      "roles": [""]
+    },
+    {
+      "first": "Jon",
+      "middle": "",
+      "last": "Ege",
+      "team": "Boys",
+      "class": "Fr.",
+      "yearOnTeam": "1st",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Arden",
+      "middle": "J",
+      "last": "Erdossy",
+      "team": "Girls",
+      "class": "Jr.",
+      "yearOnTeam": "1st",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Logan",
+      "middle": "A",
+      "last": "Ertz",
+      "team": "Boys",
+      "class": "Sr.",
+      "yearOnTeam": "4th",
+      "stroke": "Breast",
+      "roles": [""]
+    },
+    {
+      "first": "Hayden",
+      "middle": "C",
+      "last": "Fletcher",
+      "team": "Girls",
+      "class": "So.",
+      "yearOnTeam": "2nd",
+      "stroke": "Breast",
+      "roles": [""]
+    },
+    {
+      "first": "Timmy",
+      "middle": "D",
+      "last": "Furness",
+      "team": "Boys",
+      "class": "Jr.",
+      "yearOnTeam": "3rd",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Mia",
+      "middle": "J",
+      "last": "Glass",
+      "team": "Girls",
+      "class": "Jr.",
+      "yearOnTeam": "3rd",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "John",
+      "middle": "W",
+      "last": "Hall",
+      "team": "Boys",
+      "class": "8th",
+      "yearOnTeam": "1st",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Zoe",
+      "middle": "B",
+      "last": "Heller",
+      "team": "Girls",
+      "class": "Fr.",
+      "yearOnTeam": "1st",
+      "stroke": "Breast",
+      "roles": [""]
+    },
+    {
+      "first": "Mason",
+      "middle": "R",
+      "last": "Lonie",
+      "team": "Boys",
+      "class": "So.",
+      "yearOnTeam": "2nd",
+      "stroke": "IM",
+      "roles": [""]
+    },
+    {
+      "first": "Eliza",
+      "middle": "N",
+      "last": "Moore",
+      "team": "Girls",
+      "class": "Jr.",
+      "yearOnTeam": "3rd",
+      "stroke": "Breast",
+      "roles": [""]
+    },
+    {
+      "first": "Morgan",
+      "middle": "E",
+      "last": "Newton",
+      "team": "Girls",
+      "class": "Jr.",
+      "yearOnTeam": "1st",
+      "stroke": "Back",
+      "roles": [""]
+    },
+    {
+      "first": "Aslesha",
+      "middle": "",
+      "last": "Oli",
+      "team": "Girls",
+      "class": "Fr.",
+      "yearOnTeam": "1st",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Brady",
+      "middle": "C",
+      "last": "Powell",
+      "team": "Boys",
+      "class": "Sr.",
+      "yearOnTeam": "4th",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Paisley",
+      "middle": "",
+      "last": "Quinn",
+      "team": "Girls",
+      "class": "Sr.",
+      "yearOnTeam": "3rd",
+      "stroke": "Free",
+      "roles": ["Captain"]
+    },
+    {
+      "first": "Blair",
+      "middle": "H",
+      "last": "Rees",
+      "team": "Boys",
+      "class": "So.",
+      "yearOnTeam": "2nd",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Dane",
+      "middle": "L",
+      "last": "Rees",
+      "team": "Boys",
+      "class": "So.",
+      "yearOnTeam": "2nd",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Elaina",
+      "middle": "R",
+      "last": "Rice",
+      "team": "Girls",
+      "class": "Fr.",
+      "yearOnTeam": "1st",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Olivia",
+      "middle": "D",
+      "last": "Schrade",
+      "team": "Girls",
+      "class": "Fr.",
+      "yearOnTeam": "1st",
+      "stroke": "Back",
+      "roles": [""]
+    },
+    {
+      "first": "Olivia",
+      "middle": "S",
+      "last": "Smith",
+      "team": "Girls",
+      "class": "Fr.",
+      "yearOnTeam": "2nd",
+      "stroke": "Fly",
+      "roles": [""]
+    },
+    {
+      "first": "Chris",
+      "middle": "J",
+      "last": "Zieg",
+      "team": "Boys",
+      "class": "Sr.",
+      "yearOnTeam": "4th",
+      "stroke": "Free",
+      "roles": ["Captain"]
+    },
+    {
+      "first": "David",
+      "middle": "F",
+      "last": "Zieg",
+      "team": "Boys",
+      "class": "Jr.",
+      "yearOnTeam": "3rd",
+      "stroke": "Back",
+      "roles": [""]
+    }
+  ]
+}

@@ -1,0 +1,306 @@
+{
+  "season": "2024-2025",
+  "updated": "2025-02-19",
+  "athletes": [
+    {
+      "first": "Emma",
+      "middle": "",
+      "last": "Cigna",
+      "team": "Girls",
+      "class": "Jr.",
+      "yearOnTeam": "3rd",
+      "stroke": "IM",
+      "roles": [""]
+    },
+    {
+      "first": "Caroline",
+      "middle": "",
+      "last": "Agee",
+      "team": "Girls",
+      "class": "Sr.",
+      "yearOnTeam": "4th",
+      "stroke": "Breast",
+      "roles": [""]
+    },
+    {
+      "first": "Meghan",
+      "middle": "",
+      "last": "Pauley",
+      "team": "Girls",
+      "class": "Sr.",
+      "yearOnTeam": "4th",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Madalyn",
+      "middle": "",
+      "last": "Witt",
+      "team": "Girls",
+      "class": "Sr.",
+      "yearOnTeam": "1st",
+      "stroke": "Back",
+      "roles": [""]
+    },
+    {
+      "first": "Mairin",
+      "middle": "",
+      "last": "Doyle",
+      "team": "Girls",
+      "class": "Sr.",
+      "yearOnTeam": "4th",
+      "stroke": "Free",
+      "roles": ["Captain"]
+    },
+    {
+      "first": "Izzy",
+      "middle": "",
+      "last": "Cramer",
+      "team": "Girls",
+      "class": "So.",
+      "yearOnTeam": "2nd",
+      "stroke": "Back",
+      "roles": [""]
+    },
+    {
+      "first": "Hayden",
+      "middle": "",
+      "last": "Fletcher",
+      "team": "Girls",
+      "class": "Fr.",
+      "yearOnTeam": "1st",
+      "stroke": "Breast",
+      "roles": [""]
+    },
+    {
+      "first": "Averie",
+      "middle": "",
+      "last": "Davis",
+      "team": "Girls",
+      "class": "So.",
+      "yearOnTeam": "2nd",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Eliza",
+      "middle": "",
+      "last": "Moore",
+      "team": "Girls",
+      "class": "So.",
+      "yearOnTeam": "2nd",
+      "stroke": "Breast",
+      "roles": [""]
+    },
+    {
+      "first": "Amelia",
+      "middle": "",
+      "last": "Andersen",
+      "team": "Girls",
+      "class": "Fr.",
+      "yearOnTeam": "1st",
+      "stroke": "Fly",
+      "roles": [""]
+    },
+    {
+      "first": "Ashlyn",
+      "middle": "",
+      "last": "Augustine",
+      "team": "Girls",
+      "class": "So.",
+      "yearOnTeam": "2nd",
+      "stroke": "Back",
+      "roles": [""]
+    },
+    {
+      "first": "Audrey",
+      "middle": "",
+      "last": "Dufault",
+      "team": "Girls",
+      "class": "8th",
+      "yearOnTeam": "1st",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Olivia",
+      "middle": "",
+      "last": "Smith",
+      "team": "Girls",
+      "class": "8th.",
+      "yearOnTeam": "1st",
+      "stroke": "Fly",
+      "roles": [""]
+    },
+    {
+      "first": "Jack",
+      "middle": "",
+      "last": "Lake",
+      "team": "Boys",
+      "class": "Sr.",
+      "yearOnTeam": "4th",
+      "stroke": "Breast",
+      "roles": ["Captain"]
+    },
+    {
+      "first": "Luke",
+      "middle": "",
+      "last": "Allen",
+      "team": "Boys",
+      "class": "Sr.",
+      "yearOnTeam": "4th",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Jackson",
+      "middle": "",
+      "last": "Tishler",
+      "team": "Boys",
+      "class": "Sr.",
+      "yearOnTeam": "4th",
+      "stroke": "Back",
+      "roles": [""]
+    },
+    {
+      "first": "Tres",
+      "middle": "T",
+      "last": "Black",
+      "team": "Boys",
+      "class": "Sr.",
+      "yearOnTeam": "4th",
+      "stroke": "Back",
+      "roles": [""]
+    },
+    {
+      "first": "Harper",
+      "middle": "",
+      "last": "Tishler",
+      "team": "Boys",
+      "class": "So.",
+      "yearOnTeam": "2nd",
+      "stroke": "IM",
+      "roles": [""]
+    },
+    {
+      "first": "Sean",
+      "middle": "",
+      "last": "Ward",
+      "team": "Boys",
+      "class": "So.",
+      "yearOnTeam": "2nd",
+      "stroke": "Fly",
+      "roles": [""]
+    },
+    {
+      "first": "Michael",
+      "middle": "",
+      "last": "Johnson",
+      "team": "Boys",
+      "class": "Fr.",
+      "yearOnTeam": "1st",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Brady",
+      "middle": "",
+      "last": "Powell",
+      "team": "Boys",
+      "class": "Jr.",
+      "yearOnTeam": "3rd",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Logan",
+      "middle": "",
+      "last": "Ertz",
+      "team": "Boys",
+      "class": "Jr.",
+      "yearOnTeam": "3rd",
+      "stroke": "Breast",
+      "roles": [""]
+    },
+    {
+      "first": "Chris",
+      "middle": "",
+      "last": "Zieg",
+      "team": "Boys",
+      "class": "Jr.",
+      "yearOnTeam": "3rd",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "David",
+      "middle": "",
+      "last": "Zieg",
+      "team": "Boys",
+      "class": "So.",
+      "yearOnTeam": "2nd",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Peter",
+      "middle": "",
+      "last": "Zieg",
+      "team": "Boys",
+      "class": "So.",
+      "yearOnTeam": "2nd",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Mason",
+      "middle": "",
+      "last": "Lonie",
+      "team": "Boys",
+      "class": "Fr.",
+      "yearOnTeam": "1st",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Chris",
+      "middle": "",
+      "last": "Ege",
+      "team": "Boys",
+      "class": "Fr.",
+      "yearOnTeam": "1st",
+      "stroke": "Breast",
+      "roles": [""]
+    },
+    {
+      "first": "Timmy",
+      "middle": "",
+      "last": "Furness",
+      "team": "Boys",
+      "class": "So.",
+      "yearOnTeam": "2nd",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
+      "first": "Blair",
+      "middle": "",
+      "last": "Rees",
+      "team": "Boys",
+      "class": "Fr.",
+      "yearOnTeam": "1st",
+      "stroke": "Fly",
+      "roles": [""]
+    },
+    {
+      "first": "Dane",
+      "middle": "",
+      "last": "Rees",
+      "team": "Boys",
+      "class": "Fr.",
+      "yearOnTeam": "1st",
+      "stroke": "Free",
+      "roles": [""]
+    }
+  ]
+}

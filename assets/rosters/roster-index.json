@@ -1,0 +1,6 @@
+{
+  "seasons": [
+    {"label": "2025-2026", "file": "roster-2025-2026.json"},
+    {"label": "2024-2025", "file": "roster-2024-2025.json"}
+  ]
+}

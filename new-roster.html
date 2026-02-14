@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Team Records</title>
+    <title>Kettle Run Swimming | Roster</title>
     <link rel="stylesheet" href="./css/output.css" />
   </head>
   <body class="min-h-screen bg-gray-50 text-gray-900 overflow-x-hidden">
@@ -220,7 +220,7 @@
               </li>
               <li>
                 <a
-                  href=""
+                  href="./team-records.html"
                   class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-brand-light transition-colors duration-200"
                 >
                   <span
@@ -519,16 +519,18 @@
         </div>
       </div>
     </header>
+
+    <!-- Main -->
     <main class="max-w-6xl mx-auto md:px-4 px-1 md:py-12 py-6">
       <!-- Page header -->
       <div
-        class="md:rounded-2xl md:border md:border-gray-200 md:shadow-xs p-2 md:p-6 bg-white"
+        class="md:rounded-2xl md:border md:border-gray-200 md:shadow-xs p-4 md:p-6 bg-white"
       >
         <!-- Hero band -->
         <section
           class="mb-8 overflow-hidden rounded-2xl border border-gray-200 bg-black/95 text-white"
         >
-          <div class="relative px-6 py-4 md:py-8">
+          <div class="relative px-6 py-8">
             <!-- subtle diagonal texture -->
             <div
               aria-hidden="true"
@@ -545,41 +547,45 @@
             ></div>
 
             <div
-              class="relative flex flex-col gap-2.5 text-center md:text-start md:flex-row md:items-end md:justify-between"
+              class="relative flex flex-col gap-4 text-center md:text-start md:flex-row md:items-end md:justify-between"
             >
-              <div class="flex flex-col items-center gap-2 md:items-start">
+              <div>
                 <p
                   class="text-[10px] md:text-xs font-semibold uppercase tracking-[0.22em] text-white/80"
                 >
                   Kettle Run Swimming
                 </p>
                 <h1
-                  class="text-3xl md:text-4xl font-extrabold tracking-tight"
+                  class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight"
                 >
-                  Team Records
+                  Team Roster
                 </h1>
-                <p class="text-xs md:text-sm text-white/80">
-                  Official KRHS swim team records (Yards).
+                <p class="mt-2 text-xs md:text-sm text-white/80">
+                  Official KRHS swim team rosters.
                 </p>
               </div>
 
               <div class="md:hidden border-b border-gray-400 w-64 m-auto"></div>
 
               <!-- quick stat pills -->
-              <div class="">
+              <div class="flex flex-col gap-2">
+                <p
+                  id="rosterLastUpdated"
+                  class="hidden md:flex rounded-md bg-gray-50 px-2 py-1 text-[10px] md:text-xs font-semibold text-gray-800 text-center"
+                ></p>
                 <a
-                  id="recordsPdfLink"
-                  href="./assets/records/krhs-records.pdf"
-                  class="rounded-md bg-gray-50 px-2 py-1 text-xs font-semibold text-black"
+                  id="rosterPdfLink"
+                  href=""
+                  class="rounded-md bg-gray-50 px-2 py-1 text-xs font-semibold text-black text-center hover:bg-brand hover:text-white hover:border-brand transition-colors"
                   download
                 >
-                  Download Records (PDF)
+                  Download Roster (PDF)
                 </a>
               </div>
               <p
-                  id="recordsLastUpdatedMobile"
-                  class="md:hidden text-[10px] md:text-[11px] font-semibold text-white text-center"
-                ></p>
+                id="rosterLastUpdatedMobile"
+                class="md:hidden text-[10px] md:text-[11px] font-semibold text-white text-center"
+              ></p>
             </div>
           </div>
         </section>
@@ -590,7 +596,7 @@
         >
           <!-- Section header bar -->
           <div
-            class="flex items-center justify-between border-b-[6px] border-brand md:border-b md:border-gray-200 bg-white px-3 md:px-5 py-4"
+            class="flex items-center justify-between border-b border-gray-200 bg-background-50 px-3 md:px-5 py-4"
           >
             <div class="flex items-center gap-3">
               <div class="h-9 w-1.5 rounded-full bg-brand"></div>
@@ -598,103 +604,108 @@
                 <h2
                   class="text-base md:text-lg font-bold tracking-tight text-black"
                 >
-                  Boys Team Records
+                  Roster
+                  <span
+                    id="rosterSeasonLabel"
+                    class="text-black/90 font-semibold text-base"
+                  ></span>
                 </h2>
                 <p class="text-[11px] text-gray-700">
-                  All-time best performances
+                  Official KRHS swim team roster
                 </p>
               </div>
             </div>
 
-            <p
-              id="recordsLastUpdatedBoys"
-              class="hidden md:flex rounded-md bg-gray-100 px-2 py-1 text-[10px] md:text-[11px] font-semibold text-black text-center"
-            ></p>
+            <div class="flex gap-8 items-center">
+              <div
+                class="flex items-center gap-2 text-black text-[13px] font-semibold"
+              >
+                <label for="seasonSelect">Season:</label>
+                <select
+                  id="seasonSelect"
+                  class="bg-white border border-gray-300 px-2 py-1 rounded-lg focus:ring-1 focus:ring-brand focus:border-brand"
+                ></select>
+              </div>
+              <div class="overflow-hidden mx-auto md:mx-0">
+                <nav aria-label="Roster filter">
+                  <ul
+                    class="relative flex flex-row p-1 rounded-lg bg-gray-100 gap-1"
+                  >
+                    <li>
+                      <button
+                        type="button"
+                        class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold text-black transition"
+                        data-value="All"
+                        aria-pressed="true"
+                      >
+                        All
+                      </button>
+                    </li>
+
+                    <li>
+                      <button
+                        type="button"
+                        class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold text-black transition"
+                        data-value="Boys"
+                        aria-pressed="false"
+                      >
+                        Boys
+                      </button>
+                    </li>
+
+                    <li>
+                      <button
+                        type="button"
+                        class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold text-black transition"
+                        data-value="Girls"
+                        aria-pressed="false"
+                      >
+                        Girls
+                      </button>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
           </div>
 
           <!-- Table wrapper -->
-          <div class="overflow-x-visible md:overflow-x-auto">
-            <table class="min-w-full text-xs md:text-sm whitespace-normal md:whitespace-nowrap">
-
-              <thead class="hidden md:table-header-group bg-brand text-white">
-
-                <tr
-                  class="[&>th]:px-3 md:[&>th]:px-4 [&>th]:py-2.5 [&>th]:text-left [&>th]:font-semibold [&>th]:tracking-wide"
-                >
-                  <th class="w-40 md:w-48">Event</th>
-                  <th class="w-28 md:w-48">Time</th>
-                  <th class="min-w-40">Record Holder</th>
-                  <th class="w-32 md:w-48">Date</th>
-                </tr>
-              </thead>
-
-              <tbody
-                id="boysRecordsBody"
-                class="md:divide-y md:divide-gray-100 md:[&>tr:nth-child(even)]:bg-gray-50/60"
-              >
-                <tr>
-                  <td colspan="5" class="px-4 py-6 text-gray-500">Loading…</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <!-- GIRLS -->
-        <section
-          class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
-        >
-          <!-- Section header bar -->
-          <div
-            class="flex items-center justify-between border-b border-gray-200 bg-background-50 px-5 py-4"
-          >
-            <div class="flex items-center gap-3">
-              <div class="h-9 w-1.5 rounded-full bg-brand"></div>
-              <div>
-                <h2 class="text-lg font-bold tracking-tight text-black">
-                  Girls Team Records
-                </h2>
-                <p class="text-xs text-gray-700">All-time best performances</p>
-              </div>
-            </div>
-
-            <p
-              id="recordsLastUpdatedGirls"
-              class="hidden md:flex rounded-md bg-gray-100 px-2 py-1 text-[11px] font-semibold text-black text-center"
-            ></p>
-          </div>
-
           <div class="overflow-x-auto">
             <table class="min-w-full text-xs md:text-sm whitespace-nowrap">
               <thead class="bg-brand text-white">
                 <tr
                   class="[&>th]:px-3 md:[&>th]:px-4 [&>th]:py-2.5 [&>th]:text-left [&>th]:font-semibold [&>th]:tracking-wide"
                 >
-                  <th class="w-40 md:w-48">Event</th>
-                  <th class="w-28 md:w-48">Time</th>
-                  <th class="min-w-40">Record Holder</th>
-                  <th class="w-32 md:w-48">Date</th>
+                  <th class="w-10"></th>
+                  <th class="">Athlete</th>
+                  <th class="">Year On team</th>
+                  <th class="">Class</th>
+                  <th class="">Stroke</th>
                 </tr>
               </thead>
 
               <tbody
-                id="girlsRecordsBody"
+                id="rosterBody"
                 class="divide-y divide-gray-100 [&>tr:nth-child(even)]:bg-gray-50/60"
               >
                 <tr>
-                  <td colspan="5" class="px-4 py-6 text-gray-500">Loading…</td>
+                  <td colspan="5" class="px-4 py-6 text-gray-500"></td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
       </div>
-
-      
     </main>
 
+    <!-- Footer -->
+    <footer class="border-t border-gray-200 bg-white">
+      <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-gray-600">
+        &copy; <span id="year">2025</span> Kettle Run Swimming
+      </div>
+    </footer>
+
     <script src="./scripts/mobile-menu.js"></script>
-    <script src="./js/team-records-v2.js"></script>
-    <script src="./js/records-meta.js"></script>
+    <script src="./js/renderRoster.js"></script>
   </body>
 </html>

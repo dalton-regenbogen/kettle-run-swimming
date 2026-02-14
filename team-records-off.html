@@ -590,7 +590,7 @@
         >
           <!-- Section header bar -->
           <div
-            class="flex items-center justify-between border-b-[6px] border-brand md:border-b md:border-gray-200 bg-white px-3 md:px-5 py-4"
+            class="flex items-center justify-between border-b border-gray-200 bg-background-50 px-3 md:px-5 py-4"
           >
             <div class="flex items-center gap-3">
               <div class="h-9 w-1.5 rounded-full bg-brand"></div>
@@ -613,11 +613,9 @@
           </div>
 
           <!-- Table wrapper -->
-          <div class="overflow-x-visible md:overflow-x-auto">
-            <table class="min-w-full text-xs md:text-sm whitespace-normal md:whitespace-nowrap">
-
-              <thead class="hidden md:table-header-group bg-brand text-white">
-
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-xs md:text-sm whitespace-nowrap">
+              <thead class="bg-brand text-white">
                 <tr
                   class="[&>th]:px-3 md:[&>th]:px-4 [&>th]:py-2.5 [&>th]:text-left [&>th]:font-semibold [&>th]:tracking-wide"
                 >
@@ -630,7 +628,7 @@
 
               <tbody
                 id="boysRecordsBody"
-                class="md:divide-y md:divide-gray-100 md:[&>tr:nth-child(even)]:bg-gray-50/60"
+                class="divide-y divide-gray-100 [&>tr:nth-child(even)]:bg-gray-50/60"
               >
                 <tr>
                   <td colspan="5" class="px-4 py-6 text-gray-500">Loading…</td>
@@ -694,7 +692,7 @@
     </main>
 
     <script src="./scripts/mobile-menu.js"></script>
-    <script src="./js/team-records-v2.js"></script>
+    <script src="./js/team-records.js"></script>
     <script src="./js/records-meta.js"></script>
   </body>
 </html>
