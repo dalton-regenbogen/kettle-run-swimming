@@ -553,9 +553,7 @@
                 >
                   Kettle Run Swimming
                 </p>
-                <h1
-                  class="text-3xl md:text-4xl font-extrabold tracking-tight"
-                >
+                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">
                   Team Records
                 </h1>
                 <p class="text-xs md:text-sm text-white/80">
@@ -577,9 +575,9 @@
                 </a>
               </div>
               <p
-                  id="recordsLastUpdatedMobile"
-                  class="md:hidden text-[10px] md:text-[11px] font-semibold text-white text-center"
-                ></p>
+                id="recordsLastUpdatedMobile"
+                class="md:hidden text-[10px] md:text-[11px] font-semibold text-white text-center"
+              ></p>
             </div>
           </div>
         </section>
@@ -614,10 +612,10 @@
 
           <!-- Table wrapper -->
           <div class="overflow-x-visible md:overflow-x-auto">
-            <table class="min-w-full text-xs md:text-sm whitespace-normal md:whitespace-nowrap">
-
+            <table
+              class="min-w-full text-xs md:text-sm whitespace-normal md:whitespace-nowrap"
+            >
               <thead class="hidden md:table-header-group bg-brand text-white">
-
                 <tr
                   class="[&>th]:px-3 md:[&>th]:px-4 [&>th]:py-2.5 [&>th]:text-left [&>th]:font-semibold [&>th]:tracking-wide"
                 >
@@ -664,9 +662,11 @@
             ></p>
           </div>
 
-          <div class="overflow-x-auto">
-            <table class="min-w-full text-xs md:text-sm whitespace-nowrap">
-              <thead class="bg-brand text-white">
+          <div class="overflow-x-visible md:overflow-x-auto">
+            <table
+              class="min-w-full text-xs md:text-sm whitespace-normal md:whitespace-nowrap"
+            >
+              <thead class="hidden md:table-header-group bg-brand text-white">
                 <tr
                   class="[&>th]:px-3 md:[&>th]:px-4 [&>th]:py-2.5 [&>th]:text-left [&>th]:font-semibold [&>th]:tracking-wide"
                 >
@@ -679,7 +679,7 @@
 
               <tbody
                 id="girlsRecordsBody"
-                class="divide-y divide-gray-100 [&>tr:nth-child(even)]:bg-gray-50/60"
+                class="md:divide-y md:divide-gray-100 md:[&>tr:nth-child(even)]:bg-gray-50/60"
               >
                 <tr>
                   <td colspan="5" class="px-4 py-6 text-gray-500">Loading…</td>
@@ -689,12 +689,10 @@
           </div>
         </section>
       </div>
-
-      
     </main>
 
     <script src="./scripts/mobile-menu.js"></script>
-    <script src="./js/team-records-v2.js"></script>
+    <script src="./js/renderRecords.js"></script>
     <script src="./js/records-meta.js"></script>
   </body>
 </html>
