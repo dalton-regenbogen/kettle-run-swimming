@@ -31,7 +31,7 @@ function render() {
   });
 
   boysbodyEl.innerHTML = boysfiltered.map(r => `
-  <tr class="block md:table-row border-b border-gray-200 bg-white md:border-0 md:bg-transparent [&>td]:px-3 md:[&>td]:px-4 [&>td]:py-2.5 [&>td]:text-left">
+  <tr class="block md:table-row border-b border-gray-200 last:border-b-0 bg-white md:border-0 md:bg-transparent [&>td]:px-3 md:[&>td]:px-4 [&>td]:py-2.5 [&>td]:text-left">
     <td class="block md:table-cell">
       <!-- Mobile stacked layout -->
       <div class="md:hidden">
