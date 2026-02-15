@@ -1,14 +1,15 @@
 <!doctype html>
-<html lang="en" class="overflow-x-hidden">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Team Records</title>
     <link rel="stylesheet" href="./css/output.css" />
   </head>
-  <body class="min-h-screen bg-gray-50 text-gray-900 overflow-x-hidden">
+  <body class="min-h-screen bg-gray-50 text-gray-900">
     <!-- Header -->
-    <header class="bg-black border-b-4 border-gray-400 sticky top-0 z-50">
+    <header class="bg-black border-b-4 border-gray-400 sticky top-0 z-50 [--header-h:110px]">
+
       <div
         class="hidden marquee marquee:hover marquee::before marquee::after bg-red-700 w-full overflow-hidden py-2 md:py-3 text-xs md:text-sm font-semibold uppercase tracking-wide text-white"
       >
@@ -351,13 +352,14 @@
         <!-- Mobile Menu Shell (overlay + sliding panel) -->
         <div
           id="mobile-menu"
-          class="md:hidden pointer-events-none overflow-x-hidden"
+          class="md:hidden fixed inset-0 pointer-events-none overflow-x-hidden"
           aria-hidden="true"
         >
           <!-- panel -->
+          <
           <div
             id="mobile-menu-panel"
-            class="border-t-4 border-gray-400 absolute right-0 top-full h-[calc(100vh-100%)] w-screen bg-white translate-x-full transition-transform duration-300 ease-out overflow-y-auto overscroll-contain"
+            class="border-t-4 border-gray-400 fixed left-0 right-0 top-(--header-h) bottom-0 w-full bg-white translate-x-full transition-transform duration-300 ease-out overflow-y-auto overscroll-contain"
           >
             <nav
               class="flex flex-col text-center text-black text-base font-semibold tracking-wide"
@@ -519,7 +521,9 @@
         </div>
       </div>
     </header>
-    <main class="max-w-6xl mx-auto md:px-4 px-1 md:py-12 py-6">
+    <main
+      class="max-w-6xl mx-auto md:px-4 px-1 md:py-12 py-6 overflow-x-hidden"
+    >
       <!-- Page header -->
       <div
         class="md:rounded-2xl md:border md:border-gray-200 md:shadow-xs p-2 md:p-6 bg-white"
@@ -690,7 +694,6 @@
         </section>
       </div>
     </main>
-
     <script src="./scripts/mobile-menu.js"></script>
     <script src="./js/renderRecords.js"></script>
     <script src="./js/records-meta.js"></script>
