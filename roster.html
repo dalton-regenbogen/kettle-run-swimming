@@ -1,14 +1,16 @@
 <!doctype html>
-<html lang="en" class="overflow-x-hidden">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kettle Run Swimming | Roster</title>
+    <title>Team Records</title>
     <link rel="stylesheet" href="./css/output.css" />
   </head>
-  <body class="min-h-screen bg-gray-50 text-gray-900 overflow-x-hidden">
+  <body class="min-h-screen bg-gray-50 text-gray-900">
     <!-- Header -->
-    <header class="bg-black border-b-4 border-gray-400 sticky top-0 z-50">
+    <header
+      class="bg-black border-b-4 border-gray-400 sticky top-0 z-50 [--header-h:110px]"
+    >
       <div
         class="hidden marquee marquee:hover marquee::before marquee::after bg-red-700 w-full overflow-hidden py-2 md:py-3 text-xs md:text-sm font-semibold uppercase tracking-wide text-white"
       >
@@ -220,7 +222,7 @@
               </li>
               <li>
                 <a
-                  href="./team-records.html"
+                  href=""
                   class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-brand-light transition-colors duration-200"
                 >
                   <span
@@ -351,13 +353,14 @@
         <!-- Mobile Menu Shell (overlay + sliding panel) -->
         <div
           id="mobile-menu"
-          class="md:hidden pointer-events-none overflow-x-hidden"
+          class="md:hidden fixed left-0 right-0 bottom-0 top-[--header-h] z-40 pointer-events-none overflow-x-hidden"
           aria-hidden="true"
         >
           <!-- panel -->
+
           <div
             id="mobile-menu-panel"
-            class="border-t-4 border-gray-400 absolute right-0 top-full h-[calc(100vh-100%)] w-screen bg-white translate-x-full transition-transform duration-300 ease-out overflow-y-auto overscroll-contain"
+            class="border-t-4 border-gray-400 fixed left-0 right-0 top-(--header-h) bottom-0 w-full bg-white translate-x-full transition-transform duration-300 ease-out overflow-y-auto overscroll-contain"
           >
             <nav
               class="flex flex-col text-center text-black text-base font-semibold tracking-wide"
@@ -522,162 +525,180 @@
 
     <!-- Main -->
     <main class="max-w-6xl mx-auto md:px-4 px-1 md:py-12 py-6">
-      <!-- Roster Section -->
-      <section>
-        <div
-          class="md:rounded-2xl md:border md:border-gray-200 md:shadow-xs p-4 md:p-6 bg-white"
+      <!-- Page header -->
+      <div
+        class="md:rounded-2xl md:border md:border-gray-200 md:shadow-xs p-4 md:p-6 bg-white"
+      >
+        <!-- Hero band -->
+        <section
+          class="mb-8 overflow-hidden rounded-2xl border border-gray-200 bg-black/95 text-white"
         >
-          <h1 class="text-3xl font-medium text-center pb-8">Team Roster</h1>
-          <!-- Header + Filters Row -->
+          <div class="relative px-6 py-8">
+            <!-- subtle diagonal texture -->
+            <div
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-0 opacity-[0.12]"
+              style="
+                background-image: repeating-linear-gradient(
+                  135deg,
+                  rgba(255, 255, 255, 0.9) 0px,
+                  rgba(255, 255, 255, 0.9) 1px,
+                  transparent 1px,
+                  transparent 10px
+                );
+              "
+            ></div>
+
+            <div
+              class="relative flex flex-col gap-4 text-center md:text-start md:flex-row md:items-end md:justify-between"
+            >
+              <div>
+                <p
+                  class="text-[10px] md:text-xs font-semibold uppercase tracking-[0.22em] text-white/80"
+                >
+                  Kettle Run Swimming
+                </p>
+                <h1
+                  class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight"
+                >
+                  Team Roster
+                </h1>
+                <p class="mt-2 text-xs md:text-sm text-white/80">
+                  Official KRHS swim team rosters.
+                </p>
+              </div>
+
+              <div class="md:hidden border-b border-gray-400 w-64 m-auto"></div>
+
+              <!-- quick stat pills -->
+              <div class="flex flex-col gap-2">
+                <p
+                  id="rosterLastUpdated"
+                  class="hidden md:flex rounded-md bg-gray-50 px-2 py-1 text-[10px] md:text-xs font-semibold text-gray-800 text-center"
+                ></p>
+                <a
+                  id="rosterPdfLink"
+                  href=""
+                  class="rounded-md bg-gray-50 px-2 py-1 text-xs font-semibold text-black text-center hover:bg-brand hover:text-white hover:border-brand transition-colors"
+                  download
+                >
+                  Download Roster (PDF)
+                </a>
+              </div>
+              <p
+                id="rosterLastUpdatedMobile"
+                class="md:hidden text-[10px] md:text-[11px] font-semibold text-white text-center"
+              ></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- BOYS -->
+        <section
+          class="mb-8 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
+        >
+          <!-- Section header bar -->
           <div
-            class="flex items-center md:flex-row md:items-center md:justify-between mb-6"
+            class="flex items-center justify-between border-b border-gray-200 bg-background-50 px-3 md:px-5 py-4"
           >
-            <div class="px-4">
-              <p class="md:text-lg font-medium text-left">2025-2026 Season</p>
-              <p class="hidden md:block md:mt-1 md:text-sm md:font-light">
-                View the full Kettle Run Swim roster, including captains, grade
-                level, and years on the team.
-              </p>
+            <div class="flex items-center gap-3">
+              <div class="h-9 w-1.5 rounded-full bg-brand"></div>
+              <div>
+                <h2
+                  class="text-base md:text-lg font-bold tracking-tight text-black"
+                >
+                  Roster
+                  <span
+                    id="rosterSeasonLabel"
+                    class="text-black/90 font-semibold text-base"
+                  ></span>
+                </h2>
+                <p class="text-[11px] text-gray-700">
+                  Official KRHS swim team roster
+                </p>
+              </div>
             </div>
 
-            <!-- Filter Buttons: All / Girls / Boys -->
-            <div class="overflow-hidden mx-auto md:mx-0">
-              <nav aria-label="Roster filter">
-                <ul
-                  class="relative flex flex-row p-1 rounded-lg bg-gray-100 gap-1"
-                >
-                  <li>
-                    <button
-                      type="button"
-                      class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-sm font-medium text-gray-900 transition"
-                      data-value="All"
-                      aria-pressed="true"
-                    >
-                      All
-                    </button>
-                  </li>
+            <div class="flex gap-8 items-center">
+              <div
+                class="flex items-center gap-2 text-black text-[13px] font-semibold"
+              >
+                <label for="seasonSelect">Season:</label>
+                <select
+                  id="seasonSelect"
+                  class="bg-white border border-gray-300 px-2 py-1 rounded-lg focus:ring-1 focus:ring-brand focus:border-brand"
+                ></select>
+              </div>
+              <div class="overflow-hidden mx-auto md:mx-0">
+                <nav aria-label="Roster filter">
+                  <ul
+                    class="relative flex flex-row p-1 rounded-lg bg-gray-100 gap-1"
+                  >
+                    <li>
+                      <button
+                        type="button"
+                        class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold text-black transition"
+                        data-value="All"
+                        aria-pressed="true"
+                      >
+                        All
+                      </button>
+                    </li>
 
-                  <li>
-                    <button
-                      type="button"
-                      class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-sm font-medium text-gray-900 transition"
-                      data-value="Boys"
-                      aria-pressed="false"
-                    >
-                      Boys
-                    </button>
-                  </li>
+                    <li>
+                      <button
+                        type="button"
+                        class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold text-black transition"
+                        data-value="Boys"
+                        aria-pressed="false"
+                      >
+                        Boys
+                      </button>
+                    </li>
 
-                  <li>
-                    <button
-                      type="button"
-                      class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-sm font-medium text-gray-900 transition"
-                      data-value="Girls"
-                      aria-pressed="false"
-                    >
-                      Girls
-                    </button>
-                  </li>
-                </ul>
-              </nav>
+                    <li>
+                      <button
+                        type="button"
+                        class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold text-black transition"
+                        data-value="Girls"
+                        aria-pressed="false"
+                      >
+                        Girls
+                      </button>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
             </div>
           </div>
 
-          <!-- Roster Table Card -->
-          <div
-            class="bg-white/95 rounded-2xl shadow-sm border border-gray-200 overflow-hidden"
-          >
-            <!-- Optional caption / label bar -->
-            <div class="px-4 py-3 border-b border-gray-200">
-              <h2 class="text-sm font-semibold tracking-wide text-gray-700">
-                Roster
-              </h2>
-              <p class="mt-0.5 text-xs text-gray-500">
-                Updated as of 12/30/2025
-              </p>
-            </div>
-
-            <!-- Table -->
-            <div class="overflow-x-auto">
-              <table class="min-w-full md:text-sm text-xs">
-                <thead
-                  class="sticky top-0 z-10 bg-green-900 text-left text-xs font-semibold uppercase tracking-wide text-white"
+          <!-- Table wrapper -->
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-xs md:text-sm whitespace-nowrap">
+              <thead class="bg-brand text-white">
+                <tr
+                  class="[&>th]:px-3 md:[&>th]:px-4 [&>th]:py-2.5 [&>th]:text-left [&>th]:font-semibold [&>th]:tracking-wide"
                 >
-                  <tr>
-                    <!-- Icon / Initials -->
-                    <th scope="col" class="px-2 py-3">
-                      <span class="sr-only">Icon</span>
-                    </th>
-                    <th
-                      scope="col"
-                      class="px-2 py-3 cursor-pointer select-none sortable"
-                      data-sort-key="name"
-                    >
-                      Athlete
-                      <span class="sort-arrow transition"> ▲ </span>
-                    </th>
-                    <!-- Stroke -->
-                    <th
-                      scope="col"
-                      class="px-2 py-3 cursor-pointer select-none sortable"
-                      data-sort-key="stroke"
-                    >
-                      Stroke
-                      <span class="sort-arrow transition"> ▲ </span>
-                    </th>
-                    <!-- Class -->
-                    <th
-                      scope="col"
-                      class="px-2 py-3 cursor-pointer select-none sortable"
-                      data-sort-key="classYear"
-                    >
-                      Class
-                      <span class="sort-arrow transition"> ▲ </span>
-                    </th>
-                    <!-- Years on Team -->
-                    <th
-                      scope="col"
-                      class="hidden md:table-cell px-2 py-3 cursor-pointer select-none sortable"
-                      data-sort-key="yearsOnTeam"
-                    >
-                      Year on Team
-                      <span class="sort-arrow transition"> ▲ </span>
-                    </th>
-                  </tr>
-                </thead>
+                  <th class="w-10"></th>
+                  <th class="">Athlete</th>
+                  <th class="">Year On team</th>
+                  <th class="">Class</th>
+                  <th class="">Stroke</th>
+                </tr>
+              </thead>
 
-                <!-- JS will render all rows here -->
-                <tbody id="roster-table-body" class="divide-y divide-gray-100">
-                  <!-- Example of what a row *might* look like (for your visual reference only)
-                  <tr>
-                    <td class="px-4 py-3">
-                      <div class="h-9 w-9 rounded-full bg-green-900 text-white flex items-center justify-center text-xs font-semibold">
-                        EJ
-                      </div>
-                    </td>
-                    <td class="px-4 py-3">
-                      <div class="font-medium text-gray-900">Emma Johnson</div>
-                      <div class="text-xs text-gray-500">Girls Team</div>
-                    </td>
-                    <td class="px-4 py-3 text-center">
-                      <span class="inline-flex items-center rounded-full bg-yellow-100 px-2 py-0.5 text-[11px] font-semibold text-yellow-800">
-                        C
-                      </span>
-                    </td>
-                    <td class="px-4 py-3 text-gray-700">
-                      Sr.
-                    </td>
-                    <td class="px-4 py-3 text-gray-700">
-                      4th
-                    </td>
-                  </tr>
-                  -->
-                </tbody>
-              </table>
-            </div>
+              <tbody
+                id="rosterBody"
+                class="divide-y divide-gray-100 [&>tr:nth-child(even)]:bg-gray-50/60"
+              >
+                <tr>
+                  <td colspan="5" class="px-4 py-6 text-gray-500"></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
 
     <!-- Footer -->
@@ -687,8 +708,7 @@
       </div>
     </footer>
 
-    <script src="./js/mobile-menu.js"></script>
-
     <script src="./scripts/mobile-menu.js"></script>
+    <script src="./js/renderRoster.js"></script>
   </body>
 </html>
