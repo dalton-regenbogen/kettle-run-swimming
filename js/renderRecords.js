@@ -39,8 +39,10 @@ function render() {
           <div class="font-semibold text-sm text-black leading-snug">${escapeHtml(r.Event)}</div>
           <div class="text-sm font-semibold tabular-nums text-black">${escapeHtml(r.RecordTime)}</div>
         </div>
-        <div class="mt-1 text-[11px] text-gray-700 leading-snug wrap-break-word">${escapeHtml(r.RecordHolder)}</div>
-        <div class="mt-1 text-[11px] text-gray-500">${escapeHtml(r.RecordDate)}</div>
+        <div class="flex items-start justify-between gap-3">
+          <div class="mt-1 text-[11px] text-gray-700 leading-snug wrap-break-word">${escapeHtml(r.RecordHolder)}</div>
+          <div class="mt-1 text-[11px] text-gray-500">${escapeHtml(r.RecordDate)}</div>
+        </div>
       </div>
 
       <!-- Desktop normal cell -->
@@ -64,8 +66,10 @@ function render() {
           <div class="font-semibold text-sm text-black leading-snug">${escapeHtml(r.Event)}</div>
           <div class="text-sm font-semibold tabular-nums text-black">${escapeHtml(r.RecordTime)}</div>
         </div>
-        <div class="mt-1 text-[11px] text-gray-700 leading-snug wrap-break-word">${escapeHtml(r.RecordHolder)}</div>
-        <div class="mt-1 text-[11px] text-gray-500">${escapeHtml(r.RecordDate)}</div>
+        <div class="flex items-start justify-between gap-3">
+          <div class="mt-1 text-[11px] text-gray-700 leading-snug wrap-break-word">${escapeHtml(r.RecordHolder)}</div>
+         <div class="mt-1 text-[11px] text-gray-500">${escapeHtml(r.RecordDate)}</div>
+        </div>
       </div>
 
       <!-- Desktop normal cell -->
