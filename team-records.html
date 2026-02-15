@@ -8,8 +8,9 @@
   </head>
   <body class="min-h-screen bg-gray-50 text-gray-900">
     <!-- Header -->
-    <header class="bg-black border-b-4 border-gray-400 sticky top-0 z-50 [--header-h:110px]">
-
+    <header
+      class="bg-black border-b-4 border-gray-400 sticky top-0 z-50 [--header-h:110px]"
+    >
       <div
         class="hidden marquee marquee:hover marquee::before marquee::after bg-red-700 w-full overflow-hidden py-2 md:py-3 text-xs md:text-sm font-semibold uppercase tracking-wide text-white"
       >
@@ -352,11 +353,11 @@
         <!-- Mobile Menu Shell (overlay + sliding panel) -->
         <div
           id="mobile-menu"
-          class="md:hidden fixed inset-0 pointer-events-none overflow-x-hidden"
+          class="md:hidden fixed left-0 right-0 bottom-0 top-[--header-h] z-40 pointer-events-none overflow-x-hidden"
           aria-hidden="true"
         >
           <!-- panel -->
-          <
+
           <div
             id="mobile-menu-panel"
             class="border-t-4 border-gray-400 fixed left-0 right-0 top-(--header-h) bottom-0 w-full bg-white translate-x-full transition-transform duration-300 ease-out overflow-y-auto overscroll-contain"
