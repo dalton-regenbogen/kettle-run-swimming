@@ -15,22 +15,9 @@ async function loadCompetitionSchedule() {
       .map((o) => {
         const safeShort = escapeHtml(o.short ?? "");
         const safeFull = escapeHtml(o.full ?? "");
-        return `
-          <span class="relative inline-block group cursor-auto">
-            <span class="">
-              ${safeShort}
-            </span>
-            <span
-              class="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-full mb-2
-                    hidden group-hover:block whitespace-nowrap
-                    rounded-md bg-white px-2 py-1 text-xs text-black shadow-lg z-50"
-            >
-              ${safeFull}
-            </span>
-          </span>
-        `;
+        return `<span class="relative inline-block group cursor-auto"><span class="">${safeShort}</span><span class="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover:block whitespace-nowrap rounded-md bg-white px-2 py-1 text-xs text-black shadow-lg z-50">${safeFull}</span></span>`;
       })
-      .join(`<span class="text-black">, </span>`);
+      .join(", ");
   }
 
   function escapeHtml(str) {
@@ -79,7 +66,7 @@ async function loadCompetitionSchedule() {
 
 function formatDate(dateString) {
   const [year, month, day] = dateString.split("-");
-  return `${month}/${day}/${year}`;
+  return `${month}/${day}/${year.slice(2)}`;
 }
 
 loadCompetitionSchedule();

@@ -55,7 +55,7 @@ function renderRosterRows(athletes) {
     tdAvatar.appendChild(avatar);
 
     const tdName = document.createElement("td");
-    tdName.className = "px-3 md:px-4 py-2.5";
+    tdName.className = "px-1 md:px-4 py-2.5";
     const nameLine = document.createElement("div");
     nameLine.className = "font-medium";
     nameLine.textContent = `${athlete.first || ""} ${athlete.last || ""}`.trim();
@@ -68,15 +68,15 @@ function renderRosterRows(athletes) {
     tdName.appendChild(subLine);
 
     const tdYear = document.createElement("td");
-    tdYear.className = "hidden md:table-cell px-3 md:px-4 py-2.5";
+    tdYear.className = "px-1 md:px-4 py-2.5";
     tdYear.textContent = athlete.yearOnTeam || "";
 
     const tdClass = document.createElement("td");
-    tdClass.className = "px-3 md:px-4 py-2.5";
+    tdClass.className = "px-1 md:px-4 py-2.5";
     tdClass.textContent = athlete.class || "";
 
     const tdStroke = document.createElement("td");
-    tdStroke.className = "px-3 md:px-4 py-2.5";
+    tdStroke.className = "px-1 md:px-4 py-2.5";
     tdStroke.textContent = athlete.stroke || "";
 
     tr.append(tdAvatar, tdName, tdYear, tdClass, tdStroke);
