@@ -222,7 +222,7 @@
               </li>
               <li>
                 <a
-                  href=""
+                  href="./team-records.html"
                   class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-brand-light transition-colors duration-200"
                 >
                   <span
@@ -527,13 +527,13 @@
     <main class="max-w-6xl mx-auto md:px-4 px-1 md:py-12 py-6">
       <!-- Page header -->
       <div
-        class="md:rounded-2xl md:border md:border-gray-200 md:shadow-xs p-4 md:p-6 bg-white"
+        class="md:rounded-2xl md:border md:border-gray-200 md:shadow-xs p-2 md:p-6 bg-white"
       >
         <!-- Hero band -->
         <section
           class="mb-8 overflow-hidden rounded-2xl border border-gray-200 bg-black/95 text-white"
         >
-          <div class="relative px-6 py-8">
+          <div class="relative px-6 py-4 md:py-8">
             <!-- subtle diagonal texture -->
             <div
               aria-hidden="true"
@@ -550,20 +550,18 @@
             ></div>
 
             <div
-              class="relative flex flex-col gap-4 text-center md:text-start md:flex-row md:items-end md:justify-between"
+              class="relative flex flex-col gap-2.5 text-center md:text-start md:flex-row md:items-end md:justify-between"
             >
-              <div>
+              <div class="flex flex-col items-center gap-2 md:items-start">
                 <p
                   class="text-[10px] md:text-xs font-semibold uppercase tracking-[0.22em] text-white/80"
                 >
                   Kettle Run Swimming
                 </p>
-                <h1
-                  class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight"
-                >
+                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">
                   Team Roster
                 </h1>
-                <p class="mt-2 text-xs md:text-sm text-white/80">
+                <p class="text-xs md:text-sm text-white/80">
                   Official KRHS swim team rosters.
                 </p>
               </div>
@@ -571,15 +569,11 @@
               <div class="md:hidden border-b border-gray-400 w-64 m-auto"></div>
 
               <!-- quick stat pills -->
-              <div class="flex flex-col gap-2">
-                <p
-                  id="rosterLastUpdated"
-                  class="hidden md:flex rounded-md bg-gray-50 px-2 py-1 text-[10px] md:text-xs font-semibold text-gray-800 text-center"
-                ></p>
+              <div class="">
                 <a
                   id="rosterPdfLink"
                   href=""
-                  class="rounded-md bg-gray-50 px-2 py-1 text-xs font-semibold text-black text-center hover:bg-brand hover:text-white hover:border-brand transition-colors"
+                  class="rounded-md bg-gray-50 px-2 py-1 text-xs font-semibold text-black"
                   download
                 >
                   Download Roster (PDF)
@@ -593,7 +587,63 @@
           </div>
         </section>
 
-        <!-- BOYS -->
+        <section
+          class="mb-8 rounded-2xl border border-gray-200 shadow-xs p-2 md:p-6"
+        >
+          <div class="flex gap-3 md:gap-16 items-center justify-center">
+            <div
+              class="flex items-center gap-2 text-black text-[13px] font-semibold"
+            >
+              <label for="seasonSelect">Season:</label>
+              <select
+                id="seasonSelect"
+                class="bg-white border border-gray-300 px-2 py-1 rounded-lg focus:ring-1 focus:ring-brand focus:border-brand"
+              ></select>
+            </div>
+            <div class="overflow-hidden">
+              <nav aria-label="Roster filter">
+                <ul
+                  class="relative flex flex-row p-1 rounded-lg bg-gray-100 gap-1"
+                >
+                  <li>
+                    <button
+                      type="button"
+                      class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold text-black transition"
+                      data-value="All"
+                      aria-pressed="true"
+                    >
+                      All
+                    </button>
+                  </li>
+
+                  <li>
+                    <button
+                      type="button"
+                      class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold text-black transition"
+                      data-value="Boys"
+                      aria-pressed="false"
+                    >
+                      Boys
+                    </button>
+                  </li>
+
+                  <li>
+                    <button
+                      type="button"
+                      class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold text-black transition"
+                      data-value="Girls"
+                      aria-pressed="false"
+                    >
+                      Girls
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </section>
+
+        <!-- Roster -->
         <section
           class="mb-8 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
         >
@@ -610,7 +660,7 @@
                   Roster
                   <span
                     id="rosterSeasonLabel"
-                    class="text-black/90 font-semibold text-base"
+                    class="text-black/90 font-semibold text-sm md:text-base"
                   ></span>
                 </h2>
                 <p class="text-[11px] text-gray-700">
@@ -618,58 +668,10 @@
                 </p>
               </div>
             </div>
-
-            <div class="flex gap-8 items-center">
-              <div
-                class="flex items-center gap-2 text-black text-[13px] font-semibold"
-              >
-                <label for="seasonSelect">Season:</label>
-                <select
-                  id="seasonSelect"
-                  class="bg-white border border-gray-300 px-2 py-1 rounded-lg focus:ring-1 focus:ring-brand focus:border-brand"
-                ></select>
-              </div>
-              <div class="overflow-hidden mx-auto md:mx-0">
-                <nav aria-label="Roster filter">
-                  <ul
-                    class="relative flex flex-row p-1 rounded-lg bg-gray-100 gap-1"
-                  >
-                    <li>
-                      <button
-                        type="button"
-                        class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold text-black transition"
-                        data-value="All"
-                        aria-pressed="true"
-                      >
-                        All
-                      </button>
-                    </li>
-
-                    <li>
-                      <button
-                        type="button"
-                        class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold text-black transition"
-                        data-value="Boys"
-                        aria-pressed="false"
-                      >
-                        Boys
-                      </button>
-                    </li>
-
-                    <li>
-                      <button
-                        type="button"
-                        class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold text-black transition"
-                        data-value="Girls"
-                        aria-pressed="false"
-                      >
-                        Girls
-                      </button>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
+            <p
+              id="rosterLastUpdated"
+              class="hidden md:flex rounded-md bg-gray-100 px-2 py-1 text-[10px] md:text-[11px] font-semibold text-black text-center"
+            ></p>
           </div>
 
           <!-- Table wrapper -->
@@ -681,7 +683,7 @@
                 >
                   <th class="w-10"></th>
                   <th class="">Athlete</th>
-                  <th class="">Year On team</th>
+                  <th class="hidden md:table-cell">Year on Team</th>
                   <th class="">Class</th>
                   <th class="">Stroke</th>
                 </tr>

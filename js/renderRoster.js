@@ -68,7 +68,7 @@ function renderRosterRows(athletes) {
     tdName.appendChild(subLine);
 
     const tdYear = document.createElement("td");
-    tdYear.className = "px-3 md:px-4 py-2.5";
+    tdYear.className = "hidden md:table-cell px-3 md:px-4 py-2.5";
     tdYear.textContent = athlete.yearOnTeam || "";
 
     const tdClass = document.createElement("td");
