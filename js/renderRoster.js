@@ -103,6 +103,7 @@ async function initRoster() {
     const index = await fetchJson("./assets/rosters/roster-index.json");
 
     const seasonSelect = document.getElementById("seasonSelect");
+    
     if (seasonSelect) {
       seasonSelect.innerHTML = "";
       for (const s of index.seasons || []) {
@@ -120,6 +121,26 @@ async function initRoster() {
       // fallback: your current hardcoded file
       await loadSeason("roster-2025-2026.json");
     }
+
+    const seasonSelectMobile = document.getElementById("seasonSelectMobile");
+    if (seasonSelectMobile) {
+      seasonSelectMobile.innerHTML = "";
+      for (const s of index.seasons || []) {
+        const opt = document.createElement("option");
+        opt.value = s.file;
+        opt.textContent = s.label;
+        seasonSelectMobile.appendChild(opt);
+      }
+
+      seasonSelectMobile.addEventListener("change", () => loadSeason(seasonSelectMobile.value));
+      // default to first season
+      if (seasonSelectMobile.value) await loadSeason(seasonSelectMobile.value);
+      else if (index.seasons?.[0]) await loadSeason(index.seasons[0].file);
+    } else {
+      // fallback: your current hardcoded file
+      await loadSeason("roster-2025-2026.json");
+    }
+
 
     // Wire up All/Boys/Girls filter buttons
       const filterButtons = Array.from(document.querySelectorAll(".roster-filter-btn"));
