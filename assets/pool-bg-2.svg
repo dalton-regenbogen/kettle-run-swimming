@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 160" width="900" height="160">
+  <defs>
+    <!-- Buoy pattern (repeats horizontally) -->
+    <pattern id="buoys" patternUnits="userSpaceOnUse" width="14" height="22" patternTransform="translate(24 0)">
+      <rect x="0" y="0" width="12" height="22" rx="5" fill="rgba(0,0,0,0.50)"/>
+    </pattern>
+
+    <!-- Tile grid pattern -->
+    <pattern id="tileGrid" patternUnits="userSpaceOnUse" width="15" height="10">
+      <path d="M0 0V10" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
+      <path d="M0 0H15" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- ===== Lane rope (even spacing inside 160px tile) ===== -->
+  <!-- Buoys: y=36, h=22 -->
+  <rect x="0" y="36" width="900" height="22" fill="url(#buoys)"/>
+  <!-- Rope line through center of buoys -->
+  <line x1="0" y1="47" x2="900" y2="47" stroke="rgba(0,0,0,0.18)" stroke-width="2"/>
+
+  <!-- ===== Tile black line (even gap below buoys) ===== -->
+  <!-- Tile strip: y=94, h=30 -->
+  <rect x="0" y="94" width="900" height="30" fill="rgba(0,0,0,0.22)"/>
+  <rect x="0" y="94" width="900" height="30" fill="url(#tileGrid)"/>
+
+  <!-- Optional soft edges (nice polish) -->
+  <rect x="0" y="94" width="900" height="4" fill="rgba(255,255,255,0.06)"/>
+  <rect x="0" y="120" width="900" height="4" fill="rgba(0,0,0,0.06)"/>
+</svg>

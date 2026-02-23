@@ -1,0 +1,801 @@
+{
+  "season": "2025-2026",
+  "updated": "2026-02-23",
+  "weeks": [
+    {
+      "weekId": "w01",
+      "weekLabel": "Week of Nov 10, 2025",
+      "weekStart": "2025-11-10",
+      "weekEnd": "2025-11-16",
+      "notes": "",
+      "practices": [
+        {
+          "practiceId": "p01",
+          "day": {
+            "short": "Mon",
+            "long": "Monday"
+          },
+          "date": "2025-11-10",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p02",
+          "day": {
+            "short": "Tue",
+            "long": "Tuesday"
+          },
+          "date": "2025-11-11",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p03",
+          "day": {
+            "short": "Wed",
+            "long": "Wednesday"
+          },
+          "date": "2025-11-12",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p04",
+          "day": {
+            "short": "Thu",
+            "long": "Thursday"
+          },
+          "date": "2025-11-13",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "weekId": "w02",
+      "weekLabel": "Week of Nov 17, 2025",
+      "weekStart": "2025-11-17",
+      "weekEnd": "2025-11-23",
+      "notes": "",
+      "practices": [
+        {
+          "practiceId": "p05",
+          "day": {
+            "short": "Mon",
+            "long": "Monday"
+          },
+          "date": "2025-11-17",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p06",
+          "day": {
+            "short": "Tue",
+            "long": "Tuesday"
+          },
+          "date": "2025-11-18",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p07",
+          "day": {
+            "short": "Wed",
+            "long": "Wednesday"
+          },
+          "date": "2025-11-19",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p08",
+          "day": {
+            "short": "Thu",
+            "long": "Thursday"
+          },
+          "date": "2025-11-20",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "weekId": "w03",
+      "weekLabel": "Week of Nov 24, 2025",
+      "weekStart": "2025-11-24",
+      "weekEnd": "2025-11-30",
+      "notes": "",
+      "practices": [
+        {
+          "practiceId": "p09",
+          "day": {
+            "short": "Mon",
+            "long": "Monday"
+          },
+          "date": "2025-11-24",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p10",
+          "day": {
+            "short": "Tue",
+            "long": "Tuesday"
+          },
+          "date": "2025-11-25",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p11",
+          "day": {
+            "short": "Wed",
+            "long": "Wednesday"
+          },
+          "date": "2025-11-26",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "off"
+        },
+        {
+          "practiceId": "p12",
+          "day": {
+            "short": "Thu",
+            "long": "Thursday"
+          },
+          "date": "2025-11-27",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "off"
+        }
+      ]
+    },
+    {
+      "weekId": "w04",
+      "weekLabel": "Week of Dec 1, 2025",
+      "weekStart": "2025-12-01",
+      "weekEnd": "2025-12-07",
+      "notes": "",
+      "practices": [
+        {
+          "practiceId": "p13",
+          "day": {
+            "short": "Mon",
+            "long": "Monday"
+          },
+          "date": "2025-12-01",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p14",
+          "day": {
+            "short": "Tue",
+            "long": "Tuesday"
+          },
+          "date": "2025-12-02",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p15",
+          "day": {
+            "short": "Wed",
+            "long": "Wednesday"
+          },
+          "date": "2025-12-03",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p16",
+          "day": {
+            "short": "Thu",
+            "long": "Thursday"
+          },
+          "date": "2025-12-04",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "weekId": "w05",
+      "weekLabel": "Week of Dec 8, 2025",
+      "weekStart": "2025-12-08",
+      "weekEnd": "2025-12-14",
+      "notes": "",
+      "practices": [
+        {
+          "practiceId": "p17",
+          "day": {
+            "short": "Mon",
+            "long": "Monday"
+          },
+          "date": "2025-12-08",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p18",
+          "day": {
+            "short": "Tue",
+            "long": "Tuesday"
+          },
+          "date": "2025-12-09",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "off"
+        },
+        {
+          "practiceId": "p19",
+          "day": {
+            "short": "Wed",
+            "long": "Wednesday"
+          },
+          "date": "2025-12-10",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p20",
+          "day": {
+            "short": "Thu",
+            "long": "Thursday"
+          },
+          "date": "2025-12-11",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "weekId": "w06",
+      "weekLabel": "Week of Dec 15, 2025",
+      "weekStart": "2025-12-15",
+      "weekEnd": "2025-12-21",
+      "notes": "",
+      "practices": [
+        {
+          "practiceId": "p21",
+          "day": {
+            "short": "Mon",
+            "long": "Monday"
+          },
+          "date": "2025-12-15",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p22",
+          "day": {
+            "short": "Tue",
+            "long": "Tuesday"
+          },
+          "date": "2025-12-16",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p23",
+          "day": {
+            "short": "Wed",
+            "long": "Wednesday"
+          },
+          "date": "2025-12-17",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p24",
+          "day": {
+            "short": "Thu",
+            "long": "Thursday"
+          },
+          "date": "2025-12-18",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "weekId": "w07",
+      "weekLabel": "Week of Dec 22, 2025",
+      "weekStart": "2025-12-22",
+      "weekEnd": "2025-12-28",
+      "notes": "",
+      "practices": [
+        {
+          "practiceId": "p25",
+          "day": {
+            "short": "Mon",
+            "long": "Monday"
+          },
+          "date": "2025-12-22",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p26",
+          "day": {
+            "short": "Tue",
+            "long": "Tuesday"
+          },
+          "date": "2025-12-23",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p27",
+          "day": {
+            "short": "Wed",
+            "long": "Wednesday"
+          },
+          "date": "2025-12-24",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "off"
+        },
+        {
+          "practiceId": "p28",
+          "day": {
+            "short": "Thu",
+            "long": "Thursday"
+          },
+          "date": "2025-12-25",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "off"
+        }
+      ]
+    },
+    {
+      "weekId": "w08",
+      "weekLabel": "Week of Dec 29, 2025",
+      "weekStart": "2025-12-29",
+      "weekEnd": "2026-01-04",
+      "notes": "",
+      "practices": [
+        {
+          "practiceId": "p29",
+          "day": {
+            "short": "Mon",
+            "long": "Monday"
+          },
+          "date": "2025-12-29",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "off"
+        },
+        {
+          "practiceId": "p30",
+          "day": {
+            "short": "Tue",
+            "long": "Tuesday"
+          },
+          "date": "2025-12-30",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "off"
+        },
+        {
+          "practiceId": "p31",
+          "day": {
+            "short": "Wed",
+            "long": "Wednesday"
+          },
+          "date": "2025-12-31",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "off"
+        },
+        {
+          "practiceId": "p32",
+          "day": {
+            "short": "Thu",
+            "long": "Thursday"
+          },
+          "date": "2026-01-01",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "off"
+        }
+      ]
+    },
+    {
+      "weekId": "w09",
+      "weekLabel": "Week of Jan 5, 2026",
+      "weekStart": "2026-01-05",
+      "weekEnd": "2026-01-11",
+      "notes": "",
+      "practices": [
+        {
+          "practiceId": "p33",
+          "day": {
+            "short": "Mon",
+            "long": "Monday"
+          },
+          "date": "2026-01-05",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p34",
+          "day": {
+            "short": "Tue",
+            "long": "Tuesday"
+          },
+          "date": "2026-01-06",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p35",
+          "day": {
+            "short": "Wed",
+            "long": "Wednesday"
+          },
+          "date": "2026-01-07",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p36",
+          "day": {
+            "short": "Thu",
+            "long": "Thursday"
+          },
+          "date": "2026-01-08",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "weekId": "w10",
+      "weekLabel": "Week of Jan 12, 2026",
+      "weekStart": "2026-01-12",
+      "weekEnd": "2026-01-18",
+      "notes": "",
+      "practices": [
+        {
+          "practiceId": "p37",
+          "day": {
+            "short": "Mon",
+            "long": "Monday"
+          },
+          "date": "2026-01-12",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p38",
+          "day": {
+            "short": "Tue",
+            "long": "Tuesday"
+          },
+          "date": "2026-01-13",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p39",
+          "day": {
+            "short": "Wed",
+            "long": "Wednesday"
+          },
+          "date": "2026-01-14",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p40",
+          "day": {
+            "short": "Thu",
+            "long": "Thursday"
+          },
+          "date": "2026-01-15",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "weekId": "w11",
+      "weekLabel": "Week of Jan 19, 2026",
+      "weekStart": "2026-01-19",
+      "weekEnd": "2026-01-25",
+      "notes": "",
+      "practices": [
+        {
+          "practiceId": "p41",
+          "day": {
+            "short": "Mon",
+            "long": "Monday"
+          },
+          "date": "2026-01-19",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p42",
+          "day": {
+            "short": "Tue",
+            "long": "Tuesday"
+          },
+          "date": "2026-01-20",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p43",
+          "day": {
+            "short": "Wed",
+            "long": "Wednesday"
+          },
+          "date": "2026-01-21",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p44",
+          "day": {
+            "short": "Thu",
+            "long": "Thursday"
+          },
+          "date": "2026-01-22",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "weekId": "w12",
+      "weekLabel": "Week of Jan 26, 2026",
+      "weekStart": "2026-01-26",
+      "weekEnd": "2026-02-01",
+      "notes": "",
+      "practices": [
+        {
+          "practiceId": "p45",
+          "day": {
+            "short": "Mon",
+            "long": "Monday"
+          },
+          "date": "2026-01-26",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p46",
+          "day": {
+            "short": "Tue",
+            "long": "Tuesday"
+          },
+          "date": "2026-01-27",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p47",
+          "day": {
+            "short": "Wed",
+            "long": "Wednesday"
+          },
+          "date": "2026-01-28",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p48",
+          "day": {
+            "short": "Thu",
+            "long": "Thursday"
+          },
+          "date": "2026-01-29",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "weekId": "w13",
+      "weekLabel": "Week of Feb 2, 2026",
+      "weekStart": "2026-02-02",
+      "weekEnd": "2026-02-08",
+      "notes": "",
+      "practices": [
+        {
+          "practiceId": "p49",
+          "day": {
+            "short": "Mon",
+            "long": "Monday"
+          },
+          "date": "2026-02-02",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p50",
+          "day": {
+            "short": "Tue",
+            "long": "Tuesday"
+          },
+          "date": "2026-02-03",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p51",
+          "day": {
+            "short": "Wed",
+            "long": "Wednesday"
+          },
+          "date": "2026-02-04",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p52",
+          "day": {
+            "short": "Thu",
+            "long": "Thursday"
+          },
+          "date": "2026-02-05",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "weekId": "w14",
+      "weekLabel": "Week of Feb 9, 2026",
+      "weekStart": "2026-02-09",
+      "weekEnd": "2026-02-15",
+      "notes": "",
+      "practices": [
+        {
+          "practiceId": "p53",
+          "day": {
+            "short": "Mon",
+            "long": "Monday"
+          },
+          "date": "2026-02-09",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p54",
+          "day": {
+            "short": "Tue",
+            "long": "Tuesday"
+          },
+          "date": "2026-02-10",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p55",
+          "day": {
+            "short": "Wed",
+            "long": "Wednesday"
+          },
+          "date": "2026-02-11",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p56",
+          "day": {
+            "short": "Thu",
+            "long": "Thursday"
+          },
+          "date": "2026-02-12",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "weekId": "w15",
+      "weekLabel": "Week of Feb 16, 2026",
+      "weekStart": "2026-02-16",
+      "weekEnd": "2026-02-22",
+      "notes": "",
+      "practices": [
+        {
+          "practiceId": "p57",
+          "day": {
+            "short": "Mon",
+            "long": "Monday"
+          },
+          "date": "2026-02-16",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p58",
+          "day": {
+            "short": "Tue",
+            "long": "Tuesday"
+          },
+          "date": "2026-02-17",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "normal"
+        },
+        {
+          "practiceId": "p59",
+          "day": {
+            "short": "Wed",
+            "long": "Wednesday"
+          },
+          "date": "2026-02-18",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "off"
+        },
+        {
+          "practiceId": "p60",
+          "day": {
+            "short": "Thu",
+            "long": "Thursday"
+          },
+          "date": "2026-02-19",
+          "time": "3:30-4:30 PM",
+          "location": "WARF",
+          "status": "off"
+        }
+      ]
+    }
+  ]
+}

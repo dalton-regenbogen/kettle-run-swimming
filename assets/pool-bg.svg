@@ -1,0 +1,129 @@
+<svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 900 300"
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <!-- ===== Lane rope area ===== -->
+      <!-- Center "rope" line through the buoys -->
+      <line
+        x1="0"
+        y1="55"
+        x2="900"
+        y2="55"
+        stroke="rgba(0,0,0,0.05)"
+        stroke-width="2"
+      />
+
+      <!-- Buoys (squircle-ish rounded squares) -->
+      <!-- Adjust buoy size/spacing by changing w/h and dx step -->
+      <g fill="rgba(0, 81, 48, .15)">
+        <rect x="10" y="45" width="10" height="20" rx="3" />
+        <rect x="24" y="45" width="10" height="20" rx="4" />
+        <rect x="38" y="45" width="10" height="20" rx="5" />
+        <rect x="52" y="45" width="10" height="20" rx="4" />
+        <rect x="66" y="45" width="10" height="20" rx="3" />
+      </g>
+      <g fill="rgba(243, 115, 34, .15)">
+        <rect x="80" y="45" width="10" height="20" rx="4" />
+        <rect x="94" y="45" width="10" height="20" rx="5" />
+        <rect x="108" y="45" width="10" height="20" rx="4" />
+        <rect x="122" y="45" width="10" height="20" rx="3" />
+        <rect x="136" y="45" width="10" height="20" rx="4" />
+      </g>
+      <g fill="rgba(0, 81, 48, .15)">
+        <rect x="150" y="45" width="10" height="20" rx="5" />
+        <rect x="164" y="45" width="10" height="20" rx="4" />
+        <rect x="178" y="45" width="10" height="20" rx="3" />
+        <rect x="192" y="45" width="10" height="20" rx="4" />
+        <rect x="206" y="45" width="10" height="20" rx="5" />
+        <rect x="220" y="45" width="10" height="20" rx="4" />
+      </g>
+      <g fill="rgba(243, 115, 34, .15)">
+        <rect x="234" y="45" width="10" height="20" rx="3" />
+        <rect x="248" y="45" width="10" height="20" rx="4" />
+        <rect x="262" y="45" width="10" height="20" rx="5" />
+        <rect x="276" y="45" width="10" height="20" rx="4" />
+        <rect x="290" y="45" width="10" height="20" rx="3" />
+      </g>
+      <g fill="rgba(0, 81, 48, .15)">
+        <rect x="304" y="45" width="10" height="20" rx="4" />
+        <rect x="318" y="45" width="10" height="20" rx="5" />
+        <rect x="332" y="45" width="10" height="20" rx="4" />
+        <rect x="346" y="45" width="10" height="20" rx="3" />
+        <rect x="360" y="45" width="10" height="20" rx="4" />
+      </g>
+      <g fill="rgba(243, 115, 34, .15)">
+        <rect x="374" y="45" width="10" height="20" rx="5" />
+        <rect x="388" y="45" width="10" height="20" rx="4" />
+        <rect x="402" y="45" width="10" height="20" rx="3" />
+        <rect x="416" y="45" width="10" height="20" rx="4" />
+        <rect x="430" y="45" width="10" height="20" rx="5" />
+      </g>
+      <g fill="rgba(0, 81, 48, .15)">
+        <rect x="444" y="45" width="10" height="20" rx="4" />
+        <rect x="458" y="45" width="10" height="20" rx="3" />
+        <rect x="472" y="45" width="10" height="20" rx="4" />
+        <rect x="486" y="45" width="10" height="20" rx="5" />
+        <rect x="500" y="45" width="10" height="20" rx="4" />
+      </g>
+      <g fill="rgba(243, 115, 34, .15)">
+        <rect x="514" y="45" width="10" height="20" rx="3" />
+        <rect x="528" y="45" width="10" height="20" rx="4" />
+        <rect x="542" y="45" width="10" height="20" rx="5" />
+        <rect x="556" y="45" width="10" height="20" rx="4" />
+        <rect x="570" y="45" width="10" height="20" rx="3" />
+      </g>
+      <g fill="rgba(0, 81, 48, .15)">
+        <rect x="584" y="45" width="10" height="20" rx="5" />
+        <rect x="598" y="45" width="10" height="20" rx="4" />
+        <rect x="612" y="45" width="10" height="20" rx="5" />
+        <rect x="626" y="45" width="10" height="20" rx="4" />
+        <rect x="640" y="45" width="10" height="20" rx="5" />
+      </g>
+      <g fill="rgba(243, 115, 34, .15)">
+        <rect x="654" y="45" width="10" height="20" rx="4" />
+        <rect x="668" y="45" width="10" height="20" rx="5" />
+        <rect x="682" y="45" width="10" height="20" rx="4" />
+        <rect x="696" y="45" width="10" height="20" rx="5" />
+        <rect x="710" y="45" width="10" height="20" rx="4" />
+      </g>
+      <g fill="rgba(0, 81, 48, .15)">
+        <rect x="724" y="45" width="10" height="20" rx="5" />
+        <rect x="738" y="45" width="10" height="20" rx="4" />
+        <rect x="752" y="45" width="10" height="20" rx="5" />
+        <rect x="766" y="45" width="10" height="20" rx="4" />
+        <rect x="780" y="45" width="10" height="20" rx="5" />
+      </g>
+      <g fill="rgba(243, 115, 34, .15)">
+        <rect x="794" y="45" width="10" height="20" rx="4" />
+        <rect x="808" y="45" width="10" height="20" rx="5" />
+        <rect x="822" y="45" width="10" height="20" rx="4" />
+        <rect x="836" y="45" width="10" height="20" rx="5" />
+        <rect x="850" y="45" width="10" height="20" rx="4" />
+
+      </g>
+      <g fill="rgba(0, 81, 48, .15)">
+        <rect x="864" y="45" width="10" height="20" rx="4" />
+        <rect x="878" y="45" width="10" height="20" rx="5" />
+      </g>
+
+      <defs>
+        <!-- Creates a repeating tile grid -->
+        <pattern
+          id="tileGrid"
+          patternUnits="userSpaceOnUse"
+          width="10"
+          height="10"
+        >
+          <!-- vertical line -->
+          <path d="M0 0V10" stroke="rgba(255,255,255,0.22)" stroke-width="1" />
+          <!-- horizontal line -->
+          <path d="M0 0H15" stroke="rgba(255,255,255,0.10)" stroke-width="1" />
+        </pattern>
+      </defs>
+
+      <!-- Main black-ish strip -->
+      <rect x="25" y="110" width="850" height="20" fill="rgba(0,0,0,0.10)" />
+
+      <rect x="25" y="110" width="850" height="20" fill="url(#tileGrid)" />
+    </svg>

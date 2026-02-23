@@ -10,6 +10,8 @@
   to   { transform: translateX(-50%); }
 }
 
+ 
+
 @layer utilities {
   .marquee::before,
   .marquee::after {
@@ -67,7 +69,6 @@
   .marquee:focus-within .marquee__inner {
   animation-play-state: paused;
   }
-
 
   @media (prefers-reduced-motion: reduce) {
     .marquee__inner { animation: none; }
