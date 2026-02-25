@@ -12,6 +12,7 @@
       "homeAway": "Away",
       "hostSchool": "Brentsville",
       "location": "PWAC",
+      "locationFull": "Prince William Aquatic Center",
       "startTime": "18:00",
       "seasonDesignation": "Regular Season"
     },
@@ -19,12 +20,13 @@
       "date": "2025-12-09",
       "type": "Double Dual",
       "opponents": [
-        { "short": "MHS", "full": "Millbrook High School"},
+        { "short": "MBHS", "full": "Millbrook High School"},
         { "short": "JHHS", "full": "John Handley High School"}
       ],
       "homeAway": "Away",
       "hostSchool": "Millbrook",
       "location": "JBP",
+      "locationFull": "Jim Barnett Park",
       "startTime": "19:00",
       "seasonDesignation": "Regular Season"
     },
@@ -38,6 +40,7 @@
       "homeAway": "Away",
       "hostSchool": "Liberty",
       "location": "WARF",
+      "locationFull": "Warrenton Aquatic and Recreation Facility",
       "startTime": "18:00",
       "seasonDesignation": "Regular Season"
     },
@@ -51,6 +54,7 @@
       "homeAway": "Home",
       "hostSchool": "Kettle Run",
       "location": "WARF",
+      "locationFull": "Warrenton Aquatic and Recreation Facility",
       "startTime": "18:00",
       "seasonDesignation": "Regular Season"
     },
@@ -65,6 +69,7 @@
       "homeAway": "Home",
       "hostSchool": "Kettle Run",
       "location": "WARF",
+      "locationFull": "Warrenton Aquatic and Recreation Facility",
       "startTime": "19:00",
       "seasonDesignation": "Regular Season"
     },
@@ -78,6 +83,7 @@
       "homeAway": "Away",
       "hostSchool": "Manassas Park",
       "location": "MPCC",
+      "locationFull": "Manassas Park Community Center",
       "startTime": "19:00",
       "seasonDesignation": "Regular Season"
     },
@@ -94,6 +100,7 @@
       "homeAway": "Away",
       "hostSchool": "Liberty",
       "location": "WARF",
+      "locationFull": "Warrenton Aquatic and Recreation Facility",
       "startTime": "18:00",
       "seasonDesignation": "Regular Season"
     },
@@ -106,6 +113,7 @@
       "homeAway": "Neutral",
       "hostSchool": "Brentsville",
       "location": "PWAC",
+      "locationFull": "Prince William Aquatic Center",
       "startTime": "11:00",
       "seasonDesignation": "Post Season"
     },
@@ -118,6 +126,7 @@
       "homeAway": "Neutral",
       "hostSchool": "Maggie L. Walker",
       "location": "CSAC",
+      "locationFull": "Collegiate School Aquatic Center",
       "startTime": "14:00",
       "seasonDesignation": "Post Season"
     },
@@ -130,6 +139,7 @@
       "homeAway": "Neutral",
       "hostSchool": "Maggie L. Walker",
       "location": "CSAC",
+      "locationFull": "Collegiate School Aquatic Center",
       "startTime": "9:00",
       "seasonDesignation": "Post Season"
     }

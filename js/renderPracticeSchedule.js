@@ -35,7 +35,7 @@ function renderWeekHeaderRow(week) {
 
   return `
     <tr class="bg-brand border-b border-zinc-200">
-      <td colspan="3" class="px-3 md:px-4 py-2.5 border-t border-zinc-200 font-semibold text-white text-sm md:text-base">
+      <td colspan="4" class="px-3 md:px-4 py-2.5 border-t border-zinc-200 font-semibold text-white text-sm md:text-base">
         ${label}
       </td>
     </tr>
@@ -43,6 +43,7 @@ function renderWeekHeaderRow(week) {
       <td class="px-3 md:px-4 py-1 text-left text-[11px] md:text-sm font-semibold tracking-wider">Day</td>
       <td class="px-3 md:px-4 py-1 text-left text-[11px] md:text-sm font-semibold tracking-wider">Time</td>
       <td class="px-3 md:px-4 py-1 text-left text-[11px] md:text-sm font-semibold tracking-wider">Location</td>
+      <td class="px-3 md:px-4 py-1 text-left text-[11px] md:text-sm font-semibold tracking-wider">Note</td>
     </tr>
   `;
 }
@@ -53,6 +54,7 @@ function renderPracticeRow(practice) {
   const time = escapeHtml(practice?.time || "");
   const location = escapeHtml(practice?.location || "");
   const status = practice?.status || "normal";
+  const note = escapeHtml(practice?.note || "");
 
   const rowClass = statusRowClass(status);
 
@@ -67,6 +69,7 @@ function renderPracticeRow(practice) {
 
       <td class="px-3 md:px-4 py-2.5 align-top whitespace-nowrap">${time || "—"}</td>
       <td class="px-3 md:px-4 py-2.5 align-top">${location || "—"}</td>
+      <td class="px-3 md:px-4 py-2.5 align-top">${note || "—"}</td>
     </tr>
   `;
 }
@@ -94,7 +97,7 @@ function renderScheduleTable(data) {
                 <h2
                   class="text-base md:text-lg font-bold tracking-tight text-black"
                 >
-                Full Season Schedule
+                Full Practice Schedule
                 </h2>
                 <p class="text-[11px] text-gray-700">
                   All practices <span class="hidden md:inline">for 2025-2026 season</span> are at WARF, 3:30-4:30 PM, M - TH.
@@ -114,7 +117,7 @@ function renderScheduleTable(data) {
         <tbody>
           ${bodyRows || `
             <tr>
-              <td colspan="3" class="px-4 py-6 text-center text-zinc-500">No schedule data found.</td>
+              <td colspan="4" class="px-4 py-6 text-center text-zinc-500">No schedule data found.</td>
             </tr>
           `}
         </tbody>

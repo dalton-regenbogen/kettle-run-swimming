@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Team Records</title>
+    <title>KR Swim | Team Records</title>
     <link rel="stylesheet" href="./css/output.css" />
   </head>
-  <body class="min-h-screen bg-gray-50 text-gray-900 ">
+  <body class="min-h-screen bg-gray-100 text-gray-900 ">
     <!-- Header -->
     <header
       class="bg-black border-b-4 border-gray-400 sticky top-0 z-50 [--header-h:110px]"
@@ -206,7 +206,7 @@
                         href="./2025-2026-results.html"
                         class="block px-4 py-2 text-sm font-semibold text-white/90 hover:text-white hover:bg-white/10"
                       >
-                        2025-2026 Results
+                        Current Season
                       </a>
                     </li>
                     <li>
@@ -214,7 +214,7 @@
                         href="#"
                         class="block px-4 py-2 text-sm font-semibold text-white/90 hover:text-white hover:bg-white/10"
                       >
-                        2024-2025 Results
+                        Past Seasons
                       </a>
                     </li>
                   </ul>
@@ -466,10 +466,10 @@
                     class="submenu px-9 text-left text-black/70 text-sm font-normal overflow-hidden max-h-0 opacity-0 transition-[max-height,opacity] duration-300 ease-out"
                   >
                     <li class="py-3">
-                      <a href="./2025-2026-results.html"> 2025-2026 Season </a>
+                      <a href="./2025-2026-results.html"> Current Season </a>
                     </li>
                     <li class="py-3">
-                      <a href="#"> 2024-2025 Season </a>
+                      <a href="#"> Past Seasons </a>
                     </li>
                   </ul>
                 </li>
@@ -527,7 +527,7 @@
     >
       <!-- Page header -->
       <div
-        class=" md:rounded-2xl md:border md:border-gray-200 md:shadow-xs p-2 md:p-6 bg-white"
+        class=" md:rounded-2xl md:border md:border-gray-200 md:shadow-xs p-2 md:p-6 bg-grey-100 md:bg-white"
       >
         <!-- Hero band -->
         <section
@@ -593,7 +593,7 @@
         >
           <!-- Section header bar -->
           <div
-            class="flex items-center justify-between border-b-[6px] border-brand md:border-b md:border-gray-200 bg-white px-3 md:px-5 py-4"
+            class="flex items-center justify-between border-b-[6px] border-brand md:border-b md:border-gray-200 px-3 md:px-5 py-4"
           >
             <div class="flex items-center gap-3">
               <div class="h-9 w-1.5 rounded-full bg-brand"></div>
@@ -620,14 +620,23 @@
             <table
               class="min-w-full text-xs md:text-sm whitespace-normal md:whitespace-nowrap"
             >
-              <thead class="hidden md:table-header-group bg-brand text-white">
+              <thead class=" bg-brand text-white">
+                <tr class="md:hidden text-xs font-semibold tracking-wide">
+                  <th class="px-3 py-2.5 text-left font-semibold tracking-wide">
+                    <div class="flex justify-between">
+                      <div>Event | Name</div>
+                      <div>Time | Date</div>
+                    </div>
+                  </th>
+                  
+                </tr>
                 <tr
-                  class="[&>th]:px-3 md:[&>th]:px-4 [&>th]:py-2.5 [&>th]:text-left [&>th]:font-semibold [&>th]:tracking-wide"
+                  class="hidden md:table-row [&>th]:px-3 md:[&>th]:px-4 [&>th]:py-2.5 [&>th]:text-left [&>th]:font-semibold [&>th]:tracking-wide"
                 >
-                  <th class="w-40 md:w-48">Event</th>
-                  <th class="w-28 md:w-48">Time</th>
-                  <th class="min-w-40">Record Holder</th>
-                  <th class="w-32 md:w-48">Date</th>
+                  <th class="md:w-48">Event</th>
+                  <th class="md:w-48">Time</th>
+                  <th class="md:min-w-40">Record Holder</th>
+                  <th class="md:w-48">Date</th>
                 </tr>
               </thead>
 
@@ -649,7 +658,7 @@
         >
           <!-- Section header bar -->
           <div
-            class="flex items-center justify-between border-b border-gray-200 bg-background-50 px-5 py-4"
+            class="flex items-center justify-between border-b-[6px] border-brand md:border-b md:border-gray-200 bg-white px-3 md:px-5 py-4"
           >
             <div class="flex items-center gap-3">
               <div class="h-9 w-1.5 rounded-full bg-brand"></div>
@@ -671,14 +680,23 @@
             <table
               class="min-w-full text-xs md:text-sm whitespace-normal md:whitespace-nowrap"
             >
-              <thead class="hidden md:table-header-group bg-brand text-white">
+              <thead class=" bg-brand text-white">
+                <tr class="md:hidden text-xs font-semibold tracking-wide">
+                  <th class="px-3 py-2.5 text-left font-semibold tracking-wide">
+                    <div class="flex justify-between">
+                      <div>Event | Name</div>
+                      <div>Time | Date</div>
+                    </div>
+                  </th>
+                  
+                </tr>
                 <tr
-                  class="[&>th]:px-3 md:[&>th]:px-4 [&>th]:py-2.5 [&>th]:text-left [&>th]:font-semibold [&>th]:tracking-wide"
+                  class="hidden md:table-row [&>th]:px-3 md:[&>th]:px-4 [&>th]:py-2.5 [&>th]:text-left [&>th]:font-semibold [&>th]:tracking-wide"
                 >
-                  <th class="w-40 md:w-48">Event</th>
-                  <th class="w-28 md:w-48">Time</th>
-                  <th class="min-w-40">Record Holder</th>
-                  <th class="w-32 md:w-48">Date</th>
+                  <th class="md:w-48">Event</th>
+                  <th class="md:w-48">Time</th>
+                  <th class="md:min-w-40">Record Holder</th>
+                  <th class="md:w-48">Date</th>
                 </tr>
               </thead>
 
@@ -695,7 +713,7 @@
         </section>
       </div>
     </main>
-    <script src="./scripts/mobile-menu.js"></script>
+    <script src="./js/mobileMenu.js"></script>
     <script src="./js/renderRecords.js"></script>
     <script src="./js/records-meta.js"></script>
   </body>

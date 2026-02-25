@@ -47,7 +47,7 @@ async function loadCompetitionSchedule() {
         ${meet.homeAway}
       </td>
       <td class="px-3 md:px-4 py-2.5">
-        ${meet.location}
+        <span class="relative inline-block group cursor-auto"><span class="">${meet.location}</span><span class="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover:block whitespace-nowrap rounded-md bg-white px-2 py-1 text-xs text-black shadow-lg z-50">${meet.locationFull}</span></span>
       </td>
     `;
 
