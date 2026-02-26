@@ -5,6 +5,7 @@
     "Gender": "Female",
     "Event": "50 Free",
     "RecordTime": "24.19",
+    "RecordBadge": "",
     "RecordDate": "7-Feb-26",
     "RecordHolder": "Emma C. Cigna"
   },
@@ -14,6 +15,7 @@
     "Gender": "Female",
     "Event": "100 Free",
     "RecordTime": "51.74",
+    "RecordBadge": "",
     "RecordDate": "7-Feb-26",
     "RecordHolder": "Emma C. Cigna"
   },
@@ -22,8 +24,9 @@
     "Course": "Yards",
     "Gender": "Female",
     "Event": "200 Free",
-    "RecordTime": "1:48.74",
-    "RecordDate": "7-Feb-26",
+    "RecordTime": "1:46.71",
+    "RecordBadge": "VHSL Class 3",
+    "RecordDate": "19-Feb-26",
     "RecordHolder": "Emma C. Cigna"
   },
   {
@@ -32,6 +35,7 @@
     "Gender": "Female",
     "Event": "500 Free",
     "RecordTime": "5:01.59",
+    "RecordBadge": "",
     "RecordDate": "31-Jan-25",
     "RecordHolder": "Emma C. Cigna"
   },
@@ -41,6 +45,7 @@
     "Gender": "Female",
     "Event": "100 Back",
     "RecordTime": "54.70",
+    "RecordBadge": "",
     "RecordDate": "7-Feb-26",
     "RecordHolder": "Emma C. Cigna"
   },
@@ -50,16 +55,18 @@
     "Gender": "Female",
     "Event": "100 Breast",
     "RecordTime": "1:02.38",
+    "RecordBadge": "",
     "RecordDate": "4-Mar-25",
     "RecordHolder": "Caroline L. Agee"
   },
   {
-    "Season": "2025",
+    "Season": "2026",
     "Course": "Yards",
     "Gender": "Female",
     "Event": "100 Fly",
-    "RecordTime": "53.66",
-    "RecordDate": "4-Mar-25",
+    "RecordTime": "53.17",
+    "RecordBadge": "VHSL Class 3",
+    "RecordDate": "19-Feb-26",
     "RecordHolder": "Emma C. Cigna"
   },
   {
@@ -68,6 +75,7 @@
     "Gender": "Female",
     "Event": "200 IM",
     "RecordTime": "1:58.66",
+    "RecordBadge": "",
     "RecordDate": "4-Mar-25",
     "RecordHolder": "Caroline L. Agee"
   },
@@ -77,6 +85,7 @@
     "Gender": "Female",
     "Event": "200 Free Relay",
     "RecordTime": "1:37.58",
+    "RecordBadge": "",
     "RecordDate": "4-Mar-25",
     "RecordHolder": "C. Agee, M. Pauley, M. Witt, E. Cigna"
   },
@@ -86,6 +95,7 @@
     "Gender": "Female",
     "Event": "400 Free Relay",
     "RecordTime": "3:37.98",
+    "RecordBadge": "",
     "RecordDate": "11-Feb-23",
     "RecordHolder": "C. Agee, A. Augustine, M. Pauley, L. Von Herbulis"
   },
@@ -95,6 +105,7 @@
     "Gender": "Female",
     "Event": "200 Medley Relay",
     "RecordTime": "1:44.57",
+    "RecordBadge": "",
     "RecordDate": "4-Mar-25",
     "RecordHolder": "M. Witt, C. Agee, E. Cigna, M. Pauley"
   },
@@ -104,6 +115,7 @@
     "Gender": "Male",
     "Event": "50 Free",
     "RecordTime": "21.58",
+    "RecordBadge": "",
     "RecordDate": "7-Feb-15",
     "RecordHolder": "James H. Patrick"
   },
@@ -113,6 +125,7 @@
     "Gender": "Male",
     "Event": "100 Free",
     "RecordTime": "47.06",
+    "RecordBadge": "",
     "RecordDate": "22-Dec-23",
     "RecordHolder": "Jackson D. Tishler"
   },
@@ -122,6 +135,7 @@
     "Gender": "Male",
     "Event": "200 Free",
     "RecordTime": "1:39.51",
+    "RecordBadge": "",
     "RecordDate": "4-Mar-25",
     "RecordHolder": "Jackson D. Tishler"
   },
@@ -131,6 +145,7 @@
     "Gender": "Male",
     "Event": "500 Free",
     "RecordTime": "4:40.62",
+    "RecordBadge": "",
     "RecordDate": "10-Feb-25",
     "RecordHolder": "Jackson D. Tishler"
   },
@@ -140,6 +155,7 @@
     "Gender": "Male",
     "Event": "100 Back",
     "RecordTime": "49.43",
+    "RecordBadge": "",
     "RecordDate": "4-Mar-25",
     "RecordHolder": "Jackson D. Tishler"
   },
@@ -149,6 +165,7 @@
     "Gender": "Male",
     "Event": "100 Breast",
     "RecordTime": "58.88",
+    "RecordBadge": "",
     "RecordDate": "17-Feb-18",
     "RecordHolder": "Tanner S. Smith"
   },
@@ -158,6 +175,7 @@
     "Gender": "Male",
     "Event": "100 Fly",
     "RecordTime": "49.62",
+    "RecordBadge": "",
     "RecordDate": "16-Feb-23",
     "RecordHolder": "Jackson D. Tishler"
   },
@@ -167,6 +185,7 @@
     "Gender": "Male",
     "Event": "200 IM",
     "RecordTime": "1:51.43",
+    "RecordBadge": "",
     "RecordDate": "15-Dec-23",
     "RecordHolder": "Jackson D. Tishler"
   },
@@ -176,6 +195,7 @@
     "Gender": "Male",
     "Event": "200 Free Relay",
     "RecordTime": "1:28.63",
+    "RecordBadge": "",
     "RecordDate": "20-Feb-15",
     "RecordHolder": "C. Webb, A. Tice, N. Fallows, J. Patrick"
   },
@@ -185,6 +205,7 @@
     "Gender": "Male",
     "Event": "400 Free Relay",
     "RecordTime": "3:14.11",
+    "RecordBadge": "",
     "RecordDate": "20-Feb-15",
     "RecordHolder": "C. Webb, A. Tice, N. Fallows, J. Patrick"
   },
@@ -194,6 +215,7 @@
     "Gender": "Male",
     "Event": "200 Medley Relay",
     "RecordTime": "1:36.83",
+    "RecordBadge": "",
     "RecordDate": "17-Feb-18",
     "RecordHolder": "J. Heenan, T. Smith, G. Finan, A. Whitted"
   }
