@@ -37,7 +37,7 @@ function render() {
       <div class="md:hidden">
         <div class="flex items-start justify-between gap-3">
           <div class="font-semibold text-sm text-black leading-snug">${escapeHtml(r.Event)}</div>
-          <div class="text-sm font-semibold tabular-nums text-black">${escapeHtml(r.RecordTime)}${(r.RecordBadge ?? "").toString().trim() ? `<span class="ml-1 rounded-md bg-yellow-200 px-1 md:py-1 py-0.5 text-[10px] font-semibold text-black">${escapeHtml(r.RecordBadge)}</span>` : "" }</div>
+          <div class="text-sm font-semibold tabular-nums text-black">${escapeHtml(r.RecordTime)}${(r.RecordBadge ?? "").toString().trim() ? `<span class="mr-1 rounded-sm bg-yellow-200 px-1 py-0.5 text-[8px] font-semibold text-black">${escapeHtml(r.RecordBadge)}</span>` : "" }</div>
         </div>
         <div class="flex items-start justify-between gap-3">
           <div class="mt-1 text-[11px] text-gray-700 leading-snug wrap-break-word">${escapeHtml(r.RecordHolder)}</div>
@@ -50,7 +50,7 @@ function render() {
     </td>
 
     <!-- Desktop-only columns -->
-    <td class="hidden md:table-cell">${escapeHtml(r.RecordTime)}${(r.RecordBadge ?? "").toString().trim() ? `<span class="ml-1 rounded-md bg-yellow-200 px-1 md:py-1 py-0.5 text-[10px] font-semibold text-black">${escapeHtml(r.RecordBadge)}</span>` : "" }</td>
+    <td class="hidden md:table-cell">${escapeHtml(r.RecordTime)}${(r.RecordBadge ?? "").toString().trim() ? `<span class="ml-1 rounded-md bg-yellow-200 px-1 md:py-1 text-[10px] font-semibold text-black">${escapeHtml(r.RecordBadge)}</span>` : "" }</td>
     <td class="hidden md:table-cell">${escapeHtml(r.RecordHolder)}</td>
     <td class="hidden md:table-cell">${escapeHtml(r.RecordDate)}</td>
   </tr>
@@ -64,7 +64,7 @@ function render() {
       <div class="md:hidden">
         <div class="flex items-start justify-between gap-3">
           <div class="font-semibold text-sm text-black leading-snug">${escapeHtml(r.Event)}</div>
-          <div class="text-sm font-semibold tabular-nums text-black">${(r.RecordBadge ?? "").toString().trim() ? `<span class="mr-1 rounded-md bg-yellow-200 px-1 md:py-1 py-0.5 text-[8px] font-semibold text-black">${escapeHtml(r.RecordBadge)}</span>` : "" }${escapeHtml(r.RecordTime)}</div>
+          <div class="text-sm font-semibold tabular-nums text-black">${(r.RecordBadge ?? "").toString().trim() ? `<span class="mr-1 rounded-sm bg-yellow-200 px-1 py-0.5 text-[8px] font-semibold text-black">${escapeHtml(r.RecordBadge)}</span>` : "" }${escapeHtml(r.RecordTime)}</div>
         </div>
         <div class="flex items-start justify-between gap-3">
           <div class="mt-1 text-[11px] text-gray-700 leading-snug wrap-break-word">${escapeHtml(r.RecordHolder)}</div>
@@ -77,7 +77,7 @@ function render() {
     </td>
 
     <!-- Desktop-only columns -->
-    <td class="hidden md:table-cell">${escapeHtml(r.RecordTime)}${(r.RecordBadge ?? "").toString().trim() ? `<span class="ml-1 rounded-md bg-yellow-200 px-1 md:py-1 py-0.5 text-[10px] font-semibold text-black">${escapeHtml(r.RecordBadge)}</span>` : "" }</td>
+    <td class="hidden md:table-cell">${escapeHtml(r.RecordTime)}${(r.RecordBadge ?? "").toString().trim() ? `<span class="ml-1 rounded-md bg-yellow-200 px-1 md:py-1 text-[10px] font-semibold text-black">${escapeHtml(r.RecordBadge)}</span>` : "" }</td>
     <td class="hidden md:table-cell">${escapeHtml(r.RecordHolder)}</td>
     <td class="hidden md:table-cell">${escapeHtml(r.RecordDate)}</td>
   </tr>

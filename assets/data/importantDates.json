@@ -1,0 +1,42 @@
+{
+  "seasonLabel": "2025-2026",
+  "title": "Season Important Dates",
+  "items": [
+    {
+      "date": "2025-10-24",
+      "name": "Swim Team Interest Meeting",
+      "details": "KRHS Health Room 10:30 AM."
+    },
+    {
+      "date": "2025-11-10",
+      "name": "First Practice",
+      "details": "All forms required before participation."
+    },
+    {
+      "date": "2025-11-20",
+      "name": "Team Pictures",
+      "details": "KRHS Aux Gym 3:30 PM."
+    },
+    {
+      "date": "2025-11-20",
+      "name": "Parent Meeting",
+      "details": "KRHS Health Room 6:00 PM."
+    },
+    {
+      "date": "2025-12-06",
+      "name": "First Meet",
+      "details": "6:00 PM at PWAC."
+    },
+    {
+      "date": "2026-01-09",
+      "name": "Senior Recognition Night",
+      "details": "7:00 PM at WARF."
+    },
+    {
+      "date": "2026-01-23",
+      "name": "Last Regular Season Meet",
+      "details": "6:00 PM at WARF."
+    }
+
+  ]
+}

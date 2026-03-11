@@ -1,16 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import "tailwindcss";
 
 @theme {
   --color-brand: #005130;
   --color-brand-light: #F37322;
+  --font-roboto: "Roboto", sans-serif; 
 }
 
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-
- 
 
 @layer utilities {
   .marquee::before,
