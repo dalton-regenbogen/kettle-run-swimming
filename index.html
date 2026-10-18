@@ -6,11 +6,9 @@
     <title>KR Swim | Home</title>
     <link rel="stylesheet" href="./css/output.css" />
   </head>
-  <body class="min-h-screen bg-gray-100 text-black --font-roboto">
+  <body class="min-h-screen bg-gray-100 text-[#0d0d0d] font-barlow">
     <!-- Header -->
-    <header
-      class="bg-black border-b-4 border-gray-400 sticky top-0 z-50 [--header-h:110px]"
-    >
+    <header class="bg-black sticky top-0 z-50 [--header-h:110px]">
       <div
         class="hidden marquee marquee:hover marquee::before marquee::after bg-red-700 w-full overflow-hidden py-2 md:py-3 text-xs md:text-sm font-semibold uppercase tracking-wide text-white"
       >
@@ -23,15 +21,17 @@
         </div>
       </div>
 
-      <div class="border-y border-white">
+      <div class="border-b border-gray-300">
         <div class="max-w-6xl md:max-w-10/12 mx-auto px-4 py-0">
-          <p class="text-center text-sm font-normal text-white">
+          <p
+            class="text-center text-sm font-bold text-gray-300 tracking-wide uppercase"
+          >
             KETTLE RUN SWIMMING
           </p>
         </div>
       </div>
 
-      <div class="max-w-6xl md:max-w-10/12 mx-auto px-4">
+      <div class="max-w-6xl md:max-w-5xl mx-auto px-4">
         <div class="hidden md:flex items-center py-3">
           <!-- LEFT: Nav (flex-1 so it takes equal space as right) -->
           <nav class="md:flex flex-1 justify-end" aria-label="Primary (left)">
@@ -41,7 +41,7 @@
                 <!-- IMPORTANT: make this visually match your <a> links -->
                 <button
                   type="button"
-                  class="relative text-sm font-semibold uppercase tracking-wide text-white transition-colors duration-200 inline-flex items-center group-hover:text-brand-light"
+                  class="relative text-base font-semibold uppercase tracking-wide text-white transition-colors duration-200 inline-flex items-center group-hover:text-brand-light"
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
@@ -86,7 +86,7 @@
               <li>
                 <a
                   href="./roster.html"
-                  class="text-sm font-semibold uppercase tracking-wide text-white hover:text-brand-light transition-colors duration-200"
+                  class="text-base font-semibold uppercase tracking-wide text-white hover:text-brand-light transition-colors duration-200"
                 >
                   <span
                     class="relative inline-block leading-normal after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-brand-light after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
@@ -100,7 +100,7 @@
                 <!-- IMPORTANT: make this visually match your <a> links -->
                 <button
                   type="button"
-                  class="relative text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent transition-colors duration-200 inline-flex items-center group-hover:text-brand-light"
+                  class="relative text-base font-semibold uppercase tracking-wide text-white border-b-2 border-transparent transition-colors duration-200 inline-flex items-center group-hover:text-brand-light"
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
@@ -170,7 +170,7 @@
                 <!-- IMPORTANT: make this visually match your <a> links -->
                 <button
                   type="button"
-                  class="relative text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent transition-colors duration-200 inline-flex items-center group-hover:text-brand-light"
+                  class="relative text-base font-semibold uppercase tracking-wide text-white border-b-2 border-transparent transition-colors duration-200 inline-flex items-center group-hover:text-brand-light"
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
@@ -223,7 +223,7 @@
               <li>
                 <a
                   href="./team-records.html"
-                  class="text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-brand-light transition-colors duration-200"
+                  class="text-base font-semibold uppercase tracking-wide text-white border-b-2 border-transparent hover:text-brand-light transition-colors duration-200"
                 >
                   <span
                     class="relative inline-block leading-normal after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-brand-light after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
@@ -237,7 +237,7 @@
                 <!-- IMPORTANT: make this visually match your <a> links -->
                 <button
                   type="button"
-                  class="relative text-sm font-semibold uppercase tracking-wide text-white border-b-2 border-transparent transition-colors duration-200 inline-flex items-center group-hover:text-brand-light"
+                  class="relative text-base font-semibold uppercase tracking-wide text-white border-b-2 border-transparent transition-colors duration-200 inline-flex items-center group-hover:text-brand-light"
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
@@ -569,17 +569,34 @@
           "
         ></div>
 
-        <div class="relative mx-auto md:max-w-10/12 px-2 md:px-4 py-10 md:py-14">
-          <div class="grid grid-cols-1 gap-6 md:gap-8 md:grid-cols-12 md:items-center">
+        <div
+          class="relative mx-auto md:max-w-10/12 px-2 md:px-4 py-10 md:py-14"
+        >
+          <div
+            class="grid grid-cols-1 gap-6 md:gap-8 md:grid-cols-12 md:items-center"
+          >
             <!-- Copy / Welcome -->
-            <div class="order-2 md:order-1 md:col-span-6 text-center md:text-left">
+            <div
+              class="order-2 md:order-1 md:col-span-6 text-center md:text-left"
+            >
+              <div class="flex items-center gap-2">
+                <div class="h-0.5 w-6 bg-brand-light"></div>
+                <span
+                  class="text-xs font-semibold uppercase tracking-widest text-brand-light"
+                  >Kettle Run High School | Fauquier County</span
+                >
+              </div>
+
               <h1
-                class="md:mt-3 text-4xl font-extrabold tracking-tight text-gray-900 md:text-5xl"
+                class="md:mt-3 text-4xl font-black uppercase tracking-normal text-gray-900 md:text-7xl"
               >
-                Home of Kettle Run Swimming
+                Home of<br /><span class="text-brand">Kettle Run</span
+                ><br />Swimming
               </h1>
 
-              <p class="mt-3 text-sm md:text-base leading-relaxed text-gray-700">
+              <p
+                class="mt-3 text-sm md:text-base leading-relaxed text-gray-700"
+              >
                 Welcome to KR Swimming—established in 2008. We’re a program
                 built on consistent effort, team-first support, and pride in
                 representing our school the right way. We welcome both
@@ -591,13 +608,40 @@
               </p>
 
               <!-- ONE primary CTA (not a button farm) -->
-              <div class="mt-6">
+              <div class="mt-6 flex gap-3">
                 <a
                   href="./tryouts.html"
-                  class="inline-flex items-center justify-center rounded-xl md:rounded-2xl bg-brand px-4 md:px-6 py-2 md:py-3 text-sm font-extrabold text-white shadow-sm transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[#005130]/35"
+                  class="inline-flex items-center justify-center text-base font-bold leading-0.5 text-white rounded-[3px] bg-brand px-6 py-2 md:py-5 shadow-sm transition hover:brightness-110 focus:outline-none"
                 >
                   View Tryout Information
                 </a>
+                <a
+                  href="mailto:coachdtr@gmail.com"
+                  class="inline-flex items-center justify-center text-base font-bold leading-0.5 text-gray-800 rounded-[3px] border border-gray-200 bg-transparent px-6 py-2 md:py-5 shadow-sm transition hover:brightness-110 focus:outline-none"
+                >
+                  Contact Coach
+                </a>
+              </div>
+
+              <div class="flex items-center gap-4 mt-10">
+                <div class="border-r border-gray-300 pr-4">
+                  <div class="text-3xl font-extrabold leading-none">2008</div>
+                  <div class="text-sm font-semibold text-gray-500">Est.</div>
+                </div>
+                <div class="border-r border-gray-300 pr-4">
+                  <div class="text-3xl font-extrabold leading-none">
+                    Class 3
+                  </div>
+                  <div class="text-sm font-semibold text-gray-500">VHSL</div>
+                </div>
+                <div>
+                  <div class="text-3xl font-extrabold leading-none">
+                    2025-2026
+                  </div>
+                  <div class="text-sm font-semibold text-gray-500">
+                    Active Season
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -606,7 +650,7 @@
               <div
                 class="relative overflow-hidden rounded-2xl border border-black/10 bg-gray-200 shadow-sm"
               >
-                <div class="relative h-65 md:h-90 bg-black" id="hero-carousel">
+                <div class="relative h-65 md:h-100 bg-black" id="hero-carousel">
                   <!-- swap this block with your existing carousel -->
                   <div
                     class="absolute inset-0 transition-opacity duration-700 ease-out opacity-0"
@@ -783,309 +827,259 @@
       </section>
 
       <!-- CONTENT: 3 clear sections (not dashboard tiles) -->
-      <section class="mx-auto md:max-w-10/12 px-3 py-10 md:py-12">
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-12">
-          <!-- Upcoming Week (one clean card) -->
-          <div class="md:col-span-8">
-            <!-- Latest News (fits the same card system: rounded-3xl, subtle border, white, p-7) -->
-            <div
-              class="rounded-3xl border border-black/10 bg-white p-4 md:p-7 shadow-sm"
+      <section class="bg-[#f2efe9]">
+        <div class="mx-auto md:max-w-10/12 px-2 py-10 md:py-12">
+          <div class="flex gap-2 items-center mb-6">
+            <div class="h-0.5 w-8 bg-brand-light"></div>
+            <p
+              class="text-sm text-brand-light font-bold uppercase tracking-widest text-nowrap"
             >
-              <div class="flex items-end justify-between gap-4">
-                <div>
-                  <p
-                    class="text-[11px] md:text-xs font-extrabold uppercase tracking-wide text-gray-500"
-                  >
-                    Latest News
-                  </p>
-                  <h2
-                    class="mt-1 text-xl md:text-2xl font-extrabold tracking-tight text-gray-900"
-                  >
-                    Announcements
-                  </h2>
-                </div>
-                <a
-                  href="./announcements.html"
-                  class="text-xs font-extrabold text-brand hover:underline"
-                >
-                  View all →
-                </a>
-              </div>
-
-              <!-- list (not mini-cards) -->
-              <div
-                class="mt-4 md:mt-6 divide-y divide-black/10 rounded-2xl border border-black/10"
-              >
-                <!-- item -->
-                <a
-                  href="./announcements.html#week-of-03-02"
-                  class="group flex gap-4 p-4 transition hover:bg-gray-50"
-                >
-                  <div
-                    class="flex w-14 md:w-16 flex-col items-center justify-center rounded-xl md:rounded-2xl bg-gray-100 py-2 text-center"
-                  >
-                    <p
-                      class="text-[10px] md:text-[11px] font-extrabold uppercase tracking-wide text-gray-500"
-                    >
-                      Mar
-                    </p>
-                    <p class="text-base md:text-xl font-extrabold text-gray-900">2</p>
-                  </div>
-
-                  <div class="min-w-0 flex-1">
-                    <div class="flex flex-wrap items-center gap-2">
-                      <p
-                        class="truncate text-xs md:text-sm font-extrabold text-gray-900 group-hover:underline"
-                      >
-                        Week-at-a-Glance: practice times + reminders
-                      </p>
-                      
-                    </div>
-                    <p class="mt-1 line-clamp-2 text-xs md:text-sm text-gray-600">
-                      Quick highlights for the week, what to bring, and any
-                      schedule adjustments.
-                    </p>
-                    
-                  </div>
-
-                  <div class="hidden shrink-0 items-center sm:flex">
-                    <span
-                      class="text-sm font-extrabold text-gray-400 group-hover:text-gray-700"
-                      >→</span
-                    >
-                  </div>
-                  
-                </a>
-
-                <!-- item -->
-                <a
-                  href="./announcements.html#postseason"
-                  class="group flex gap-4 p-4 transition hover:bg-gray-50"
-                >
-                  <div
-                    class="flex w-16 flex-col items-center justify-center rounded-2xl bg-gray-100 py-2 text-center"
-                  >
-                    <p
-                      class="text-[11px] font-extrabold uppercase tracking-wide text-gray-500"
-                    >
-                      Feb
-                    </p>
-                    <p class="text-xl font-extrabold text-gray-900">20</p>
-                  </div>
-
-                  <div class="min-w-0 flex-1">
-                    <div class="flex flex-wrap items-center gap-2">
-                      <p
-                        class="truncate text-sm font-extrabold text-gray-900 group-hover:underline"
-                      >
-                        Postseason info: warmups, entries, and travel
-                      </p>
-                      <span
-                        class="inline-flex items-center rounded-full bg-brand-light/10 px-2.5 py-1 text-[11px] font-extrabold text-brand-light"
-                      >
-                        Postseason
-                      </span>
-                    </div>
-                    <p class="mt-1 line-clamp-2 text-sm text-gray-600">
-                      Key times, location notes, and what athletes should expect
-                      for championship meets.
-                    </p>
-                  </div>
-
-                  <div class="hidden shrink-0 items-center sm:flex">
-                    <span
-                      class="text-sm font-extrabold text-gray-400 group-hover:text-gray-700"
-                      >→</span
-                    >
-                  </div>
-                </a>
-
-                <!-- item -->
-                <a
-                  href="./announcements.html#results"
-                  class="group flex gap-4 p-4 transition hover:bg-gray-50"
-                >
-                  <div
-                    class="flex w-16 flex-col items-center justify-center rounded-2xl bg-gray-100 py-2 text-center"
-                  >
-                    <p
-                      class="text-[11px] font-extrabold uppercase tracking-wide text-gray-500"
-                    >
-                      Feb
-                    </p>
-                    <p class="text-xl font-extrabold text-gray-900">8</p>
-                  </div>
-
-                  <div class="min-w-0 flex-1">
-                    <div class="flex flex-wrap items-center gap-2">
-                      <p
-                        class="truncate text-sm font-extrabold text-gray-900 group-hover:underline"
-                      >
-                        Meet recap + updated results archive
-                      </p>
-                      <span
-                        class="inline-flex items-center rounded-full bg-gray-900/10 px-2.5 py-1 text-[11px] font-extrabold text-gray-900"
-                      >
-                        Results
-                      </span>
-                    </div>
-                    <p class="mt-1 line-clamp-2 text-sm text-gray-600">
-                      Recap, highlights, and links to full results for the
-                      season.
-                    </p>
-                  </div>
-
-                  <div class="hidden shrink-0 items-center sm:flex">
-                    <span
-                      class="text-sm font-extrabold text-gray-400 group-hover:text-gray-700"
-                      >→</span
-                    >
-                  </div>
-                </a>
-              </div>
-            </div>
-
-            <div
-              class="mt-6 rounded-2xl border border-black/10 bg-white p-7 shadow-sm"
-            >
-              <div class="flex items-end justify-between gap-4">
-                <div>
-                  <p
-                    class="text-xs font-extrabold uppercase tracking-wide text-gray-500"
-                  >
-                    Upcoming Week
-                  </p>
-                  <h2
-                    class="mt-1 text-xl font-extrabold tracking-tight text-gray-900"
-                  >
-                    This Week at KR
-                  </h2>
-                </div>
-                <a
-                  href="./practice-schedule.html"
-                  class="text-sm font-extrabold text-brand hover:underline"
-                >
-                  Full practice schedule →
-                </a>
-              </div>
-
-              <!-- clean list (not mini cards) -->
-              <div class="mt-6 space-y-4">
-                <div
-                  class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
-                >
-                  <div>
-                    <p class="text-sm font-extrabold text-gray-900">Practice</p>
-                    <p class="mt-1 text-sm text-gray-600">
-                      Mon / Wed / Fri — Time — Location
-                    </p>
-                  </div>
-                </div>
-
-                <div class="h-px w-full bg-black/10"></div>
-
-                <div
-                  class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
-                >
-                  <div>
-                    <p class="text-sm font-extrabold text-gray-900">
-                      Next Meet
-                    </p>
-                    <p class="mt-1 text-sm text-gray-600">
-                      Opponent — Date — Venue (bus / warmup note)
-                    </p>
-                  </div>
-                </div>
-
-                <div class="h-px w-full bg-black/10"></div>
-
-                <div
-                  class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
-                >
-                  <div>
-                    <p class="text-sm font-extrabold text-gray-900">
-                      Latest Results
-                    </p>
-                    <p class="mt-1 text-sm text-gray-600">
-                      View recent meet results and season archive.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+              Latest from the program
+            </p>
+            <div class="h-px w-full bg-gray-300"></div>
           </div>
 
-          <div class="overflow-hidden md:col-span-4 rounded-2xl">
-            <!-- Contact (one strong card, athletic dept style) -->
-            <div
-              class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm"
-            >
-              <!-- top accent bar -->
-              <div class="h-2 w-full bg-brand"></div>
-
-              <div class="p-7">
-                <p
-                  class="text-xs font-extrabold uppercase tracking-wide text-gray-500"
-                >
-                  Contact
-                </p>
-                <h3
-                  class="mt-1 text-xl font-extrabold tracking-tight text-gray-900"
-                >
-                  Coach / Program Questions
-                </h3>
-                <p class="mt-2 max-w-2xl text-sm leading-relaxed text-gray-600">
-                  Use this for parent questions, athlete communication, and
-                  program logistics. Keep one clear contact point.
-                </p>
-
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-12">
+            <!-- Upcoming Week (one clean card) -->
+            <div class="md:col-span-8">
+              <!-- Latest News (fits the same card system: rounded-3xl, subtle border, white, p-7) -->
+              <div class="rounded-2xl bg-white shadow-sm overflow-hidden">
                 <div
-                  class="mt-5 flex flex-wrap items-center gap-3 justify-between"
+                  class="flex items-end justify-between px-6 py-4 border-b border-gray-200"
                 >
+                  <div>
+                    <p class="text-[11px] md:text-sm font-semibold text-gray-500">
+                      Latest News
+                    </p>
+                    <h2
+                      class="text-base md:text-xl font-bold tracking-wide uppercase text-black"
+                    >
+                      Announcements
+                    </h2>
+                  </div>
                   <a
-                    href="mailto:coachdtr@gmail.com"
-                    class="inline-flex items-center justify-center rounded-2xl bg-gray-900 px-5 py-3 text-sm font-extrabold text-white shadow-sm transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-gray-900/30"
+                    href="./announcements.html"
+                    class="text-sm font-semibold tracking-widest text-brand hover:underline"
                   >
-                    Email Coach
+                    View all →
                   </a>
+                </div>
+
+                <!-- list (not mini-cards) -->
+                <div class="divide-y divide-black/10 overflow-hidden">
+                  <!-- item -->
                   <a
-                    href="./resources.html"
+                    href="#"
+                    class="group flex gap-4 px-6 py-4 transition hover:bg-[#fafaf8]"
+                  >
+                    <div class="flex flex-col shrink-0 w-12 items-center justify-center bg-[#f4f4f2] rounded-lg">
+                      <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">Mar</span>
+                      <span class="text-2xl font-bold leading-[1.05]">2</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-[0.95rem] font-bold text-[#0d0d0d] uppercase tracking-wide leading-5 group-hover:underline">
+                        Week-at-a-Glance: practice times + reminders
+                      </p>
+                      <p class="text-[1rem] mb-[0.2rem] text-zinc-800">
+                        Quick highlights for the week, what to bring, and any
+                        schedule adjustments.
+                      </p>
+                      <span class="inline-block text-[0.6rem] font-bold uppercase tracking-widest px-2 py-0.5 text-gray-500 bg-[rgba(0,0,0,0.06)] rounded">Weekly</span>
+                    </div>
+                    <span class="flex shrink-0 items-center font-bold text-[#ccc] group-hover:text-[#0d0d0d]">→</span>
+                  </a>
+
+                  <!-- item -->
+                  <a
+                    href="#"
+                    class="group flex gap-4 px-6 py-4 transition hover:bg-[#fafaf8]"
+                  >
+                    <div class="flex flex-col shrink-0 w-12 items-center justify-center bg-[#f4f4f2] rounded-lg">
+                      <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">Feb</span>
+                      <span class="text-2xl font-bold leading-[1.05]">16</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-[0.95rem] font-bold text-[#0d0d0d] uppercase tracking-wide leading-5 group-hover:underline">
+                        Postseason info: warmups, entries, and travel
+                      </p>
+                      <p class="text-[1rem] mb-[0.2rem] text-zinc-800">
+                        Key times, location notes, and what athletes should
+                        expect for championship meets.
+                      </p>
+                      <span class="inline-block text-[0.6rem] font-bold uppercase tracking-widest px-2 py-0.5 text-brand-light bg-brand-light/10 rounded">Postseason</span>
+                    </div>
+                    <span class="flex shrink-0 items-center font-bold text-[#ccc] group-hover:text-[#0d0d0d]">→</span>
+                  </a>
+
+                  <!-- item -->
+                  <a
+                    href="#"
+                    class="group flex gap-4 px-6 py-4 transition hover:bg-[#fafaf8]"
+                  >
+                    <div class="flex flex-col shrink-0 w-12 items-center justify-center bg-[#f4f4f2] rounded-lg">
+                      <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">Feb</span>
+                      <span class="text-2xl font-bold leading-[1.05]">8</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-[0.95rem] font-bold text-[#0d0d0d] uppercase tracking-wide leading-5 group-hover:underline">
+                        Meet recap + updated results archive
+                      </p>
+                      <p class="text-[1rem] mb-[0.2rem] text-zinc-800">
+                        Recap, highlights, and links to full results for the
+                        season.
+                      </p>
+                      <span class="inline-block text-[0.6rem] font-bold uppercase tracking-widest px-2 py-0.5 text-brand bg-brand/10 rounded">Results</span>
+                    </div>
+                    <span class="flex shrink-0 items-center font-bold text-[#ccc] group-hover:text-[#0d0d0d]">→</span>
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="mt-6 rounded-2xl border border-black/10 bg-white p-7 shadow-sm"
+              >
+                <div class="flex items-end justify-between gap-4">
+                  <div>
+                    <p
+                      class="text-[11px] md:text-xs uppercase font-bold text-gray-500"
+                    >
+                      Upcoming Week
+                    </p>
+                    <h4
+                      class="text-base md:text-lg font-bold tracking-tight text-black"
+                    >
+                      This Week at KR
+                    </h4>
+                  </div>
+                  <a
+                    href="./practice-schedule.html"
                     class="text-sm font-extrabold text-brand hover:underline"
                   >
-                    Team handbook →
+                    Full practice schedule →
                   </a>
+                </div>
+
+                <!-- clean list (not mini cards) -->
+                <div class="mt-6 space-y-4">
+                  <div
+                    class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+                  >
+                    <div>
+                      <p class="text-sm font-extrabold text-gray-900">
+                        Practice
+                      </p>
+                      <p class="mt-1 text-sm text-gray-600">
+                        Mon / Wed / Fri — Time — Location
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="h-px w-full bg-black/10"></div>
+
+                  <div
+                    class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+                  >
+                    <div>
+                      <p class="text-sm font-extrabold text-gray-900">
+                        Next Meet
+                      </p>
+                      <p class="mt-1 text-sm text-gray-600">
+                        Opponent — Date — Venue (bus / warmup note)
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="h-px w-full bg-black/10"></div>
+
+                  <div
+                    class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+                  >
+                    <div>
+                      <p class="text-sm font-extrabold text-gray-900">
+                        Latest Results
+                      </p>
+                      <p class="mt-1 text-sm text-gray-600">
+                        View recent meet results and season archive.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <aside
-              class="mt-6 overflow-hidden md:col-span-4 rounded-2xl border border-gray-200 bg-white shadow-xs"
-            >
-              <div class="flex items-end justify-between gap-4 md:px-7 md:pt-7">
-                <div>
+            <div class="overflow-hidden md:col-span-4 rounded-2xl">
+              <!-- Contact (one strong card, athletic dept style) -->
+              <div
+                class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm"
+              >
+                <div class="p-7">
                   <p
-                    data-season-label
-                    class="text-xs font-extrabold uppercase tracking-wide text-gray-500"
+                    class="text-[11px] md:text-xs uppercase font-bold text-gray-500"
                   >
-                    2025-2026
+                    Contact
                   </p>
-                  <h2
-                    data-season-title
-                    class="mt-1 text-xl font-extrabold tracking-tight text-gray-900"
+                  <h3
+                    class="text-base md:text-lg font-bold tracking-tight text-black"
                   >
-                    Season Important Dates
-                  </h2>
+                    Coach / Program Questions
+                  </h3>
+                  <p
+                    class="mt-2 max-w-2xl text-sm leading-relaxed text-gray-600"
+                  >
+                    Use this for parent questions, athlete communication, and
+                    program logistics. Keep one clear contact point.
+                  </p>
+
+                  <div
+                    class="mt-5 flex flex-wrap items-center gap-3 justify-between"
+                  >
+                    <a
+                      href="mailto:coachdtr@gmail.com"
+                      class="inline-flex items-center justify-center rounded-md bg-gray-900 px-2.5 py-2 md:py-2.5 text-sm font-semibold text-white shadow-sm transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-gray-900/30"
+                    >
+                      Email Coach
+                    </a>
+                    <a
+                      href="./resources.html"
+                      class="text-sm font-extrabold text-brand hover:underline"
+                    >
+                      Team handbook →
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              <div class="p-4 md:p-6">
-                <!-- Dates list -->
-                <ul
-                  id="importantDates"
-                  class="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-gray-50"
-                ></ul>
-              </div>
-            </aside>
+              <aside
+                class="mt-6 overflow-hidden md:col-span-4 rounded-2xl border border-gray-200 bg-white shadow-xs"
+              >
+                <div
+                  class="flex items-end justify-between gap-4 md:px-7 md:pt-7"
+                >
+                  <div>
+                    <p
+                      data-season-label
+                      class="text-[11px] md:text-xs uppercase font-bold text-gray-500"
+                    >
+                      2025-2026
+                    </p>
+                    <h5
+                      data-season-title
+                      class="text-base md:text-lg font-bold tracking-tight text-black"
+                    >
+                      Season Important Dates
+                    </h5>
+                  </div>
+                </div>
+
+                <div class="p-4 md:p-6">
+                  <!-- Dates list -->
+                  <ul
+                    id="importantDates"
+                    class="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-gray-50 overflow-hidden"
+                  ></ul>
+                </div>
+              </aside>
+            </div>
           </div>
         </div>
       </section>

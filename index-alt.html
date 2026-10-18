@@ -1,0 +1,1067 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KR Swim | Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #005130;
+      --green-light: #007a49;
+      --orange: #f37322;
+      --cream: #f5f0e8;
+      --ink: #0d0d0d;
+      --mid: #1a1a1a;
+      --muted: #888;
+      --rule: rgba(255,255,255,0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: #e8e4dc;
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ─────────────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--ink);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .header-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.35rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-text span {
+      color: var(--orange);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 0.25rem;
+      align-items: center;
+    }
+
+    nav a, nav button {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #aaa;
+      text-decoration: none;
+      padding: 0.4rem 0.75rem;
+      border: none;
+      background: none;
+      cursor: pointer;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      white-space: nowrap;
+    }
+
+    nav a:hover, nav button:hover { color: #fff; }
+
+    .nav-cta {
+      background: var(--orange) !important;
+      color: #fff !important;
+      border-radius: 3px;
+      padding: 0.4rem 1rem !important;
+    }
+
+    .nav-cta:hover { background: #e05f0e !important; color: #fff !important; }
+
+    /* dropdown */
+    .has-drop { position: relative; }
+    .drop {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      background: #1c1c1c;
+      border: 1px solid var(--rule);
+      min-width: 200px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-6px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .has-drop:hover .drop {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+    .drop a {
+      display: block;
+      padding: 0.65rem 1.2rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--rule);
+      color: #aaa !important;
+    }
+    .drop a:last-child { border-bottom: none; }
+    .drop a:hover { color: #fff !important; background: rgba(255,255,255,0.05); }
+
+    /* chevron */
+    .chevron {
+      width: 12px; height: 12px;
+      display: inline-block;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+      margin-top: -3px;
+      transition: transform 0.2s;
+    }
+    .has-drop:hover .chevron { transform: rotate(-135deg); margin-top: 3px; }
+
+    /* mobile toggle */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      transition: all 0.3s;
+    }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 5rem 3rem 5rem 4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 2px;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+
+    .hero-h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(3.5rem, 6vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-h1 em {
+      color: var(--green-light);
+      font-style: normal;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #aaa;
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--orange);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: #e05f0e; transform: translateY(-1px); }
+
+    .btn-ghost {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #aaa;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+
+    .btn-ghost:hover { color: #fff; }
+
+    .hero-stats {
+      margin-top: 3rem;
+      display: flex;
+      gap: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 2.25rem;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+
+    /* hero image panel */
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .hero-carousel-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 30%;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    .hero-carousel-img.active { opacity: 1; }
+
+    .hero-visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--ink) 0%, transparent 25%),
+                  linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* vertical text accent */
+    .hero-vert-text {
+      position: absolute;
+      right: 2rem;
+      bottom: 3rem;
+      z-index: 2;
+      writing-mode: vertical-rl;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-vert-text::after {
+      content: '';
+      display: block;
+      width: 2px;
+      height: 48px;
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* carousel controls */
+    .carousel-controls {
+      position: absolute;
+      bottom: 1.75rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      gap: 6px;
+    }
+
+    .carousel-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .carousel-dot.active {
+      background: var(--orange);
+      transform: scale(1.4);
+    }
+
+    /* ── TICKER ──────────────────────────────────────────── */
+    .ticker {
+      background: var(--green);
+      padding: 0.6rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-inner {
+      display: inline-flex;
+      gap: 4rem;
+      animation: ticker 28s linear infinite;
+    }
+
+    .ticker-item {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .ticker-item::before {
+      content: '◆';
+      color: rgba(255,255,255,0.4);
+      font-size: 0.5rem;
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── CONTENT GRID ────────────────────────────────────── */
+    .content-section {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::after {
+      content: '';
+      display: block;
+      height: 1px;
+      flex: 1;
+      background: var(--rule);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* news card */
+    .news-card {
+      background: var(--mid);
+      border: 1px solid var(--rule);
+    }
+
+    .news-card-header {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .news-card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .news-card-link {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      text-decoration: none;
+    }
+
+    .news-card-link:hover { text-decoration: underline; }
+
+    /* news item */
+    .news-item {
+      display: flex;
+      gap: 1.25rem;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .news-item:last-child { border-bottom: none; }
+    .news-item:hover { background: rgba(255,255,255,0.03); }
+
+    .news-date {
+      flex-shrink: 0;
+      width: 48px;
+      text-align: center;
+      padding: 0.5rem 0;
+      border-right: 2px solid var(--rule);
+      padding-right: 1.25rem;
+    }
+
+    .news-date-month {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .news-date-day {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.75rem;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .news-body { flex: 1; min-width: 0; }
+
+    .news-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      color: #e0dbd2;
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+    }
+
+    .news-excerpt {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .news-tag {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.6rem;
+      border: 1px solid rgba(243,115,34,0.4);
+      color: var(--orange);
+      border-radius: 1px;
+      margin-bottom: 0.4rem;
+    }
+
+    .news-tag.green {
+      border-color: rgba(0,122,73,0.4);
+      color: #4caf85;
+    }
+
+    .news-tag.gray {
+      border-color: rgba(255,255,255,0.15);
+      color: #888;
+    }
+
+    /* sidebar */
+    .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .panel {
+      background: var(--mid);
+      border: 1px solid var(--rule);
+      overflow: hidden;
+    }
+
+    .panel-head {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .panel-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .panel-link {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      text-decoration: none;
+    }
+
+    .panel-link:hover { text-decoration: underline; }
+
+    .panel-body { padding: 1.25rem 1.5rem; }
+
+    /* schedule rows */
+    .sched-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .sched-row:last-child { border-bottom: none; }
+
+    .sched-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #ccc;
+    }
+
+    .sched-detail {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* contact panel */
+    .contact-panel {
+      background: var(--green);
+      border: none;
+    }
+
+    .contact-panel .panel-head {
+      border-bottom-color: rgba(255,255,255,0.12);
+    }
+
+    .contact-panel .panel-title { color: #fff; }
+
+    .contact-desc {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .btn-white {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: #fff;
+      color: var(--green);
+      text-decoration: none;
+      padding: 0.65rem 1.5rem;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+
+    .btn-white:hover { background: var(--cream); }
+
+    /* dates panel */
+    .date-row {
+      display: flex;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: flex-start;
+    }
+
+    .date-row:last-child { border-bottom: none; }
+
+    .date-bullet {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+      margin-top: 0.45rem;
+    }
+
+    .date-event {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.875rem;
+      letter-spacing: 0.03em;
+      color: #ddd;
+      text-transform: uppercase;
+    }
+
+    .date-when {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .footer-meta {
+      font-size: 0.8rem;
+      color: #555;
+    }
+
+    .footer-meta a { color: #555; text-decoration: none; }
+    .footer-meta a:hover { color: #888; }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: 50vw 1fr;
+        min-height: unset;
+      }
+
+      .hero-visual { order: 1; }
+
+      .hero-copy {
+        order: 2;
+        padding: 2.5rem 1.5rem 3rem;
+      }
+
+      .hero-stats { gap: 1.5rem; }
+      .hero-vert-text { display: none; }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .content-section { padding: 3rem 1rem; }
+
+      nav ul { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* Page load fade in */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+    .hero-h1 { animation: fadeUp 0.6s 0.1s ease both; }
+    .hero-desc { animation: fadeUp 0.6s 0.2s ease both; }
+    .hero-actions { animation: fadeUp 0.6s 0.3s ease both; }
+    .hero-stats { animation: fadeUp 0.6s 0.4s ease both; }
+  </style>
+</head>
+<body>
+
+  <!-- ── HEADER ─────────────────────────────────────────── -->
+  <header>
+    <div class="header-inner">
+      <a href="./index.html" class="logo-text">KR <span>Swim</span></a>
+
+      <nav>
+        <ul>
+          <li class="has-drop">
+            <button>About <span class="chevron"></span></button>
+            <div class="drop">
+              <a href="#">Staff</a>
+            </div>
+          </li>
+          <li><a href="./roster.html">Roster</a></li>
+          <li class="has-drop">
+            <button>Schedule <span class="chevron"></span></button>
+            <div class="drop">
+              <a href="./competition-schedule.html">Competition Schedule</a>
+              <a href="./practice-schedule.html">Practice Schedule</a>
+            </div>
+          </li>
+          <li class="has-drop">
+            <button>Results <span class="chevron"></span></button>
+            <div class="drop">
+              <a href="./2025-2026-results.html">Current Season</a>
+              <a href="#">Past Seasons</a>
+            </div>
+          </li>
+          <li><a href="./team-records.html">Records</a></li>
+          <li class="has-drop">
+            <button>Resources <span class="chevron"></span></button>
+            <div class="drop">
+              <a href="#">Team Handbook</a>
+              <a href="#">VHSL Qualifying Standards</a>
+              <a href="#">Top 10 All-Time Performances</a>
+            </div>
+          </li>
+          <li><a href="./tryouts.html" class="nav-cta">Tryouts</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── TICKER ─────────────────────────────────────────── -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-inner">
+      <span class="ticker-item">Kettle Run Swimming — Est. 2008</span>
+      <span class="ticker-item">2025–26 Season Underway</span>
+      <span class="ticker-item">Next Meet: View Competition Schedule</span>
+      <span class="ticker-item">Practice: Mon / Wed / Fri</span>
+      <span class="ticker-item">Kettle Run Swimming — Est. 2008</span>
+      <span class="ticker-item">2025–26 Season Underway</span>
+      <span class="ticker-item">Next Meet: View Competition Schedule</span>
+      <span class="ticker-item">Practice: Mon / Wed / Fri</span>
+    </div>
+  </div>
+
+  <!-- ── HERO ───────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="hero-eyebrow">Kettle Run High School · Nokesville, VA</p>
+      <h1 class="hero-h1">Home of<br><em>Kettle Run</em><br>Swimming</h1>
+      <p class="hero-desc">
+        A program built on consistent effort, team-first support, and pride in
+        representing our school the right way. Year-round and seasonal athletes
+        welcome. If you're ready to work — there's a place for you here.
+      </p>
+      <div class="hero-actions">
+        <a href="./tryouts.html" class="btn-primary">Tryout Information</a>
+        <a href="./2025-2026-results.html" class="btn-ghost">Season Results →</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">2008</div>
+          <div class="stat-label">Est.</div>
+        </div>
+        <div>
+          <div class="stat-num">Class&thinsp;3</div>
+          <div class="stat-label">VHSL Region</div>
+        </div>
+        <div>
+          <div class="stat-num">25/26</div>
+          <div class="stat-label">Active Season</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <!-- images cycle via JS — same src paths as original -->
+      <img src="./assets/IMG_3978.jpeg" alt="KR Swim" class="hero-carousel-img active" style="object-position:50% 30%">
+      <img src="./assets/IMG_6483.jpeg" alt="KR Swim" class="hero-carousel-img" style="object-position:50% 30%">
+      <img src="./assets/IMG_6976.jpeg" alt="KR Swim" class="hero-carousel-img" style="object-position:50% 20%">
+      <img src="./assets/IMG_6984.jpeg" alt="KR Swim" class="hero-carousel-img" style="object-position:50% 40%">
+      <img src="./assets/IMG_7034.jpeg" alt="KR Swim" class="hero-carousel-img" style="object-position:50% 25%">
+      <img src="./assets/IMG_2327.jpeg" alt="KR Swim" class="hero-carousel-img">
+      <img src="./assets/IMG_2596.jpeg" alt="KR Swim" class="hero-carousel-img" style="object-position:50% 35%">
+      <div class="hero-visual-overlay"></div>
+      <div class="hero-vert-text">KR Swim 2025–26</div>
+      <div class="carousel-controls" id="carousel-dots"></div>
+    </div>
+  </section>
+
+  <!-- ── MAIN CONTENT ───────────────────────────────────── -->
+  <main>
+    <div class="content-section">
+      <p class="section-label">Latest from the program</p>
+
+      <div class="content-grid">
+
+        <!-- NEWS COLUMN -->
+        <div>
+          <div class="news-card">
+            <div class="news-card-header">
+              <span class="news-card-title">Announcements</span>
+              <a href="./announcements.html" class="news-card-link">View all →</a>
+            </div>
+
+            <a href="./announcements.html#week-of-03-02" class="news-item">
+              <div class="news-date">
+                <div class="news-date-month">Mar</div>
+                <div class="news-date-day">2</div>
+              </div>
+              <div class="news-body">
+                <div class="news-tag gray">Weekly</div>
+                <p class="news-headline">Week-at-a-Glance: practice times + reminders</p>
+                <p class="news-excerpt">Quick highlights for the week, what to bring, and any schedule adjustments.</p>
+              </div>
+            </a>
+
+            <a href="./announcements.html#postseason" class="news-item">
+              <div class="news-date">
+                <div class="news-date-month">Feb</div>
+                <div class="news-date-day">20</div>
+              </div>
+              <div class="news-body">
+                <div class="news-tag">Postseason</div>
+                <p class="news-headline">Postseason info: warmups, entries, and travel</p>
+                <p class="news-excerpt">Key times, location notes, and what athletes should expect for championship meets.</p>
+              </div>
+            </a>
+
+            <a href="./announcements.html#results" class="news-item">
+              <div class="news-date">
+                <div class="news-date-month">Feb</div>
+                <div class="news-date-day">8</div>
+              </div>
+              <div class="news-body">
+                <div class="news-tag green">Results</div>
+                <p class="news-headline">Meet recap + updated results archive</p>
+                <p class="news-excerpt">Recap, highlights, and links to full results for the season.</p>
+              </div>
+            </a>
+          </div>
+
+          <!-- This week panel -->
+          <div class="news-card" style="margin-top: 1.5rem;">
+            <div class="news-card-header">
+              <span class="news-card-title">This Week at KR</span>
+              <a href="./practice-schedule.html" class="news-card-link">Full schedule →</a>
+            </div>
+            <div style="padding: 0 2rem;">
+              <div class="sched-row">
+                <span class="sched-label">Practice</span>
+                <span class="sched-detail">Mon / Wed / Fri — Time — Location</span>
+              </div>
+              <div class="sched-row">
+                <span class="sched-label">Next Meet</span>
+                <span class="sched-detail">Opponent — Date — Venue</span>
+              </div>
+              <div class="sched-row">
+                <span class="sched-label">Latest Results</span>
+                <span class="sched-detail"><a href="./2025-2026-results.html" style="color:var(--orange); text-decoration:none; font-family:'Barlow Condensed'; font-weight:700; font-size:.8rem; letter-spacing:.08em; text-transform:uppercase;">View Archive →</a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+
+          <!-- Contact -->
+          <div class="panel contact-panel">
+            <div class="panel-head">
+              <span class="panel-title">Contact</span>
+            </div>
+            <div class="panel-body">
+              <p class="contact-desc">
+                For parent questions, athlete communication, and program logistics — one clear contact point.
+              </p>
+              <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.75rem;">
+                <a href="mailto:coach@krswim.com" class="btn-white">Email Coach</a>
+                <a href="./resources.html" style="font-family:'Barlow Condensed'; font-weight:700; font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,0.7); text-decoration:none;">Handbook →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Important Dates -->
+          <div class="panel">
+            <div class="panel-head">
+              <span class="panel-title">Important Dates</span>
+              <span style="font-family:'Barlow Condensed'; font-weight:700; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted);">2025–26</span>
+            </div>
+            <div class="panel-body" id="importantDates">
+              <!-- JS will populate this, or static placeholder below -->
+              <div class="date-row">
+                <div class="date-bullet"></div>
+                <div>
+                  <div class="date-event">First Day of Practice</div>
+                  <div class="date-when">Nov 18, 2025</div>
+                </div>
+              </div>
+              <div class="date-row">
+                <div class="date-bullet"></div>
+                <div>
+                  <div class="date-event">First Meet</div>
+                  <div class="date-when">Dec 3, 2025</div>
+                </div>
+              </div>
+              <div class="date-row">
+                <div class="date-bullet"></div>
+                <div>
+                  <div class="date-event">District Championships</div>
+                  <div class="date-when">Feb 7, 2026</div>
+                </div>
+              </div>
+              <div class="date-row">
+                <div class="date-bullet"></div>
+                <div>
+                  <div class="date-event">Regional Championships</div>
+                  <div class="date-when">Feb 14, 2026</div>
+                </div>
+              </div>
+              <div class="date-row">
+                <div class="date-bullet"></div>
+                <div>
+                  <div class="date-event">State Championships</div>
+                  <div class="date-when">Feb 21–22, 2026</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-brand">KR Swim</span>
+      <span class="footer-meta">7403 Academic Ave · Nokesville, VA 20181</span>
+      <span class="footer-meta">&copy; <span id="year"></span> Kettle Run Swimming</span>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Carousel
+    const imgs = document.querySelectorAll('.hero-carousel-img');
+    const dotsContainer = document.getElementById('carousel-dots');
+    let current = 0;
+
+    imgs.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Slide ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    function goTo(n) {
+      imgs[current].classList.remove('active');
+      dotsContainer.children[current].classList.remove('active');
+      current = (n + imgs.length) % imgs.length;
+      imgs[current].classList.add('active');
+      dotsContainer.children[current].classList.add('active');
+    }
+
+    setInterval(() => goTo(current + 1), 5000);
+  </script>
+</body>
+</html>

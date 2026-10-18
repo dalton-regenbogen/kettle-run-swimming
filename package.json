@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./css/output.css --watch",
     "build": "npx @tailwindcss/cli -i ./src/input.css -o ./css/output.css --minify",
+    "build:homepage-dark": "tailwindcss -i ./src/homepage-dark.css -o ./css/homepage-dark.css --minify",
+    "dev:homepage-dark": "tailwindcss -i ./src/homepage-dark.css -o ./css/homepage-dark.css --watch",
     "records:meta": "node scripts/update-records-meta.mjs"
   },
   "repository": {

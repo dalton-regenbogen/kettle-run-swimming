@@ -1,0 +1,1364 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KR Swim | Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:       #005130;
+      --green-light: #007a49;
+      --orange:      #f37322;
+      --orange-dim:  rgba(243,115,34,0.12);
+      --ink:         #0d0d0d;
+      --bg:          #f2efe9;       /* warm off-white — original feel */
+      --surface:     #ffffff;
+      --border:      rgba(0,0,0,0.09);
+      --muted:       #888;
+      --text:        #111;
+      --subtext:     #555;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── HEADER ────────────────────────────────────────── */
+    header {
+      background: var(--ink);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    /* Ticker strip */
+    .ticker-wrap {
+      background: var(--green);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 0.45rem 0;
+    }
+
+    .ticker-track {
+      display: inline-flex;
+      gap: 3.5rem;
+      animation: ticker 30s linear infinite;
+    }
+
+    .ticker-track:hover { animation-play-state: paused; }
+
+    .ticker-item {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.88);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .ticker-item::before {
+      content: '◆';
+      color: var(--orange);
+      font-size: 0.45rem;
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* School name band */
+    .header-band {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 0.2rem 0;
+    }
+
+    .header-band p {
+      text-align: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* Desktop nav: logo centered, nav split left/right */
+    .header-nav {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+    }
+
+    /* hide on mobile */
+    .desktop-nav { display: flex; flex: 1; }
+
+    .nav-half {
+      display: flex;
+      flex: 1;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-half.left  { justify-content: flex-end; gap: 0.1rem; padding-right: 2rem; }
+    .nav-half.right { justify-content: flex-start; gap: 0.1rem; padding-left: 2rem; }
+
+    .nav-half li { position: relative; }
+
+    .nav-half a,
+    .nav-half button {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.55rem 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: color 0.18s;
+      white-space: nowrap;
+    }
+
+    .nav-half a:hover,
+    .nav-half button:hover { color: #fff; }
+
+    /* underline animation */
+    .nav-half a span,
+    .nav-half button span {
+      position: relative;
+    }
+
+    .nav-half a span::after,
+    .nav-half button span::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -2px;
+      width: 100%; height: 1.5px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-half a:hover span::after,
+    .nav-half button:hover span::after,
+    .has-drop:hover > button span::after { transform: scaleX(1); }
+
+    /* chevron */
+    .chev {
+      width: 10px; height: 10px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg) translateY(-2px);
+      transition: transform 0.2s;
+    }
+
+    .has-drop:hover .chev {
+      transform: rotate(-135deg) translateY(-2px);
+    }
+
+    /* dropdown */
+    .drop {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-4px);
+      background: #1a1a1a;
+      border: 1px solid rgba(255,255,255,0.08);
+      min-width: 210px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.18s, transform 0.18s;
+      z-index: 200;
+    }
+
+    .has-drop:hover .drop {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .drop a {
+      display: block;
+      padding: 0.6rem 1.1rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6) !important;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .drop a:last-child { border-bottom: none; }
+    .drop a:hover { color: #fff !important; background: rgba(255,255,255,0.05); }
+    .drop a span::after { display: none; }
+
+    /* Logo center */
+    .logo-center {
+      flex-shrink: 0;
+      padding: 0.6rem 0;
+    }
+
+    .logo-center img {
+      height: 72px;
+      width: auto;
+      display: block;
+    }
+
+    /* Mobile header */
+    .mobile-header {
+      display: none;
+      padding: 0.75rem 1.25rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mobile-header img { height: 48px; width: auto; }
+
+    .hamburger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: #fff;
+      transition: all 0.3s;
+    }
+
+    /* Mobile menu panel */
+    .mobile-menu {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #fff;
+      z-index: 300;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+      padding: 1.5rem 0;
+    }
+
+    .mobile-menu.open { transform: translateX(0); }
+
+    .mobile-menu-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem 1rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0.5rem;
+    }
+
+    .mobile-menu-head img { height: 44px; }
+
+    .mobile-close {
+      background: none; border: none; cursor: pointer;
+      font-size: 1.5rem; color: var(--ink); padding: 0.25rem;
+    }
+
+    .mobile-menu nav a,
+    .mobile-menu nav button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 0.85rem 1.5rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .mobile-submenu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: #f8f8f8;
+    }
+
+    .mobile-submenu.open { max-height: 300px; }
+
+    .mobile-submenu a {
+      padding: 0.65rem 2rem;
+      font-size: 0.85rem;
+      color: #555;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    /* ─── HERO ──────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      background: #fff;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* subtle grid texture — from original */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.25;
+      background-image:
+        linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      z-index: 0;
+    }
+
+    /* brand gradient wash — from original */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(900px 500px at 10% 20%, rgba(0,81,48,0.13), transparent 60%),
+        radial-gradient(700px 400px at 90% 25%, rgba(243,115,34,0.10), transparent 60%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 4rem 2rem 4.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    /* Copy */
+    .hero-copy { order: 1; }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.1rem;
+      animation: fadeUp 0.55s ease both;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px; height: 2px;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+
+    .hero-h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 5.5vw, 5.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.55s 0.08s ease both;
+    }
+
+    .hero-h1 em {
+      color: var(--green);
+      font-style: normal;
+    }
+
+    .hero-desc {
+      font-size: 0.975rem;
+      line-height: 1.75;
+      color: var(--subtext);
+      max-width: 460px;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.55s 0.16s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.55s 0.22s ease both;
+    }
+
+    .btn-primary {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--green);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.8rem 1.75rem;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--green-light); transform: translateY(-1px); }
+
+    .btn-ghost {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--subtext);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--ink); }
+
+    /* stat bar */
+    .hero-stats {
+      display: flex;
+      gap: 2.25rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      animation: fadeUp 0.55s 0.3s ease both;
+    }
+
+    .stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    /* Carousel — same as original but slightly updated wrapper */
+    .hero-carousel {
+      order: 2;
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      background: #111;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    .carousel-track {
+      position: relative;
+      height: 420px;
+    }
+
+    @media (max-width: 900px) {
+      .carousel-track { height: 56vw; }
+    }
+
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.75s ease;
+    }
+
+    .carousel-slide.active { opacity: 1; }
+
+    .carousel-slide img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .carousel-fade {
+      position: absolute;
+      inset-x: 0; bottom: 0;
+      height: 100px;
+      background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+      pointer-events: none;
+    }
+
+    .carousel-controls {
+      position: absolute;
+      bottom: 1rem;
+      left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      z-index: 2;
+    }
+
+    .carousel-dots { display: flex; gap: 5px; }
+
+    .cdot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      border: none; cursor: pointer; padding: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .cdot.active { background: var(--orange); transform: scale(1.5); }
+
+    .carousel-arrows { display: flex; gap: 6px; }
+
+    .carr-btn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      cursor: pointer;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      transition: background 0.15s;
+      line-height: 1;
+    }
+
+    .carr-btn:hover { background: rgba(255,255,255,0.28); }
+
+    /* ─── MAIN CONTENT ──────────────────────────────────── */
+    main { background: var(--bg); }
+
+    .content-wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 4rem 2rem 5rem;
+    }
+
+    /* Section label — alt design eyebrow style, light version */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 2rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+
+    .section-label::after {
+      content: '';
+      display: block;
+      height: 1px;
+      flex: 1;
+      background: var(--border);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 1.75rem;
+      align-items: start;
+    }
+
+    /* ─── CARDS — original rounded white style ────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+
+    .card + .card { margin-top: 1.25rem; }
+
+    .card-head {
+      padding: 1.25rem 1.75rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .card-link {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    .card-link:hover { text-decoration: underline; }
+
+    /* News items */
+    .news-item {
+      display: flex;
+      gap: 1.1rem;
+      padding: 1.1rem 1.75rem;
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.14s;
+    }
+
+    .news-item:last-child { border-bottom: none; }
+    .news-item:hover { background: #fafaf8; }
+
+    /* date badge — original mini-calendar style */
+    .news-date {
+      flex-shrink: 0;
+      width: 52px;
+      background: #f4f4f2;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 0;
+    }
+
+    .date-mon {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .date-day {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--ink);
+      line-height: 1.05;
+    }
+
+    .news-body { flex: 1; min-width: 0; }
+
+    /* tag — alt design punchy color style */
+    .tag {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.55rem;
+      border-radius: 3px;
+      margin-bottom: 0.3rem;
+    }
+
+    .tag-orange { background: var(--orange-dim); color: var(--orange); }
+    .tag-green  { background: rgba(0,81,48,0.08); color: var(--green-light); }
+    .tag-gray   { background: rgba(0,0,0,0.06);   color: #777; }
+
+    .news-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .news-item:hover .news-headline { text-decoration: underline; }
+
+    .news-excerpt {
+      font-size: 0.82rem;
+      color: var(--subtext);
+      margin-top: 0.2rem;
+      line-height: 1.5;
+    }
+
+    .news-arrow {
+      flex-shrink: 0;
+      align-self: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #ccc;
+      transition: color 0.15s;
+    }
+
+    .news-item:hover .news-arrow { color: var(--ink); }
+
+    /* Schedule rows */
+    .card-body { padding: 0.25rem 1.75rem 0.5rem; }
+
+    .sched-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sched-row:last-child { border-bottom: none; }
+
+    .sched-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .sched-val {
+      font-size: 0.82rem;
+      color: var(--subtext);
+      text-align: right;
+    }
+
+    /* ─── SIDEBAR ───────────────────────────────────────── */
+    .sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    /* Contact — green accent card (alt-inspired) */
+    .contact-card {
+      background: var(--green);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .contact-card .card-head {
+      border-bottom-color: rgba(255,255,255,0.12);
+    }
+
+    .contact-card .card-title { color: #fff; }
+
+    .contact-body { padding: 1.25rem 1.75rem 1.5rem; }
+
+    .contact-desc {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.65;
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-white {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: #fff;
+      color: var(--green);
+      text-decoration: none;
+      padding: 0.65rem 1.4rem;
+      border-radius: 6px;
+      transition: background 0.18s;
+      display: inline-block;
+    }
+
+    .btn-white:hover { background: #eef6f1; }
+
+    .contact-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.18s;
+    }
+
+    .contact-sub:hover { color: rgba(255,255,255,0.9); }
+
+    /* Important dates */
+    .dates-list { padding: 0.5rem 1.75rem 1rem; }
+
+    .date-entry {
+      display: flex;
+      gap: 0.85rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+
+    .date-entry:last-child { border-bottom: none; }
+
+    .date-pip {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+      margin-top: 0.45rem;
+    }
+
+    .date-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.875rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .date-when {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      border-top: 3px solid var(--green);
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .footer-meta {
+      font-size: 0.8rem;
+      color: #555;
+    }
+
+    /* ─── ANIMATIONS ────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .header-nav { display: none; }
+      .mobile-header { display: flex; }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding: 2.5rem 1.25rem 3rem;
+        gap: 2rem;
+      }
+
+      .hero-copy { order: 2; }
+      .hero-carousel { order: 1; }
+      .hero-h1 { font-size: 3.25rem; }
+
+      .content-grid { grid-template-columns: 1fr; }
+      .content-wrap { padding: 2.5rem 1rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ─────────────────────────────────────────────── -->
+<header>
+  <!-- Ticker — now visible, green, Barlow Condensed -->
+  <div class="ticker-wrap" role="status" aria-live="polite">
+    <div class="ticker-track">
+      <span class="ticker-item">Kettle Run Swimming — Est. 2008</span>
+      <span class="ticker-item">2025–26 Season Underway</span>
+      <span class="ticker-item">Next Meet — View Competition Schedule</span>
+      <span class="ticker-item">Practice: Mon / Wed / Fri</span>
+      <span class="ticker-item">Kettle Run Swimming — Est. 2008</span>
+      <span class="ticker-item">2025–26 Season Underway</span>
+      <span class="ticker-item">Next Meet — View Competition Schedule</span>
+      <span class="ticker-item">Practice: Mon / Wed / Fri</span>
+    </div>
+  </div>
+
+  <!-- School name band -->
+  <div class="header-band">
+    <div style="max-width:1280px;margin:0 auto;padding:0 2rem;">
+      <p>Kettle Run Swimming</p>
+    </div>
+  </div>
+
+  <!-- Desktop nav — center-logo split layout from original -->
+  <div class="header-nav">
+    <!-- Left nav half -->
+    <nav>
+      <ul class="nav-half left">
+        <li class="has-drop">
+          <button><span>About</span> <span class="chev"></span></button>
+          <div class="drop">
+            <a href="#"><span>Staff</span></a>
+          </div>
+        </li>
+        <li><a href="./roster.html"><span>Team Roster</span></a></li>
+        <li class="has-drop">
+          <button><span>Schedule</span> <span class="chev"></span></button>
+          <div class="drop">
+            <a href="./competition-schedule.html"><span>Competition Schedule</span></a>
+            <a href="./practice-schedule.html"><span>Practice Schedule</span></a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Logo -->
+    <a href="./index.html" class="logo-center">
+      <img src="./assets/kr-logo.svg" alt="KR Swim">
+    </a>
+
+    <!-- Right nav half -->
+    <nav>
+      <ul class="nav-half right">
+        <li class="has-drop">
+          <button><span>Results</span> <span class="chev"></span></button>
+          <div class="drop">
+            <a href="./2025-2026-results.html"><span>Current Season</span></a>
+            <a href="#"><span>Past Seasons</span></a>
+          </div>
+        </li>
+        <li><a href="./team-records.html"><span>Team Records</span></a></li>
+        <li class="has-drop">
+          <button><span>Resources</span> <span class="chev"></span></button>
+          <div class="drop">
+            <a href="#"><span>Team Handbook</span></a>
+            <a href="#"><span>VHSL Qualifying Standards</span></a>
+            <a href="#"><span>Top 10 All-Time Performances</span></a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Mobile header -->
+  <div class="mobile-header">
+    <a href="./index.html">
+      <img src="./assets/kr-logo.svg" alt="KR Swim">
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-head">
+    <img src="./assets/kr-logo-dark.svg" onerror="this.style.display='none'" alt="KR Swim">
+    <button class="mobile-close" id="mobileClose" aria-label="Close menu">✕</button>
+  </div>
+  <nav>
+    <button data-mob-toggle="mob-about">About
+      <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/></svg>
+    </button>
+    <div class="mobile-submenu" id="mob-about">
+      <a href="#">Staff</a>
+    </div>
+    <a href="./roster.html">Team Roster</a>
+    <button data-mob-toggle="mob-sched">Schedule
+      <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/></svg>
+    </button>
+    <div class="mobile-submenu" id="mob-sched">
+      <a href="./competition-schedule.html">Competition Schedule</a>
+      <a href="./practice-schedule.html">Practice Schedule</a>
+    </div>
+    <button data-mob-toggle="mob-results">Results
+      <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/></svg>
+    </button>
+    <div class="mobile-submenu" id="mob-results">
+      <a href="./2025-2026-results.html">Current Season</a>
+      <a href="#">Past Seasons</a>
+    </div>
+    <a href="./team-records.html">Team Records</a>
+    <button data-mob-toggle="mob-res">Resources
+      <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/></svg>
+    </button>
+    <div class="mobile-submenu" id="mob-res">
+      <a href="#">Team Handbook</a>
+      <a href="#">VHSL Qualifying Standards</a>
+      <a href="#">Top 10 All-Time Performances</a>
+    </div>
+    <a href="./tryouts.html" style="color:var(--orange);font-weight:800;">Tryout Information</a>
+  </nav>
+</div>
+
+<!-- ── HERO ───────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <!-- Copy — left -->
+    <div class="hero-copy">
+      <p class="hero-eyebrow">Kettle Run HS · Nokesville, VA</p>
+      <h1 class="hero-h1">Home of<br><em>Kettle Run</em><br>Swimming</h1>
+      <p class="hero-desc">
+        Welcome to KR Swimming — established in 2008. A program built on consistent
+        effort, team-first support, and pride in representing our school the right way.
+        Year-round and seasonal athletes welcome. If you're ready to work, there's a place for you here.
+      </p>
+      <div class="hero-actions">
+        <a href="./tryouts.html" class="btn-primary">View Tryout Information</a>
+        <a href="./2025-2026-results.html" class="btn-ghost">Season Results →</a>
+      </div>
+      <!-- Stat bar from alt design -->
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">2008</div>
+          <div class="stat-label">Est.</div>
+        </div>
+        <div>
+          <div class="stat-num">Class 3</div>
+          <div class="stat-label">VHSL</div>
+        </div>
+        <div>
+          <div class="stat-num">25/26</div>
+          <div class="stat-label">Active Season</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel — right, original structure -->
+    <div class="hero-carousel">
+      <div class="carousel-track" id="heroCarousel">
+        <div class="carousel-slide active" data-slide>
+          <img src="./assets/IMG_3978.jpeg" alt="KR Swim" style="object-position:50% 30%">
+        </div>
+        <div class="carousel-slide" data-slide>
+          <img src="./assets/IMG_6483.jpeg" alt="KR Swim" style="object-position:50% 30%">
+        </div>
+        <div class="carousel-slide" data-slide>
+          <img src="./assets/IMG_6976.jpeg" alt="KR Swim" style="object-position:50% 20%">
+        </div>
+        <div class="carousel-slide" data-slide>
+          <img src="./assets/IMG_6984.jpeg" alt="KR Swim" style="object-position:50% 40%">
+        </div>
+        <div class="carousel-slide" data-slide>
+          <img src="./assets/IMG_7034.jpeg" alt="KR Swim" style="object-position:50% 25%">
+        </div>
+        <div class="carousel-slide" data-slide>
+          <img src="./assets/IMG_7037.jpeg" alt="KR Swim">
+        </div>
+        <div class="carousel-slide" data-slide>
+          <img src="./assets/IMG_2327.jpeg" alt="KR Swim">
+        </div>
+        <div class="carousel-slide" data-slide>
+          <img src="./assets/IMG_2335.jpeg" alt="KR Swim">
+        </div>
+        <div class="carousel-slide" data-slide>
+          <img src="./assets/IMG_2347.jpeg" alt="KR Swim" style="object-position:50% 37%">
+        </div>
+        <div class="carousel-slide" data-slide>
+          <img src="./assets/IMG_2359.jpeg" alt="KR Swim" style="object-position:50% 35%">
+        </div>
+        <div class="carousel-slide" data-slide>
+          <img src="./assets/IMG_2596.jpeg" alt="KR Swim" style="object-position:50% 35%">
+        </div>
+      </div>
+      <div class="carousel-fade"></div>
+      <div class="carousel-controls">
+        <div class="carousel-dots" id="heroDots"></div>
+        <div class="carousel-arrows">
+          <button class="carr-btn" id="heroPrev">←</button>
+          <button class="carr-btn" id="heroNext">→</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── MAIN CONTENT ───────────────────────────────────────── -->
+<main>
+  <div class="content-wrap">
+    <p class="section-label">Latest from the program</p>
+
+    <div class="content-grid">
+
+      <!-- Left column -->
+      <div>
+        <!-- Announcements card -->
+        <div class="card">
+          <div class="card-head">
+            <span class="card-title">Announcements</span>
+            <a href="./announcements.html" class="card-link">View all →</a>
+          </div>
+
+          <a href="./announcements.html#week-of-03-02" class="news-item">
+            <div class="news-date">
+              <span class="date-mon">Mar</span>
+              <span class="date-day">2</span>
+            </div>
+            <div class="news-body">
+              <span class="tag tag-gray">Weekly</span>
+              <p class="news-headline">Week-at-a-Glance: practice times + reminders</p>
+              <p class="news-excerpt">Quick highlights for the week, what to bring, and any schedule adjustments.</p>
+            </div>
+            <span class="news-arrow">→</span>
+          </a>
+
+          <a href="./announcements.html#postseason" class="news-item">
+            <div class="news-date">
+              <span class="date-mon">Feb</span>
+              <span class="date-day">20</span>
+            </div>
+            <div class="news-body">
+              <span class="tag tag-orange">Postseason</span>
+              <p class="news-headline">Postseason info: warmups, entries, and travel</p>
+              <p class="news-excerpt">Key times, location notes, and what athletes should expect for championship meets.</p>
+            </div>
+            <span class="news-arrow">→</span>
+          </a>
+
+          <a href="./announcements.html#results" class="news-item">
+            <div class="news-date">
+              <span class="date-mon">Feb</span>
+              <span class="date-day">8</span>
+            </div>
+            <div class="news-body">
+              <span class="tag tag-green">Results</span>
+              <p class="news-headline">Meet recap + updated results archive</p>
+              <p class="news-excerpt">Recap, highlights, and links to full results for the season.</p>
+            </div>
+            <span class="news-arrow">→</span>
+          </a>
+        </div>
+
+        <!-- This week card -->
+        <div class="card">
+          <div class="card-head">
+            <span class="card-title">This Week at KR</span>
+            <a href="./practice-schedule.html" class="card-link">Full schedule →</a>
+          </div>
+          <div class="card-body">
+            <div class="sched-row">
+              <span class="sched-label">Practice</span>
+              <span class="sched-val">Mon / Wed / Fri — Time — Location</span>
+            </div>
+            <div class="sched-row">
+              <span class="sched-label">Next Meet</span>
+              <span class="sched-val">Opponent — Date — Venue</span>
+            </div>
+            <div class="sched-row">
+              <span class="sched-label">Latest Results</span>
+              <span class="sched-val">
+                <a href="./2025-2026-results.html" style="color:var(--green); font-family:'Barlow Condensed'; font-weight:700; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; text-decoration:none;">View Archive →</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+
+        <!-- Contact — green card -->
+        <div class="contact-card">
+          <div class="card-head" style="border-bottom:1px solid rgba(255,255,255,0.12);">
+            <span class="card-title" style="color:#fff;">Contact</span>
+          </div>
+          <div class="contact-body">
+            <p class="contact-desc">
+              For parent questions, athlete communication, and program logistics — one clear contact point.
+            </p>
+            <div class="contact-actions">
+              <a href="mailto:coach@krswim.com" class="btn-white">Email Coach</a>
+              <a href="./resources.html" class="contact-sub">Team Handbook →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Important dates -->
+        <div class="card">
+          <div class="card-head">
+            <span class="card-title">Important Dates</span>
+            <span style="font-family:'Barlow Condensed'; font-weight:700; font-size:.68rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted);">2025–26</span>
+          </div>
+          <div class="dates-list" id="importantDates">
+            <div class="date-entry">
+              <div class="date-pip"></div>
+              <div>
+                <div class="date-name">First Day of Practice</div>
+                <div class="date-when">Nov 18, 2025</div>
+              </div>
+            </div>
+            <div class="date-entry">
+              <div class="date-pip"></div>
+              <div>
+                <div class="date-name">First Meet</div>
+                <div class="date-when">Dec 3, 2025</div>
+              </div>
+            </div>
+            <div class="date-entry">
+              <div class="date-pip"></div>
+              <div>
+                <div class="date-name">District Championships</div>
+                <div class="date-when">Feb 7, 2026</div>
+              </div>
+            </div>
+            <div class="date-entry">
+              <div class="date-pip"></div>
+              <div>
+                <div class="date-name">Regional Championships</div>
+                <div class="date-when">Feb 14, 2026</div>
+              </div>
+            </div>
+            <div class="date-entry">
+              <div class="date-pip"></div>
+              <div>
+                <div class="date-name">State Championships</div>
+                <div class="date-when">Feb 21–22, 2026</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">KR Swim</span>
+    <span class="footer-meta">7403 Academic Ave · Nokesville, VA 20181</span>
+    <span class="footer-meta">&copy; <span id="year"></span> Kettle Run Swimming</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ── Carousel ──────────────────────────────────────────────
+  const slides = Array.from(document.querySelectorAll('[data-slide]'));
+  const dotsWrap = document.getElementById('heroDots');
+  let cur = 0, timer;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'cdot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Slide ' + (i + 1));
+    d.onclick = () => goTo(i);
+    dotsWrap.appendChild(d);
+  });
+
+  function goTo(n) {
+    slides[cur].classList.remove('active');
+    dotsWrap.children[cur].classList.remove('active');
+    cur = (n + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    dotsWrap.children[cur].classList.add('active');
+  }
+
+  function startTimer() { timer = setInterval(() => goTo(cur + 1), 5000); }
+  function resetTimer()  { clearInterval(timer); startTimer(); }
+
+  document.getElementById('heroNext').onclick = () => { goTo(cur + 1); resetTimer(); };
+  document.getElementById('heroPrev').onclick = () => { goTo(cur - 1); resetTimer(); };
+  startTimer();
+
+  // ── Mobile menu ───────────────────────────────────────────
+  const menu = document.getElementById('mobileMenu');
+  document.getElementById('hamburger').onclick = () => {
+    menu.classList.add('open');
+    menu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+  document.getElementById('mobileClose').onclick = () => {
+    menu.classList.remove('open');
+    menu.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  document.querySelectorAll('[data-mob-toggle]').forEach(btn => {
+    btn.onclick = () => {
+      const target = document.getElementById(btn.dataset.mobToggle);
+      target.classList.toggle('open');
+    };
+  });
+</script>
+</body>
+</html>

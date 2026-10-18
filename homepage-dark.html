@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta name="description" content="Meet schedules, practice information, results, and updates for Kettle Run Swimming." />
+    <title>Kettle Run Swimming — Dark homepage study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/homepage-dark.css" />
+    <script src="./js/homepageDark.js" type="module"></script>
+  </head>
+  <body class="bg-field font-body text-paper antialiased" data-layout="fixtures">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header sticky top-0 z-30 border-b">
+      <div class="page-width header-inner flex min-h-[94px] items-center justify-between gap-6">
+        <a class="brand inline-flex shrink-0 items-center gap-[9px]" href="./homepage-dark.html" aria-label="Kettle Run Swimming home">
+          <img src="./assets/kr-logo.svg" width="70" height="70" alt="Kettle Run school logo" />
+          <span class="brand-name"><span>Kettle Run</span><span>Swimming</span></span>
+        </a>
+        <button class="menu-toggle" id="study-menu-toggle" type="button" aria-expanded="false" aria-controls="study-navigation" hidden>
+          <span>Menu</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M2 6h16M2 14h16" stroke="currentColor" stroke-width="1.5" /></svg>
+        </button>
+        <nav class="site-nav flex items-center gap-[27px]" id="study-navigation" aria-label="Primary">
+          <a href="./competition-schedule.html">Meets</a>
+          <a href="./practice-schedule.html">Practice</a>
+          <a href="./2025-2026-results.html">Results</a>
+          <a href="./roster.html">Roster</a>
+          <a href="./team-records.html">Records</a>
+          <a class="nav-contact" href="mailto:coachdtr@gmail.com">Contact Coach</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero page-width grid items-center gap-x-16 py-[52px]" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="school-name">Kettle Run High School · Nokesville, Virginia</p>
+          <h1 id="hero-title" class="font-display font-extrabold uppercase">Kettle Run<br /> Swimming</h1>
+          <p class="hero-description">Schedules, results, and updates for our swimmers and families.</p>
+          <div class="hero-links">
+            <a class="primary-link" href="./competition-schedule.html">Meet schedule</a>
+            <a class="text-link" href="./practice-schedule.html">Practice schedule</a>
+          </div>
+        </div>
+        <figure class="hero-photo m-0">
+          <img class="block aspect-[4/3] h-auto w-full object-cover" src="./assets/IMG_3978.jpeg" width="4032" height="3024" fetchpriority="high" alt="Kettle Run swimmers standing together with a trophy" />
+        </figure>
+      </section>
+
+      <!-- Both layout studies reuse these sections. CSS changes their arrangement. -->
+      <div class="home-content page-width">
+        <section class="calendar-section" aria-labelledby="calendar-heading">
+          <div class="section-heading">
+            <h2 id="calendar-heading">Team calendar</h2>
+            <span class="season-label" id="calendar-season">2025–2026</span>
+          </div>
+          <p class="archive-notice" id="archive-notice" hidden></p>
+          <div class="calendar-columns">
+            <div class="meet-summary" id="meet-summary" aria-live="polite" aria-atomic="true">
+              <p class="detail-label">Meets</p>
+              <h3>Meet schedule</h3>
+              <p class="supporting-copy">Dates, opponents, and venues for the season.</p>
+              <a class="text-link" href="./competition-schedule.html">View meet schedule</a>
+            </div>
+            <div class="practice-summary" id="practice-summary" aria-live="polite" aria-atomic="true">
+              <h3>Practice</h3>
+              <p class="supporting-copy">Find practice times, locations, and schedule changes.</p>
+              <a class="text-link" href="./practice-schedule.html">Full practice schedule</a>
+            </div>
+          </div>
+        </section>
+
+        <div class="follow-up">
+          <section class="results-section" aria-labelledby="results-heading">
+            <div class="section-heading"><h2 id="results-heading">Results</h2></div>
+            <a class="result-feature" href="./2025-2026-results.html">
+              <h3>2025–2026 season</h3>
+              <p class="supporting-copy">Meet-by-meet scores and championship results.</p>
+              <span class="text-link">View season results</span>
+            </a>
+            <div class="record-link">
+              <span>All-time bests</span>
+              <a class="text-link" href="./team-records.html">Team records</a>
+            </div>
+          </section>
+
+          <section class="updates-section" aria-labelledby="updates-heading">
+            <div class="section-heading"><h2 id="updates-heading">Latest updates</h2></div>
+            <ul class="updates-list" id="homepage-updates">
+              <li><a href="./team-records.html"><div class="update-body"><h3>Team records</h3><p>All-time boys’ and girls’ records.</p></div></a></li>
+              <li><a href="./practice-schedule.html"><div class="update-body"><h3>Practice schedule</h3><p>Practice dates, locations, and notes.</p></div></a></li>
+              <li><a href="./roster.html"><div class="update-body"><h3>Team roster</h3><p>Swimmers by season and team.</p></div></a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <section class="contact-section" aria-labelledby="contact-heading">
+        <div class="page-width contact-inner">
+          <div><h2 id="contact-heading">Coach contact</h2><p>For participation, schedules, and team questions.</p></div>
+          <a class="text-link" href="mailto:coachdtr@gmail.com">Email Coach</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-width site-footer">
+      <span>Kettle Run High School Swimming</span>
+      <span>7403 Academic Ave · Nokesville, VA 20181</span>
+      <span>© <span id="study-year">2026</span></span>
+    </footer>
+  </body>
+</html>
