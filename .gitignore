@@ -1,1 +1,8 @@
-node_modules
+# Installed packages (recreate with: npm install)
+node_modules/
+
+# Generated website (recreate with: npm run build)
+dist/
+
+# macOS folder metadata
+.DS_Store

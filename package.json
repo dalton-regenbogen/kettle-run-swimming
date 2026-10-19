@@ -1,13 +1,11 @@
 {
   "name": "kettle-run-swimming",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Kettle Run High School swim team website",
+  "private": true,
   "scripts": {
-    "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./css/output.css --watch",
-    "build": "npx @tailwindcss/cli -i ./src/input.css -o ./css/output.css --minify",
-    "build:homepage-dark": "tailwindcss -i ./src/homepage-dark.css -o ./css/homepage-dark.css --minify",
-    "dev:homepage-dark": "tailwindcss -i ./src/homepage-dark.css -o ./css/homepage-dark.css --watch",
+    "dev": "node --watch-path=src scripts/build.mjs",
+    "build": "node scripts/build.mjs --minify",
     "records:meta": "node scripts/update-records-meta.mjs"
   },
   "repository": {

@@ -9,5 +9,5 @@ const lastUpdated = `${yyyy}-${mm}-${dd}`;
 const version = `${yyyy}${mm}${dd}`;
 
 const meta = { lastUpdated, version };
-writeFileSync("assets/data/records-meta.json", JSON.stringify(meta, null, 2) + "\n");
-console.log("Updated assets/data/records-meta.json:", meta);
+writeFileSync("src/assets/data/records-meta.json", JSON.stringify(meta, null, 2) + "\n");
+console.log("Updated src/assets/data/records-meta.json:", meta);

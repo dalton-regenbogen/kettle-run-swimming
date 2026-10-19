@@ -8,9 +8,9 @@ from pathlib import Path
 import pdfplumber
 
 # --- Paths (edit these if your repo structure differs) ---
-PDF_PATH = Path("assets/records/krhs-records.pdf")
-JSON_OUT = Path("assets/data/records.json")
-META_OUT = Path("assets/data/records-meta.json")
+PDF_PATH = Path("src/assets/records/krhs-records.pdf")
+JSON_OUT = Path("src/assets/data/records.json")
+META_OUT = Path("src/assets/data/records-meta.json")
 
 # Matches one record line: "<Event> <Time> <Date> <rest...>"
 LINE_RE = re.compile(
@@ -85,7 +85,7 @@ def write_meta():
     meta = {
         "lastUpdated": today.strftime("%m/%d/%Y"),
         "version": today.strftime("%m%d%Y"),
-        "sourcePdf": str(PDF_PATH).replace("\\", "/"),
+        "sourcePdf": "assets/records/krhs-records.pdf",  # path on the website
     }
     META_OUT.parent.mkdir(parents=True, exist_ok=True)
     META_OUT.write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
