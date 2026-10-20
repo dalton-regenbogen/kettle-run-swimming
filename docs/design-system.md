@@ -90,7 +90,8 @@ mouse click. Don't remove focus outlines — people navigating by keyboard need 
 
 Based on the original site header, refined ("E" in the header lab).
 
-- Thin top strip reading "Kettle Run Swimming" (10px, medium, wide letter spacing, 70% white on a slightly lighter black).
+- Thin top strip reading "Kettle Run Swimming" (10px, medium, wide letter spacing, 70% white), same black as the
+  header with a hairline underneath (`border-b border-white/12`). The footer's bottom row mirrors this.
 - Black bar with eight links, four on each side of a centered logo (`kr-logo-tight.svg`, 40px tall; 30px on phones).
 - Links: 12px, uppercase, medium weight, 0.08em letter spacing (same as the footer), 85% white. Hover and current page: KR orange text.
 - No colored bottom bar — only a faint hairline, which also separates the header from the page in dark mode.
@@ -106,17 +107,14 @@ Based on the original site header, refined ("E" in the header lab).
 
 ### Site footer — `src/partials/site-footer.html`
 
-"F2 Split", compact — designed to match the header.
+Compact, designed to match the header.
 
-- Black background with a faint top hairline, `py-5` padding.
-- Left: logo (20px) + "Kettle Run Swimming" (10px, uppercase, 0.12em tracking).
-- Right: links (Resources · Join the team · About · Email the coach) — 10px, uppercase, medium, 0.08em tracking,
-  85% white, orange on hover.
-- Thin bottom strip like the header's top strip, centered on one line on desktop: © school year (e.g. 2026–2027,
-  rolls over each August) · "Kettle Run High School · address" on the
-  right — the team name already appears beside the logo, so it isn't repeated (10px uppercase, 70% white
-  on `bg-white/7`). The year is set by `js/site.js`.
-- Phones: everything stacks and centers.
+- Black background with a faint top hairline. Top row: logo (20px) + "Kettle Run Swimming" (10px uppercase) on the
+  left, links on the right (Resources · Join the team · About · Email the coach — 10px uppercase, medium, 0.08em
+  tracking, 85% white, orange on hover). On phones these stack and center with extra room (`py-7`, `gap-5`).
+- Bottom strip ("stacked"), centered on every screen size: Kettle Run High School / address / © school year, on
+  three lines. 9px uppercase, regular weight, 60% white (the year a little dimmer), `gap-1.5`, `py-5`, same black
+  with a hairline above (`border-t border-white/12`) — mirroring the header's top strip. The school year (e.g. 2026–2027) is set by `js/site.js` and rolls over each August.
 
 ### Page layout (from the original site)
 
@@ -137,13 +135,16 @@ reference implementation (`src/pages/team-records.html`).
 ### Tables (from the original site)
 
 - Header row: solid `bg-brand` with white `font-semibold` labels.
-- Desktop rows lightly striped (`md:even:bg-fg/[0.03]`), `table-fixed` with set column widths so related tables line up.
+- **Clean rows:** a thin `border-line` between rows on every screen size, no zebra stripes.
+- `table-fixed` with set column widths so related tables line up.
+- **Groups** (e.g. "Individual" / "Relays"): each group is its own `<tbody>` whose first row is a
+  `<th scope="rowgroup">` heading — `type-label`, semibold, `text-fg-muted`, no fill, extra space above. Screen
+  readers announce the group name for each row, and `first:`/`last:` styles count within each group.
 - Phones: each row becomes a two-line block — main item and number on top, secondary details below — with a
   matching "Event | Name … Time | Date" header.
 - Times use tabular numbers (`type-table`) in `font-medium`. On desktop a badge sits next to the time; on phones
   it moves to the second line after the name so every time stays aligned on the right edge.
-- A slim divider row (`type-label` on a light tint) can separate groups, e.g. "Relays".
-- Badge text should explain itself (e.g. "Class 3 State Record") so no legend is needed.
+- Badge text should explain itself (e.g. "State Record") so no legend is needed.
 
 ### Logo
 

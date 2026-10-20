@@ -1,7 +1,7 @@
 // Fills in the Team Records page from assets/data/records.json.
 //
 // Expects these elements on the page:
-//   #boys-records, #girls-records   <tbody> for each table
+//   #boys-records, #girls-records   the "Loading…" <tbody> in each table (replaced by group <tbody>s)
 //   #records-updated                the "Last updated …" label
 
 // records.json stores dates like "7-Feb-26".
@@ -29,7 +29,7 @@ function el(tag, className, text) {
   return element;
 }
 
-// The small yellow badge (e.g. "Class 3 State Record"), or null if there isn't one.
+// The small yellow badge (e.g. "State Record"), or null if there isn't one.
 // The text comes straight from RecordBadge in records.json.
 function badge(record) {
   if (!record.RecordBadge) return null;
@@ -52,7 +52,7 @@ function withBadge(content, record, className) {
 // Keep one display class per element: `hidden md:table-cell`, never `flex hidden`.
 function recordRow(record) {
   const date = formatDate(parseRecordDate(record.RecordDate));
-  const row = el("tr", "block border-b border-line last:border-0 md:table-row md:border-0 md:even:bg-fg/[0.03]");
+  const row = el("tr", "block border-b border-line last:border-0 md:table-row");
 
   // First cell: the whole phone layout, or just the event name on desktop
   const first = el("td", "block px-4 py-2.5 md:table-cell");
@@ -79,27 +79,31 @@ function recordRow(record) {
   return row;
 }
 
-// A slim label row, e.g. "Relays", between groups of events.
-function dividerRow(label) {
-  const row = el("tr", "block md:table-row");
-  const cell = el("td", "type-label block border-y border-line bg-fg/[0.04] px-4 py-1.5 text-fg-subtle md:table-cell", label);
-  cell.colSpan = 4;
-  row.append(cell);
-  return row;
+// One group of events (e.g. "Individual") as its own <tbody>.
+// - A table can have several <tbody> sections; each is a group of rows.
+// - The first row is the group's heading: <th scope="rowgroup"> tells screen readers it
+//   names every row in this section.
+// - Rows are separated by thin lines (no stripes). `last:border-0` drops the line under
+//   the last row of each group, because "last" is counted within each <tbody>.
+function groupBody(label, records) {
+  const tbody = el("tbody");
+
+  const headingRow = el("tr", "block md:table-row");
+  const heading = el("th", "type-label block border-b border-line px-4 pt-5 pb-2 text-left font-semibold text-fg-muted md:table-cell", label);
+  heading.scope = "rowgroup";
+  heading.colSpan = 4;
+  headingRow.append(heading);
+
+  tbody.append(headingRow, ...records.map(recordRow));
+  return tbody;
 }
 
-// All rows for one team: individual events, then a "Relays" divider, then relays.
-function teamRows(records) {
-  const rows = [];
-  let shownRelayDivider = false;
-  for (const record of records) {
-    if (record.Event.includes("Relay") && !shownRelayDivider) {
-      rows.push(dividerRow("Relays"));
-      shownRelayDivider = true;
-    }
-    rows.push(recordRow(record));
-  }
-  return rows;
+// One team's records: the Individual group, then the Relays group.
+function teamGroups(records) {
+  return [
+    groupBody("Individual", records.filter((r) => !r.Event.includes("Relay"))),
+    groupBody("Relays", records.filter((r) => r.Event.includes("Relay"))),
+  ];
 }
 
 function showMessage(tbody, message) {
@@ -119,8 +123,9 @@ async function loadRecords() {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const records = await response.json();
 
-    boys.replaceChildren(...teamRows(records.filter((r) => r.Gender === "Male")));
-    girls.replaceChildren(...teamRows(records.filter((r) => r.Gender === "Female")));
+    // Swap the "Loading…" <tbody> for one <tbody> per group.
+    boys.replaceWith(...teamGroups(records.filter((r) => r.Gender === "Male")));
+    girls.replaceWith(...teamGroups(records.filter((r) => r.Gender === "Female")));
   } catch (error) {
     console.error("Could not load records:", error);
     showMessage(boys, "Records couldn't be loaded. Please try refreshing the page.");
