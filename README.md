@@ -67,6 +67,12 @@ content, and save. It appears in `dist/` on the next build. Add a link to it in 
 Rebuilt pages use `head.html`, `site-header.html`, and `site-footer.html`. Pages not yet rebuilt still use the
 older `header.html` and `footer.html`.
 
+### The 404 page
+
+`src/pages/404.html` is shown by GitHub Pages for any address that doesn't exist — at that address. It starts its
+`<head>` with `<base href="/">` so its relative links (`./css/output.css`, `./roster.html`) still resolve from the
+site root. Other pages don't need this.
+
 ## Commands
 
 | Command | What it does |

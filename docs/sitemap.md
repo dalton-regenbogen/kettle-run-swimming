@@ -28,12 +28,12 @@ Right side: the team and getting involved. Resources is also linked from the foo
 | Meets | When and where each meet is, with start time, venue, opponents, status. | Decided — keep separate from Results |
 | Practice | When and where practices are; opens at the current week. | Decided — keep |
 | Results | Meet-by-meet scores and championship results; past seasons via a season picker. | Decided — keep separate from Meets |
-| Roster | Team members by season, with All/Boys/Girls filter and season picker. No PDF. | Decided — keep |
-| Records | All-time team bests. Web page only — no PDF download. | Decided — keep; remove PDF |
+| Roster | Team members by season, with All/Boys/Girls filter and season picker. No PDF. | Built |
+| Records | All-time team bests. Web page only — no PDF download. | Built |
 | Join | Interest meeting, tryouts, requirements, forms, commitment, coach contact. | Decided — content to be written by coach. Own page recommended; becomes a section of About if content is short. |
 | About | Program description, coaches/staff, contact. Links to Resources. | Decided — keep |
 | Resources | Team handbook, state qualifying times, and how to become a meet official (timers, stroke & turn, etc.). In the top nav, and also linked from the footer, About, and Join. | Decided — new page |
-| 404 | "Page not found" with links back to main pages. | Decided — add |
+| 404 | "Page not found" with links back to main pages. | Built (`src/pages/404.html`) |
 
 ## Removed / deferred
 

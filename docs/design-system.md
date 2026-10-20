@@ -166,6 +166,12 @@ Initials in a `bg-brand` circle with white 11px semibold text: `size-8` on phone
 Small yellow tags (`bg-badge text-badge-fg`, 9px on phones / 10px on desktop, semibold, `rounded-sm`) for
 standout facts: "State Record" next to a record time, "Captain" next to a roster name. Text explains itself; no legend.
 
+### Link cards (first used on the 404 page)
+
+A grid of links (`sm:grid-cols-2 md:grid-cols-3`), each a `rounded-xl border border-line px-4 py-3` block with a
+`type-sub` title, a `type-small text-fg-muted` description, and an arrow that turns orange on hover. The border
+darkens to `fg-subtle` on hover.
+
 ### Logo
 
 `kr-logo-tight.svg` is `kr-logo.svg` with its empty square padding cropped (only the `viewBox` changed), so the
