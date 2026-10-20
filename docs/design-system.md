@@ -81,23 +81,42 @@ Not yet decided.
 
 ## Components
 
+### Focus outline
+
+Keyboard users get a 2px KR orange outline (`:focus-visible` rule in `input.css`). It never appears after a tap or
+mouse click. Don't remove focus outlines — people navigating by keyboard need them to see where they are.
+
 ### Site header — `src/partials/site-header.html`
 
 Based on the original site header, refined ("E" in the header lab).
 
 - Thin top strip reading "Kettle Run Swimming" (10px, medium, wide letter spacing, 70% white on a slightly lighter black).
 - Black bar with eight links, four on each side of a centered logo (`kr-logo-tight.svg`, 40px tall; 30px on phones).
-- Links: 13px, uppercase, medium weight, 0.1em letter spacing, 85% white. Hover and current page: KR orange text.
+- Links: 12px, uppercase, medium weight, 0.08em letter spacing (same as the footer), 85% white. Hover and current page: KR orange text.
 - No colored bottom bar — only a faint hairline, which also separates the header from the page in dark mode.
-- Phones: logo left, "Menu" button right; the menu drops down as a full-width list with the same link style.
+- Phones: logo left, "Menu" button right. The menu is **full screen**: a native `<dialog>` opened with
+  `showModal()` (focus stays inside it). Close and Escape both run `closeMenu()` in `site.js`. Keyboard users
+  get focus returned to the Menu button; after a tap/click it isn't, so no outline appears. Its top repeats the header strip and
+  logo with "Close" in place of "Menu"; links are 13px with 48px-tall tap rows.
+  `site.js` focuses the dialog itself on open (`tabindex="-1"` + `menu.focus()`), so nothing is outlined.
+  The page behind can't scroll while it's open (`html:has(dialog[open])` in `input.css`).
 - The current page is marked automatically at build time: nav links have `data-nav-link`, and `scripts/build.mjs`
   adds `aria-current="page"` to the link pointing at the page being built. CSS styles it with
   `aria-[current=page]:text-highlight`.
 
 ### Site footer — `src/partials/site-footer.html`
 
-Logo and name, secondary links (Resources, Join the team, About, Email the coach), copyright year (set by
-`js/site.js`), and address.
+"F2 Split", compact — designed to match the header.
+
+- Black background with a faint top hairline, `py-5` padding.
+- Left: logo (20px) + "Kettle Run Swimming" (10px, uppercase, 0.12em tracking).
+- Right: links (Resources · Join the team · About · Email the coach) — 10px, uppercase, medium, 0.08em tracking,
+  85% white, orange on hover.
+- Thin bottom strip like the header's top strip, centered on one line on desktop: © school year (e.g. 2026–2027,
+  rolls over each August) · "Kettle Run High School · address" on the
+  right — the team name already appears beside the logo, so it isn't repeated (10px uppercase, 70% white
+  on `bg-white/7`). The year is set by `js/site.js`.
+- Phones: everything stacks and centers.
 
 ### Page layout (from the original site)
 

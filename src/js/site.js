@@ -1,35 +1,51 @@
-// Site-wide behavior for rebuilt pages: the phone menu and the footer year.
+// Site-wide behavior for rebuilt pages: the full-screen phone menu and the footer school year.
 
 // --- Phone menu ---
-// Each menu button names the menu it controls with aria-controls="menu-id".
-// aria-expanded="true"/"false" tells screen readers (and our CSS) whether it's open.
-const desktopWidth = window.matchMedia("(min-width: 48rem)");
+// The menu is a <dialog id="site-menu">. showModal() is built into the browser: it shows
+// the dialog on top of the page, keeps keyboard focus inside it, and closes it when
+// Escape is pressed.
+const menu = document.getElementById("site-menu");
 
-for (const button of document.querySelectorAll("[data-menu-button]")) {
-  const menu = document.getElementById(button.getAttribute("aria-controls"));
-  if (!menu) continue;
+if (menu) {
+  let opener = null; // the Menu button that opened it, so focus can go back there
 
-  const isOpen = () => button.getAttribute("aria-expanded") === "true";
-  const setOpen = (open) => {
-    button.setAttribute("aria-expanded", String(open));
-    menu.hidden = !open; // the hidden attribute removes it from view and from keyboard focus
+  for (const button of document.querySelectorAll("[data-menu-open]")) {
+    button.addEventListener("click", () => {
+      opener = button;
+      menu.showModal();
+      menu.focus(); // focus the menu itself, so no link inside starts out outlined
+    });
+  }
+  // Close the menu. Keyboard users get focus put back on the Menu button so they
+  // don't lose their place; after a tap or click we don't, so no outline appears.
+  const closeMenu = (usedKeyboard) => {
+    menu.close();
+    if (usedKeyboard) opener?.focus();
+    else menu.blur();
   };
 
-  button.addEventListener("click", () => setOpen(!isOpen()));
+  for (const button of menu.querySelectorAll("[data-menu-close]")) {
+    // event.detail counts clicks: 1+ for a finger or mouse, 0 when Enter/Space "clicked" it.
+    button.addEventListener("click", (event) => closeMenu(event.detail === 0));
+  }
 
-  // Escape closes the menu and puts focus back on the button.
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && isOpen()) {
-      setOpen(false);
-      button.focus();
-    }
+  // Pressing Escape fires "cancel" on the dialog. Escape is always the keyboard.
+  menu.addEventListener("cancel", (event) => {
+    event.preventDefault();
+    closeMenu(true);
   });
 
   // The phone menu shouldn't stay open if the window grows to desktop width.
-  desktopWidth.addEventListener("change", () => setOpen(false));
+  window.matchMedia("(min-width: 48rem)").addEventListener("change", (event) => {
+    if (event.matches && menu.open) menu.close();
+  });
 }
 
-// --- Footer year ---
-for (const element of document.querySelectorAll("[data-current-year]")) {
-  element.textContent = new Date().getFullYear();
+// --- Footer school year ---
+// Swim seasons run across New Year, so the label follows the school year,
+// which starts in August: Oct 2026 → "2026–2027", Feb 2027 → "2026–2027".
+const today = new Date();
+const startYear = today.getMonth() >= 7 ? today.getFullYear() : today.getFullYear() - 1; // getMonth(): 0 = Jan, 7 = Aug
+for (const element of document.querySelectorAll("[data-current-season]")) {
+  element.textContent = `${startYear}–${startYear + 1}`;
 }

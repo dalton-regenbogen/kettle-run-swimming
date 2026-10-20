@@ -57,7 +57,7 @@ function recordRow(record) {
   // First cell: the whole phone layout, or just the event name on desktop
   const first = el("td", "block px-4 py-2.5 md:table-cell");
   const phone = el("div", "md:hidden");
-  const top = el("div", "flex items-start justify-between gap-3");
+  const top = el("div", "flex items-start justify-between gap-3 text-[12px]"); // a touch smaller than desktop's 13px
   top.append(el("span", "font-semibold", record.Event), el("span", "font-medium", record.RecordTime));
   const bottom = el("div", "type-small mt-0.5 flex items-start justify-between gap-3");
   bottom.append(
