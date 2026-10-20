@@ -52,9 +52,20 @@ During the build that line is replaced by the full contents of `src/partials/hea
 
 To add a new shared piece: create `src/partials/your-piece.html`, then put `<!-- include: your-piece.html -->` wherever it should appear. If the file name is misspelled, the build stops with an error naming the page and the missing file.
 
+### Marking the current page in the nav
+
+The site header is one shared file, so it can't know which page it's on. Nav links in
+`src/partials/site-header.html` carry `data-nav-link`, and the build adds `aria-current="page"` to the link whose
+`href` matches the page being built. CSS then styles that link (orange text).
+
 ### Adding a page
 
-Copy an existing page in `src/pages/` (for example `about.html`), change its `<title>` and `<main>` content, and save. It appears in `dist/` on the next build. Add a link to it in `src/partials/header.html` so visitors can find it.
+Copy a rebuilt page in `src/pages/` (for example `team-records.html`), change its `<title>`, description, and `<main>`
+content, and save. It appears in `dist/` on the next build. Add a link to it in `src/partials/site-header.html`
+(with `data-nav-link`) if it belongs in the main nav.
+
+Rebuilt pages use `head.html`, `site-header.html`, and `site-footer.html`. Pages not yet rebuilt still use the
+older `header.html` and `footer.html`.
 
 ## Commands
 
@@ -62,11 +73,17 @@ Copy an existing page in `src/pages/` (for example `about.html`), change its `<t
 | --- | --- |
 | `npm run dev` | Build, then rebuild automatically whenever anything in `src/` changes. |
 | `npm run build` | Build once with compressed (minified) CSS — the version to publish. |
-| `npm run records:meta` | Update `src/assets/data/records-meta.json` with today's date. |
+| `npm run records:meta` | Set the Records page's "Updated" date to today. Run after editing `records.json`. |
 
 ## Updating content
 
 Most frequently changed information lives in JSON files under `src/assets/data/` and `src/assets/rosters/`. Edit the file, save, and the dev build picks it up.
+
+- **Team records:** edit `src/assets/data/records.json`, then run `npm run records:meta`. The Records page,
+  including the "Newest record" card, updates from that file.
+
+> While `npm run dev` is running, don't also run `npm run build` — both rebuild `dist/` and can wipe out each
+> other's files. The dev watcher already rebuilds on every save.
 
 ## Publishing
 

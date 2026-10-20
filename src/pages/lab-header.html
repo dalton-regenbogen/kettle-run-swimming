@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en" data-header="e">
+  <head>
+    <!-- include: head.html -->
+    <meta name="robots" content="noindex" />
+    <title>KR Swim | Header options</title>
+    <!-- Lab page: three header styles on the Records page. Delete before publishing. -->
+    <style>
+      /* Show only the header chosen with the switcher */
+      [data-variant] { display: none; }
+      html[data-header="a"] [data-variant="a"],
+      html[data-header="b"] [data-variant="b"],
+      html[data-header="c"] [data-variant="c"],
+      html[data-header="d"] [data-variant="d"],
+      html[data-header="e"] [data-variant="e"] { display: block; }
+
+      /* Header E bottom bar options (lab only) */
+      .lab-bar { border-bottom: 4px solid #9ca3af; }                                   /* gray (original) */
+      html[data-bar="green"]  .lab-bar { border-bottom-color: var(--color-brand); }
+      html[data-bar="orange"] .lab-bar { border-bottom-color: var(--color-highlight); }
+      html[data-bar="none"]   .lab-bar { border-bottom: 1px solid rgb(255 255 255 / 0.12); }
+    </style>
+  </head>
+  <body class="bg-page font-body text-fg antialiased">
+    <!-- =============================================================
+         HEADER A · Compact bar: logo, links beside it, current page as a pill
+         ============================================================= -->
+    <header data-variant="a" class="sticky top-0 z-30 border-b border-transparent bg-header dark:border-white/10">
+      <div class="mx-auto flex h-14 max-w-5xl items-center gap-6 px-4">
+        <a href="./index.html" class="shrink-0"><img src="./assets/kr-logo.svg" alt="Kettle Run Swimming home" class="h-8 w-auto" /></a>
+        <nav aria-label="Primary" class="hidden md:block">
+          <ul class="type-nav flex items-center gap-1">
+            <li><a class="rounded-full px-3 py-1.5 text-header-fg hover:text-white aria-[current=page]:bg-white/15 aria-[current=page]:text-white" href="./competition-schedule.html">Meets</a></li>
+            <li><a class="rounded-full px-3 py-1.5 text-header-fg hover:text-white aria-[current=page]:bg-white/15 aria-[current=page]:text-white" href="./practice-schedule.html">Practice</a></li>
+            <li><a class="rounded-full px-3 py-1.5 text-header-fg hover:text-white aria-[current=page]:bg-white/15 aria-[current=page]:text-white" href="./2025-2026-results.html">Results</a></li>
+            <li><a class="rounded-full px-3 py-1.5 text-header-fg hover:text-white aria-[current=page]:bg-white/15 aria-[current=page]:text-white" href="./roster.html">Roster</a></li>
+            <li><a class="rounded-full px-3 py-1.5 text-header-fg hover:text-white aria-[current=page]:bg-white/15 aria-[current=page]:text-white" href="./lab-header.html" aria-current="page">Records</a></li>
+            <li><a class="rounded-full px-3 py-1.5 text-header-fg hover:text-white aria-[current=page]:bg-white/15 aria-[current=page]:text-white" href="./about.html">Join</a></li>
+            <li><a class="rounded-full px-3 py-1.5 text-header-fg hover:text-white aria-[current=page]:bg-white/15 aria-[current=page]:text-white" href="./about.html">About</a></li>
+          </ul>
+        </nav>
+        <button type="button" data-menu-button aria-controls="menu-a" aria-expanded="false" class="group type-nav ml-auto inline-flex min-h-11 items-center gap-2 rounded-full px-3 text-white md:hidden">
+          Menu
+          <svg class="size-5 group-aria-expanded:hidden" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 6h14M3 14h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+          <svg class="hidden size-5 group-aria-expanded:block" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+        </button>
+      </div>
+      <nav id="menu-a" hidden aria-label="Primary" class="border-t border-white/10 md:hidden">
+        <ul class="mx-auto max-w-5xl px-2 py-2">
+          <li><a class="flex min-h-12 items-center rounded-lg px-3 text-base font-medium text-header-fg hover:bg-white/10 aria-[current=page]:bg-white/10 aria-[current=page]:text-white" href="./competition-schedule.html">Meets</a></li>
+          <li><a class="flex min-h-12 items-center rounded-lg px-3 text-base font-medium text-header-fg hover:bg-white/10 aria-[current=page]:bg-white/10 aria-[current=page]:text-white" href="./practice-schedule.html">Practice</a></li>
+          <li><a class="flex min-h-12 items-center rounded-lg px-3 text-base font-medium text-header-fg hover:bg-white/10 aria-[current=page]:bg-white/10 aria-[current=page]:text-white" href="./2025-2026-results.html">Results</a></li>
+          <li><a class="flex min-h-12 items-center rounded-lg px-3 text-base font-medium text-header-fg hover:bg-white/10 aria-[current=page]:bg-white/10 aria-[current=page]:text-white" href="./roster.html">Roster</a></li>
+          <li><a class="flex min-h-12 items-center rounded-lg px-3 text-base font-medium text-header-fg hover:bg-white/10 aria-[current=page]:bg-white/10 aria-[current=page]:text-white" href="./lab-header.html" aria-current="page">Records</a></li>
+          <li><a class="flex min-h-12 items-center rounded-lg px-3 text-base font-medium text-header-fg hover:bg-white/10 aria-[current=page]:bg-white/10 aria-[current=page]:text-white" href="./about.html">Join</a></li>
+          <li><a class="flex min-h-12 items-center rounded-lg px-3 text-base font-medium text-header-fg hover:bg-white/10 aria-[current=page]:bg-white/10 aria-[current=page]:text-white" href="./about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- =============================================================
+         HEADER B · Centered logo: links split on both sides, orange underline for the current page
+         ============================================================= -->
+    <header data-variant="b" class="sticky top-0 z-30 border-b border-transparent bg-header dark:border-white/10">
+      <div class="mx-auto max-w-5xl px-4">
+        <!-- Desktop -->
+        <nav aria-label="Primary" class="hidden h-16 grid-cols-[1fr_auto_1fr] items-center md:grid">
+          <ul class="type-nav flex justify-end gap-7">
+            <li><a class="block border-b-2 border-transparent py-5 text-header-fg hover:text-white aria-[current=page]:border-highlight aria-[current=page]:text-white" href="./competition-schedule.html">Meets</a></li>
+            <li><a class="block border-b-2 border-transparent py-5 text-header-fg hover:text-white aria-[current=page]:border-highlight aria-[current=page]:text-white" href="./practice-schedule.html">Practice</a></li>
+            <li><a class="block border-b-2 border-transparent py-5 text-header-fg hover:text-white aria-[current=page]:border-highlight aria-[current=page]:text-white" href="./2025-2026-results.html">Results</a></li>
+            <li><a class="block border-b-2 border-transparent py-5 text-header-fg hover:text-white aria-[current=page]:border-highlight aria-[current=page]:text-white" href="./roster.html">Roster</a></li>
+          </ul>
+          <a href="./index.html" class="mx-10"><img src="./assets/kr-logo.svg" alt="Kettle Run Swimming home" class="h-10 w-auto" /></a>
+          <ul class="type-nav flex gap-7">
+            <li><a class="block border-b-2 border-transparent py-5 text-header-fg hover:text-white aria-[current=page]:border-highlight aria-[current=page]:text-white" href="./lab-header.html" aria-current="page">Records</a></li>
+            <li><a class="block border-b-2 border-transparent py-5 text-header-fg hover:text-white aria-[current=page]:border-highlight aria-[current=page]:text-white" href="./about.html">Join</a></li>
+            <li><a class="block border-b-2 border-transparent py-5 text-header-fg hover:text-white aria-[current=page]:border-highlight aria-[current=page]:text-white" href="./about.html">About</a></li>
+          </ul>
+        </nav>
+        <!-- Phone -->
+        <div class="grid h-14 grid-cols-[1fr_auto_1fr] items-center md:hidden">
+          <button type="button" data-menu-button aria-controls="menu-b" aria-expanded="false" class="group type-nav inline-flex min-h-11 items-center gap-2 justify-self-start rounded-full pr-3 text-white">
+            <svg class="size-5 group-aria-expanded:hidden" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 6h14M3 14h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+            <svg class="hidden size-5 group-aria-expanded:block" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+            Menu
+          </button>
+          <a href="./index.html"><img src="./assets/kr-logo.svg" alt="Kettle Run Swimming home" class="h-9 w-auto" /></a>
+        </div>
+      </div>
+      <nav id="menu-b" hidden aria-label="Primary" class="border-t border-white/10 md:hidden">
+        <ul class="mx-auto max-w-5xl px-2 py-2">
+          <li><a class="flex min-h-12 items-center rounded-lg px-3 text-base font-medium text-header-fg hover:bg-white/10 aria-[current=page]:text-white aria-[current=page]:shadow-[inset_3px_0_0_var(--color-highlight)]" href="./competition-schedule.html">Meets</a></li>
+          <li><a class="flex min-h-12 items-center rounded-lg px-3 text-base font-medium text-header-fg hover:bg-white/10 aria-[current=page]:text-white aria-[current=page]:shadow-[inset_3px_0_0_var(--color-highlight)]" href="./practice-schedule.html">Practice</a></li>
+          <li><a class="flex min-h-12 items-center rounded-lg px-3 text-base font-medium text-header-fg hover:bg-white/10 aria-[current=page]:text-white aria-[current=page]:shadow-[inset_3px_0_0_var(--color-highlight)]" href="./2025-2026-results.html">Results</a></li>
+          <li><a class="flex min-h-12 items-center rounded-lg px-3 text-base font-medium text-header-fg hover:bg-white/10 aria-[current=page]:text-white aria-[current=page]:shadow-[inset_3px_0_0_var(--color-highlight)]" href="./roster.html">Roster</a></li>
+          <li><a class="flex min-h-12 items-center rounded-lg px-3 text-base font-medium text-header-fg hover:bg-white/10 aria-[current=page]:text-white aria-[current=page]:shadow-[inset_3px_0_0_var(--color-highlight)]" href="./lab-header.html" aria-current="page">Records</a></li>
+          <li><a class="flex min-h-12 items-center rounded-lg px-3 text-base font-medium text-header-fg hover:bg-white/10 aria-[current=page]:text-white aria-[current=page]:shadow-[inset_3px_0_0_var(--color-highlight)]" href="./about.html">Join</a></li>
+          <li><a class="flex min-h-12 items-center rounded-lg px-3 text-base font-medium text-header-fg hover:bg-white/10 aria-[current=page]:text-white aria-[current=page]:shadow-[inset_3px_0_0_var(--color-highlight)]" href="./about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- =============================================================
+         HEADER C · Logo + name on the left, links on the right, white underline for the current page
+         ============================================================= -->
+    <header data-variant="c" class="sticky top-0 z-30 border-b border-transparent bg-header dark:border-white/10">
+      <div class="mx-auto flex h-14 max-w-5xl items-center justify-between gap-6 px-4 md:h-16">
+        <a href="./index.html" class="flex shrink-0 items-center gap-2.5">
+          <img src="./assets/kr-logo.svg" alt="" class="h-9 w-auto" />
+          <span class="flex flex-col leading-none">
+            <span class="text-[10px] font-medium tracking-[0.12em] text-white/60 uppercase">Kettle Run</span>
+            <span class="mt-0.5 font-display text-[17px] font-semibold tracking-[-0.01em] text-white">Swimming</span>
+          </span>
+        </a>
+        <nav aria-label="Primary" class="hidden md:block">
+          <ul class="type-nav flex items-center gap-6">
+            <li><a class="block border-b-2 border-transparent py-5 text-header-fg hover:text-white aria-[current=page]:border-white aria-[current=page]:text-white" href="./competition-schedule.html">Meets</a></li>
+            <li><a class="block border-b-2 border-transparent py-5 text-header-fg hover:text-white aria-[current=page]:border-white aria-[current=page]:text-white" href="./practice-schedule.html">Practice</a></li>
+            <li><a class="block border-b-2 border-transparent py-5 text-header-fg hover:text-white aria-[current=page]:border-white aria-[current=page]:text-white" href="./2025-2026-results.html">Results</a></li>
+            <li><a class="block border-b-2 border-transparent py-5 text-header-fg hover:text-white aria-[current=page]:border-white aria-[current=page]:text-white" href="./roster.html">Roster</a></li>
+            <li><a class="block border-b-2 border-transparent py-5 text-header-fg hover:text-white aria-[current=page]:border-white aria-[current=page]:text-white" href="./lab-header.html" aria-current="page">Records</a></li>
+            <li><a class="block border-b-2 border-transparent py-5 text-header-fg hover:text-white aria-[current=page]:border-white aria-[current=page]:text-white" href="./about.html">Join</a></li>
+            <li><a class="block border-b-2 border-transparent py-5 text-header-fg hover:text-white aria-[current=page]:border-white aria-[current=page]:text-white" href="./about.html">About</a></li>
+          </ul>
+        </nav>
+        <button type="button" data-menu-button aria-controls="menu-c" aria-expanded="false" class="group type-nav inline-flex min-h-11 items-center gap-2 rounded-full px-3 text-white md:hidden">
+          Menu
+          <svg class="size-5 group-aria-expanded:hidden" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 6h14M3 14h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+          <svg class="hidden size-5 group-aria-expanded:block" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+        </button>
+      </div>
+      <nav id="menu-c" hidden aria-label="Primary" class="border-t border-white/10 md:hidden">
+        <ul class="mx-auto max-w-5xl divide-y divide-white/10 px-4">
+          <li><a class="flex min-h-12 items-center justify-between text-base font-medium text-header-fg aria-[current=page]:text-white" href="./competition-schedule.html">Meets</a></li>
+          <li><a class="flex min-h-12 items-center justify-between text-base font-medium text-header-fg aria-[current=page]:text-white" href="./practice-schedule.html">Practice</a></li>
+          <li><a class="flex min-h-12 items-center justify-between text-base font-medium text-header-fg aria-[current=page]:text-white" href="./2025-2026-results.html">Results</a></li>
+          <li><a class="flex min-h-12 items-center justify-between text-base font-medium text-header-fg aria-[current=page]:text-white" href="./roster.html">Roster</a></li>
+          <li><a class="flex min-h-12 items-center justify-between text-base font-medium text-header-fg aria-[current=page]:text-white" href="./lab-header.html" aria-current="page">Records <span class="size-1.5 rounded-full bg-white" aria-hidden="true"></span></a></li>
+          <li><a class="flex min-h-12 items-center justify-between text-base font-medium text-header-fg aria-[current=page]:text-white" href="./about.html">Join</a></li>
+          <li><a class="flex min-h-12 items-center justify-between text-base font-medium text-header-fg aria-[current=page]:text-white" href="./about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- =============================================================
+         HEADER D · Original: school strip, links split around a centered logo, gray bottom bar
+         ============================================================= -->
+    <header data-variant="d" class="sticky top-0 z-30 border-b-4 border-gray-400 bg-header">
+      <div class="border-y border-white/70">
+        <p class="py-0.5 text-center text-[11px] font-medium tracking-[0.08em] text-white uppercase md:text-xs">Kettle Run High School</p>
+      </div>
+      <div class="mx-auto max-w-5xl px-4">
+        <!-- Desktop -->
+        <nav aria-label="Primary" class="hidden h-19 grid-cols-[1fr_auto_1fr] items-center md:grid">
+          <ul class="flex items-center justify-around text-[13px] font-semibold tracking-[0.06em] uppercase">
+            <li><a class="text-white hover:text-highlight aria-[current=page]:text-highlight" href="./competition-schedule.html">Meets</a></li>
+            <li><a class="text-white hover:text-highlight aria-[current=page]:text-highlight" href="./practice-schedule.html">Practice</a></li>
+            <li><a class="text-white hover:text-highlight aria-[current=page]:text-highlight" href="./2025-2026-results.html">Results</a></li>
+            <li><a class="text-white hover:text-highlight aria-[current=page]:text-highlight" href="./roster.html">Roster</a></li>
+          </ul>
+          <a href="./index.html" class="mx-8"><img src="./assets/kr-logo.svg" alt="Kettle Run Swimming home" class="h-12 w-auto" /></a>
+          <ul class="flex items-center justify-around text-[13px] font-semibold tracking-[0.06em] uppercase">
+            <li><a class="text-white hover:text-highlight aria-[current=page]:text-highlight" href="./lab-header.html" aria-current="page">Records</a></li>
+            <li><a class="text-white hover:text-highlight aria-[current=page]:text-highlight" href="./about.html">Join</a></li>
+            <li><a class="text-white hover:text-highlight aria-[current=page]:text-highlight" href="./about.html">About</a></li>
+          </ul>
+        </nav>
+        <!-- Phone -->
+        <div class="flex h-16 items-center justify-between md:hidden">
+          <a href="./index.html"><img src="./assets/kr-logo.svg" alt="Kettle Run Swimming home" class="h-11 w-auto" /></a>
+          <button type="button" data-menu-button aria-controls="menu-d" aria-expanded="false" aria-label="Menu" class="group -mr-2 inline-flex size-11 items-center justify-center text-white">
+            <svg class="size-7 group-aria-expanded:hidden" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
+            <svg class="hidden size-7 group-aria-expanded:block" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
+          </button>
+        </div>
+      </div>
+      <nav id="menu-d" hidden aria-label="Primary" class="border-t border-white/15 md:hidden">
+        <ul class="mx-auto max-w-5xl divide-y divide-white/10 px-4 text-sm font-semibold tracking-[0.06em] uppercase">
+          <li><a class="flex min-h-12 items-center text-white aria-[current=page]:text-highlight" href="./competition-schedule.html">Meets</a></li>
+          <li><a class="flex min-h-12 items-center text-white aria-[current=page]:text-highlight" href="./practice-schedule.html">Practice</a></li>
+          <li><a class="flex min-h-12 items-center text-white aria-[current=page]:text-highlight" href="./2025-2026-results.html">Results</a></li>
+          <li><a class="flex min-h-12 items-center text-white aria-[current=page]:text-highlight" href="./roster.html">Roster</a></li>
+          <li><a class="flex min-h-12 items-center text-white aria-[current=page]:text-highlight" href="./lab-header.html" aria-current="page">Records</a></li>
+          <li><a class="flex min-h-12 items-center text-white aria-[current=page]:text-highlight" href="./about.html">Join</a></li>
+          <li><a class="flex min-h-12 items-center text-white aria-[current=page]:text-highlight" href="./about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- =============================================================
+         HEADER E · Original, refined: "Kettle Run Swimming" strip, larger centered logo,
+         four links on each side, KR green bottom bar
+         ============================================================= -->
+    <header data-variant="e" class="lab-bar sticky top-0 z-30 bg-header">
+      <div class="bg-white/7">
+        <p class="py-1 text-center text-[10px] font-medium tracking-[0.16em] text-white/70 uppercase">Kettle Run Swimming</p>
+      </div>
+      <div class="mx-auto max-w-5xl px-4">
+        <!-- Desktop: equal columns on both sides keep the logo centered -->
+        <nav aria-label="Primary" class="hidden h-20 grid-cols-[1fr_auto_1fr] items-center md:grid">
+          <ul class="flex items-center justify-around text-[13px] font-medium tracking-[0.1em] uppercase">
+            <li><a class="block py-7 text-white/85 transition-colors hover:text-highlight aria-[current=page]:text-highlight" href="./competition-schedule.html">Meets</a></li>
+            <li><a class="block py-7 text-white/85 transition-colors hover:text-highlight aria-[current=page]:text-highlight" href="./practice-schedule.html">Practice</a></li>
+            <li><a class="block py-7 text-white/85 transition-colors hover:text-highlight aria-[current=page]:text-highlight" href="./2025-2026-results.html">Results</a></li>
+            <li><a class="block py-7 text-white/85 transition-colors hover:text-highlight aria-[current=page]:text-highlight" href="./lab-header.html" aria-current="page">Records</a></li>
+          </ul>
+          <a href="./index.html" class="mx-8"><img src="./assets/kr-logo-tight.svg" alt="Kettle Run Swimming home" class="h-10 w-auto" /></a>
+          <ul class="flex items-center justify-around text-[13px] font-medium tracking-[0.1em] uppercase">
+            <li><a class="block py-7 text-white/85 transition-colors hover:text-highlight aria-[current=page]:text-highlight" href="./roster.html">Roster</a></li>
+            <li><a class="block py-7 text-white/85 transition-colors hover:text-highlight aria-[current=page]:text-highlight" href="./about.html">Join</a></li>
+            <li><a class="block py-7 text-white/85 transition-colors hover:text-highlight aria-[current=page]:text-highlight" href="./about.html">About</a></li>
+            <li><a class="block py-7 text-white/85 transition-colors hover:text-highlight aria-[current=page]:text-highlight" href="./resources.html">Resources</a></li>
+          </ul>
+        </nav>
+        <!-- Phone -->
+        <div class="flex h-16 items-center justify-between md:hidden">
+          <a href="./index.html"><img src="./assets/kr-logo-tight.svg" alt="Kettle Run Swimming home" class="h-7.5 w-auto" /></a>
+          <button type="button" data-menu-button aria-controls="menu-e" aria-expanded="false" class="group type-nav -mr-1 inline-flex min-h-11 items-center gap-2 px-2 text-white">
+            Menu
+            <svg class="size-5 group-aria-expanded:hidden" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 6h14M3 14h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+            <svg class="hidden size-5 group-aria-expanded:block" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+          </button>
+        </div>
+      </div>
+      <nav id="menu-e" hidden aria-label="Primary" class="border-t border-white/10 md:hidden">
+        <ul class="mx-auto max-w-5xl divide-y divide-white/10 px-4 text-sm font-medium tracking-[0.1em] uppercase">
+          <li><a class="flex min-h-12 items-center text-white/85 hover:text-highlight aria-[current=page]:text-highlight" href="./competition-schedule.html">Meets</a></li>
+          <li><a class="flex min-h-12 items-center text-white/85 hover:text-highlight aria-[current=page]:text-highlight" href="./practice-schedule.html">Practice</a></li>
+          <li><a class="flex min-h-12 items-center text-white/85 hover:text-highlight aria-[current=page]:text-highlight" href="./2025-2026-results.html">Results</a></li>
+          <li><a class="flex min-h-12 items-center text-white/85 hover:text-highlight aria-[current=page]:text-highlight" href="./lab-header.html" aria-current="page">Records</a></li>
+          <li><a class="flex min-h-12 items-center text-white/85 hover:text-highlight aria-[current=page]:text-highlight" href="./roster.html">Roster</a></li>
+          <li><a class="flex min-h-12 items-center text-white/85 hover:text-highlight aria-[current=page]:text-highlight" href="./about.html">Join</a></li>
+          <li><a class="flex min-h-12 items-center text-white/85 hover:text-highlight aria-[current=page]:text-highlight" href="./about.html">About</a></li>
+          <li><a class="flex min-h-12 items-center text-white/85 hover:text-highlight aria-[current=page]:text-highlight" href="./resources.html">Resources</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- =============================================================
+         RECORDS PAGE CONTENT (same for every header option)
+         ============================================================= -->
+    <main class="mx-auto max-w-5xl px-4 pt-8 pb-16 md:pt-10">
+      <p class="type-label text-fg-subtle">Kettle Run Swimming</p>
+      <h1 class="type-title mt-1.5">Team Records</h1>
+      <p class="type-body mt-2 max-w-[36em] text-fg-muted">
+        All-time fastest times by a Kettle Run swimmer in each event. Short course yards.
+        <a href="./resources.html" class="font-medium text-accent underline-offset-2 hover:underline">State qualifying times →</a>
+      </p>
+      <p class="type-small mt-2 text-fg-subtle" id="records-updated"></p>
+
+      <section class="mt-6 overflow-hidden rounded-2xl border-l-4 border-highlight bg-surface p-4 md:p-5" aria-labelledby="newest-heading">
+        <p class="type-label text-fg-subtle" id="newest-heading">Newest record</p>
+        <div class="mt-2 flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
+          <div>
+            <p class="type-sub" id="newest-event">—</p>
+            <p class="type-small mt-0.5 text-fg-subtle" id="newest-date"></p>
+          </div>
+          <p class="type-number" id="newest-time"></p>
+        </div>
+      </section>
+
+      <section class="mt-8" aria-labelledby="girls-heading">
+        <h2 class="type-section" id="girls-heading">Girls</h2>
+        <div class="mt-2.5 overflow-hidden rounded-2xl border border-line bg-surface">
+          <table class="type-table w-full">
+            <thead>
+              <tr class="type-label border-b border-line text-left text-fg-subtle">
+                <th class="py-2.5 pr-3 pl-4">Event</th><th class="py-2.5 pr-3 text-right">Time</th><th class="py-2.5 pr-3">Holder</th><th class="hidden py-2.5 pr-4 md:table-cell">Date</th>
+              </tr>
+            </thead>
+            <tbody id="girls-records"><tr><td class="px-4 py-3 text-fg-subtle" colspan="4">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="mt-8" aria-labelledby="boys-heading">
+        <h2 class="type-section" id="boys-heading">Boys</h2>
+        <div class="mt-2.5 overflow-hidden rounded-2xl border border-line bg-surface">
+          <table class="type-table w-full">
+            <thead>
+              <tr class="type-label border-b border-line text-left text-fg-subtle">
+                <th class="py-2.5 pr-3 pl-4">Event</th><th class="py-2.5 pr-3 text-right">Time</th><th class="py-2.5 pr-3">Holder</th><th class="hidden py-2.5 pr-4 md:table-cell">Date</th>
+              </tr>
+            </thead>
+            <tbody id="boys-records"><tr><td class="px-4 py-3 text-fg-subtle" colspan="4">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- =============================================================
+         FOOTER (one design to start)
+         ============================================================= -->
+    <footer class="border-t border-line bg-surface">
+      <div class="mx-auto max-w-5xl px-4 py-8">
+        <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+          <div class="flex items-center gap-3">
+            <img src="./assets/kr-logo.svg" alt="" class="h-9 w-auto" />
+            <div>
+              <p class="type-sub">Kettle Run Swimming</p>
+              <p class="type-small text-fg-subtle">Kettle Run High School · Nokesville, VA</p>
+            </div>
+          </div>
+          <nav aria-label="Footer">
+            <ul class="type-small flex flex-wrap gap-x-5 gap-y-2 font-medium">
+              <li><a class="hover:text-accent" href="./resources.html">Resources</a></li>
+              <li><a class="hover:text-accent" href="./about.html">Join the team</a></li>
+              <li><a class="hover:text-accent" href="./about.html">About</a></li>
+              <li><a class="hover:text-accent" href="mailto:coachdtr@gmail.com">Email the coach</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="type-small mt-6 flex flex-col gap-1 border-t border-line pt-4 text-fg-subtle md:flex-row md:justify-between">
+          <span>© <span data-current-year>2026</span> Kettle Run Swimming</span>
+          <span>7403 Academic Ave, Nokesville, VA 20181</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Lab-only switcher -->
+    <div class="fixed right-3 bottom-3 z-40 flex items-center gap-1 rounded-full bg-gray-900 p-1 text-xs font-semibold text-white shadow-lg ring-1 ring-white/10" role="group" aria-label="Header option">
+      <span class="px-2 text-white/60">Header</span>
+      <button type="button" data-set-header="a" class="rounded-full px-3 py-1.5">A Compact</button>
+      <button type="button" data-set-header="b" class="rounded-full px-3 py-1.5">B Centered</button>
+      <button type="button" data-set-header="c" class="rounded-full px-3 py-1.5">C Name</button>
+      <button type="button" data-set-header="d" class="rounded-full px-3 py-1.5">D Original</button>
+      <button type="button" data-set-header="e" class="rounded-full px-3 py-1.5">E Refined</button>
+    </div>
+    <div class="fixed right-3 bottom-14 z-40 flex items-center gap-1 rounded-full bg-gray-900 p-1 text-xs font-semibold text-white shadow-lg ring-1 ring-white/10" role="group" aria-label="Header E bottom bar">
+      <span class="px-2 text-white/60">E bottom bar</span>
+      <button type="button" data-set-bar="gray" class="rounded-full px-3 py-1.5">Gray</button>
+      <button type="button" data-set-bar="green" class="rounded-full px-3 py-1.5">Green</button>
+      <button type="button" data-set-bar="orange" class="rounded-full px-3 py-1.5">Orange</button>
+      <button type="button" data-set-bar="none" class="rounded-full px-3 py-1.5">None</button>
+    </div>
+    <script>
+      const barButtons = document.querySelectorAll("[data-set-bar]");
+      function setBar(choice) {
+        document.documentElement.dataset.bar = choice;
+        barButtons.forEach((button) => {
+          const active = button.dataset.setBar === choice;
+          button.setAttribute("aria-pressed", String(active));
+          button.classList.toggle("bg-white", active);
+          button.classList.toggle("text-gray-900", active);
+        });
+      }
+      barButtons.forEach((button) => button.addEventListener("click", () => setBar(button.dataset.setBar)));
+      setBar(new URLSearchParams(location.search).get("bar") || "none");
+    </script>
+    <script>
+      const headerButtons = document.querySelectorAll("[data-set-header]");
+      function setHeader(choice) {
+        document.documentElement.dataset.header = choice;
+        headerButtons.forEach((button) => {
+          const active = button.dataset.setHeader === choice;
+          button.setAttribute("aria-pressed", String(active));
+          button.classList.toggle("bg-white", active);
+          button.classList.toggle("text-gray-900", active);
+        });
+      }
+      headerButtons.forEach((button) => button.addEventListener("click", () => setHeader(button.dataset.setHeader)));
+      setHeader(new URLSearchParams(location.search).get("header") || "e");
+    </script>
+
+    <script src="./js/site.js"></script>
+    <script src="./js/records.js"></script>
+  </body>
+</html>

@@ -35,11 +35,11 @@
   --color-accent: #005130;      /* KR green: links, active states */
   --color-on-accent: #ffffff;   /* text on top of the accent color */
   --color-highlight: #f37322;   /* KR orange: stripes and fills, never small text on light */
-  --color-badge: #fde8d8;       /* small labels, e.g. "VHSL Class 3" */
-  --color-badge-fg: #9a3d06;
+  --color-badge: #fef08a;       /* small labels, e.g. "VHSL Class 3" (yellow, like the original site) */
+  --color-badge-fg: #111111;
+  --color-brand: #005130;       /* KR green that stays the same in dark mode: fills like table headers */
 
   /* LEGACY: used by the old pages. Remove once they're all rebuilt. */
-  --color-brand: #005130;
   --color-brand-light: #F37322;
   --font-barlow: "Barlow Condensed", sans-serif;
 }
@@ -60,8 +60,8 @@
     --color-header-fg: #f5f5f7cc;
     --color-accent: #34c77b;        /* KR green is too dark to read on black */
     --color-on-accent: #000000;
-    --color-badge: #f373222e;
-    --color-badge-fg: #ff9a5a;
+    --color-badge: #fde04733;
+    --color-badge-fg: #fde047;
   }
 }
 
@@ -153,6 +153,11 @@
 @utility type-button {
   font-size: var(--size-button);
   font-weight: 600;
+}
+
+/* Fine diagonal lines used on the black hero band at the top of each page. */
+@utility hero-texture {
+  background-image: repeating-linear-gradient(135deg, rgb(255 255 255 / 0.12) 0 1px, transparent 1px 10px);
 }
 
 /* =====================================================================

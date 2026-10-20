@@ -1,6 +1,7 @@
 // Builds the website from src/ into dist/.
 //
-//   src/pages/*.html     → dist/*.html          (include comments replaced with partials)
+//   src/pages/*.html     → dist/*.html          (include comments replaced with partials,
+//                                                current page marked in the nav)
 //   src/assets, src/js   → dist/assets, dist/js (copied unchanged)
 //   src/css/input.css    → dist/css/output.css  (compiled by Tailwind)
 //   CNAME                → dist/CNAME           (keeps the custom domain working)
@@ -34,13 +35,21 @@ const pages = fs.readdirSync(`${SRC}/pages`).filter((file) => file.endsWith(".ht
 
 for (const file of pages) {
   const page = fs.readFileSync(`${SRC}/pages/${file}`, "utf8");
-  const html = page.replace(INCLUDE, (match, name) => {
+  let html = page.replace(INCLUDE, (match, name) => {
     const partialPath = `${SRC}/partials/${name}`;
     if (!fs.existsSync(partialPath)) {
       throw new Error(`${file} includes "${name}", but ${partialPath} does not exist.`);
     }
     return fs.readFileSync(partialPath, "utf8");
   });
+
+  // Mark this page's own nav links as the current page. The header is shared by
+  // every page, so it can't know which link to highlight — the build fills it in.
+  html = html.replaceAll(
+    `data-nav-link href="./${file}"`,
+    `data-nav-link href="./${file}" aria-current="page"`,
+  );
+
   fs.writeFileSync(`${OUT}/${file}`, html);
 }
 console.log(`Built ${pages.length} pages.`);

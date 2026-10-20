@@ -14,10 +14,11 @@ Decisions from design step 1 (page purpose). Updated as decisions change.
 ## Navigation
 
 ```
-[KR logo → Home]   Meets   Practice   Results   Roster   Records   Join   About
+Meets · Practice · Results · Records   [KR logo → Home]   Roster · Join · About · Resources
 ```
 
-Flat links, no dropdowns.
+Eight flat links, four on each side of a centered logo, no dropdowns. Left side: competition and schedules.
+Right side: the team and getting involved. Resources is also linked from the footer.
 
 ## Pages
 
@@ -31,7 +32,7 @@ Flat links, no dropdowns.
 | Records | All-time team bests. Web page only — no PDF download. | Decided — keep; remove PDF |
 | Join | Interest meeting, tryouts, requirements, forms, commitment, coach contact. | Decided — content to be written by coach. Own page recommended; becomes a section of About if content is short. |
 | About | Program description, coaches/staff, contact. Links to Resources. | Decided — keep |
-| Resources | Team handbook, state qualifying times, and how to become a meet official (timers, stroke & turn, etc.). Linked from the footer, About, and Join — not the top nav. | Decided — new page |
+| Resources | Team handbook, state qualifying times, and how to become a meet official (timers, stroke & turn, etc.). In the top nav, and also linked from the footer, About, and Join. | Decided — new page |
 | 404 | "Page not found" with links back to main pages. | Decided — add |
 
 ## Removed / deferred

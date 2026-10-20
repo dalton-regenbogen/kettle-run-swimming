@@ -62,16 +62,18 @@ Every element uses a **color role**, never a raw color. Light and dark mode assi
 | `accent` | `text-accent`, `bg-accent` | KR green — links, active states | `#005130` | `#34C77B` (brighter, readable on black) |
 | `on-accent` | `text-on-accent` | Text on top of `accent` (e.g. buttons) | `#FFFFFF` | `#000000` |
 | `highlight` | `bg-highlight`, `border-highlight` | KR orange — stripes, fills, emphasis | `#F37322` | `#F37322` |
-| `badge` / `badge-fg` | `bg-badge`, `text-badge-fg` | Small labels like "VHSL Class 3" | `#FDE8D8` / `#9A3D06` | orange 18% / `#FF9A5A` |
+| `badge` / `badge-fg` | `bg-badge`, `text-badge-fg` | Small labels like "VHSL Class 3" (yellow, as on the original site) | `#FEF08A` / `#111111` | yellow 20% / `#FDE047` |
+| `brand` | `bg-brand` | KR green that does **not** change in dark mode — fills such as table header rows | `#005130` | `#005130` |
 
 ### Rules
 
 - **Orange is never small text on a light background.** KR orange on white is 2.9:1 contrast; small text needs
   at least 4.5:1. Use it for stripes, fills, and badges. If orange text is ever needed, use `#C2550F` (4.6:1).
-- **KR green is too dark for dark mode.** On black it's 2.2:1, so dark mode uses `#34C77B` (9.6:1).
+- **KR green is too dark for dark mode.** On black it's 2.2:1, so `accent` (text, links, accent bars) uses `#34C77B`
+  in dark mode (9.6:1). `brand` stays `#005130` for filled areas with white text on top (9.5:1).
 - Secondary/quiet gray text was chosen to pass 4.5:1 in both modes.
 - Win/loss colors, form states, and other roles get added when the pages that need them are built.
-- To do: in dark mode the header and page are both black, so the header needs a divider or slightly lighter shade (decide with the header).
+- Dark mode header/page separation: solved by the header's faint bottom hairline (`border-white/12`).
 
 ## Spacing and shape
 
@@ -79,4 +81,52 @@ Not yet decided.
 
 ## Components
 
-Not yet decided.
+### Site header — `src/partials/site-header.html`
+
+Based on the original site header, refined ("E" in the header lab).
+
+- Thin top strip reading "Kettle Run Swimming" (10px, medium, wide letter spacing, 70% white on a slightly lighter black).
+- Black bar with eight links, four on each side of a centered logo (`kr-logo-tight.svg`, 40px tall; 30px on phones).
+- Links: 13px, uppercase, medium weight, 0.1em letter spacing, 85% white. Hover and current page: KR orange text.
+- No colored bottom bar — only a faint hairline, which also separates the header from the page in dark mode.
+- Phones: logo left, "Menu" button right; the menu drops down as a full-width list with the same link style.
+- The current page is marked automatically at build time: nav links have `data-nav-link`, and `scripts/build.mjs`
+  adds `aria-current="page"` to the link pointing at the page being built. CSS styles it with
+  `aria-[current=page]:text-highlight`.
+
+### Site footer — `src/partials/site-footer.html`
+
+Logo and name, secondary links (Resources, Join the team, About, Email the coach), copyright year (set by
+`js/site.js`), and address.
+
+### Page layout (from the original site)
+
+Rebuilt pages keep the original site's page structure, restyled with the new type and colors. Records is the
+reference implementation (`src/pages/team-records.html`).
+
+- `<body class="flex min-h-dvh flex-col bg-page font-body text-fg antialiased">`, `<main class="… flex-1">` keeps
+  the footer at the bottom of short pages.
+- Content width `max-w-6xl`. On desktop everything sits inside one **page card**:
+  `md:rounded-2xl md:border md:border-line md:bg-surface md:p-6 md:shadow-xs`.
+- **Hero band** at the top: black, `rounded-2xl`, with the `hero-texture` diagonal lines. Eyebrow
+  (`type-label`, wide tracking) → `type-title` → one-line `type-small` description; an optional pill on the right
+  (e.g. "Last updated", `bg-white/20 text-white`). Centered on phones, left-aligned on desktop. In dark mode it
+  gets a faint outline (`dark:ring-1 dark:ring-white/15`) so it doesn't disappear into the black page.
+- **Section cards**: `rounded-2xl border border-line bg-surface shadow-sm`, with a header row containing a green
+  accent bar (`h-9 w-1.5 rounded-full bg-accent`), a `type-section` title, and a `type-small` subtitle.
+
+### Tables (from the original site)
+
+- Header row: solid `bg-brand` with white `font-semibold` labels.
+- Desktop rows lightly striped (`md:even:bg-fg/[0.03]`), `table-fixed` with set column widths so related tables line up.
+- Phones: each row becomes a two-line block — main item and number on top, secondary details below — with a
+  matching "Event | Name … Time | Date" header.
+- Times use tabular numbers (`type-table`) in `font-medium`. On desktop a badge sits next to the time; on phones
+  it moves to the second line after the name so every time stays aligned on the right edge.
+- A slim divider row (`type-label` on a light tint) can separate groups, e.g. "Relays".
+- Badge text should explain itself (e.g. "Class 3 State Record") so no legend is needed.
+
+### Logo
+
+`kr-logo-tight.svg` is `kr-logo.svg` with its empty square padding cropped (only the `viewBox` changed), so the
+logo's size class matches its visible size. The original file is still used by legacy pages.

@@ -1,0 +1,54 @@
+<!--
+  Site header for rebuilt pages.
+  - Nav links carry data-nav-link. The build script adds aria-current="page" to the
+    link that points at the page being built, which turns it orange.
+  - The phone menu is opened/closed by js/site.js (include that script on the page).
+  - TODO: "Join" points at about.html until join.html exists.
+-->
+<header class="sticky top-0 z-30 border-b border-white/12 bg-header">
+  <div class="bg-white/7">
+    <p class="py-1 text-center text-[10px] font-medium tracking-[0.16em] text-white/70 uppercase">Kettle Run Swimming</p>
+  </div>
+  <div class="mx-auto max-w-5xl px-4">
+    <!-- Desktop: equal columns on both sides keep the logo centered -->
+    <nav aria-label="Primary" class="hidden h-20 grid-cols-[1fr_auto_1fr] items-center md:grid">
+      <ul class="flex items-center justify-around text-[13px] font-medium tracking-[0.1em] uppercase">
+        <li><a data-nav-link href="./competition-schedule.html" class="block py-7 text-white/85 transition-colors hover:text-highlight aria-[current=page]:text-highlight">Meets</a></li>
+        <li><a data-nav-link href="./practice-schedule.html" class="block py-7 text-white/85 transition-colors hover:text-highlight aria-[current=page]:text-highlight">Practice</a></li>
+        <li><a data-nav-link href="./2025-2026-results.html" class="block py-7 text-white/85 transition-colors hover:text-highlight aria-[current=page]:text-highlight">Results</a></li>
+        <li><a data-nav-link href="./team-records.html" class="block py-7 text-white/85 transition-colors hover:text-highlight aria-[current=page]:text-highlight">Records</a></li>
+      </ul>
+      <a href="./index.html" class="mx-8"><img src="./assets/kr-logo-tight.svg" alt="Kettle Run Swimming home" class="h-10 w-auto" /></a>
+      <ul class="flex items-center justify-around text-[13px] font-medium tracking-[0.1em] uppercase">
+        <li><a data-nav-link href="./roster.html" class="block py-7 text-white/85 transition-colors hover:text-highlight aria-[current=page]:text-highlight">Roster</a></li>
+        <li><a data-nav-link href="./about.html" class="block py-7 text-white/85 transition-colors hover:text-highlight aria-[current=page]:text-highlight">Join</a></li>
+        <li><a data-nav-link href="./about.html" class="block py-7 text-white/85 transition-colors hover:text-highlight aria-[current=page]:text-highlight">About</a></li>
+        <li><a data-nav-link href="./resources.html" class="block py-7 text-white/85 transition-colors hover:text-highlight aria-[current=page]:text-highlight">Resources</a></li>
+      </ul>
+    </nav>
+
+    <!-- Phone: logo and menu button -->
+    <div class="flex h-16 items-center justify-between md:hidden">
+      <a href="./index.html"><img src="./assets/kr-logo-tight.svg" alt="Kettle Run Swimming home" class="h-7.5 w-auto" /></a>
+      <button type="button" data-menu-button aria-controls="site-menu" aria-expanded="false" class="group type-nav -mr-1 inline-flex min-h-11 items-center gap-2 px-2 text-white">
+        Menu
+        <svg class="size-5 group-aria-expanded:hidden" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 6h14M3 14h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+        <svg class="hidden size-5 group-aria-expanded:block" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Phone menu (hidden until the Menu button opens it) -->
+  <nav id="site-menu" hidden aria-label="Primary" class="border-t border-white/10 md:hidden">
+    <ul class="mx-auto max-w-5xl divide-y divide-white/10 px-4 text-sm font-medium tracking-[0.1em] uppercase">
+      <li><a data-nav-link href="./competition-schedule.html" class="flex min-h-12 items-center text-white/85 hover:text-highlight aria-[current=page]:text-highlight">Meets</a></li>
+      <li><a data-nav-link href="./practice-schedule.html" class="flex min-h-12 items-center text-white/85 hover:text-highlight aria-[current=page]:text-highlight">Practice</a></li>
+      <li><a data-nav-link href="./2025-2026-results.html" class="flex min-h-12 items-center text-white/85 hover:text-highlight aria-[current=page]:text-highlight">Results</a></li>
+      <li><a data-nav-link href="./team-records.html" class="flex min-h-12 items-center text-white/85 hover:text-highlight aria-[current=page]:text-highlight">Records</a></li>
+      <li><a data-nav-link href="./roster.html" class="flex min-h-12 items-center text-white/85 hover:text-highlight aria-[current=page]:text-highlight">Roster</a></li>
+      <li><a data-nav-link href="./about.html" class="flex min-h-12 items-center text-white/85 hover:text-highlight aria-[current=page]:text-highlight">Join</a></li>
+      <li><a data-nav-link href="./about.html" class="flex min-h-12 items-center text-white/85 hover:text-highlight aria-[current=page]:text-highlight">About</a></li>
+      <li><a data-nav-link href="./resources.html" class="flex min-h-12 items-center text-white/85 hover:text-highlight aria-[current=page]:text-highlight">Resources</a></li>
+    </ul>
+  </nav>
+</header>
