@@ -158,12 +158,17 @@
 /*
   Keyboard focus outline in KR orange. :focus-visible only applies when someone is
   moving around with the keyboard (Tab key), never after a tap or mouse click.
-  :where() keeps this rule's priority low so a class can still override it.
+
+  It lives in @layer base on purpose. Tailwind's classes live in layers too, and CSS
+  outside any layer always beats CSS inside one. In the base layer, a class on an
+  element (e.g. focus-visible:outline-hidden) can override this default.
 */
-:where(a, button, select, input, summary):focus-visible {
-  outline: 2px solid var(--color-highlight);
-  outline-offset: 3px;
-  border-radius: 2px;
+@layer base {
+  :where(a, button, select, input, summary):focus-visible {
+    outline: 2px solid var(--color-highlight);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 }
 
 /* While a full-screen dialog (the phone menu) is open, stop the page behind it from scrolling. */

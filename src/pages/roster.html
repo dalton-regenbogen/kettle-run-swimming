@@ -1,240 +1,80 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KR Swim | Team Roster</title>
-    <link rel="stylesheet" href="./css/output.css" />
+    <!-- include: head.html -->
+    <title>Team Roster | Kettle Run Swimming</title>
+    <meta name="description" content="Kettle Run High School swim team rosters by season, with boys and girls teams." />
   </head>
-  <body class="min-h-screen bg-gray-100 text-gray-900">
-    <!-- include: header.html -->
+  <body class="flex min-h-dvh flex-col bg-page font-body text-fg antialiased">
+    <!-- include: site-header.html -->
 
-    <!-- Main -->
-    <main class="max-w-6xl md:max-w-10/12 mx-auto md:px-4 px-1 md:py-12 py-6">
-      <!-- Page header -->
-      <div
-        class="md:rounded-2xl md:border md:border-gray-200 md:shadow-xs p-2 md:p-6 bg-grey-100 md:bg-white"
-      >
+    <main class="mx-auto w-full max-w-6xl flex-1 px-3 py-6 md:px-4 md:py-12">
+      <!-- Page card: on desktop everything sits inside one large white card -->
+      <div class="md:rounded-2xl md:border md:border-line md:bg-surface md:p-6 md:shadow-xs">
         <!-- Hero band -->
-        <section
-          class="mb-8 overflow-hidden rounded-2xl border border-gray-200 bg-black/95 text-white"
-        >
-          <div class="relative px-6 py-4 md:py-8">
-            <!-- subtle diagonal texture -->
-            <div
-              aria-hidden="true"
-              class="pointer-events-none absolute inset-0 opacity-[0.12]"
-              style="
-                background-image: repeating-linear-gradient(
-                  135deg,
-                  rgba(255, 255, 255, 0.9) 0px,
-                  rgba(255, 255, 255, 0.9) 1px,
-                  transparent 1px,
-                  transparent 10px
-                );
-              "
-            ></div>
-
-            <div
-              class="relative flex flex-col gap-2.5 text-center md:text-start md:flex-row md:items-end md:justify-between"
-            >
-              <div class="flex flex-col items-center gap-2 md:items-start">
-                <p
-                  class="text-[10px] md:text-xs font-semibold uppercase tracking-[0.22em] text-white/80"
-                >
-                  Kettle Run Swimming
-                </p>
-                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">
-                  Team Roster
-                </h1>
-                <p class="text-xs md:text-sm text-white/80">
-                  Official KRHS swim team rosters.
-                </p>
-              </div>
-
-              <div class="md:hidden border-b border-gray-400 w-64 m-auto"></div>
-
-              <!-- quick stat pills -->
-              <div class="">
-                <a
-                  id="rosterPdfLink"
-                  href=""
-                  class="rounded-md bg-gray-50 px-2 py-1 md:py-2 text-xs font-semibold text-black"
-                  download
-                >
-                  Download Roster (PDF)
-                </a>
-              </div>
+        <section class="relative mb-6 overflow-hidden rounded-2xl bg-black text-white md:mb-8 dark:ring-1 dark:ring-white/15">
+          <div class="hero-texture pointer-events-none absolute inset-0" aria-hidden="true"></div>
+          <div class="relative flex flex-col items-center gap-3 px-6 py-6 text-center md:flex-row md:items-end md:justify-between md:py-8 md:text-left">
+            <div>
+              <p class="type-label tracking-[0.22em] text-white/80">Kettle Run Swimming</p>
+              <h1 class="type-title mt-1.5">Team Roster</h1>
+              <p class="type-small mt-1 text-white/80">Official KRHS swim team rosters.</p>
             </div>
-          </div>
-        </section>
-
-        <section
-          class="md:hidden mb-8 rounded-2xl border border-gray-200 shadow-xs p-2 md:p-6 bg-white"
-        >
-          <div class="flex gap-3 md:gap-16 items-center justify-center">
-            <div
-              class="flex items-center gap-2 text-black text-[13px] font-semibold"
-            >
-              <label for="seasonSelectMobile">Season:</label>
-              <select
-                id="seasonSelectMobile"
-                class="bg-white border border-gray-300 px-2 py-1 rounded-lg focus:ring-1 focus:ring-brand focus:border-brand"
-              ></select>
-            </div>
-            <div class="overflow-hidden">
-              <nav aria-label="Roster filter">
-                <ul
-                  class="relative flex flex-row p-1 rounded-lg bg-gray-100 gap-1"
-                >
-                  <li>
-                    <button
-                      type="button"
-                      class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold text-black transition"
-                      data-value="All"
-                      aria-pressed="true"
-                    >
-                      All
-                    </button>
-                  </li>
-
-                  <li>
-                    <button
-                      type="button"
-                      class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold text-black transition"
-                      data-value="Boys"
-                      aria-pressed="false"
-                    >
-                      Boys
-                    </button>
-                  </li>
-
-                  <li>
-                    <button
-                      type="button"
-                      class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold text-black transition"
-                      data-value="Girls"
-                      aria-pressed="false"
-                    >
-                      Girls
-                    </button>
-                  </li>
-                </ul>
-              </nav>
-            </div>
+            <!-- Filled in by js/roster.js for the season shown; hidden until it has text -->
+            <p id="roster-updated" class="type-small rounded-md bg-white/20 px-2 py-1 font-medium text-white empty:hidden"></p>
           </div>
         </section>
 
         <!-- Roster -->
-        <section
-          class="mb-8 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
-        >
-          <!-- Section header bar -->
-          <div
-            class="flex items-center justify-between border-b border-gray-200 bg-background-50 px-3 md:px-5 py-4"
-          >
+        <section class="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm" aria-labelledby="roster-heading">
+          <!-- Section header: title on the left, season + team controls on the right (stacked on phones) -->
+          <div class="flex flex-col gap-4 border-b border-line px-4 py-4 md:flex-row md:items-center md:justify-between md:px-5">
             <div class="flex items-center gap-3">
-              <div class="h-9 w-1.5 rounded-full bg-brand"></div>
+              <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
               <div>
-                <h2
-                  class="text-base md:text-lg font-bold tracking-tight text-black"
-                >
-                  Roster
-                  <span
-                    id="rosterSeasonLabel"
-                    class="text-black/90 font-semibold text-sm md:text-base"
-                  ></span>
-                </h2>
-                <p class="text-[11px] text-gray-700">
-                  Official KRHS swim team roster
-                </p>
+                <h2 class="type-section" id="roster-heading">Roster <span id="roster-season" class="ml-0.5 font-body text-[13px] font-normal tracking-normal text-fg-subtle"></span></h2>
+                <p class="type-small text-fg-muted">Official KRHS swim team roster</p>
               </div>
             </div>
-            <div class="hidden md:flex gap-3 md:gap-6 items-center justify-center">
-              <div
-                class="flex items-center gap-2 text-black text-[13px] font-semibold"
-              >
-                <label for="seasonSelect">Season:</label>
-                <select
-                  id="seasonSelect"
-                  class="bg-white border border-gray-300 px-2 py-1 rounded-lg focus:ring-1 focus:ring-brand focus:border-brand"
-                ></select>
+
+            <div class="flex flex-wrap items-center justify-between gap-3 md:justify-end">
+              <div class="flex items-center gap-2">
+                <label for="season-select" class="type-small sr-only font-medium text-fg-muted md:not-sr-only">Season</label>
+                <select id="season-select" class="rounded-lg border border-line bg-surface px-2.5 py-1.5 text-[13px] font-medium text-fg focus-visible:outline-hidden focus:border-fg-subtle">
+                  <option>Loading…</option>
+                </select>
               </div>
-              <div class="overflow-hidden">
-                <nav aria-label="Roster filter">
-                  <ul
-                    class="relative flex flex-row p-1 rounded-lg bg-gray-100 gap-1"
-                  >
-                    <li>
-                      <button
-                        type="button"
-                        class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold text-black transition"
-                        data-value="All"
-                        aria-pressed="true"
-                      >
-                        All
-                      </button>
-                    </li>
-
-                    <li>
-                      <button
-                        type="button"
-                        class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold text-black transition"
-                        data-value="Boys"
-                        aria-pressed="false"
-                      >
-                        Boys
-                      </button>
-                    </li>
-
-                    <li>
-                      <button
-                        type="button"
-                        class="roster-filter-btn relative flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold text-black transition"
-                        data-value="Girls"
-                        aria-pressed="false"
-                      >
-                        Girls
-                      </button>
-                    </li>
-                  </ul>
-                </nav>
+              <div class="inline-flex gap-1 rounded-lg bg-fg/5 p-1" role="group" aria-label="Show team">
+                <button type="button" data-team-filter="All" aria-pressed="true" class="rounded-md px-2.5 py-1 text-[12px] font-semibold text-fg-muted transition-colors aria-pressed:bg-surface aria-pressed:text-fg aria-pressed:shadow-sm">All</button>
+                <button type="button" data-team-filter="Boys" aria-pressed="false" class="rounded-md px-2.5 py-1 text-[12px] font-semibold text-fg-muted transition-colors aria-pressed:bg-surface aria-pressed:text-fg aria-pressed:shadow-sm">Boys</button>
+                <button type="button" data-team-filter="Girls" aria-pressed="false" class="rounded-md px-2.5 py-1 text-[12px] font-semibold text-fg-muted transition-colors aria-pressed:bg-surface aria-pressed:text-fg aria-pressed:shadow-sm">Girls</button>
               </div>
             </div>
           </div>
 
-          <!-- Table wrapper -->
-          <div class="overflow-x-auto">
-            <table class="min-w-full text-xs md:text-sm whitespace-nowrap">
-              <thead class="bg-brand text-white">
-                <tr
-                  class="[&>th]:px-1 md:[&>th]:px-4 [&>th]:py-2.5 [&>th]:text-left [&>th]:font-semibold [&>th]:tracking-wide"
-                >
-                  <th class="w-10"></th>
-                  <th>Athlete</th>
-                  <th><span class="hidden md:table-cell">Year on Team</span><span class="md:hidden">Yr</span></th>
-                  <th>Class</th>
-                  <th>Stroke</th>
-                </tr>
-              </thead>
-
-              <tbody
-                id="rosterBody"
-                class="divide-y divide-gray-100 [&>tr:nth-child(even)]:bg-gray-50/60"
-              >
-                <tr>
-                  <td colspan="5" class="px-4 py-6 text-gray-500"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <table class="type-table w-full table-fixed">
+            <thead class="bg-brand text-white">
+              <tr class="text-left">
+                <th scope="col" class="w-13 py-2.5 pl-3 md:w-17 md:px-4"><span class="sr-only">Initials</span></th>
+                <th scope="col" class="py-2.5 pr-2 font-semibold md:px-4">Athlete</th>
+                <th scope="col" class="w-10 py-2.5 pr-2 font-semibold md:w-[16%] md:px-4">
+                  <span class="md:hidden" aria-hidden="true">Yr</span><span class="sr-only md:not-sr-only">Year on Team</span>
+                </th>
+                <th scope="col" class="w-12 py-2.5 pr-2 font-semibold md:w-[14%] md:px-4">Class</th>
+                <th scope="col" class="w-15 py-2.5 pr-3 font-semibold md:w-[14%] md:px-4">Stroke</th>
+              </tr>
+            </thead>
+            <tbody id="roster-body">
+              <tr><td class="px-4 py-6 text-center text-fg-subtle" colspan="5">Loading…</td></tr>
+            </tbody>
+          </table>
         </section>
       </div>
     </main>
 
-    <!-- include: footer.html -->
+    <!-- include: site-footer.html -->
 
-    <script src="./js/mobileMenu.js"></script>
-    <script src="./js/renderRoster.js"></script>
+    <script src="./js/site.js"></script>
+    <script src="./js/roster.js"></script>
   </body>
 </html>

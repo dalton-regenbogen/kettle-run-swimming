@@ -142,9 +142,29 @@ reference implementation (`src/pages/team-records.html`).
   readers announce the group name for each row, and `first:`/`last:` styles count within each group.
 - Phones: each row becomes a two-line block — main item and number on top, secondary details below — with a
   matching "Event | Name … Time | Date" header.
+- Row text: 13px on desktop (main item regular), 12px on phones (main item semibold); second lines 11px.
 - Times use tabular numbers (`type-table`) in `font-medium`. On desktop a badge sits next to the time; on phones
   it moves to the second line after the name so every time stays aligned on the right edge.
 - Badge text should explain itself (e.g. "State Record") so no legend is needed.
+
+### Controls (first used on Roster)
+
+- **Segmented filter** (e.g. All / Boys / Girls): `<button>`s with `aria-pressed` inside a
+  `rounded-lg bg-fg/5 p-1` group. Pressed button: `aria-pressed:bg-surface aria-pressed:text-fg
+  aria-pressed:shadow-sm`; others `text-fg-muted`. `type-button` text.
+- **Select** (e.g. Season): native `<select>` with `rounded-lg border border-line bg-surface px-2.5 py-1.5`,
+  13px medium text, with a `<label>` (visually hidden on phones with `sr-only md:not-sr-only`).
+- Controls sit on the right of a section card's header row on desktop and wrap below the title on phones
+  (`flex-wrap`, so very narrow screens stack them instead of overflowing).
+
+### Avatars
+
+Initials in a `bg-brand` circle with white 11px semibold text: `size-8` on phones, `size-9` on desktop.
+
+### Badges
+
+Small yellow tags (`bg-badge text-badge-fg`, 9px on phones / 10px on desktop, semibold, `rounded-sm`) for
+standout facts: "State Record" next to a record time, "Captain" next to a roster name. Text explains itself; no legend.
 
 ### Logo
 
