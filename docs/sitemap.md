@@ -20,6 +20,16 @@ Meets · Practice · Results · Records   [KR logo → Home]   Roster · Join ·
 Eight flat links, four on each side of a centered logo, no dropdowns. Left side: competition and schedules.
 Right side: the team and getting involved. Resources is also linked from the footer.
 
+## Planned change: one Schedule page (agreed, not built yet)
+
+- Replace the separate Meets and Practice nav links with one **Schedule** link and page, with a
+  segmented **Meets | Practice** switch (same style as the roster filter). Meets keeps the meet table;
+  Practice keeps the current regular-schedule row and week grid.
+- Nav becomes six links: `Schedule · Results · Roster  [LOGO]  Records · Join · About`.
+  Resources moves to the footer and the About page.
+- Old addresses (`competition-schedule.html`, `practice-schedule.html`) forward to the new page.
+- A full Mon–Sun calendar was considered and set aside (cramped on phones, mostly empty columns).
+
 ## Pages
 
 | Page | Purpose | Status |
