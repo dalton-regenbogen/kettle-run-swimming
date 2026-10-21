@@ -85,8 +85,11 @@ site root. Other pages don't need this.
 
 Most frequently changed information lives in JSON files under `src/assets/data/` and `src/assets/rosters/`. Edit the file, save, and the dev build picks it up.
 
-- **Team records:** edit `src/assets/data/records.json`, then run `npm run records:meta`. The Records page,
-  including the "Newest record" card, updates from that file.
+- **Team records:** edit `src/assets/data/records.json`, then run `npm run records:meta`. To tag a record, put
+  short text in its `RecordBadge` (e.g. `"State Record"`); leave it `""` for no tag.
+- **Roster:** each season is a file in `src/assets/rosters/` (e.g. `roster-2025-2026.json`). Add a new season's
+  file and list it first in `roster-index.json`; the newest season shows by default. Put `"Captain"` in a
+  swimmer's `roles` to show the Captain badge.
 
 > While `npm run dev` is running, don't also run `npm run build` — both rebuild `dist/` and can wipe out each
 > other's files. The dev watcher already rebuilds on every save.
