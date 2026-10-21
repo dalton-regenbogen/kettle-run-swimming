@@ -1,97 +1,83 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KR Swim | Practice Schedule</title>
-    <link rel="stylesheet" href="./css/output.css" />
+    <!-- include: head.html -->
+    <title>Practice Schedule | Kettle Run Swimming</title>
+    <meta name="description" content="Kettle Run High School swim team practice schedule: regular days and times, and the season week by week with days off." />
   </head>
-  <body class="min-h-screen bg-gray-100 text-gray-900">
-    <!-- include: header.html -->
+  <body class="flex min-h-dvh flex-col bg-page font-body text-fg antialiased">
+    <!-- include: site-header.html -->
 
-    <!-- Main -->
-    <main class="max-w-6xl md:max-w-10/12 mx-auto md:px-4 px-1 md:py-12 py-6">
-      <section>
-        <div
-          class="md:rounded-2xl md:border md:border-gray-200 md:shadow-xs p-2 md:p-6 bg-grey-100 md:bg-white"
-        >
-          <!-- Hero band -->
-          <section
-            class="mb-8 overflow-hidden rounded-2xl border border-gray-200 bg-black/95 text-white"
-          >
-            <div class="relative px-6 py-4 md:py-8">
-              <!-- subtle diagonal texture -->
-              <div
-                aria-hidden="true"
-                class="pointer-events-none absolute inset-0 opacity-[0.12]"
-                style="
-                  background-image: repeating-linear-gradient(
-                    135deg,
-                    rgba(255, 255, 255, 0.9) 0px,
-                    rgba(255, 255, 255, 0.9) 1px,
-                    transparent 1px,
-                    transparent 10px
-                  );
-                "
-              ></div>
-
-              <div
-                class="relative flex flex-col gap-2.5 text-center md:text-start md:flex-row md:items-end md:justify-between"
-              >
-                <div class="flex flex-col items-center gap-2 md:items-start">
-                  <p
-                    class="text-[10px] md:text-xs font-semibold uppercase tracking-[0.22em] text-white/80"
-                  >
-                    Kettle Run Swimming
-                  </p>
-                  <h1
-                    class="text-3xl md:text-4xl font-extrabold tracking-tight"
-                  >
-                    Practice Schedule
-                  </h1>
-                  <p class="text-xs md:text-sm text-white/80">
-                    Official 2025-2026 practice schedule.
-                  </p>
-                </div>
-
-                <div
-                  class="md:hidden border-b border-gray-400 w-64 m-auto"
-                ></div>
-
-                <!-- quick stat pills -->
-                <div class="">
-                  <a
-                    id="recordsPdfLink"
-                    href=""
-                    class="rounded-md bg-gray-50 px-2 py-1 md:py-2 text-xs font-semibold text-black"
-                    download
-                  >
-                    Download Schedule (PDF)
-                  </a>
-                </div>
-                <p
-                  id="scheduleLastUpdatedMobile"
-                  class="md:hidden text-[10px] md:text-[11px] font-semibold text-white text-center"
-                ></p>
-              </div>
+    <main class="mx-auto w-full max-w-6xl flex-1 px-3 py-6 md:px-4 md:py-12">
+      <!-- Page card: on desktop everything sits inside one large white card -->
+      <div class="md:rounded-2xl md:border md:border-line md:bg-surface md:p-6 md:shadow-xs">
+        <!-- Hero band -->
+        <section class="relative mb-6 overflow-hidden rounded-2xl bg-black text-white md:mb-8 dark:ring-1 dark:ring-white/15">
+          <div class="hero-texture pointer-events-none absolute inset-0" aria-hidden="true"></div>
+          <div class="relative flex flex-col items-center gap-3 px-6 py-6 text-center md:flex-row md:items-end md:justify-between md:py-8 md:text-left">
+            <div>
+              <p class="type-label tracking-[0.22em] text-white/80">Kettle Run Swimming</p>
+              <h1 class="type-title mt-1.5">Practice Schedule</h1>
+              <p class="type-small mt-1 text-white/80">Official <span id="practice-season">KRHS</span> practice schedule.</p>
             </div>
-          </section>
+            <!-- Filled in by js/practice.js; hidden until it has text -->
+            <p id="practice-updated" class="type-small rounded-md bg-white/20 px-2 py-1 font-medium text-white empty:hidden"></p>
+          </div>
+        </section>
 
-          <div id="practiceScheduleMount"></div>
-        </div>
-      </section>
+        <!-- 1. Regular schedule (filled in by js/practice.js from the schedule data) -->
+        <section class="mb-6 overflow-hidden rounded-2xl border border-line bg-surface shadow-sm md:mb-8" aria-labelledby="regular-heading">
+          <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
+            <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
+            <div>
+              <h2 class="type-section" id="regular-heading">Regular schedule</h2>
+              <p class="type-small text-fg-muted">Unless a change is listed below</p>
+            </div>
+          </div>
+          <!-- A one-row table, styled like the Records and Roster tables -->
+          <table class="type-table w-full table-fixed">
+            <thead class="bg-brand text-white">
+              <tr class="text-left">
+                <th scope="col" class="w-[42%] py-2.5 pr-2 pl-4 font-semibold md:w-1/3 md:px-5">Days</th>
+                <th scope="col" class="w-[34%] py-2.5 pr-2 font-semibold md:w-1/3 md:px-5">Time</th>
+                <th scope="col" class="py-2.5 pr-4 font-semibold md:px-5">Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-[12px] md:text-[13px]"><!-- same as table cells in Records/Roster -->
+                <td class="py-3 pr-2 pl-4 md:px-5 md:py-3.5" id="usual-days">—</td>
+                <td class="py-3 pr-2 tabular-nums md:px-5 md:py-3.5" id="usual-time">—</td>
+                <td class="py-3 pr-4 md:px-5 md:py-3.5" id="usual-location">—</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- 2. Week by week -->
+        <section class="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm" aria-labelledby="weeks-heading">
+          <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
+            <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
+            <div>
+              <h2 class="type-section" id="weeks-heading">Week by week</h2>
+              <p class="type-small text-fg-muted">Every practice day of the season</p>
+            </div>
+          </div>
+          <!-- Week · one column per practice day, on every screen size. Filled in by js/practice.js. -->
+          <table class="type-table w-full table-fixed">
+            <thead class="bg-brand text-white">
+              <tr id="weeks-head" class="text-left"></tr>
+            </thead>
+            <tbody id="weeks-body">
+              <tr><td class="px-4 py-6 text-center text-fg-subtle" colspan="5">Loading…</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
     </main>
 
-    <!-- include: footer.html -->
+    <!-- include: site-footer.html -->
 
-    <script src="./js/mobileMenu.js"></script>
-    <script type="module">
-      import { renderPracticeSchedule } from "./js/renderPracticeSchedule.js";
-
-      renderPracticeSchedule({
-        jsonUrl: "./assets/data/practice-schedule.json",
-        mount: "#practiceScheduleMount",
-      });
-    </script>
+    <script src="./js/site.js"></script>
+    <script src="./js/practice.js"></script>
   </body>
 </html>

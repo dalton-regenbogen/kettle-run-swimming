@@ -26,7 +26,7 @@ Right side: the team and getting involved. Resources is also linked from the foo
 | --- | --- | --- |
 | Home | Point people to what they need right now. Shifts by date: preseason leads with joining; in season leads with next meet and this week's practices. | Decided — redesign |
 | Meets | When and where each meet is, with start time, venue, opponents, status. | Decided — keep separate from Results |
-| Practice | When and where practices are; opens at the current week. | Decided — keep |
+| Practice | Regular schedule (days, time, location) plus a week-by-day grid with days off and week notes; current week highlighted in season. | Built |
 | Results | Meet-by-meet scores and championship results; past seasons via a season picker. | Decided — keep separate from Meets |
 | Roster | Team members by season, with All/Boys/Girls filter and season picker. No PDF. | Built |
 | Records | All-time team bests. Web page only — no PDF download. | Built |

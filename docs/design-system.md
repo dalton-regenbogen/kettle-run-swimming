@@ -134,6 +134,8 @@ reference implementation (`src/pages/team-records.html`).
 
 ### Tables (from the original site)
 
+Used for Records and Roster. Practice uses the week strip instead.
+
 - Header row: solid `bg-brand` with white `font-semibold` labels.
 - **Clean rows:** a thin `border-line` between rows on every screen size, no zebra stripes.
 - `table-fixed` with set column widths so related tables line up.
@@ -171,6 +173,30 @@ standout facts: "State Record" next to a record time, "Captain" next to a roster
 A grid of links (`sm:grid-cols-2 md:grid-cols-3`), each a `rounded-xl border border-line px-4 py-3` block with a
 `type-sub` title, a `type-small text-fg-muted` description, and an arrow that turns orange on hover. The border
 darkens to `fg-subtle` on hover.
+
+### Summary row (first used on Practice)
+
+Two to four key facts (e.g. Days · Time · Location) as a one-row table in the standard table style: green
+`bg-brand` header row with the labels, then the values as ordinary table cells (12px phones / 13px desktop, regular).
+
+### Week grid (first used on Practice)
+
+A table with one row per week and one column per practice day, in the standard table style (green header row),
+on every screen size.
+
+- **Columns:** Week · one column per practice day (Mon, Tue, …, taken from the data).
+- **Week cell:** "Week 1" over the date range, matching the main item in Records/Roster rows — phones 12px semibold
+  over 11px gray; desktop 13px regular over 12px gray.
+- **Day cells:** a tile with the date ("Nov 24", medium weight like record times). Practice = `bg-accent/12` with a green date; no practice = `bg-fg/5`,
+  gray, crossed-out date. Desktop adds a brief label under the date: "Regular practice", "No practice", or the day's
+  own note (e.g. "Season Start"). Phones skip the label (kept for screen readers with `sr-only`).
+- **Tile padding:** equal on all four sides — `p-1.5` on phones (centered date), `p-2.5` on desktop.
+- **Space around tiles:** the gap between neighboring tiles equals the space above and below them — 4px on phones
+  (cells `px-0.5 py-1`), 8px on desktop (`md:px-1 md:py-2`). The last tile sits the same distance from the card's
+  edge (`last:pr-1 md:last:pr-2`).
+- **Phones:** tighter spacing overall. At the narrowest phones (320px) date ranges wrap to two lines.
+- **In season:** the current week is tinted (`bg-highlight/10`) with a "This week" tag; past weeks are dimmed.
+  In the offseason nothing is dimmed.
 
 ### Logo
 

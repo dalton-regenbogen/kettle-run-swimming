@@ -87,6 +87,9 @@ Most frequently changed information lives in JSON files under `src/assets/data/`
 
 - **Team records:** edit `src/assets/data/records.json`, then run `npm run records:meta`. To tag a record, put
   short text in its `RecordBadge` (e.g. `"State Record"`); leave it `""` for no tag.
+- **Practice:** `src/assets/data/practice-schedule.json`. Each practice has a `status` (`"normal"` or `"off"`) and
+  an optional `note` (e.g. `"Last Practice"`; `"Normal"` is ignored) shown on that day's tile. The "Regular
+  schedule" summary is worked out from the practices.
 - **Roster:** each season is a file in `src/assets/rosters/` (e.g. `roster-2025-2026.json`). Add a new season's
   file and list it first in `roster-index.json`; the newest season shows by default. Put `"Captain"` in a
   swimmer's `roles` to show the Captain badge.
