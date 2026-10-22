@@ -1,9 +1,13 @@
-// Fills in the Meet Schedule page from assets/data/meet-schedule.json.
+// Fills in the Meet Schedule page with the newest season in assets/meets/.
 //
-// The meet JSON: { season, updated, meets: [...] }. Each meet:
+//   meets-index.json        lists the seasons (newest first) and each season's file
+//   meets-2025-2026.json    one season: { season, updated, meets: [...] }
+//
+// Each meet:
 //   { date: "2025-12-06", type, opponents: [{ short, full }], homeAway, hostSchool,
 //     location, locationFull, startTime: "18:00", seasonDesignation,
-//     status (optional, e.g. "canceled"), statusNote (optional, e.g. "Weather") }
+//     status (optional, e.g. "canceled"), statusNote (optional, e.g. "Weather"),
+//     results (optional; used by the Results page, see js/results.js) }
 //
 // Expects these elements on the page:
 //   #meets-body          the "Loading…" <tbody> (replaced by one <tbody> per part of the season)
@@ -144,12 +148,19 @@ function groupBody(label, meets, flags) {
 
 // ---------- Load everything ----------
 
+async function fetchJson(path) {
+  const response = await fetch(path);
+  if (!response.ok) throw new Error(`HTTP ${response.status} for ${path}`);
+  return response.json();
+}
+
 async function loadMeets() {
   const body = document.getElementById("meets-body");
   try {
-    const response = await fetch("./assets/data/meet-schedule.json");
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
+    const index = await fetchJson("./assets/meets/meets-index.json");
+    const newest = index.seasons?.[0];
+    if (!newest) throw new Error("No seasons in meets-index.json");
+    const data = await fetchJson(`./assets/meets/${newest.file}`);
     const meets = data.meets ?? [];
 
     if (data.season) document.getElementById("meets-season").textContent = data.season.replace("-", "–");

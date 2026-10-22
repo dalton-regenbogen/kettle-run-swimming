@@ -197,6 +197,37 @@ Standard table, grouped by part of the season ("Regular Season" / "Post Season",
 - **In season:** the next meet that's still on gets the "Next meet" tag; earlier meets are dimmed. In the
   offseason nothing is dimmed.
 
+### Results tables (Results page)
+
+- **Season summary:** regular season and postseason are kept apart by a thin vertical line (`border-white/20` in
+  the header, `border-line` in the rows). Desktop adds a grouping header row (`scope="colgroup"`, `type-label`,
+  70% white): "Regular season" over Record · Win % · Streak, "Postseason" over one column per championship.
+  Phones get their own table: one row per stat (Record, Win %, Streak, Districts, …) with **Boys | Girls** as
+  centered columns, grouped by `rowgroup` headings "Regular season" / "Postseason" like Records. The corner cell is
+  empty (screen readers hear "Stat"). Everything is counted from the data.
+- **Meet cards** (Regular season, Postseason), based on the original Results page — one card per meet. Side by
+  side from `lg` (1024px); phones and tablets get a stacked card with everything centered. (Tablets don't have
+  room for five columns; font sizes still change at `md`.)
+  - **Rail:** Home / Away / Neutral in `type-label` on a colored strip — orange (`bg-highlight`, black text) home,
+    green (`bg-brand`) away, `bg-fg` neutral. A column with sideways text on desktop (`[writing-mode:vertical-rl]
+    rotate-180`), a strip across the top on phones.
+  - **Date:** weekday / "Dec 6" (13px medium) / time on desktop; one 12px medium line on phones
+    ("Saturday, Dec 6 · 6:00 PM").
+  - **Meet:** type (main item: 13px regular desktop, 12px semibold phones) with any status tag, the opponents in
+    gray, and the pool in a gray chip (`bg-fg/5`).
+  - **Boys / Girls panels** side by side (`rounded-lg border border-line`), `type-label` heading, two 20px lines
+    (`leading-5`, `min-h-10`). Scores read "W KR 117–99 SHS": letter semibold (accent for W, gray for L), "KR" and
+    the school abbreviation 11/12px gray, score medium; hovering shows the full school name. Championships:
+    "6th of 10"; canceled: "Canceled" over "Weather".
+  - **Closed by default, equal height:** each panel shows its first result, and its second line is the toggle —
+    "+2 more" / "Show less", or "Show standings" / "Hide standings" (accent text button, `aria-expanded`). Any
+    toggle opens the whole card (adds `data-open`; children use `group-data-open:` classes), so Boys and Girls
+    stay side by side. The opponents line is cut to one line until the card opens.
+  - **Full results:** a plain accent text link (PDF, new tab), in its own column on desktop (kept even when empty
+    so panels line up) and a centered row under the panels on phones.
+  - **No green header row** on the card sections: the green row labels table columns elsewhere, and cards have
+    no columns.
+
 ### Week grid (Practice page)
 
 A table with one row per week and one column per practice day, in the standard table style, on every screen

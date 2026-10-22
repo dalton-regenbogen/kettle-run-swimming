@@ -31,7 +31,7 @@ felt out of place on desktop. A full Mon–Sun calendar was also set aside (cram
 | Home | Point people to what they need right now. Shifts by date: preseason leads with joining; in season leads with next meet and this week's practices. | Decided — redesign |
 | Meets | When and where each meet is, with start time, venue, opponents, status (e.g. canceled); next meet highlighted in season. | Built (`competition-schedule.html`) |
 | Practice | Standard schedule (days, time, location) plus a week-by-day grid with days off; current week highlighted in season. | Built (`practice-schedule.html`) |
-| Results | Meet-by-meet scores and championship results; past seasons via a season picker. | Decided — keep separate from Meets |
+| Results | Season summary (dual record, win %, streak, postseason places), dual-meet scores by opponent, championship places with full standings, PDF links; season picker. Shares the season files in `src/assets/meets/` with Meets. | Built (`results.html`; `2025-2026-results.html` forwards here) |
 | Roster | Team members by season, with All/Boys/Girls filter and season picker. No PDF. | Built |
 | Records | All-time team bests. Web page only — no PDF download. | Built |
 | Join | Interest meeting, tryouts, requirements, forms, commitment, coach contact. | Decided — content to be written by coach. Own page recommended; becomes a section of About if content is short. |
@@ -53,5 +53,3 @@ felt out of place on desktop. A full Mon–Sun calendar was also set aside (cram
 ## Open
 
 - Join: own page vs. section of About — decide once content is written.
-- Old Results URL (`2025-2026-results.html`): keep or forward to a new name — decide when Results is rebuilt.
-  (Meets and Practice kept their original addresses.)

@@ -87,10 +87,17 @@ Most frequently changed information lives in JSON files under `src/assets/data/`
 
 - **Team records:** edit `src/assets/data/records.json`, then run `npm run records:meta`. To tag a record, put
   short text in its `RecordBadge` (e.g. `"State Record"`); leave it `""` for no tag.
-- **Meets:** `src/assets/data/meet-schedule.json`, shown on the Meet Schedule page. Times are 24-hour
-  (`"18:00"` shows as 6:00 PM). To mark a meet that isn't happening, add `"status": "canceled"` and an optional
-  `"statusNote": "Weather"`; it shows a "Canceled · Weather" tag and a crossed-out time. Update `"updated"` to
-  today's date after changes.
+- **Meets and results:** one file per season in `src/assets/meets/` (e.g. `meets-2025-2026.json`), listed newest
+  first in `meets-index.json`. The Meet Schedule page shows the newest season; the Results page has a season picker.
+  - Times are 24-hour (`"18:00"` shows as 6:00 PM). Update `"updated"` to today's date after schedule changes.
+  - A meet that isn't happening: add `"status": "canceled"` and an optional `"statusNote": "Weather"`.
+  - After a meet, add its `"results"`: for a dual meet, each opponent's score as
+    `{ "vs": "BDHS", "us": 90, "them": 130 }` (`vs` is the opponent's `short` name, `us` is Kettle Run); for a
+    championship, `"place"` and an optional `"standings"` list of team names. `"pdf"` is the full-results link
+    (or `""`). See any meet in `meets-2025-2026.json` for the exact shape. The season summary (record, win %,
+    streak, postseason places) is counted from these automatically.
+  - New season: copy the file, rename it (`meets-2026-2027.json`), replace the meets, remove the results, and list
+    it first in `meets-index.json`.
 - **Practice:** `src/assets/data/practice-schedule.json`. Each practice has a `status`: `"normal"` shows
   "Regular practice" under the date, `"off"` crosses the date out and shows "No practice". (The `note` field is
   kept in the data but not shown.) The "Standard practice schedule" line is worked out from the practices.
