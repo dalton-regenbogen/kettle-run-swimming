@@ -112,7 +112,7 @@ async function loadSeason(file) {
 
     state.athletes = data.athletes ?? [];
     document.getElementById("roster-season").textContent = data.season ? `(${seasonText(data.season)})` : "";
-    document.getElementById("roster-updated").textContent = data.updated ? `Updated ${formatDate(data.updated)}` : "";
+    document.getElementById("roster-updated").textContent = data.updated ? `Last updated ${formatDate(data.updated)}` : "";
     render();
   } catch (error) {
     if (request !== latestRequest) return;

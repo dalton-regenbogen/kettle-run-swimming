@@ -3,12 +3,14 @@
 // The practice JSON: { season, updated, weeks: [{ weekStart, weekEnd, practices: [...] }] }.
 // Each practice: { day: { short, long }, date, time, location, status: "normal" | "off", note }.
 //
-// The page has two parts:
-//   1. Regular schedule   #usual-days, #usual-time, #usual-location
-//   2. Week by week       #weeks-head (column headers) and #weeks-body
-//        desktop: Week # · one column per practice day (Mon, Tue, …)
-//        phones:  the same table, tighter, without the labels under each date
-// Plus the hero band: #practice-season and #practice-updated.
+// Expects these elements on the page:
+//   #practice-season, #practice-updated   hero band
+//   #regular-schedule                     the standard schedule line in the card header
+//   #weeks-head, #weeks-body              the week-by-week table
+//
+// The table: Week · one column per practice day, on every screen size. Each day cell is the
+// date over a gray label — "Regular practice" / "No practice" on desktop, "Practice" / "Off" on
+// phones — the same two-line pairing as the Week cell ("Week 3" over "Nov 24–27").
 
 // Today's date as "YYYY-MM-DD". For checking the in-season look during the offseason,
 // add ?date=2026-01-14 to the page address to pretend it's that day.
@@ -59,140 +61,132 @@ function mostCommon(values) {
 
 const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-// Days as a short range: ["Monday", …, "Thursday"] → "Monday–Thursday".
-function dayRange(dayNames) {
+// Days as text. Runs of three or more days get a dash, shorter ones a comma:
+//   [Mon, Tue, Wed, Thu] → "Mon–Thu"   [Mon, Tue] → "Mon, Tue"   [Mon, Wed, Thu, Fri] → "Mon, Wed–Fri"
+// Pass { long: true } for full names ("Monday–Thursday").
+function dayList(dayNames, { long = false } = {}) {
   const used = WEEKDAYS.filter((day) => dayNames.includes(day));
-  const indexes = used.map((day) => WEEKDAYS.indexOf(day));
-  const consecutive = indexes.every((index, i) => i === 0 || index === indexes[i - 1] + 1);
-  return used.length > 2 && consecutive ? `${used[0]}–${used.at(-1)}` : used.join(", ");
+  const name = (day) => (long ? day : day.slice(0, 3));
+  const runs = [];
+  for (const day of used) {
+    const run = runs.at(-1);
+    if (run && WEEKDAYS.indexOf(day) === WEEKDAYS.indexOf(run.at(-1)) + 1) run.push(day);
+    else runs.push([day]);
+  }
+  return runs.map((run) => (run.length >= 3 ? `${name(run[0])}–${name(run.at(-1))}` : run.map(name).join(", "))).join(", ");
 }
 
 const isOff = (practice) => practice.status === "off";
-// "Normal" isn't useful information, so only real notes count.
-const realNote = (practice) => (practice.note && practice.note.toLowerCase() !== "normal" ? practice.note : "");
 
-// ---------- 1. Regular schedule ----------
+// ---------- Standard schedule ----------
 
+// Worked out from the practices:
+//   desktop: "Standard practice schedule: Monday–Thursday, 3:30–4:30 PM @ WARF"
+//   phones:  "Standard schedule: Mon–Thu, 3:30–4:30 PM @ WARF" (short enough for one line)
 function showRegularSchedule(practices) {
   const held = practices.filter((p) => !isOff(p));
   if (!held.length) return;
-  document.getElementById("usual-days").textContent = dayRange(held.map((p) => p.day?.long));
-  document.getElementById("usual-time").textContent = dash(mostCommon(held.map((p) => p.time)));
-  document.getElementById("usual-location").textContent = mostCommon(held.map((p) => p.location));
+  const dayNames = held.map((p) => p.day?.long);
+  const time = dash(mostCommon(held.map((p) => p.time)));
+  const location = mostCommon(held.map((p) => p.location));
+  document.getElementById("regular-schedule").replaceChildren(
+    el("span", "md:hidden", `Standard schedule: ${dayList(dayNames)}, `),
+    el("span", "hidden md:inline", `Standard practice schedule: ${dayList(dayNames, { long: true })}, `),
+    // The time and place stay together, so a very narrow phone wraps before them, not inside "3:30–4:30".
+    el("span", "whitespace-nowrap", `${time} @ ${location}`),
+  );
 }
 
-// ---------- 2. Week by week ----------
+// ---------- Week by week ----------
 
-// One cell per practice day: the date in a tile ("Nov 24"). Practice = green, no practice = gray
-// with the date crossed out. Desktop adds a brief label under the date — "Regular practice",
-// "No practice", or the day's own note (e.g. "Season Start") — which phones skip for space.
-function dayCell(practice) {
-  // The space around each tile is the same on every side: the left + right padding of two
-  // neighboring cells adds up to the gap between tiles, and it matches the top/bottom padding.
-  // Phones: 2px + 2px = 4px between tiles, 4px above/below. Desktop: 4px + 4px = 8px, 8px above/below.
-  // h-px + the tile's h-full: a table-cell trick that lets the tile stretch to the full row
-  // height (rows are as tall as the two-line "Week 1" cell), so the space above and below each
-  // tile is exactly the cell's padding.
-  // The last column gets a little extra on the right so the last tile sits the same distance
-  // from the card's edge as tiles sit from each other (4px phones, 8px desktop).
-  const cell = el("td", "h-px px-0.5 py-1 last:pr-1 md:px-1 md:py-2 md:last:pr-2");
-  if (!practice) return cell;
-  const off = isOff(practice);
-
-  // Equal padding inside (6px phones, 10px desktop); the tile fills the row height with its text centered.
-  const tile = el("div", `flex h-full flex-col justify-center rounded-md p-1.5 text-center md:p-2.5 md:text-left ${off ? "bg-fg/5 text-fg-subtle" : "bg-accent/12"}`);
-  tile.append(el("div", `text-[12px] font-medium whitespace-nowrap tabular-nums md:text-[13px]${off ? " line-through" : " text-accent"}`, formatDate(practice.date, { year: false })));
-  const label = off ? "No practice" : realNote(practice) || "Regular practice";
-  // Phones: hidden visually but still read by screen readers (sr-only); desktop: shown under the date.
-  tile.append(el("div", `sr-only text-[11px] leading-tight md:not-sr-only${off ? "" : " text-fg-muted"}`, label));
-  cell.append(tile);
-  return cell;
-}
-
-// The practice days used this season, in week order, e.g. ["Monday", …, "Thursday"].
-function seasonDays(practices) {
-  return WEEKDAYS.filter((day) => practices.some((p) => p.day?.long === day));
-}
-
-function showHeader(days) {
-  const head = document.getElementById("weeks-head");
-  const th = (text, className) => {
-    const cell = el("th", `py-2.5 font-semibold ${className}`, text);
-    cell.scope = "col";
-    return cell;
-  };
-  // Day headers: "Mon" on phones, "Monday" on desktop (one display class per element).
-  const dayHeader = (day) => {
-    const cell = th("", "px-0.5 text-center md:px-3 md:text-left");
-    cell.append(el("span", "md:hidden", day.slice(0, 3)), el("span", "hidden md:inline", day));
-    return cell;
-  };
-  head.replaceChildren(th("Week", "w-[24%] pr-1 pl-3 md:w-[16%] md:px-5"), ...days.map(dayHeader));
-}
-
-function weekRow(week, number, days, { isCurrent, today, inSeason }) {
+// "Week 3" over "Nov 24–27", sized like the main item in Records/Roster rows:
+// phones 12px semibold over 11px gray; desktop 13px regular over 12px gray.
+function weekCell(week, number, isCurrent) {
   const practices = week.practices ?? [];
-  const first = practices[0]?.date ?? week.weekStart;
-  const last = practices.at(-1)?.date ?? week.weekEnd;
-  const past = inSeason && last < today && !isCurrent; // dim finished weeks, only during the season
-
-  // The same table row on every screen size; phones just use tighter spacing.
-  const row = el("tr", `border-b border-line last:border-0${isCurrent ? " bg-highlight/10" : ""}${past ? " opacity-60" : ""}`);
-  if (isCurrent) row.id = "this-week";
-
-  // Week cell: "Week 3" over the date range, with the same sizes/weights as the main item in
-  // Records/Roster rows: phones 12px semibold over 11px gray; desktop 13px regular over 12px gray.
-  // Dates in the day tiles use medium weight, like record times.
-  const weekCell = el("th", "py-2 pr-1 pl-3 text-left font-normal md:px-5 md:py-2.5");
-  weekCell.scope = "row";
-  weekCell.append(
-    el("div", "text-[12px] font-semibold md:text-[13px] md:font-normal", `Week ${number}`), // like event / name cells in Records & Roster
-    el("div", "type-small text-fg-subtle tabular-nums", formatRange(first, last)),
+  const cell = el("th", "py-2.5 pr-1 pl-3 text-left align-top font-normal md:px-5");
+  cell.scope = "row";
+  cell.append(
+    el("div", "text-[12px] font-semibold md:text-[13px] md:font-normal", `Week ${number}`),
+    el("div", "type-small text-fg-subtle tabular-nums", formatRange(practices[0]?.date ?? week.weekStart, practices.at(-1)?.date ?? week.weekEnd)),
   );
   if (isCurrent) {
     const tagLine = el("div", "mt-1");
-    tagLine.append(el("span", "rounded-sm bg-highlight px-1.5 py-0.5 text-[9px] font-semibold tracking-wide text-black", "This week"));
-    weekCell.append(tagLine);
+    tagLine.append(el("span", "rounded-sm bg-highlight px-1 py-0.5 text-[9px] font-semibold text-black md:text-[10px]", "This week"));
+    cell.append(tagLine);
   }
+  return cell;
+}
 
-  // One cell per practice day
-  const byDay = new Map(practices.map((p) => [p.day?.long, p]));
-  row.append(weekCell, ...days.map((day) => dayCell(byDay.get(day))));
+const th = (text, className) => {
+  const cell = el("th", `py-2.5 text-left font-semibold ${className}`, text);
+  cell.scope = "col";
+  return cell;
+};
+
+function showHead(days) {
+  // Day headers: "Mon" on phones, "Monday" on desktop (one display class per element).
+  const dayHeader = (day) => {
+    const cell = th("", "px-1 last:pr-3 md:px-5");
+    cell.append(el("span", "md:hidden", day.slice(0, 3)), el("span", "hidden md:inline", day));
+    return cell;
+  };
+  document.getElementById("weeks-head").replaceChildren(th("Week", "w-[24%] pr-1 pl-3 md:w-[16%] md:px-5"), ...days.map(dayHeader));
+}
+
+// One day: the date ("Nov 24", medium weight like dates in the Meets table), gray and crossed
+// out with no practice. Under it a 12px gray label (11px on phones), like the second lines in
+// other tables: "Regular practice" / "No practice" on desktop, "Practice" / "Off" on phones.
+function dayCell(practice) {
+  const cell = el("td", "px-1 py-2.5 align-top last:pr-3 md:px-5");
+  if (!practice) return cell;
+  const off = isOff(practice);
+  cell.append(el("div", `text-[12px] font-medium whitespace-nowrap tabular-nums md:text-[13px]${off ? " text-fg-subtle line-through" : ""}`, formatDate(practice.date, { year: false })));
+  const label = el("div", "type-small text-fg-subtle");
+  label.append(el("span", "md:hidden", off ? "Off" : "Practice"), el("span", "hidden md:inline", off ? "No practice" : "Regular practice"));
+  cell.append(label);
+  return cell;
+}
+
+function weekRow(week, number, days, { isCurrent, isPast }) {
+  const row = el("tr", `border-b border-line last:border-0${isCurrent ? " bg-highlight/10" : ""}${isPast ? " opacity-60" : ""}`);
+  const byDay = new Map((week.practices ?? []).map((p) => [p.day?.long, p]));
+  row.append(weekCell(week, number, isCurrent), ...days.map((day) => dayCell(byDay.get(day))));
   return row;
 }
 
 // ---------- Load everything ----------
 
-async function fetchJson(path) {
-  const response = await fetch(path);
-  if (!response.ok) throw new Error(`HTTP ${response.status} for ${path}`);
-  return response.json();
+function showWeeks(weeks) {
+  const practices = weeks.flatMap((w) => w.practices ?? []);
+  const today = todayISO();
+
+  // Dates are "YYYY-MM-DD" text, which compares correctly as text.
+  const held = practices.filter((p) => !isOff(p));
+  const inSeason = (held[0]?.date ?? "") <= today && today <= (held.at(-1)?.date ?? "");
+  const current = weeks.find((w) => w.weekStart <= today && today <= w.weekEnd);
+  const days = WEEKDAYS.filter((day) => practices.some((p) => p.day?.long === day));
+
+  showHead(days);
+  document.getElementById("weeks-body").replaceChildren(
+    ...weeks.map((week, index) =>
+      // Dim finished weeks, only during the season.
+      weekRow(week, index + 1, days, { isCurrent: week === current, isPast: inSeason && week.weekEnd < today && week !== current }),
+    ),
+  );
 }
 
 async function loadPractices() {
   const body = document.getElementById("weeks-body");
   try {
-    const data = await fetchJson("./assets/data/practice-schedule.json");
+    const response = await fetch("./assets/data/practice-schedule.json");
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
     const weeks = data.weeks ?? [];
-    const practices = weeks.flatMap((w) => w.practices ?? []);
-    const today = todayISO();
 
     if (data.season) document.getElementById("practice-season").textContent = dash(data.season);
-    if (data.updated) document.getElementById("practice-updated").textContent = `Updated ${formatDate(data.updated)}`;
-
-    // Dates are "YYYY-MM-DD" text, which compares correctly as text.
-    const held = practices.filter((p) => !isOff(p));
-    const lastHeld = held.at(-1)?.date ?? "";
-    const inSeason = (held[0]?.date ?? "") <= today && today <= lastHeld;
-
-    showRegularSchedule(practices);
-
-    const days = seasonDays(practices);
-    showHeader(days);
-    const current = weeks.find((w) => w.weekStart <= today && today <= w.weekEnd);
-    body.replaceChildren(
-      ...weeks.map((week, index) => weekRow(week, index + 1, days, { isCurrent: week === current, today, inSeason })),
-    );
+    if (data.updated) document.getElementById("practice-updated").textContent = `Last updated ${formatDate(data.updated)}`;
+    showRegularSchedule(weeks.flatMap((w) => w.practices ?? []));
+    showWeeks(weeks);
   } catch (error) {
     console.error("Could not load practice schedule:", error);
     const row = el("tr");

@@ -92,7 +92,8 @@ Based on the original site header, refined ("E" in the header lab).
 
 - Thin top strip reading "Kettle Run Swimming" (10px, medium, wide letter spacing, 70% white), same black as the
   header with a hairline underneath (`border-b border-white/12`). The footer's bottom row mirrors this.
-- Black bar with eight links, four on each side of a centered logo (`kr-logo-tight.svg`, 40px tall; 30px on phones).
+- Black bar with eight links, four on each side of a centered logo (`kr-logo-tight.svg`, 40px tall; 30px on phones):
+  Meets · Practices · Results · Records | Roster · Join · About · Resources. The phone menu lists the same eight.
 - Links: 12px, uppercase, medium weight, 0.08em letter spacing (same as the footer), 85% white. Hover and current page: KR orange text.
 - No colored bottom bar — only a faint hairline, which also separates the header from the page in dark mode.
 - Phones: logo left, "Menu" button right. The menu is **full screen**: a native `<dialog>` opened with
@@ -127,26 +128,32 @@ reference implementation (`src/pages/team-records.html`).
   `md:rounded-2xl md:border md:border-line md:bg-surface md:p-6 md:shadow-xs`.
 - **Hero band** at the top: black, `rounded-2xl`, with the `hero-texture` diagonal lines. Eyebrow
   (`type-label`, wide tracking) → `type-title` → one-line `type-small` description; an optional pill on the right
-  (e.g. "Last updated", `bg-white/20 text-white`). Centered on phones, left-aligned on desktop. In dark mode it
+  (`bg-white/20 text-white`). Every page words it the same: "Last updated Feb 23, 2026". Centered on phones, left-aligned on desktop. In dark mode it
   gets a faint outline (`dark:ring-1 dark:ring-white/15`) so it doesn't disappear into the black page.
 - **Section cards**: `rounded-2xl border border-line bg-surface shadow-sm`, with a header row containing a green
   accent bar (`h-9 w-1.5 rounded-full bg-accent`), a `type-section` title, and a `type-small` subtitle.
 
 ### Tables (from the original site)
 
-Used for Records and Roster. Practice uses the week strip instead.
+Used for Records, Roster, Meets, and Practice (the week grid below).
 
 - Header row: solid `bg-brand` with white `font-semibold` labels.
 - **Clean rows:** a thin `border-line` between rows on every screen size, no zebra stripes.
 - `table-fixed` with set column widths so related tables line up.
 - **Groups** (e.g. "Individual" / "Relays"): each group is its own `<tbody>` whose first row is a
   `<th scope="rowgroup">` heading — `type-label`, semibold, `text-fg-muted`, no fill, extra space above. Screen
-  readers announce the group name for each row, and `first:`/`last:` styles count within each group.
+  readers announce the group name for each row, and `first:`/`last:` styles count within each group. The heading's
+  left padding matches the first column's, so it lines up with the row text.
+- **Phones vs desktop columns** (Meets): rows carry both sets of cells — phone cells `md:hidden`, desktop cells
+  `hidden md:table-cell` — with a header row for each size. Each header row's widths add up to 100%, so hidden
+  columns can't take up space.
 - Phones: each row becomes a two-line block — main item and number on top, secondary details below — with a
   matching "Event | Name … Time | Date" header.
 - Row text: 13px on desktop (main item regular), 12px on phones (main item semibold); second lines 11px.
-- Times use tabular numbers (`type-table`) in `font-medium`. On desktop a badge sits next to the time; on phones
-  it moves to the second line after the name so every time stays aligned on the right edge.
+- Dates and times use tabular numbers (`type-table`) in `font-medium`. On Records, desktop puts a badge next to the
+  time; phones move it to the second line after the name so every time stays aligned on the right edge.
+- Columns with headers are left-aligned, times included. (The Records phone block puts the time on the right
+  because it's a two-line block, not a column.)
 - Badge text should explain itself (e.g. "State Record") so no legend is needed.
 
 ### Controls (first used on Roster)
@@ -168,33 +175,42 @@ Initials in a `bg-brand` circle with white 11px semibold text: `size-8` on phone
 Small yellow tags (`bg-badge text-badge-fg`, 9px on phones / 10px on desktop, semibold, `rounded-sm`) for
 standout facts: "State Record" next to a record time, "Captain" next to a roster name. Text explains itself; no legend.
 
+Two other tags use the same shape: **"Next meet" / "This week"** (`bg-highlight text-black`, with the row tinted
+`bg-highlight/10`) and **status** such as "Canceled · Weather" (`bg-fg/10 text-fg`, row dimmed, time crossed out).
+
 ### Link cards (first used on the 404 page)
 
 A grid of links (`sm:grid-cols-2 md:grid-cols-3`), each a `rounded-xl border border-line px-4 py-3` block with a
 `type-sub` title, a `type-small text-fg-muted` description, and an arrow that turns orange on hover. The border
 darkens to `fg-subtle` on hover.
 
-### Summary row (first used on Practice)
+### Meet table (Meets page)
 
-Two to four key facts (e.g. Days · Time · Location) as a one-row table in the standard table style: green
-`bg-brand` header row with the labels, then the values as ordinary table cells (12px phones / 13px desktop, regular).
+Standard table, grouped by part of the season ("Regular Season" / "Post Season", from the data).
 
-### Week grid (first used on Practice)
+- **Desktop:** Date · Meet · Location · Time.
+  - Date: "Dec 6" (medium) over the weekday "Sat" (gray).
+  - Meet: the type ("Double Dual") with any tags, over "vs Brentsville District, Sherando" (school names without
+    "High School"; championships show their name, e.g. "Northwestern District").
+  - Location: the pool's full name over "Away · Hosted by Brentsville".
+- **Phones:** Date · Meet · Time. The meet cell adds the pool as a third line; Home/Away goes under the time.
+- **In season:** the next meet that's still on gets the "Next meet" tag; earlier meets are dimmed. In the
+  offseason nothing is dimmed.
 
-A table with one row per week and one column per practice day, in the standard table style (green header row),
-on every screen size.
+### Week grid (Practice page)
 
-- **Columns:** Week · one column per practice day (Mon, Tue, …, taken from the data).
-- **Week cell:** "Week 1" over the date range, matching the main item in Records/Roster rows — phones 12px semibold
-  over 11px gray; desktop 13px regular over 12px gray.
-- **Day cells:** a tile with the date ("Nov 24", medium weight like record times). Practice = `bg-accent/12` with a green date; no practice = `bg-fg/5`,
-  gray, crossed-out date. Desktop adds a brief label under the date: "Regular practice", "No practice", or the day's
-  own note (e.g. "Season Start"). Phones skip the label (kept for screen readers with `sr-only`).
-- **Tile padding:** equal on all four sides — `p-1.5` on phones (centered date), `p-2.5` on desktop.
-- **Space around tiles:** the gap between neighboring tiles equals the space above and below them — 4px on phones
-  (cells `px-0.5 py-1`), 8px on desktop (`md:px-1 md:py-2`). The last tile sits the same distance from the card's
-  edge (`last:pr-1 md:last:pr-2`).
-- **Phones:** tighter spacing overall. At the narrowest phones (320px) date ranges wrap to two lines.
+A table with one row per week and one column per practice day, in the standard table style, on every screen
+size. All text — no tiles.
+
+- **Card header subtitle:** the standard schedule, worked out from the data — "Standard practice schedule:
+  Monday–Thursday, 3:30–4:30 PM @ WARF" on desktop, "Standard schedule: Mon–Thu, 3:30–4:30 PM @ WARF" on phones
+  (short enough for one line). The time and place never break apart (`whitespace-nowrap`).
+- **Columns:** Week · one column per practice day ("Mon" on phones, "Monday" on desktop, taken from the data).
+- **Week cell:** "Week 1" over the date range — phones 12px semibold over 11px gray; desktop 13px regular over
+  12px gray.
+- **Day cells:** the same two-line pairing. The date ("Nov 24", medium, like dates in the Meets table) over a gray
+  label: "Regular practice" / "No practice" on desktop, "Practice" / "Off" on phones. No practice = gray,
+  crossed-out date.
 - **In season:** the current week is tinted (`bg-highlight/10`) with a "This week" tag; past weeks are dimmed.
   In the offseason nothing is dimmed.
 

@@ -20,49 +20,21 @@
               <h1 class="type-title mt-1.5">Practice Schedule</h1>
               <p class="type-small mt-1 text-white/80">Official <span id="practice-season">KRHS</span> practice schedule.</p>
             </div>
-            <!-- Filled in by js/practice.js; hidden until it has text -->
+            <!-- Filled in by the page script; hidden until it has text -->
             <p id="practice-updated" class="type-small rounded-md bg-white/20 px-2 py-1 font-medium text-white empty:hidden"></p>
           </div>
         </section>
 
-        <!-- 1. Regular schedule (filled in by js/practice.js from the schedule data) -->
-        <section class="mb-6 overflow-hidden rounded-2xl border border-line bg-surface shadow-sm md:mb-8" aria-labelledby="regular-heading">
-          <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
-            <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
-            <div>
-              <h2 class="type-section" id="regular-heading">Regular schedule</h2>
-              <p class="type-small text-fg-muted">Unless a change is listed below</p>
-            </div>
-          </div>
-          <!-- A one-row table, styled like the Records and Roster tables -->
-          <table class="type-table w-full table-fixed">
-            <thead class="bg-brand text-white">
-              <tr class="text-left">
-                <th scope="col" class="w-[42%] py-2.5 pr-2 pl-4 font-semibold md:w-1/3 md:px-5">Days</th>
-                <th scope="col" class="w-[34%] py-2.5 pr-2 font-semibold md:w-1/3 md:px-5">Time</th>
-                <th scope="col" class="py-2.5 pr-4 font-semibold md:px-5">Location</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="text-[12px] md:text-[13px]"><!-- same as table cells in Records/Roster -->
-                <td class="py-3 pr-2 pl-4 md:px-5 md:py-3.5" id="usual-days">—</td>
-                <td class="py-3 pr-2 tabular-nums md:px-5 md:py-3.5" id="usual-time">—</td>
-                <td class="py-3 pr-4 md:px-5 md:py-3.5" id="usual-location">—</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-
-        <!-- 2. Week by week -->
+        <!-- Week by week: Week · one column per practice day (filled in by js/practice.js) -->
         <section class="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm" aria-labelledby="weeks-heading">
           <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
             <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
             <div>
               <h2 class="type-section" id="weeks-heading">Week by week</h2>
-              <p class="type-small text-fg-muted">Every practice day of the season</p>
+              <!-- "Standard practice schedule: Monday–Thursday, 3:30–4:30 PM @ WARF" (js/practice.js) -->
+              <p id="regular-schedule" class="type-small text-fg-muted">Every practice day of the season</p>
             </div>
           </div>
-          <!-- Week · one column per practice day, on every screen size. Filled in by js/practice.js. -->
           <table class="type-table w-full table-fixed">
             <thead class="bg-brand text-white">
               <tr id="weeks-head" class="text-left"></tr>

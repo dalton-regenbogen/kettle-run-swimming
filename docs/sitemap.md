@@ -14,29 +14,23 @@ Decisions from design step 1 (page purpose). Updated as decisions change.
 ## Navigation
 
 ```
-Meets · Practice · Results · Records   [KR logo → Home]   Roster · Join · About · Resources
+Meets · Practices · Results · Records   [KR logo → Home]   Roster · Join · About · Resources
 ```
 
-Eight flat links, four on each side of a centered logo, no dropdowns. Left side: competition and schedules.
-Right side: the team and getting involved. Resources is also linked from the footer.
+Eight flat links, four on each side of a centered logo, no dropdowns; the phone menu lists the same eight. Left side:
+competition and schedules. Right side: the team and getting involved. Resources is also linked from the footer.
 
-## Planned change: one Schedule page (agreed, not built yet)
-
-- Replace the separate Meets and Practice nav links with one **Schedule** link and page, with a
-  segmented **Meets | Practice** switch (same style as the roster filter). Meets keeps the meet table;
-  Practice keeps the current regular-schedule row and week grid.
-- Nav becomes six links: `Schedule · Results · Roster  [LOGO]  Records · Join · About`.
-  Resources moves to the footer and the About page.
-- Old addresses (`competition-schedule.html`, `practice-schedule.html`) forward to the new page.
-- A full Mon–Sun calendar was considered and set aside (cramped on phones, mostly empty columns).
+Meets and Practices stay separate pages ("Meet Schedule", "Practice Schedule"). A combined Schedule page with a
+Meets | Practice switch and a six-link nav was tried and dropped: six links looked too spread out, and the switch
+felt out of place on desktop. A full Mon–Sun calendar was also set aside (cramped on phones, mostly empty columns).
 
 ## Pages
 
 | Page | Purpose | Status |
 | --- | --- | --- |
 | Home | Point people to what they need right now. Shifts by date: preseason leads with joining; in season leads with next meet and this week's practices. | Decided — redesign |
-| Meets | When and where each meet is, with start time, venue, opponents, status. | Decided — keep separate from Results |
-| Practice | Regular schedule (days, time, location) plus a week-by-day grid with days off and week notes; current week highlighted in season. | Built |
+| Meets | When and where each meet is, with start time, venue, opponents, status (e.g. canceled); next meet highlighted in season. | Built (`competition-schedule.html`) |
+| Practice | Standard schedule (days, time, location) plus a week-by-day grid with days off; current week highlighted in season. | Built (`practice-schedule.html`) |
 | Results | Meet-by-meet scores and championship results; past seasons via a season picker. | Decided — keep separate from Meets |
 | Roster | Team members by season, with All/Boys/Girls filter and season picker. No PDF. | Built |
 | Records | All-time team bests. Web page only — no PDF download. | Built |
@@ -59,4 +53,5 @@ Right side: the team and getting involved. Resources is also linked from the foo
 ## Open
 
 - Join: own page vs. section of About — decide once content is written.
-- Old URLs (e.g. `competition-schedule.html`, `2025-2026-results.html`): keep or forward to new names — decide when pages are rebuilt.
+- Old Results URL (`2025-2026-results.html`): keep or forward to a new name — decide when Results is rebuilt.
+  (Meets and Practice kept their original addresses.)
