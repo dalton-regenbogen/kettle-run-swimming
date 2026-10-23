@@ -34,9 +34,9 @@ felt out of place on desktop. A full Mon–Sun calendar was also set aside (cram
 | Results | Season summary (dual record, win %, streak, postseason places), dual-meet scores by opponent, championship places with full standings, PDF links; season picker. Shares the season files in `src/assets/meets/` with Meets. | Built (`results.html`; `2025-2026-results.html` forwards here) |
 | Roster | Team members by season, with All/Boys/Girls filter and season picker. No PDF. | Built |
 | Records | All-time team bests. Web page only — no PDF download. | Built |
-| Join | For prospective families (Sep–Nov). How joining works (first week of practice is the evaluation), steps and timeline, the 4 required forms, two ways to be on the team (VHSL-primary vs. USA Swimming), high school vs. summer league vs. club, costs and gear, practice basics, FAQ. | In progress (`join.html`) |
+| Join | For prospective families (Sep–Nov). How joining works (first week of practice is the evaluation), steps and timeline, the 4 required forms, two ways to be on the team (VHSL-primary vs. USA Swimming), high school vs. summer league vs. club, costs and gear, practice basics, FAQ. | Built — first draft (`join.html`) |
 | About | For anyone. Welcome and program story, coaching staff, team values and daily expectations, facility, contact. Links to Join and Resources. | Planned |
-| Resources | For current families. One page with in-page sections: Swim meets 101 (how our meets are scored, order of events, entry limits, what to bring, postseason + state qualifying times), Volunteering & officiating, Team policies (attendance, lettering, conduct), Forms & eligibility, Apparel & gear, Fundraiser. Big sections can split into their own pages later. | Planned |
+| Resources | For current families. One page with in-page sections: Swim meets 101 (how our meets are scored, order of events, entry limits, what to bring, postseason + state qualifying times), Volunteering & officiating, Team policies (attendance, lettering, conduct), Forms & eligibility, Apparel & gear, Fundraiser. Big sections can split into their own pages later. | Built — first draft (`resources.html`) |
 | 404 | "Page not found" with links back to main pages. | Built (`src/pages/404.html`) |
 
 ## Content decisions (Join, About, Resources)

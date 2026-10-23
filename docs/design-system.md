@@ -296,6 +296,14 @@ Join, Resources, and About are mostly words. They reuse the section cards and ad
   phones (`overflow-x-auto`, `min-w-[40rem]`) instead of squeezing.
 - **Callout:** an important note with an orange edge — `border-l-4 border-highlight bg-highlight/10`.
 - **FAQ:** `<details>`/`<summary>` rows with a + / − marker; the answer in small gray text.
+- **Contents list** (long pages, first used on Resources): desktop — a list in a left column that stays in view
+  (`lg:sticky lg:top-32`), each link with a left border that turns accent on hover; phones — the same links as a
+  row of rounded chips that scrolls sideways. Section cards get an `id` and `scroll-mt-24 md:scroll-mt-32` so a
+  jump doesn't land under the sticky site header.
+- **Sub-sections inside a card:** `type-sub` headings, divided by thin lines.
+- **Big-number panels** (e.g. lettering limits): `type-number` in accent over a semibold label and a gray line.
+- **Placeholders:** a link that isn't set in `season.json` yet becomes the same text in gray with "(link coming
+  soon)"; the handbook PDF link hides instead.
 - **External links** open in a new tab with a hidden "(opens in a new tab)" note for screen readers.
 
 ### Logo

@@ -6,6 +6,7 @@
 //                                          gray "(link coming soon)" text, or disappears if it also
 //                                          has data-hide-if-empty (used for the handbook PDF)
 //   [data-interest-meeting]              → "Fri, Oct 24 · Health Room 10:30 AM", from importantDates.json
+//   [data-fundraiser]                    → this season's fundraiser (title, details, link), or "coming soon"
 //
 // An empty "" in season.json means "not ready yet", so the page never shows a broken link.
 
@@ -72,7 +73,9 @@ function showLinks(links) {
       link.hidden = true;
     } else {
       // Keep the words, drop the link: "Team apparel store (link coming soon)"
-      const text = el("span", "text-fg-subtle", `${link.textContent.replace(/\s*[→↗]\s*$/, "")} (link coming soon)`);
+      // Same size and weight as the link it replaces, in gray, without the link's hover styles.
+      const look = link.className.replace("text-accent", "text-fg-subtle").replace(/\S*hover:\S*/g, "");
+      const text = el("span", look, `${link.textContent.replace(/\s*[→↗]\s*$/, "")} (link coming soon)`);
       link.replaceWith(text);
     }
   }
@@ -86,6 +89,19 @@ function showInterestMeeting(items) {
     spot.textContent = meeting
       ? `${toDate(meeting.date).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" })} · ${meeting.details.replace(/\.$/, "")}`
       : "Announced each fall, in October";
+  }
+}
+
+// This season's fundraiser, or a short "coming soon" note while season.json has no title yet.
+function showFundraiser(fundraiser = {}) {
+  for (const spot of document.querySelectorAll("[data-fundraiser]")) {
+    if (!fundraiser.title) {
+      spot.replaceChildren(el("p", "type-body text-fg-muted", "Details for this season’s fundraiser are coming soon."));
+      continue;
+    }
+    spot.replaceChildren(el("p", "text-[12px] font-semibold md:text-[13px]", fundraiser.title));
+    if (fundraiser.details) spot.append(el("p", "type-body mt-1 text-fg-muted", fundraiser.details));
+    if (fundraiser.url) spot.append(externalLink(fundraiser.url, "Fundraiser details ↗", "type-small mt-3 inline-block font-medium text-accent underline-offset-2 hover:underline"));
   }
 }
 
@@ -104,6 +120,7 @@ async function loadSeasonInfo() {
     showForms(season.forms ?? []);
     showLinks(season.links ?? {});
     showInterestMeeting(dates.items ?? []);
+    showFundraiser(season.fundraiser);
   } catch (error) {
     console.error("Could not load season details:", error);
   }
