@@ -1,622 +1,167 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KR Swim | Home</title>
-    <link rel="stylesheet" href="./css/output.css" />
+    <!-- include: head.html -->
+    <title>Kettle Run Swimming</title>
+    <meta name="description" content="Kettle Run High School swim team in Nokesville, Virginia: this week's meets and practices, results, records, roster, and how to join." />
   </head>
-  <body class="min-h-screen bg-gray-100 text-[#0d0d0d] font-barlow">
-    <!-- include: header.html -->
+  <body class="flex min-h-dvh flex-col bg-page font-body text-fg antialiased">
+    <!-- include: site-header.html -->
 
-    <main class="bg-gray-100">
-      <!-- HERO: photos + brand vibe (not dashboard) -->
-      <section class="relative overflow-hidden border-b border-black/5">
-        <!-- background wash -->
-        <div class="absolute inset-0 bg-white"></div>
-
-        <!-- subtle brand gradient + texture -->
-        <div
-          class="pointer-events-none absolute inset-0 opacity-100"
-          style="
-            background-image:
-              radial-gradient(
-                900px 480px at 12% 18%,
-                rgba(0, 81, 48, 0.2),
-                transparent 60%
-              ),
-              radial-gradient(
-                760px 420px at 88% 22%,
-                rgba(243, 115, 34, 0.14),
-                transparent 60%
-              ),
-              linear-gradient(
-                to bottom,
-                rgba(255, 255, 255, 0.92),
-                rgba(255, 255, 255, 0.98)
-              );
-          "
-        ></div>
-        <div
-          class="pointer-events-none absolute inset-0 opacity-30"
-          style="
-            background-image:
-              linear-gradient(
-                to right,
-                rgba(0, 0, 0, 0.05) 1px,
-                transparent 1px
-              ),
-              linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0.04) 1px,
-                transparent 1px
-              );
-            background-size: 48px 48px;
-          "
-        ></div>
-
-        <div
-          class="relative mx-auto md:max-w-10/12 px-2 md:px-4 py-10 md:py-14"
-        >
-          <div
-            class="grid grid-cols-1 gap-6 md:gap-8 md:grid-cols-12 md:items-center"
-          >
-            <!-- Copy / Welcome -->
-            <div
-              class="order-2 md:order-1 md:col-span-6 text-center md:text-left"
-            >
-              <div class="flex items-center gap-2">
-                <div class="h-0.5 w-6 bg-brand-light"></div>
-                <span
-                  class="text-xs font-semibold uppercase tracking-widest text-brand-light"
-                  >Kettle Run High School | Fauquier County</span
-                >
-              </div>
-
-              <h1
-                class="md:mt-3 text-4xl font-black uppercase tracking-normal text-gray-900 md:text-7xl"
-              >
-                Home of<br /><span class="text-brand">Kettle Run</span
-                ><br />Swimming
-              </h1>
-
-              <p
-                class="mt-3 text-sm md:text-base leading-relaxed text-gray-700"
-              >
-                Welcome to KR Swimming—established in 2008. We’re a program
-                built on consistent effort, team-first support, and pride in
-                representing our school the right way. We welcome both
-                year-round and seasonal athletes who are committed to improving,
-                encouraging their teammates, and bringing positive energy to the
-                deck every day. No matter your experience level, if you’re ready
-                to work, learn, and contribute to the team, there’s a place for
+    <main class="mx-auto w-full max-w-6xl flex-1 px-3 py-6 md:px-4 md:py-12">
+      <!-- Page card: on desktop everything sits inside one large white card -->
+      <div class="md:rounded-2xl md:border md:border-line md:bg-surface md:p-6 md:shadow-xs">
+        <!--
+          Hero band: the same black textured band as other pages, with the welcome text and the photo
+          carousel (js/carousel.js). Phones and tablets: photo on top, then the text, centered.
+          Laptops and up (lg): text on the left, photo on the right.
+        -->
+        <section class="relative mb-6 overflow-hidden rounded-2xl bg-black text-white md:mb-8 dark:ring-1 dark:ring-white/15">
+          <div class="hero-texture pointer-events-none absolute inset-0" aria-hidden="true"></div>
+          <div class="relative grid gap-6 p-4 md:p-8 lg:grid-cols-2 lg:items-center lg:gap-10">
+            <div class="text-center lg:text-left">
+              <!-- Eyebrow with short orange lines: both sides on phones (text is centered), just the first on desktop -->
+              <p class="type-label flex items-center justify-center gap-2.5 tracking-[0.22em] whitespace-nowrap text-white/80 lg:justify-start">
+                <span aria-hidden="true" class="h-0.5 w-5 rounded-full bg-highlight min-[360px]:w-8"></span>
+                Kettle Run High School
+                <span aria-hidden="true" class="h-0.5 w-5 rounded-full bg-highlight min-[360px]:w-8 lg:hidden"></span>
+              </p>
+              <h1 class="type-title mt-1.5">Home of Kettle Run Swimming</h1>
+              <!-- 12px phones / 13px desktop, like table text -->
+              <p class="mx-auto mt-3 max-w-prose text-[12px] leading-relaxed text-white/75 md:text-[13px] lg:mx-0">
+                Welcome to KR Swimming—established in 2008. We’re a program built on consistent effort, team-first support,
+                and pride in representing our school the right way. We welcome both year-round and seasonal athletes who are
+                committed to improving, encouraging their teammates, and bringing positive energy to the deck every day. No
+                matter your experience level, if you’re ready to work, learn, and contribute to the team, there’s a place for
                 you here at KR Swimming.
               </p>
-
-              <!-- ONE primary CTA (not a button farm) -->
-              <div class="mt-6 flex gap-3">
-                <a
-                  href="./tryouts.html"
-                  class="inline-flex items-center justify-center text-base font-bold leading-0.5 text-white rounded-[3px] bg-brand px-6 py-2 md:py-5 shadow-sm transition hover:brightness-110 focus:outline-none"
-                >
-                  View Tryout Information
-                </a>
-                <a
-                  href="mailto:coachdtr@gmail.com"
-                  class="inline-flex items-center justify-center text-base font-bold leading-0.5 text-gray-800 rounded-[3px] border border-gray-200 bg-transparent px-6 py-2 md:py-5 shadow-sm transition hover:brightness-110 focus:outline-none"
-                >
-                  Contact Coach
-                </a>
+              <!-- The first button changes with the season (js/home.js): Tryout information / Meet schedule / Season results -->
+              <!--
+                Buttons: the same size as buttons elsewhere on the site (type-button, px-3.5 py-2).
+                Phones: two equal-width buttons side by side (stacked under 360px wide); desktop: sized to their text.
+                Primary: school green with a faint white outline so it holds its shape on black.
+              -->
+              <div class="mx-auto mt-5 grid max-w-xs gap-2 whitespace-nowrap min-[360px]:grid-cols-2 lg:mx-0 lg:flex lg:max-w-none">
+                <a id="hero-action" href="./about.html" class="type-button rounded-lg bg-brand px-3.5 py-2 text-center text-white ring-1 ring-white/15 transition-colors ring-inset hover:bg-[#006b40]">Tryout information</a>
+                <a href="mailto:coachdtr@gmail.com" class="type-button rounded-lg border border-white/30 px-3.5 py-2 text-center text-white transition-colors hover:border-white/70">Contact coach</a>
               </div>
+              <!--
+                Quick facts: three equal columns (so the row is balanced when centered) under a hairline, like the
+                lines in the header and footer. Number over label.
+              -->
+              <dl class="mt-6 grid grid-cols-3 divide-x divide-white/12 border-t border-white/12 pt-4 lg:max-w-sm">
+                <div class="flex flex-col-reverse gap-0.5 px-2 lg:pr-4 lg:pl-0"><dt class="type-label text-white/60">Established</dt><dd class="type-sub tabular-nums">2008</dd></div>
+                <div class="flex flex-col-reverse gap-0.5 px-2 lg:px-4"><dt class="type-label text-white/60">VHSL</dt><dd class="type-sub">Class 3</dd></div>
+                <div class="flex flex-col-reverse gap-0.5 px-2 lg:px-4"><dt class="type-label text-white/60">Season</dt><dd id="hero-season" class="type-sub whitespace-nowrap tabular-nums">2026–2027</dd></div>
+              </dl>
+            </div>
+            <div class="order-first lg:order-last">
+              <!--
+                Photo carousel. role="region" + aria-roledescription="carousel" + aria-label tell screen readers
+                what this is. Photos fade between each other; js/carousel.js adds the dots and runs it.
+                Photos live in assets/photos/ (resized for the web — see the README).
+              -->
+              <div data-carousel role="region" aria-roledescription="carousel" aria-label="Team photos" class="relative aspect-[4/3] overflow-hidden rounded-xl bg-white/5">
+                <img data-slide src="./assets/photos/IMG_3978.jpg" alt="The Kettle Run girls team with a championship trophy at SwimRVA" fetchpriority="high" class="absolute inset-0 size-full object-cover transition-opacity duration-700" />
+                <img data-slide src="./assets/photos/IMG_7037.jpg" alt="The Kettle Run boys and girls teams together on the pool deck at a championship meet" loading="lazy" class="absolute inset-0 size-full object-cover transition-opacity duration-700 opacity-0" />
+                <img data-slide src="./assets/photos/IMG_6483.jpg" alt="Kettle Run seniors holding flowers in front of green, orange, and gold balloons on Senior Night" loading="lazy" class="absolute inset-0 size-full object-cover transition-opacity duration-700 opacity-0" />
+                <img data-slide src="./assets/photos/IMG_2327.jpg" alt="Four Kettle Run girls in team jackets holding up their medals" loading="lazy" class="absolute inset-0 size-full object-cover transition-opacity duration-700 opacity-0" />
+                <img data-slide src="./assets/photos/IMG_2335.jpg" alt="Three Kettle Run girls in team jackets holding up their medals" loading="lazy" class="absolute inset-0 size-full object-cover transition-opacity duration-700 opacity-0" />
+                <img data-slide src="./assets/photos/IMG_2347.jpg" alt="Two Kettle Run boys in team jackets holding up their medals" loading="lazy" class="absolute inset-0 size-full object-cover transition-opacity duration-700 opacity-0" />
+                <img data-slide src="./assets/photos/IMG_2359.jpg" alt="Four Kettle Run boys holding up their medals" loading="lazy" class="absolute inset-0 size-full object-cover transition-opacity duration-700 opacity-0" />
+                <img data-slide src="./assets/photos/IMG_6984.jpg" alt="A Kettle Run swimmer on the podium at the VHSL state championship" loading="lazy" class="absolute inset-0 size-full object-cover transition-opacity duration-700 object-[50%_35%] opacity-0" />
+                <img data-slide src="./assets/photos/IMG_7034.jpg" alt="A group of Kettle Run boys in team jackets on the pool deck" loading="lazy" class="absolute inset-0 size-full object-cover transition-opacity duration-700 opacity-0" />
+                <img data-slide src="./assets/photos/IMG_6976.jpg" alt="Two Kettle Run Swimming staff members in team shirts on the pool deck" loading="lazy" class="absolute inset-0 size-full object-cover transition-opacity duration-700 object-[50%_25%] opacity-0" />
+                <img data-slide src="./assets/photos/IMG_2596.jpg" alt="Kettle Run swimmers standing together outside on a sunny winter day" loading="lazy" class="absolute inset-0 size-full object-cover transition-opacity duration-700 opacity-0" />
+                <!--
+                  Controls. Phones: dots and a small pause button, centered at the bottom; swipe to change photos.
+                  Tablets and up (md): dots on the left, pause on the right, and faint arrows at the left/right middle.
+                  The pause button stays because the photos change on their own (see carousel.js).
+                -->
+                <button type="button" data-carousel-prev aria-label="Previous photo" class="absolute top-1/2 left-2 hidden size-8 -translate-y-1/2 place-items-center rounded-full bg-black/25 text-white/80 transition-colors hover:bg-black/55 hover:text-white md:grid">
+                  <svg class="size-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12 5l-5 5 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </button>
+                <button type="button" data-carousel-next aria-label="Next photo" class="absolute top-1/2 right-2 hidden size-8 -translate-y-1/2 place-items-center rounded-full bg-black/25 text-white/80 transition-colors hover:bg-black/55 hover:text-white md:grid">
+                  <svg class="size-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M8 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </button>
+                <div class="absolute inset-x-0 bottom-0 flex items-center justify-center gap-3 bg-linear-to-t from-black/50 to-transparent px-3 pt-8 pb-2.5 md:justify-between">
+                  <div data-carousel-dots class="flex flex-wrap gap-2"></div>
+                  <button type="button" data-carousel-pause aria-label="Pause slideshow" class="grid size-6 shrink-0 place-items-center rounded-full text-white/70 transition-colors hover:text-white">
+                    <span data-icon-pause><svg class="size-3.5" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 5v10M13 5v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg></span>
+                    <span data-icon-play hidden><svg class="size-3.5" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 5l8 5-8 5z" fill="currentColor" /></svg></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-              <div class="flex items-center gap-4 mt-10">
-                <div class="border-r border-gray-300 pr-4">
-                  <div class="text-3xl font-extrabold leading-none">2008</div>
-                  <div class="text-sm font-semibold text-gray-500">Est.</div>
-                </div>
-                <div class="border-r border-gray-300 pr-4">
-                  <div class="text-3xl font-extrabold leading-none">
-                    Class 3
-                  </div>
-                  <div class="text-sm font-semibold text-gray-500">VHSL</div>
-                </div>
+        <!--
+          Main content. Phones: Right now → Important dates → Questions, stacked.
+          Desktop: a 2-column grid. Important dates sits in the right column across both rows
+          (lg:row-span-2); Right now and Questions stack on the left, so neither column has a big gap.
+          grid-rows-[auto_1fr]: the first row fits "Right now", the second takes any leftover height.
+        -->
+        <div class="grid gap-6 md:gap-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:grid-rows-[auto_1fr] lg:items-start">
+          <!-- "Right now": Join the team / This week / Season recap, depending on the date (js/home.js) -->
+          <section class="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm" aria-labelledby="now-title">
+            <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
+              <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
+              <div>
+                <h2 class="type-section" id="now-title">Kettle Run Swimming</h2>
+                <p class="type-small text-fg-muted" id="now-subtitle">Loading…</p>
+              </div>
+            </div>
+            <div id="now-body"></div>
+          </section>
+
+            <!-- Important dates (from assets/data/importantDates.json) -->
+            <section class="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm lg:col-start-2 lg:row-span-2 lg:row-start-1" aria-labelledby="dates-heading">
+              <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
+                <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
                 <div>
-                  <div class="text-3xl font-extrabold leading-none">
-                    2025-2026
-                  </div>
-                  <div class="text-sm font-semibold text-gray-500">
-                    Active Season
-                  </div>
+                  <h2 class="type-section" id="dates-heading">Important dates</h2>
+                  <p class="type-small text-fg-muted" id="dates-subtitle">This season</p>
                 </div>
               </div>
-            </div>
+              <table class="type-table w-full table-fixed text-[12px] md:text-[13px]">
+                <thead id="dates-head" class="bg-brand text-white">
+                  <tr class="text-left">
+                    <th scope="col" class="w-20 py-2.5 pr-2 pl-4 font-semibold md:pl-5">Date</th>
+                    <th scope="col" class="py-2.5 pr-4 font-semibold md:pr-5">Event</th>
+                  </tr>
+                </thead>
+                <tbody id="dates-body">
+                  <tr><td class="px-4 py-6 text-center text-fg-subtle" colspan="2">Loading…</td></tr>
+                </tbody>
+              </table>
+            </section>
 
-            <!-- Photos area (carousel / montage) -->
-            <div class="order-1 md:order-2 md:col-span-6">
-              <div
-                class="relative overflow-hidden rounded-2xl border border-black/10 bg-gray-200 shadow-sm"
-              >
-                <div class="relative h-65 md:h-100 bg-black" id="hero-carousel">
-                  <!-- swap this block with your existing carousel -->
-                  <div
-                    class="absolute inset-0 transition-opacity duration-700 ease-out opacity-0"
-                    data-slide
-                  >
-                    <img
-                      src="./assets/IMG_3978.jpeg"
-                      alt="KR Swim"
-                      class="h-full w-full object-cover"
-                      style="object-position: 50% 30%"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div
-                    class="absolute inset-0 transition-opacity duration-700 ease-out opacity-0"
-                    data-slide
-                  >
-                    <img
-                      src="./assets/IMG_6483.jpeg"
-                      alt="KR Swim"
-                      class="h-full w-full object-cover"
-                      style="object-position: 50% 30%"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div
-                    class="absolute inset-0 transition-opacity duration-700 ease-out opacity-0"
-                    data-slide
-                  >
-                    <img
-                      src="./assets/IMG_6976.jpeg"
-                      alt="KR Swim"
-                      class="h-full w-full object-cover object-top"
-                      style="object-position: 50% 20%"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div
-                    class="absolute inset-0 transition-opacity duration-700 ease-out opacity-0"
-                    data-slide
-                  >
-                    <img
-                      src="./assets/IMG_6984.jpeg"
-                      alt="KR Swim"
-                      class="h-full w-full object-cover"
-                      style="object-position: 50% 40%"
-                      loading="lazy"
-                    />
-                  </div>
-
-                  <div
-                    class="absolute inset-0 transition-opacity duration-700 ease-out opacity-0"
-                    data-slide
-                  >
-                    <img
-                      src="./assets/IMG_7034.jpeg"
-                      alt="KR Swim"
-                      class="h-full w-full object-cover object-top"
-                      style="object-position: 50% 25%"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div
-                    class="absolute inset-0 transition-opacity duration-700 ease-out opacity-0"
-                    data-slide
-                  >
-                    <img
-                      src="./assets/IMG_7037.jpeg"
-                      alt="KR Swim"
-                      class="h-full w-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div
-                    class="absolute inset-0 transition-opacity duration-700 ease-out opacity-0"
-                    data-slide
-                  >
-                    <img
-                      src="./assets/IMG_2327.jpeg"
-                      alt="KR Swim"
-                      class="h-full w-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div
-                    class="absolute inset-0 transition-opacity duration-700 ease-out opacity-0"
-                    data-slide
-                  >
-                    <img
-                      src="./assets/IMG_2335.jpeg"
-                      alt="KR Swim"
-                      class="h-full w-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div
-                    class="absolute inset-0 transition-opacity duration-700 ease-out opacity-0"
-                    data-slide
-                  >
-                    <img
-                      src="./assets/IMG_2347.jpeg"
-                      alt="KR Swim"
-                      class="h-full w-full object-cover"
-                      d
-                      style="object-position: 50% 37%"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div
-                    class="absolute inset-0 transition-opacity duration-700 ease-out opacity-0"
-                    data-slide
-                  >
-                    <img
-                      src="./assets/IMG_2359.jpeg"
-                      alt="KR Swim"
-                      class="h-full w-full object-cover"
-                      style="object-position: 50% 35%"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div
-                    class="absolute inset-0 transition-opacity duration-700 ease-out opacity-0"
-                    data-slide
-                  >
-                    <img
-                      src="./assets/IMG_2596.jpeg"
-                      alt="KR Swim"
-                      class="h-full w-full object-cover"
-                      style="object-position: 50% 35%"
-                      loading="lazy"
-                    />
-                  </div>
-                  <!-- tiny fade at bottom only (keeps photo visible) -->
-                  <div
-                    class="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black/45 to-transparent"
-                  ></div>
-
-                  <!-- dots + arrows -->
-                  <div
-                    class="absolute inset-x-0 bottom-3 flex items-center justify-between px-4"
-                  >
-                    <div
-                      class="flex gap-2"
-                      id="hero-dots"
-                      aria-label="Hero image navigation"
-                    ></div>
-                    <div class="flex gap-2">
-                      <button
-                        type="button"
-                        class="rounded-xl border border-white/30 bg-white/15 px-3 py-2 text-xs font-semibold text-white hover:bg-white/25"
-                        data-hero-prev
-                      >
-                        ←
-                      </button>
-                      <button
-                        type="button"
-                        class="rounded-xl border border-white/30 bg-white/15 px-3 py-2 text-xs font-semibold text-white hover:bg-white/25"
-                        data-hero-next
-                      >
-                        →
-                      </button>
-                    </div>
-                  </div>
+            <!-- Contact -->
+            <section class="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm lg:col-start-1 lg:row-start-2" aria-labelledby="contact-heading">
+              <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
+                <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
+                <div>
+                  <h2 class="type-section" id="contact-heading">Questions?</h2>
+                  <p class="type-small text-fg-muted">Parents and athletes</p>
                 </div>
-
-                <!-- minimal overlay for contrast -->
-                <div
-                  class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-black/0"
-                ></div>
               </div>
-            </div>
-          </div>
+              <div class="p-4 md:p-5">
+                <p class="type-body text-fg-muted">Email the coach about joining, practices, meets, or anything else.</p>
+                <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+                  <a href="mailto:coachdtr@gmail.com" class="type-button rounded-lg bg-accent px-3.5 py-2 text-on-accent transition-opacity hover:opacity-90">Email the coach</a>
+                  <a href="./resources.html" class="type-small font-medium text-accent underline-offset-2 hover:underline">Team resources →</a>
+                </div>
+              </div>
+            </section>
         </div>
-      </section>
-
-      <!-- CONTENT: 3 clear sections (not dashboard tiles) -->
-      <section class="bg-[#f2efe9]">
-        <div class="mx-auto md:max-w-10/12 px-2 py-10 md:py-12">
-          <div class="flex gap-2 items-center mb-6">
-            <div class="h-0.5 w-8 bg-brand-light"></div>
-            <p
-              class="text-sm text-brand-light font-bold uppercase tracking-widest text-nowrap"
-            >
-              Latest from the program
-            </p>
-            <div class="h-px w-full bg-gray-300"></div>
-          </div>
-
-          <div class="grid grid-cols-1 gap-6 md:grid-cols-12">
-            <!-- Upcoming Week (one clean card) -->
-            <div class="md:col-span-8">
-              <!-- Latest News (fits the same card system: rounded-3xl, subtle border, white, p-7) -->
-              <div class="rounded-2xl bg-white shadow-sm overflow-hidden">
-                <div
-                  class="flex items-end justify-between px-6 py-4 border-b border-gray-200"
-                >
-                  <div>
-                    <p
-                      class="text-[11px] md:text-sm font-semibold text-gray-500"
-                    >
-                      Latest News
-                    </p>
-                    <h2
-                      class="text-base md:text-xl font-bold tracking-wide uppercase text-black"
-                    >
-                      Announcements
-                    </h2>
-                  </div>
-                  <a
-                    href="./announcements.html"
-                    class="text-sm font-semibold tracking-widest text-brand hover:underline"
-                  >
-                    View all →
-                  </a>
-                </div>
-
-                <!-- list (not mini-cards) -->
-                <div class="divide-y divide-black/10 overflow-hidden">
-                  <!-- item -->
-                  <a
-                    href="#"
-                    class="group flex gap-4 px-6 py-4 transition hover:bg-[#fafaf8]"
-                  >
-                    <div
-                      class="flex flex-col shrink-0 w-12 items-center justify-center bg-[#f4f4f2] rounded-lg"
-                    >
-                      <span
-                        class="text-[11px] font-bold uppercase tracking-wider text-gray-400"
-                        >Mar</span
-                      >
-                      <span class="text-2xl font-bold leading-[1.05]">2</span>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                      <p
-                        class="text-[0.95rem] font-bold text-[#0d0d0d] uppercase tracking-wide leading-5 group-hover:underline"
-                      >
-                        Week-at-a-Glance: practice times + reminders
-                      </p>
-                      <p class="text-[1rem] mb-[0.2rem] text-zinc-800">
-                        Quick highlights for the week, what to bring, and any
-                        schedule adjustments.
-                      </p>
-                      <span
-                        class="inline-block text-[0.6rem] font-bold uppercase tracking-widest px-2 py-0.5 text-gray-500 bg-[rgba(0,0,0,0.06)] rounded"
-                        >Weekly</span
-                      >
-                    </div>
-                    <span
-                      class="flex shrink-0 items-center font-bold text-[#ccc] group-hover:text-[#0d0d0d]"
-                      >→</span
-                    >
-                  </a>
-
-                  <!-- item -->
-                  <a
-                    href="#"
-                    class="group flex gap-4 px-6 py-4 transition hover:bg-[#fafaf8]"
-                  >
-                    <div
-                      class="flex flex-col shrink-0 w-12 items-center justify-center bg-[#f4f4f2] rounded-lg"
-                    >
-                      <span
-                        class="text-[11px] font-bold uppercase tracking-wider text-gray-400"
-                        >Feb</span
-                      >
-                      <span class="text-2xl font-bold leading-[1.05]">16</span>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                      <p
-                        class="text-[0.95rem] font-bold text-[#0d0d0d] uppercase tracking-wide leading-5 group-hover:underline"
-                      >
-                        Postseason info: warmups, entries, and travel
-                      </p>
-                      <p class="text-[1rem] mb-[0.2rem] text-zinc-800">
-                        Key times, location notes, and what athletes should
-                        expect for championship meets.
-                      </p>
-                      <span
-                        class="inline-block text-[0.6rem] font-bold uppercase tracking-widest px-2 py-0.5 text-brand-light bg-brand-light/10 rounded"
-                        >Postseason</span
-                      >
-                    </div>
-                    <span
-                      class="flex shrink-0 items-center font-bold text-[#ccc] group-hover:text-[#0d0d0d]"
-                      >→</span
-                    >
-                  </a>
-
-                  <!-- item -->
-                  <a
-                    href="#"
-                    class="group flex gap-4 px-6 py-4 transition hover:bg-[#fafaf8]"
-                  >
-                    <div
-                      class="flex flex-col shrink-0 w-12 items-center justify-center bg-[#f4f4f2] rounded-lg"
-                    >
-                      <span
-                        class="text-[11px] font-bold uppercase tracking-wider text-gray-400"
-                        >Feb</span
-                      >
-                      <span class="text-2xl font-bold leading-[1.05]">8</span>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                      <p
-                        class="text-[0.95rem] font-bold text-[#0d0d0d] uppercase tracking-wide leading-5 group-hover:underline"
-                      >
-                        Meet recap + updated results archive
-                      </p>
-                      <p class="text-[1rem] mb-[0.2rem] text-zinc-800">
-                        Recap, highlights, and links to full results for the
-                        season.
-                      </p>
-                      <span
-                        class="inline-block text-[0.6rem] font-bold uppercase tracking-widest px-2 py-0.5 text-brand bg-brand/10 rounded"
-                        >Results</span
-                      >
-                    </div>
-                    <span
-                      class="flex shrink-0 items-center font-bold text-[#ccc] group-hover:text-[#0d0d0d]"
-                      >→</span
-                    >
-                  </a>
-                </div>
-              </div>
-
-              <div
-                class="mt-6 rounded-2xl border border-black/10 bg-white p-7 shadow-sm"
-              >
-                <div class="flex items-end justify-between gap-4">
-                  <div>
-                    <p
-                      class="text-[11px] md:text-xs uppercase font-bold text-gray-500"
-                    >
-                      Upcoming Week
-                    </p>
-                    <h4
-                      class="text-base md:text-lg font-bold tracking-tight text-black"
-                    >
-                      This Week at KR
-                    </h4>
-                  </div>
-                  <a
-                    href="./practice-schedule.html"
-                    class="text-sm font-extrabold text-brand hover:underline"
-                  >
-                    Full practice schedule →
-                  </a>
-                </div>
-
-                <!-- clean list (not mini cards) -->
-                <div class="mt-6 space-y-4">
-                  <div
-                    class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
-                  >
-                    <div>
-                      <p class="text-sm font-extrabold text-gray-900">
-                        Practice
-                      </p>
-                      <p class="mt-1 text-sm text-gray-600">
-                        Mon / Wed / Fri — Time — Location
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="h-px w-full bg-black/10"></div>
-
-                  <div
-                    class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
-                  >
-                    <div>
-                      <p class="text-sm font-extrabold text-gray-900">
-                        Next Meet
-                      </p>
-                      <p class="mt-1 text-sm text-gray-600">
-                        Opponent — Date — Venue (bus / warmup note)
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="h-px w-full bg-black/10"></div>
-
-                  <div
-                    class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
-                  >
-                    <div>
-                      <p class="text-sm font-extrabold text-gray-900">
-                        Latest Results
-                      </p>
-                      <p class="mt-1 text-sm text-gray-600">
-                        View recent meet results and season archive.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="overflow-hidden md:col-span-4 rounded-2xl">
-              <!-- Contact (one strong card, athletic dept style) -->
-              <div
-                class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm"
-              >
-                <div class="p-7">
-                  <p
-                    class="text-[11px] md:text-xs uppercase font-bold text-gray-500"
-                  >
-                    Contact
-                  </p>
-                  <h3
-                    class="text-base md:text-lg font-bold tracking-tight text-black"
-                  >
-                    Coach / Program Questions
-                  </h3>
-                  <p
-                    class="mt-2 max-w-2xl text-sm leading-relaxed text-gray-600"
-                  >
-                    Use this for parent questions, athlete communication, and
-                    program logistics. Keep one clear contact point.
-                  </p>
-
-                  <div
-                    class="mt-5 flex flex-wrap items-center gap-3 justify-between"
-                  >
-                    <a
-                      href="mailto:coachdtr@gmail.com"
-                      class="inline-flex items-center justify-center rounded-md bg-gray-900 px-2.5 py-2 md:py-2.5 text-sm font-semibold text-white shadow-sm transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-gray-900/30"
-                    >
-                      Email Coach
-                    </a>
-                    <a
-                      href="./resources.html"
-                      class="text-sm font-extrabold text-brand hover:underline"
-                    >
-                      Team handbook →
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <aside
-                class="mt-6 overflow-hidden md:col-span-4 rounded-2xl border border-gray-200 bg-white shadow-xs"
-              >
-                <div
-                  class="flex items-end justify-between gap-4 md:px-7 md:pt-7"
-                >
-                  <div>
-                    <p
-                      data-season-label
-                      class="text-[11px] md:text-xs uppercase font-bold text-gray-500"
-                    >
-                      2025-2026
-                    </p>
-                    <h5
-                      data-season-title
-                      class="text-base md:text-lg font-bold tracking-tight text-black"
-                    >
-                      Season Important Dates
-                    </h5>
-                  </div>
-                </div>
-
-                <div class="p-4 md:p-6">
-                  <!-- Dates list -->
-                  <ul
-                    id="importantDates"
-                    class="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-gray-50 overflow-hidden"
-                  ></ul>
-                </div>
-              </aside>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
     </main>
 
-    <!-- include: footer.html -->
+    <!-- include: site-footer.html -->
 
-    <script src="./js/mobileMenu.js"></script>
-    <script src="./js/marquee.js"></script>
-    <script src="./js/heroCarousel.js"></script>
-    <script src="./js/renderImportantDates.js"></script>
+    <script src="./js/site.js"></script>
+    <script src="./js/carousel.js"></script>
+    <script src="./js/home.js"></script>
   </body>
 </html>

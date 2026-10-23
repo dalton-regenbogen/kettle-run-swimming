@@ -14,11 +14,11 @@ Decisions from design step 1 (page purpose). Updated as decisions change.
 ## Navigation
 
 ```
-Meets · Practices · Results · Records   [KR logo → Home]   Roster · Join · About · Resources
+About · Join · Practices · Meets   [KR logo → Home]   Roster · Results · Records · Resources
 ```
 
 Eight flat links, four on each side of a centered logo, no dropdowns; the phone menu lists the same eight. Left side:
-competition and schedules. Right side: the team and getting involved. Resources is also linked from the footer.
+getting to know and joining the team, then the schedules. Right side: the team and its results. Resources is also linked from the footer.
 
 Meets and Practices stay separate pages ("Meet Schedule", "Practice Schedule"). A combined Schedule page with a
 Meets | Practice switch and a six-link nav was tried and dropped: six links looked too spread out, and the switch
@@ -28,7 +28,7 @@ felt out of place on desktop. A full Mon–Sun calendar was also set aside (cram
 
 | Page | Purpose | Status |
 | --- | --- | --- |
-| Home | Point people to what they need right now. Shifts by date: preseason leads with joining; in season leads with next meet and this week's practices. | Decided — redesign |
+| Home | Hero with welcome text and photo carousel; a "Right now" card that shifts by date (preseason: Join the team; in season: next meet, this week's practices, latest result; offseason: season recap); important dates; contact. | Built (`index.html`) |
 | Meets | When and where each meet is, with start time, venue, opponents, status (e.g. canceled); next meet highlighted in season. | Built (`competition-schedule.html`) |
 | Practice | Standard schedule (days, time, location) plus a week-by-day grid with days off; current week highlighted in season. | Built (`practice-schedule.html`) |
 | Results | Season summary (dual record, win %, streak, postseason places), dual-meet scores by opponent, championship places with full standings, PDF links; season picker. Shares the season files in `src/assets/meets/` with Meets. | Built (`results.html`; `2025-2026-results.html` forwards here) |

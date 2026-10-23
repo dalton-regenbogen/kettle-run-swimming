@@ -101,9 +101,36 @@ Most frequently changed information lives in JSON files under `src/assets/data/`
 - **Practice:** `src/assets/data/practice-schedule.json`. Each practice has a `status`: `"normal"` shows
   "Regular practice" under the date, `"off"` crosses the date out and shows "No practice". (The `note` field is
   kept in the data but not shown.) The "Standard practice schedule" line is worked out from the practices.
+- **Important dates (home page):** `src/assets/data/importantDates.json` — `seasonLabel` and a list of
+  `{ "date", "name", "details" }`. Once every date has passed, the home page says the next season's dates are
+  coming, so replace the list when the new season's dates are set.
 - **Roster:** each season is a file in `src/assets/rosters/` (e.g. `roster-2025-2026.json`). Add a new season's
   file and list it first in `roster-index.json`; the newest season shows by default. Put `"Captain"` in a
   swimmer's `roles` to show the Captain badge.
+
+### The home page follows the season
+
+`src/js/home.js` decides what the "Right now" card shows from the meet and practice data:
+
+- **Preseason** (before the first practice, or from August after last season ended): Join the team.
+- **In season** (first practice → last meet): this week — next meet, this week's practices, latest result.
+- **Offseason** (after the last meet, until August): a recap of the season that just ended.
+
+To preview another time of year, add `?date=2026-01-14` to the page address (works on Meets and Practices too).
+
+### Photos
+
+Home page photos live in `src/assets/photos/`. Phone photos are about 3 MB each — far too big for a web page — so
+make a web-sized copy first. macOS has a built-in tool for it, `sips`:
+
+```sh
+sips -Z 1200 -s format jpeg -s formatOptions 60 ~/Desktop/IMG_1234.jpeg --out src/assets/photos/IMG_1234.jpg
+```
+
+`-Z 1200` shrinks the longest side to 1200 pixels; `formatOptions 60` is the JPEG quality. That brings a photo to
+about 150–300 KB. Then add an `<img data-slide …>` line for it in the carousel in `src/pages/index.html`, with
+`loading="lazy"`, the `opacity-0` class, and an `alt` that describes the photo. The full-size originals are kept in
+`archive/photos-original/` (not published).
 
 > While `npm run dev` is running, don't also run `npm run build` — both rebuild `dist/` and can wipe out each
 > other's files. The dev watcher already rebuilds on every save.

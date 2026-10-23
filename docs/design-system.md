@@ -93,7 +93,7 @@ Based on the original site header, refined ("E" in the header lab).
 - Thin top strip reading "Kettle Run Swimming" (10px, medium, wide letter spacing, 70% white), same black as the
   header with a hairline underneath (`border-b border-white/12`). The footer's bottom row mirrors this.
 - Black bar with eight links, four on each side of a centered logo (`kr-logo-tight.svg`, 40px tall; 30px on phones):
-  Meets · Practices · Results · Records | Roster · Join · About · Resources. The phone menu lists the same eight.
+  About · Join · Practices · Meets | Roster · Results · Records · Resources. The phone menu lists the same eight.
 - Links: 12px, uppercase, medium weight, 0.08em letter spacing (same as the footer), 85% white. Hover and current page: KR orange text.
 - No colored bottom bar — only a faint hairline, which also separates the header from the page in dark mode.
 - Phones: logo left, "Menu" button right. The menu is **full screen**: a native `<dialog>` opened with
@@ -244,6 +244,33 @@ size. All text — no tiles.
   crossed-out date.
 - **In season:** the current week is tinted (`bg-highlight/10`) with a "This week" tag; past weeks are dimmed.
   In the offseason nothing is dimmed.
+
+### Home page
+
+- **Hero:** the standard black textured band; text on the left and the framed photo carousel (`rounded-xl`, 4:3)
+  on the right from `lg`; photo on top and text centered on phones and tablets.
+  - Eyebrow "Kettle Run High School" with short orange lines (`h-0.5 w-8 bg-highlight`): one on each side on phones,
+    only the leading one on desktop.
+  - `type-title`, then the welcome paragraph at table size (12px phones / 13px desktop, 75% white).
+  - Buttons at the site's standard size (`type-button rounded-lg px-3.5 py-2`): primary in school green (`bg-brand`,
+    faint white inset ring so it holds its shape on black; text changes with the season), secondary outlined
+    (`border-white/30`). Phones: two equal-width buttons (stacked under 360px).
+  - Quick facts: three equal columns under a hairline (`border-t border-white/12`, like the header and footer lines),
+    `type-sub` number over `type-label`.
+  - Explored and set aside: green, gradients, two-color blends, light, photo background, split panels, slanted photo
+    with trim, stripes, watermark, other accent placements.
+- **Carousel:** photos fade; small 6px dots (larger invisible tap area) and a small pause button on a faint gradient —
+  centered at the bottom on phones, dots left / pause right from `md`. Faint arrows (`bg-black/25`, 80% white,
+  firmer on hover) at the left/right middle from `md`; none on phones, where you swipe. The pause button stays because the photos change on their own
+  (WCAG: anything moving by itself for more than 5 seconds must be pausable). No autoplay with reduced motion;
+  pauses on hover/focus; only the visible photo is exposed to screen readers.
+- **"Right now" card:** a standard section card whose content depends on the date — Join the team (text + accent
+  and outlined buttons); This week (three blocks with `type-label` headings — Next meet, Practice, Latest result —
+  each ending in an accent "… →" link); or Season recap (Boys / Girls panels like the Results cards).
+- **Layout:** Right now and Questions on the left, Important dates on the right spanning both rows
+  (`lg:row-span-2`), so neither column has a large gap. Phones: Right now → Important dates → Questions.
+- **Buttons on light cards:** primary `bg-accent text-on-accent`, secondary `border border-line`, both `type-button`,
+  `rounded-lg px-3.5 py-2`.
 
 ### Logo
 
