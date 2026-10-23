@@ -2,7 +2,7 @@
 // season-aware parts of the hero. It reads the same data as the other pages:
 //   assets/meets/meets-index.json → the newest season's meets and results
 //   assets/data/practice-schedule.json
-//   assets/data/importantDates.json   { seasonLabel, items: [{ date, name, details }] }
+//   assets/data/importantDates.json   { seasonLabel, items: [{ date, name, details }] } — team events
 //
 // The page shifts with the season:
 //   preseason  (before the first practice, or from August after last season ended)
@@ -12,6 +12,8 @@
 //   offseason  (after the last meet, until August) → a recap of the season that just ended
 //
 // To preview another time of year, add ?date=2026-01-14 to the page address.
+//
+// Below the hero (drawn into #home-sections): the "Right now" card, then "Up next" dates.
 
 // Today's date as "YYYY-MM-DD" (or the ?date= override).
 function todayISO() {
@@ -112,38 +114,56 @@ function block(label, lines, link) {
 const mainLine = (text, extra = "") => el("p", `text-[12px] md:text-[13px] ${extra}`, text);
 const grayLine = (text) => el("p", "type-small text-fg-subtle", text);
 
+// ---------- Section cards ----------
+
+// A section card like the ones on every page: green accent bar, title, subtitle, then the content.
+function sectionCard(title, subtitle, ...content) {
+  const card = el("section", "overflow-hidden rounded-2xl border border-line bg-surface shadow-sm");
+  const header = el("div", "flex items-center gap-3 border-b border-line px-4 py-4 md:px-5");
+  const text = el("div");
+  text.append(el("h2", "type-section", title));
+  if (subtitle) text.append(el("p", "type-small text-fg-muted", subtitle));
+  const bar = el("div", "h-9 w-1.5 shrink-0 rounded-full bg-accent");
+  bar.setAttribute("aria-hidden", "true");
+  header.append(bar, text);
+  card.append(header, ...content);
+  return card;
+}
+
+// Three blocks side by side (stacked on phones), divided by thin lines. Used by "Join the team"
+// and "This week" so both cards have the same shape.
+function threeBlocks(...blocks) {
+  const grid = el("div", "grid divide-y divide-line sm:grid-cols-3 sm:divide-x sm:divide-y-0");
+  grid.append(...blocks);
+  return grid;
+}
+
+// "Fri, Oct 24" in medium weight, like dates in the tables.
+const dateLine = (iso) => mainLine(`${weekday(iso)}, ${formatDate(iso)}`, "font-medium tabular-nums");
+
 // ---------- "Right now" card ----------
 
-function setCard(title, subtitle, ...content) {
-  document.getElementById("now-title").textContent = title;
-  document.getElementById("now-subtitle").textContent = subtitle;
-  document.getElementById("now-body").replaceChildren(...content);
-}
-
-// Preseason: how to join.
-function showJoin(season, nextDate) {
-  const body = el("div", "p-4 md:p-5");
-  body.append(
-    el("p", "type-body max-w-prose text-fg-muted", `Want to swim for Kettle Run this winter? Tryout details, required forms, and key dates for the ${season} season are on the Join page. Questions are always welcome.`),
+// Preseason: how to join, as three steps. Dates come from the season's data:
+//   1. the interest meeting (a team event in importantDates.json with "interest" in its name)
+//   2. forms (text; details on the Join page)
+//   3. the first practice (from the practice schedule)
+function joinCard(season, items, today) {
+  const interest = items.find((item) => /interest/i.test(item.name) && item.date >= today);
+  const first = items.find((item) => /first practice/i.test(item.name));
+  const step = (when, details) => (when ? [dateLine(when), ...(details ? [grayLine(details)] : [])] : [grayLine("Date to be announced")]);
+  return sectionCard(
+    "Join the team",
+    `${season} season · how to join`,
+    threeBlocks(
+      block("1 · Interest meeting", step(interest?.date, interest?.details?.replace(/\.$/, ""))),
+      block("2 · Forms", [mainLine("Turn in the required forms"), grayLine("Before the first practice")], arrowLink("Forms and tryout info", "./about.html")), // TODO: ./join.html
+      block("3 · First practice", step(first?.date, first?.details?.replace(/\.$/, ""))),
+    ),
   );
-  if (nextDate) {
-    const next = el("p", "mt-3 text-[12px] md:text-[13px]");
-    next.append(el("span", "font-semibold", "Next: "), `${nextDate.name}, ${weekday(nextDate.date)} ${formatDate(nextDate.date)}`);
-    if (nextDate.details) next.append(el("span", "text-fg-subtle", ` · ${nextDate.details}`));
-    body.append(next);
-  }
-  const buttons = el("div", "mt-4 flex flex-wrap gap-2");
-  const primary = el("a", "type-button rounded-lg bg-accent px-3.5 py-2 text-on-accent transition-opacity hover:opacity-90", "Tryout information");
-  primary.href = "./about.html"; // TODO: ./join.html once the Join page exists
-  const secondary = el("a", "type-button rounded-lg border border-line px-3.5 py-2 text-fg transition-colors hover:border-fg-subtle", "Email the coach");
-  secondary.href = "mailto:coachdtr@gmail.com";
-  buttons.append(primary, secondary);
-  body.append(buttons);
-  setCard("Join the team", `${season} season`, body);
 }
 
-// In season: next meet, this week's practices, latest result.
-function showThisWeek(today, meets, practiceWeeks) {
+// In season: this week's practices, the latest result, and the next meet (in that order).
+function thisWeekCard(today, meets, practiceWeeks) {
   // This week = Monday through Sunday around today.
   const monday = toDate(today);
   monday.setDate(monday.getDate() - ((monday.getDay() + 6) % 7)); // getDay(): Sunday 0 … Saturday 6
@@ -151,45 +171,37 @@ function showThisWeek(today, meets, practiceWeeks) {
   sunday.setDate(sunday.getDate() + 6);
   const [weekStart, weekEnd] = [toISO(monday), toISO(sunday)];
 
-  // Next meet that's still on
-  const next = meets.find((m) => m.date >= today && !m.status);
-  const nextLines = next
-    ? [
-        mainLine(`${weekday(next.date)}, ${formatDate(next.date)} · ${formatTime(next.startTime)}`, "font-medium tabular-nums"),
-        mainLine(next.type, "mt-1"),
-        grayLine(isChampionship(next) ? opponentNames(next) : `vs ${opponentNames(next)}`),
-        grayLine(`${next.homeAway} · ${next.locationFull}`),
-      ]
-    : [grayLine("No more meets this season.")];
-
-  // This week's practices: "Mon, Jan 12 · Practice" / "Off"
-  const week = practiceWeeks.flatMap((w) => w.practices ?? []).filter((p) => p.date >= weekStart && p.date <= weekEnd);
+  // Practices: "Mon, Jan 12 … Practice" / "Off". The usual time isn't repeated here (it's on the
+  // Practices page); a day only shows a time when it's different from the season's usual time.
+  const all = practiceWeeks.flatMap((w) => w.practices ?? []);
+  const usualTime = mostCommon(all.filter((p) => p.status !== "off").map((p) => p.time));
+  const week = all.filter((p) => p.date >= weekStart && p.date <= weekEnd);
   const practiceLines = week.length
     ? week.map((p) => {
+        const off = p.status === "off";
         const line = el("p", "flex justify-between gap-3 text-[12px] leading-5 md:text-[13px]");
         line.append(
-          el("span", `font-medium tabular-nums${p.status === "off" ? " text-fg-subtle line-through" : ""}`, `${weekday(p.date)}, ${formatDate(p.date)}`),
-          el("span", "type-small text-fg-subtle", p.status === "off" ? "Off" : "Practice"),
+          el("span", `font-medium tabular-nums${off ? " text-fg-subtle line-through" : ""}`, `${weekday(p.date)}, ${formatDate(p.date)}`),
+          el("span", "type-small text-fg-subtle", off ? "Off" : p.time !== usualTime ? dash(p.time) : "Practice"),
         );
         return line;
       })
     : [grayLine("No practice this week.")];
-  const held = week.filter((p) => p.status !== "off");
-  if (held.length) practiceLines.push(grayLine(`${dash(mostCommon(held.map((p) => p.time)))} @ ${mostCommon(held.map((p) => p.location))}`));
 
-  // Latest result: "Boys 2–0 · Girls 1–1" for a dual meet, "Girls 1st · Boys 6th" for a championship
+  // Latest result, spelled out so it can't be read as a score: "Won 2 · Lost 1", or "6th place".
   const latest = meets.filter((m) => m.results && m.date <= today).at(-1);
   let resultLines = [grayLine("No results yet this season.")];
   if (latest) {
-    resultLines = [mainLine(`${weekday(latest.date)}, ${formatDate(latest.date)} · ${latest.type}`, "font-medium")];
+    resultLines = [dateLine(latest.date), mainLine(latest.type, "mb-1")];
     for (const { key, label } of TEAMS) {
       const result = latest.results[key];
       let value = "—";
       if (result?.scores) {
         const wins = result.scores.filter((s) => outcome(s) === "W").length;
-        value = `${wins}–${result.scores.length - wins}`;
+        const losses = result.scores.length - wins;
+        value = [wins ? `Won ${wins}` : "", losses ? `Lost ${losses}` : ""].filter(Boolean).join(" · ");
       } else if (result?.place) {
-        value = ordinal(result.place);
+        value = `${ordinal(result.place)} place`;
       }
       const line = el("p", "flex justify-between gap-3 text-[12px] leading-5 md:text-[13px]");
       line.append(el("span", "type-small text-fg-subtle", label), el("span", "font-medium tabular-nums", value));
@@ -197,18 +209,33 @@ function showThisWeek(today, meets, practiceWeeks) {
     }
   }
 
-  const grid = el("div", "grid divide-y divide-line sm:grid-cols-3 sm:divide-x sm:divide-y-0");
-  grid.append(
-    block("Next meet", nextLines, arrowLink("Meet schedule", "./competition-schedule.html")),
-    block("Practice", practiceLines, arrowLink("Practice schedule", "./practice-schedule.html")),
-    block("Latest result", resultLines, arrowLink("All results", "./results.html")),
+  // Next meet that's still on
+  const next = meets.find((m) => m.date >= today && !m.status);
+  const nextLines = next
+    ? [
+        mainLine(`${weekday(next.date)}, ${formatDate(next.date)} · ${formatTime(next.startTime)}`, "font-medium tabular-nums"),
+        mainLine(next.type),
+        grayLine(isChampionship(next) ? opponentNames(next) : `vs ${opponentNames(next)}`),
+        grayLine(`${next.homeAway} · ${next.locationFull}`),
+      ]
+    : [grayLine("No more meets this season.")];
+
+  return sectionCard(
+    "This week",
+    `${weekday(weekStart)}, ${formatDate(weekStart)} – ${weekday(weekEnd)}, ${formatDate(weekEnd)}`,
+    threeBlocks(
+      block("Practice", practiceLines, arrowLink("Practice schedule", "./practice-schedule.html")),
+      block("Latest result", resultLines, arrowLink("All scores and results", "./results.html")),
+      block("Next meet", nextLines, arrowLink("Meet schedule", "./competition-schedule.html")),
+    ),
   );
-  setCard("This week", `${weekday(weekStart)}, ${formatDate(weekStart)} – ${weekday(weekEnd)}, ${formatDate(weekEnd)}`, grid);
 }
 
-// Offseason: the season that just ended — dual record and postseason places per team.
-function showRecap(season, meets) {
+// Offseason: the season that just ended — dual record and postseason places per team, spelled out
+// ("6th at Regionals", "Districts canceled").
+function recapCard(season, meets) {
   const championships = meets.filter(isChampionship);
+  const short = (meet) => meet.type.replace(" Championship", "s"); // "Regional Championship" → "Regionals"
   const grid = el("div", "grid grid-cols-2 gap-2 p-3 md:gap-3 md:p-4");
   for (const { key, label } of TEAMS) {
     const outcomes = meets.flatMap((m) => m.results?.[key]?.scores ?? []).map(outcome);
@@ -221,9 +248,11 @@ function showRecap(season, meets) {
     );
     const post = el("div", "mt-2 border-t border-line pt-2 text-[12px] leading-5 md:text-[13px]");
     for (const meet of championships) {
-      const place = meet.status ? meet.status.charAt(0).toUpperCase() + meet.status.slice(1) : meet.results?.[key]?.place ? ordinal(meet.results[key].place) : "—";
+      const place = meet.results?.[key]?.place;
       const line = el("p");
-      line.append(el("span", meet.status ? "text-fg-subtle" : "font-medium tabular-nums", place), el("span", "type-small text-fg-subtle", ` ${meet.type.replace(" Championship", "s")}`));
+      if (meet.status) line.append(el("span", "text-fg-subtle", `${short(meet)} ${meet.status}`));
+      else if (place) line.append(el("span", "font-medium tabular-nums", ordinal(place)), el("span", "text-fg-muted", ` at ${short(meet)}`));
+      else line.append(el("span", "text-fg-subtle", `${short(meet)}: —`));
       post.append(line);
     }
     panel.append(post);
@@ -232,44 +261,111 @@ function showRecap(season, meets) {
   const links = el("div", "flex gap-4 px-4 pb-4 md:px-5");
   links.append(arrowLink("Season results", "./results.html"), arrowLink("Team records", "./team-records.html"));
   for (const link of links.children) link.classList.remove("mt-3");
-  setCard(`${season} season recap`, "Final results", grid, links);
+  return sectionCard(`${season} season recap`, "Final results", grid, links);
 }
 
-// ---------- Important dates ----------
+// ---------- Up next: what goes in the list ----------
+//
+// Team events come from importantDates.json. Added automatically from the other data:
+//   - first and last practice (practice-schedule.json)
+//   - championship meets (the season's meet file)
+// If a team event is on the same day as an automatic item, the team event wins (no duplicates).
 
-// Date · Event (details under the name). During the season, past dates are dimmed; once every
-// date has passed, a note says the next season's dates are coming.
-function showDates(data, today, phase) {
-  const body = document.getElementById("dates-body");
-  const items = data.items ?? [];
-  const upcoming = items.filter((item) => item.date >= today);
-
-  if (!upcoming.length && phase !== "season") {
-    const next = upcomingSeason(today);
-    document.getElementById("dates-subtitle").textContent = `${next} season`;
-    document.getElementById("dates-head").hidden = true; // no column headers over a single note
-    const row = el("tr");
-    const cell = el("td", "type-small px-4 py-4 text-fg-subtle md:px-5", `Dates for the ${next} season will be posted soon.`);
-    cell.colSpan = 2;
-    row.append(cell);
-    body.replaceChildren(row);
-    return;
+function seasonDates(data, meets, practiceWeeks) {
+  const items = (data.items ?? []).map((item) => ({ ...item }));
+  const taken = new Set(items.map((item) => item.date));
+  const auto = [];
+  const held = practiceWeeks.flatMap((w) => w.practices ?? []).filter((p) => p.status !== "off");
+  if (held.length) {
+    auto.push({ date: held[0].date, name: "First practice", details: `${dash(held[0].time)} @ ${held[0].location}` });
+    auto.push({ date: held.at(-1).date, name: "Last practice", details: `${dash(held.at(-1).time)} @ ${held.at(-1).location}` });
   }
+  for (const meet of meets.filter(isChampionship)) {
+    auto.push({ date: meet.date, name: meet.type, details: `${formatTime(meet.startTime)} · ${meet.locationFull}`, status: meet.status, meet: true });
+  }
+  for (const item of auto) if (!taken.has(item.date)) items.push(item);
+  return items.sort((a, b) => a.date.localeCompare(b.date));
+}
 
-  document.getElementById("dates-subtitle").textContent = `${dash(data.seasonLabel)} season`;
-  document.getElementById("dates-head").hidden = false;
-  body.replaceChildren(
-    ...items.map((item) => {
-      const row = el("tr", `border-b border-line last:border-0${item.date < today ? " opacity-60" : ""}`);
-      const date = el("td", "py-2.5 pr-2 pl-4 align-top md:pl-5");
-      date.append(el("div", "font-medium tabular-nums", formatDate(item.date)), el("div", "type-small text-fg-subtle", weekday(item.date)));
-      const event = el("td", "py-2.5 pr-4 align-top md:pr-5");
-      event.append(el("div", "font-semibold md:font-normal", item.name));
-      if (item.details) event.append(el("div", "type-small text-fg-subtle", item.details));
-      row.append(date, event);
-      return row;
-    }),
+// ---------- Up next: how it looks ----------
+
+// The date as a small solid block: "NOV" over a big "10". School green for team events and practices;
+// school orange for meets, so competitions stand out. Orange uses black text (white on orange is hard to read).
+function dateBlock(iso, { meet = false } = {}) {
+  const colors = meet ? "bg-highlight text-black" : "bg-brand text-white";
+  const mark = el("div", `flex w-11 shrink-0 flex-col items-center rounded-lg py-1 ${colors}`);
+  mark.append(
+    el("span", `type-label font-semibold ${meet ? "text-black/70" : "text-white/80"}`, toDate(iso).toLocaleDateString("en-US", { month: "short" })),
+    el("span", "font-display text-[17px] leading-tight font-semibold tabular-nums", String(toDate(iso).getDate())),
   );
+  return mark;
+}
+
+// One date: the green block, then the name (+ a status tag) over the details.
+function dateItem(item, today) {
+  const row = el("li", `flex items-start gap-3${item.date < today ? " opacity-55" : ""}`);
+  const text = el("div", "min-w-0 pt-0.5");
+  const top = el("div", "flex flex-wrap items-center gap-x-1.5 gap-y-1");
+  top.append(el("span", "text-[12px] font-semibold md:text-[13px]", item.name));
+  if (item.status) top.append(el("span", "rounded-sm bg-fg/10 px-1 py-0.5 text-[9px] leading-none font-semibold md:text-[10px]", item.status.charAt(0).toUpperCase() + item.status.slice(1)));
+  text.append(top);
+  if (item.details) text.append(grayLine(item.details.replace(/\.$/, "")));
+  row.append(dateBlock(item.date, { meet: item.meet }), text);
+  return row;
+}
+
+// Rows of three dates, read left to right like a calendar (one column on phones, two on small tablets).
+// Every row is separated by one full-width line, so the lines never break up.
+function dateRows(items, today) {
+  const wrap = el("div", "divide-y divide-line");
+  for (let i = 0; i < items.length; i += 3) {
+    const row = el("div", "px-4 py-4 md:px-5");
+    const list = el("ul", "grid gap-4 sm:grid-cols-2 lg:grid-cols-3");
+    list.append(...items.slice(i, i + 3).map((item) => dateItem(item, today)));
+    row.append(list);
+    wrap.append(row);
+  }
+  return wrap;
+}
+
+// Up next: the next 6 dates; "Show all season dates" swaps in the whole season (past ones dimmed).
+function upNextCard(items, today, seasonLabel) {
+  const upcoming = items.filter((item) => item.date >= today);
+  if (!upcoming.length) {
+    return sectionCard("Up next", `${upcomingSeason(today)} season`, el("p", "type-small px-4 py-4 text-fg-subtle md:px-5", `Dates for the ${upcomingSeason(today)} season will be posted soon.`));
+  }
+  const short = dateRows(upcoming.slice(0, 6), today);
+  const full = dateRows(items, today);
+  full.hidden = true;
+  const card = sectionCard("Up next", `${seasonLabel} season · team events, practices, and championships`, short, full);
+  if (items.length > 6 || upcoming.length < items.length) {
+    const footer = el("div", "border-t border-line px-4 py-3 md:px-5");
+    const button = el("button", "type-small cursor-pointer font-medium text-accent underline-offset-2 hover:underline", "Show all season dates");
+    button.type = "button";
+    button.setAttribute("aria-expanded", "false");
+    button.addEventListener("click", () => {
+      const open = full.hidden;
+      full.hidden = !open;
+      short.hidden = open;
+      button.textContent = open ? "Show upcoming only" : "Show all season dates";
+      button.setAttribute("aria-expanded", String(open));
+    });
+    footer.append(button);
+    card.append(footer);
+  }
+  return card;
+}
+
+// ---------- Below the hero ----------
+
+function drawSections(state) {
+  const { phase, today, meets, practiceWeeks, season, dates } = state;
+  const items = seasonDates(dates, meets, practiceWeeks);
+  let now;
+  if (phase === "season") now = thisWeekCard(today, meets, practiceWeeks);
+  else if (phase === "offseason") now = recapCard(dash(season.season), meets);
+  else now = joinCard(schoolYear(today), items, today);
+  document.getElementById("home-sections").replaceChildren(now, upNextCard(items, today, dash(dates.seasonLabel)));
 }
 
 // ---------- Hero ----------
@@ -309,13 +405,11 @@ async function loadHome() {
   else phase = Number(today.slice(5, 7)) >= 8 ? "preseason" : "offseason"; // from August: next season
 
   setHero(phase, today);
-  if (phase === "season") showThisWeek(today, meets, practiceWeeks);
-  else if (phase === "offseason") showRecap(dash(season.season), meets);
-  else showJoin(schoolYear(today), (dates.items ?? []).find((item) => item.date >= today));
-  showDates(dates, today, phase);
+  const state = { phase, today, meets, practiceWeeks, season, dates };
+  drawSections(state);
 }
 
 loadHome().catch((error) => {
   console.error("Could not load the home page data:", error);
-  setCard("Kettle Run Swimming", "", el("p", "type-small p-4 text-fg-subtle", "This section couldn't be loaded. Please try refreshing the page."));
+  document.getElementById("home-sections").replaceChildren(el("p", "type-small text-fg-subtle", "This section couldn't be loaded. Please try refreshing the page."));
 });

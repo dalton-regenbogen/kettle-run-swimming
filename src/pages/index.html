@@ -96,64 +96,9 @@
           </div>
         </section>
 
-        <!--
-          Main content. Phones: Right now → Important dates → Questions, stacked.
-          Desktop: a 2-column grid. Important dates sits in the right column across both rows
-          (lg:row-span-2); Right now and Questions stack on the left, so neither column has a big gap.
-          grid-rows-[auto_1fr]: the first row fits "Right now", the second takes any leftover height.
-        -->
-        <div class="grid gap-6 md:gap-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:grid-rows-[auto_1fr] lg:items-start">
-          <!-- "Right now": Join the team / This week / Season recap, depending on the date (js/home.js) -->
-          <section class="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm" aria-labelledby="now-title">
-            <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
-              <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
-              <div>
-                <h2 class="type-section" id="now-title">Kettle Run Swimming</h2>
-                <p class="type-small text-fg-muted" id="now-subtitle">Loading…</p>
-              </div>
-            </div>
-            <div id="now-body"></div>
-          </section>
-
-            <!-- Important dates (from assets/data/importantDates.json) -->
-            <section class="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm lg:col-start-2 lg:row-span-2 lg:row-start-1" aria-labelledby="dates-heading">
-              <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
-                <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
-                <div>
-                  <h2 class="type-section" id="dates-heading">Important dates</h2>
-                  <p class="type-small text-fg-muted" id="dates-subtitle">This season</p>
-                </div>
-              </div>
-              <table class="type-table w-full table-fixed text-[12px] md:text-[13px]">
-                <thead id="dates-head" class="bg-brand text-white">
-                  <tr class="text-left">
-                    <th scope="col" class="w-20 py-2.5 pr-2 pl-4 font-semibold md:pl-5">Date</th>
-                    <th scope="col" class="py-2.5 pr-4 font-semibold md:pr-5">Event</th>
-                  </tr>
-                </thead>
-                <tbody id="dates-body">
-                  <tr><td class="px-4 py-6 text-center text-fg-subtle" colspan="2">Loading…</td></tr>
-                </tbody>
-              </table>
-            </section>
-
-            <!-- Contact -->
-            <section class="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm lg:col-start-1 lg:row-start-2" aria-labelledby="contact-heading">
-              <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
-                <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
-                <div>
-                  <h2 class="type-section" id="contact-heading">Questions?</h2>
-                  <p class="type-small text-fg-muted">Parents and athletes</p>
-                </div>
-              </div>
-              <div class="p-4 md:p-5">
-                <p class="type-body text-fg-muted">Email the coach about joining, practices, meets, or anything else.</p>
-                <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
-                  <a href="mailto:coachdtr@gmail.com" class="type-button rounded-lg bg-accent px-3.5 py-2 text-on-accent transition-opacity hover:opacity-90">Email the coach</a>
-                  <a href="./resources.html" class="type-small font-medium text-accent underline-offset-2 hover:underline">Team resources →</a>
-                </div>
-              </div>
-            </section>
+        <!-- Everything below the hero is drawn here by js/home.js: the "Right now" card, then "Up next" -->
+        <div id="home-sections" class="grid gap-6 md:gap-8">
+          <p class="type-small text-fg-subtle">Loading…</p>
         </div>
       </div>
     </main>

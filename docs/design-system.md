@@ -264,13 +264,21 @@ size. All text — no tiles.
   firmer on hover) at the left/right middle from `md`; none on phones, where you swipe. The pause button stays because the photos change on their own
   (WCAG: anything moving by itself for more than 5 seconds must be pausable). No autoplay with reduced motion;
   pauses on hover/focus; only the visible photo is exposed to screen readers.
-- **"Right now" card:** a standard section card whose content depends on the date — Join the team (text + accent
-  and outlined buttons); This week (three blocks with `type-label` headings — Next meet, Practice, Latest result —
-  each ending in an accent "… →" link); or Season recap (Boys / Girls panels like the Results cards).
-- **Layout:** Right now and Questions on the left, Important dates on the right spanning both rows
-  (`lg:row-span-2`), so neither column has a large gap. Phones: Right now → Important dates → Questions.
-- **Buttons on light cards:** primary `bg-accent text-on-accent`, secondary `border border-line`, both `type-button`,
-  `rounded-lg px-3.5 py-2`.
+- **Below the hero:** two full-width section cards, stacked (nothing has to line up, so no leftover white space).
+  - **"Right now"** changes with the date. All three versions share one shape where possible:
+    - Preseason — **Join the team**: three steps across (1 · Interest meeting, 2 · Forms, 3 · First practice).
+    - In season — **This week**: three blocks across — Practice (days; a time only when different from usual),
+      Latest result (spelled out: "Won 2 · Lost 1", "6th place"), Next meet — each ending in an accent "… →" link.
+    - Offseason — **Season recap**: Boys / Girls panels with the dual record and places spelled out
+      ("6th at Regionals", "Districts canceled").
+    - Blocks use a `type-label` heading, 12/13px main lines (dates medium), 11/12px gray second lines.
+  - **Up next**: rows of three dates read left to right (one column on phones), one full-width line between rows.
+    Each date is a small solid block ("NOV" over "10"): school green for team events and practices, school
+    orange with black text for meets. Next 6 upcoming; "Show all season dates" swaps in the whole season
+    (past dates dimmed). No green table header — that's for data tables.
+- **No separate contact card:** "Contact coach" is always in the hero, and the footer has Email the coach and
+  Resources, so each action shows once on screen.
+- **Links:** accent text links ("… →"). Orange text was tried and set aside — too low-contrast on white at link size.
 
 ### Logo
 

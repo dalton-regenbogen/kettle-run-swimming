@@ -101,9 +101,11 @@ Most frequently changed information lives in JSON files under `src/assets/data/`
 - **Practice:** `src/assets/data/practice-schedule.json`. Each practice has a `status`: `"normal"` shows
   "Regular practice" under the date, `"off"` crosses the date out and shows "No practice". (The `note` field is
   kept in the data but not shown.) The "Standard practice schedule" line is worked out from the practices.
-- **Important dates (home page):** `src/assets/data/importantDates.json` — `seasonLabel` and a list of
-  `{ "date", "name", "details" }`. Once every date has passed, the home page says the next season's dates are
-  coming, so replace the list when the new season's dates are set.
+- **Up next dates (home page):** `src/assets/data/importantDates.json` holds **team events** only — interest
+  meeting, team pictures, parent meeting, senior night, banquet — as `{ "date", "name", "details" }`. The first and
+  last practice and the championship meets are added automatically from the practice and meet files (if you list
+  something on the same day, yours wins). Meets show with an orange date block, everything else green. Replace the
+  list when the new season's dates are set; until then the home page says they're coming soon.
 - **Roster:** each season is a file in `src/assets/rosters/` (e.g. `roster-2025-2026.json`). Add a new season's
   file and list it first in `roster-index.json`; the newest season shows by default. Put `"Captain"` in a
   swimmer's `roles` to show the Captain badge.
