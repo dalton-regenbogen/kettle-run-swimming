@@ -1,0 +1,20 @@
+{
+  "season": "2026-2027",
+  "forms": [
+    { "name": "VHSL Physical", "note": "Completed by a medical provider", "url": "" },
+    { "name": "FCPS Acknowledgement", "note": "Signed by the swimmer and a parent", "url": "" },
+    { "name": "FCPS Concussion", "note": "Signed by the swimmer and a parent", "url": "" },
+    { "name": "Swim Team Contact Form", "note": "For team emails and the team group chat", "url": "" }
+  ],
+  "links": {
+    "apparelStore": "",
+    "stateQualifyingTimes": "",
+    "officialsInfo": "",
+    "handbookPdf": ""
+  },
+  "fundraiser": {
+    "title": "",
+    "details": "",
+    "url": ""
+  }
+}

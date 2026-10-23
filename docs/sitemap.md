@@ -34,10 +34,20 @@ felt out of place on desktop. A full Mon–Sun calendar was also set aside (cram
 | Results | Season summary (dual record, win %, streak, postseason places), dual-meet scores by opponent, championship places with full standings, PDF links; season picker. Shares the season files in `src/assets/meets/` with Meets. | Built (`results.html`; `2025-2026-results.html` forwards here) |
 | Roster | Team members by season, with All/Boys/Girls filter and season picker. No PDF. | Built |
 | Records | All-time team bests. Web page only — no PDF download. | Built |
-| Join | Interest meeting, tryouts, requirements, forms, commitment, coach contact. | Decided — content to be written by coach. Own page recommended; becomes a section of About if content is short. |
-| About | Program description, coaches/staff, contact. Links to Resources. | Decided — keep |
-| Resources | Team handbook, state qualifying times, and how to become a meet official (timers, stroke & turn, etc.). In the top nav, and also linked from the footer, About, and Join. | Decided — new page |
+| Join | For prospective families (Sep–Nov). How joining works (first week of practice is the evaluation), steps and timeline, the 4 required forms, two ways to be on the team (VHSL-primary vs. USA Swimming), high school vs. summer league vs. club, costs and gear, practice basics, FAQ. | In progress (`join.html`) |
+| About | For anyone. Welcome and program story, coaching staff, team values and daily expectations, facility, contact. Links to Join and Resources. | Planned |
+| Resources | For current families. One page with in-page sections: Swim meets 101 (how our meets are scored, order of events, entry limits, what to bring, postseason + state qualifying times), Volunteering & officiating, Team policies (attendance, lettering, conduct), Forms & eligibility, Apparel & gear, Fundraiser. Big sections can split into their own pages later. | Planned |
 | 404 | "Page not found" with links back to main pages. | Built (`src/pages/404.html`) |
+
+## Content decisions (Join, About, Resources)
+
+- Source: the season handbook, rewritten as web pages. No handbook PDF unless the coach adds one later
+  (optional link in the season settings file).
+- Privacy: email only (no phone number); volunteer roles listed without parents' names.
+- The four required forms (VHSL Physical, FCPS Acknowledgement, FCPS Concussion, Swim Team Contact Form) are
+  links to where they live, set in `src/assets/data/season.json`.
+- Season-specific details (form links, store, fundraiser, qualifying times, officials info, handbook PDF) live in
+  `src/assets/data/season.json`. An empty link shows "coming soon" (or hides, for the handbook PDF).
 
 ## Removed / deferred
 
@@ -52,4 +62,3 @@ felt out of place on desktop. A full Mon–Sun calendar was also set aside (cram
 
 ## Open
 
-- Join: own page vs. section of About — decide once content is written.

@@ -156,7 +156,7 @@ function joinCard(season, items, today) {
     `${season} season · how to join`,
     threeBlocks(
       block("1 · Interest meeting", step(interest?.date, interest?.details?.replace(/\.$/, ""))),
-      block("2 · Forms", [mainLine("Turn in the required forms"), grayLine("Before the first practice")], arrowLink("Forms and tryout info", "./about.html")), // TODO: ./join.html
+      block("2 · Forms", [mainLine("Turn in the required forms"), grayLine("Before the first practice")], arrowLink("Forms and tryout info", "./join.html#forms-heading")),
       block("3 · First practice", step(first?.date, first?.details?.replace(/\.$/, ""))),
     ),
   );
@@ -373,7 +373,7 @@ function drawSections(state) {
 function setHero(phase, today) {
   const button = document.getElementById("hero-action");
   const [text, href] = {
-    preseason: ["Tryout information", "./about.html"], // TODO: ./join.html once the Join page exists
+    preseason: ["Tryout information", "./join.html"],
     season: ["Meet schedule", "./competition-schedule.html"],
     offseason: ["Season results", "./results.html"],
   }[phase];

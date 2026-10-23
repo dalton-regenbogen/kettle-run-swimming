@@ -280,6 +280,24 @@ size. All text — no tiles.
   Resources, so each action shows once on screen.
 - **Links:** accent text links ("… →"). Orange text was tried and set aside — too low-contrast on white at link size.
 
+### Text pages (first used on Join)
+
+Join, Resources, and About are mostly words. They reuse the section cards and add:
+
+- **Body text:** `type-body text-fg-muted`, kept to `max-w-prose` so lines stay readable.
+- **Steps:** an `<ol>` of blocks across (`sm:grid-cols-2 lg:grid-cols-4`, thin dividers); `type-label` heading with
+  an orange step number, a 12/13px main line, an 11/12px gray line.
+- **Link rows** (e.g. the four forms, filled from `season.json`): a small accent-tinted icon tile, name over note,
+  and "Open form ↗" on the right — or gray "Link coming soon" while the link is empty.
+- **Term list:** `<dl>` rows — 12/13px semibold term ("Fees", "Team suit (optional)") over gray small text.
+- **Side-by-side panels:** two `rounded-xl border` panels; `type-label` accent heading, a semibold line, a small
+  bulleted list (`list-disc marker:text-fg-subtle`).
+- **Comparison table:** the standard green-header table (it has real columns); scrolls sideways inside its card on
+  phones (`overflow-x-auto`, `min-w-[40rem]`) instead of squeezing.
+- **Callout:** an important note with an orange edge — `border-l-4 border-highlight bg-highlight/10`.
+- **FAQ:** `<details>`/`<summary>` rows with a + / − marker; the answer in small gray text.
+- **External links** open in a new tab with a hidden "(opens in a new tab)" note for screen readers.
+
 ### Logo
 
 `kr-logo-tight.svg` is `kr-logo.svg` with its empty square padding cropped (only the `viewBox` changed), so the
