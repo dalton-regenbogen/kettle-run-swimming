@@ -1,28 +1,222 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KR Swim | About</title>
-    <link rel="stylesheet" href="./css/output.css" />
+    <!-- include: head.html -->
+    <title>About | Kettle Run Swimming</title>
+    <meta name="description" content="About the Kettle Run High School swim team: our program, what we value, our coaches, recent highlights, and how to get in touch." />
   </head>
-  <body class="min-h-screen bg-gray-100 text-gray-900">
-    <!-- include: header.html -->
+  <body class="flex min-h-dvh flex-col bg-page font-body text-fg antialiased">
+    <!-- include: site-header.html -->
 
-    <!-- Main -->
-    <main>
-      <section class="max-w-6xl md:max-w-10/12 mx-auto px-4 py-12">
-        <div class="bg-grey-100md:bg-white border border-gray-200 rounded-2xl p-8">
-          <h1 class="text-3xl font-bold tracking-tight">Contact</h1>
-          <p class="mt-2 text-gray-700">
-            Information about the team and everything related to it.
-          </p>
+    <!--
+      A text page, built from the same components as Join and Resources (docs/design-system.md, "Text pages").
+      Every section is full width, so nothing has to line up side by side.
+      Text in [square brackets] is a placeholder for the coach to replace.
+    -->
+    <main class="mx-auto w-full max-w-6xl flex-1 px-3 py-6 md:px-4 md:py-12">
+      <div class="md:rounded-2xl md:border md:border-line md:bg-surface md:p-6 md:shadow-xs">
+        <!-- Hero band -->
+        <section class="relative mb-6 overflow-hidden rounded-2xl bg-black text-white md:mb-8 dark:ring-1 dark:ring-white/15">
+          <div class="hero-texture pointer-events-none absolute inset-0" aria-hidden="true"></div>
+          <div class="relative flex flex-col items-center gap-3 px-6 py-6 text-center md:flex-row md:items-end md:justify-between md:py-8 md:text-left">
+            <div>
+              <p class="type-label tracking-[0.22em] text-white/80">Kettle Run Swimming</p>
+              <h1 class="type-title mt-1.5">About the Team</h1>
+              <p class="type-small mt-1 text-white/80">Kettle Run High School swimming since 2008.</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="grid gap-6 md:gap-8">
+          <!-- 1. Our program: the story on the left, quick facts on the right (stacked on phones) -->
+          <section class="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm" aria-labelledby="program-heading">
+            <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
+              <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
+              <div>
+                <h2 class="type-section" id="program-heading">Our program</h2>
+                <p class="type-small text-fg-muted">Kettle Run High School · Nokesville, Virginia</p>
+              </div>
+            </div>
+            <div class="grid lg:grid-cols-[minmax(0,1fr)_20rem]">
+              <div class="space-y-3 px-4 py-4 md:px-5">
+                <p class="type-body max-w-prose text-fg-muted">
+                  Welcome to KR Swimming—established in 2008. We’re a program built on consistent effort, team-first support,
+                  and pride in representing our school the right way. We welcome both year-round and seasonal athletes who are
+                  committed to improving, encouraging their teammates, and bringing positive energy to the deck every day.
+                </p>
+                <p class="type-body max-w-prose text-fg-muted">
+                  No matter your experience level, if you’re ready to work, learn, and contribute to the team, there’s a place
+                  for you here. Our team includes swimmers whose main sport is high school swimming and year-round club swimmers
+                  who train with their clubs and compete for Kettle Run—together, as one team.
+                </p>
+              </div>
+              <!-- Quick facts: a term list, divided by lines; a border on its left on desktop -->
+              <dl class="divide-y divide-line border-t border-line px-4 md:px-5 lg:border-t-0 lg:border-l">
+                <div class="flex justify-between gap-4 py-2.5">
+                  <dt class="type-small text-fg-subtle">Established</dt>
+                  <dd class="text-[12px] font-medium md:text-[13px]">2008</dd>
+                </div>
+                <div class="flex justify-between gap-4 py-2.5">
+                  <dt class="type-small text-fg-subtle">Classification</dt>
+                  <dd class="text-[12px] font-medium md:text-[13px]">VHSL Class 3</dd>
+                </div>
+                <div class="flex justify-between gap-4 py-2.5">
+                  <dt class="type-small text-fg-subtle">District</dt>
+                  <dd class="text-[12px] font-medium md:text-[13px]">Northwestern</dd>
+                </div>
+                <div class="flex justify-between gap-4 py-2.5">
+                  <dt class="type-small text-fg-subtle">Region</dt>
+                  <dd class="text-[12px] font-medium md:text-[13px]">Class 3 Region B</dd>
+                </div>
+                <div class="flex justify-between gap-4 py-2.5">
+                  <dt class="type-small text-fg-subtle">Home pool</dt>
+                  <dd class="text-right text-[12px] font-medium md:text-[13px]">WARF, Warrenton</dd>
+                </div>
+                <div class="flex justify-between gap-4 py-2.5">
+                  <dt class="type-small text-fg-subtle">Season</dt>
+                  <dd class="text-[12px] font-medium md:text-[13px]">November–February</dd>
+                </div>
+                <div class="flex justify-between gap-4 py-2.5">
+                  <dt class="type-small text-fg-subtle">Mascot</dt>
+                  <dd class="text-[12px] font-medium md:text-[13px]">Cougars</dd>
+                </div>
+              </dl>
+            </div>
+          </section>
+
+          <!-- 2. What we value: four panels across (two on tablets, one on phones) -->
+          <section class="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm" aria-labelledby="values-heading">
+            <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
+              <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
+              <div>
+                <h2 class="type-section" id="values-heading">What we value</h2>
+                <p class="type-small text-fg-muted">What the coach looks for in every swimmer, every day</p>
+              </div>
+            </div>
+            <ul class="grid gap-3 p-3 sm:grid-cols-2 md:p-4 lg:grid-cols-4">
+              <li class="rounded-xl border border-line p-4">
+                <p class="type-label font-semibold text-accent">Effort</p>
+                <p class="type-small mt-1.5 text-fg-muted">Consistent work at every practice, whatever your level. Improvement comes from showing up and putting in the work.</p>
+              </li>
+              <li class="rounded-xl border border-line p-4">
+                <p class="type-label font-semibold text-accent">Attitude</p>
+                <p class="type-small mt-1.5 text-fg-muted">Positive energy on the deck. Being on time, prepared, and ready to learn.</p>
+              </li>
+              <li class="rounded-xl border border-line p-4">
+                <p class="type-label font-semibold text-accent">Sportsmanship</p>
+                <p class="type-small mt-1.5 text-fg-muted">Respect for teammates, opponents, officials, and volunteers—before, during, and after every meet.</p>
+              </li>
+              <li class="rounded-xl border border-line p-4">
+                <p class="type-label font-semibold text-accent">Team first</p>
+                <p class="type-small mt-1.5 text-fg-muted">Swimming looks individual, but we score, travel, and cheer as a team. Every swimmer counts.</p>
+              </li>
+            </ul>
+          </section>
+
+          <!-- 3. Coaches: one card per coach, with initials like the roster avatars -->
+          <section class="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm" aria-labelledby="coaches-heading">
+            <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
+              <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
+              <div>
+                <h2 class="type-section" id="coaches-heading">Coaches</h2>
+                <p class="type-small text-fg-muted">Questions about anything? Reach out.</p>
+              </div>
+            </div>
+            <ul class="grid gap-3 p-3 md:grid-cols-2 md:p-4">
+              <li class="flex gap-3 rounded-xl border border-line p-4">
+                <span class="grid size-11 shrink-0 place-items-center rounded-full bg-brand text-[13px] font-semibold text-white" aria-hidden="true">DR</span>
+                <div class="min-w-0">
+                  <p class="text-[12px] font-semibold md:text-[13px]">Dalton Regenbogen</p>
+                  <p class="type-small text-fg-subtle">Head Coach</p>
+                  <p class="type-small mt-2 text-fg-muted">[A sentence or two about Coach Dalton: swimming background, years coaching at Kettle Run, and a favorite thing about the team.]</p>
+                  <a href="mailto:coachdtr@gmail.com" class="type-small mt-2 inline-block font-medium text-accent underline-offset-2 hover:underline">coachdtr@gmail.com</a>
+                </div>
+              </li>
+              <li class="flex gap-3 rounded-xl border border-dashed border-line p-4">
+                <span class="grid size-11 shrink-0 place-items-center rounded-full bg-fg/10 text-[13px] font-semibold text-fg-subtle" aria-hidden="true">—</span>
+                <div class="min-w-0">
+                  <p class="text-[12px] font-semibold md:text-[13px]">[Assistant coach name]</p>
+                  <p class="type-small text-fg-subtle">[Assistant Coach]</p>
+                  <p class="type-small mt-2 text-fg-muted">[Remove this card if there’s no assistant coach this season.]</p>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!-- 4. Recent highlights: big numbers, like the lettering panels on Resources -->
+          <section class="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm" aria-labelledby="highlights-heading">
+            <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
+              <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
+              <div>
+                <h2 class="type-section" id="highlights-heading">Recent highlights</h2>
+                <p class="type-small text-fg-muted">2025–2026 season</p>
+              </div>
+            </div>
+            <ul class="grid gap-3 p-3 sm:grid-cols-2 md:p-4 lg:grid-cols-4">
+              <li class="rounded-xl border border-line p-4">
+                <p class="type-number text-accent">1st</p>
+                <p class="mt-1 text-[12px] font-semibold md:text-[13px]">Girls · Region 3B</p>
+                <p class="type-small text-fg-subtle">Regional champions</p>
+              </li>
+              <li class="rounded-xl border border-line p-4">
+                <p class="type-number text-accent">3rd</p>
+                <p class="mt-1 text-[12px] font-semibold md:text-[13px]">Girls · VHSL Class 3</p>
+                <p class="type-small text-fg-subtle">State championship</p>
+              </li>
+              <li class="rounded-xl border border-line p-4">
+                <p class="type-number text-accent">15–3</p>
+                <p class="mt-1 text-[12px] font-semibold md:text-[13px]">Girls · dual meets</p>
+                <p class="type-small text-fg-subtle">Regular season record</p>
+              </li>
+              <li class="rounded-xl border border-line p-4">
+                <p class="type-number text-accent">2</p>
+                <p class="mt-1 text-[12px] font-semibold md:text-[13px]">State records</p>
+                <p class="type-small text-fg-subtle">Held by Kettle Run swimmers</p>
+              </li>
+            </ul>
+            <div class="flex flex-wrap gap-x-4 gap-y-2 border-t border-line px-4 py-3 md:px-5">
+              <a href="./results.html" class="type-small font-medium text-accent underline-offset-2 hover:underline">Season results →</a>
+              <a href="./team-records.html" class="type-small font-medium text-accent underline-offset-2 hover:underline">Team records →</a>
+              <a href="./roster.html" class="type-small font-medium text-accent underline-offset-2 hover:underline">Roster →</a>
+            </div>
+          </section>
+
+          <!-- 5. Get involved: three ways in, as link cards (like the 404 page) -->
+          <section class="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm" aria-labelledby="involved-heading">
+            <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
+              <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
+              <div>
+                <h2 class="type-section" id="involved-heading">Get involved</h2>
+                <p class="type-small text-fg-muted">Swimmers, families, and anyone who wants to help</p>
+              </div>
+            </div>
+            <ul class="grid gap-3 p-3 sm:grid-cols-3 md:p-4">
+              <li>
+                <a href="./join.html" class="group block h-full rounded-xl border border-line px-4 py-3 transition-colors hover:border-fg-subtle">
+                  <span class="type-sub flex items-center justify-between">Join the team <span class="text-fg-subtle transition-colors group-hover:text-highlight" aria-hidden="true">→</span></span>
+                  <span class="type-small text-fg-muted">How joining works, forms, and costs</span>
+                </a>
+              </li>
+              <li>
+                <a href="./resources.html#volunteer" class="group block h-full rounded-xl border border-line px-4 py-3 transition-colors hover:border-fg-subtle">
+                  <span class="type-sub flex items-center justify-between">Volunteer <span class="text-fg-subtle transition-colors group-hover:text-highlight" aria-hidden="true">→</span></span>
+                  <span class="type-small text-fg-muted">Help at meets or become an official</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:coachdtr@gmail.com" class="group block h-full rounded-xl border border-line px-4 py-3 transition-colors hover:border-fg-subtle">
+                  <span class="type-sub flex items-center justify-between">Email the coach <span class="text-fg-subtle transition-colors group-hover:text-highlight" aria-hidden="true">→</span></span>
+                  <span class="type-small text-fg-muted">coachdtr@gmail.com</span>
+                </a>
+              </li>
+            </ul>
+          </section>
         </div>
-      </section>
+      </div>
     </main>
 
-    <!-- include: footer.html -->
+    <!-- include: site-footer.html -->
 
-    <script src="./js/mobileMenu.js"></script>
+    <script src="./js/site.js"></script>
   </body>
 </html>
