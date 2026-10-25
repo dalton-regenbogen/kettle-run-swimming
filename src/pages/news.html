@@ -1,23 +1,18 @@
 <!doctype html>
+<!--
+  The News page was removed. Old links and bookmarks to news.html land here and are sent to the home page.
+  - meta refresh with 0 seconds: the browser goes to the new address right away.
+  - rel="canonical": tells search engines the home page is the real address.
+  - The visible link is a fallback in case the browser doesn't follow the refresh.
+-->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KR Swim | News</title>
-    <link rel="stylesheet" href="./css/output.css" />
+    <meta http-equiv="refresh" content="0; url=./index.html" />
+    <link rel="canonical" href="https://kettlerunswim.org/" />
+    <title>Kettle Run Swimming</title>
   </head>
-  <body class="min-h-screen bg-gray-100 text-gray-900">
-    <!-- include: header.html -->
-
-    <!-- Main -->
-    <main class="max-w-6xl md:max-w-10/12 mx-auto px-4 py-12">
-      <div class="bg-grey-100 md:bg-white border border-gray-200 rounded-2xl p-8">
-        
-      </div>
-    </main>
-
-    <!-- include: footer.html -->
-
-    <script src="./js/mobileMenu.js"></script>
+  <body>
+    <p>This page has moved. Go to the <a href="./index.html">Kettle Run Swimming home page</a>.</p>
   </body>
 </html>

@@ -53,7 +53,7 @@ felt out of place on desktop. A full Mon–Sun calendar was also set aside (cram
 
 | Item | Decision |
 | --- | --- |
-| News page | Removed. No replacement for now. |
+| News page | Removed. No replacement for now. `news.html` forwards to the home page. |
 | Notice bar for urgent updates | Not now; revisit if needed. |
 | Past Seasons page | Not needed; season pickers cover archives. |
 | Records PDF and PDF importer script | Removed; `records.json` becomes the single source of truth. |

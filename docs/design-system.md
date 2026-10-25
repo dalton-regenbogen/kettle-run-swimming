@@ -3,7 +3,6 @@
 The visual rules every page follows. Each section is filled in as it's decided.
 
 - **Where it lives in code:** `src/css/input.css` (the `@theme` block, the dark-mode block, and the `type-*` utilities).
-- **See it live:** `style-guide.html` shows every class in the current light/dark mode.
 - **Rebuilt pages** start their `<head>` with `<!-- include: head.html -->` (fonts, stylesheet, shared meta tags)
   and use `<body class="bg-page font-body text-fg antialiased">`.
 
@@ -22,7 +21,7 @@ The visual rules every page follows. Each section is filled in as it's decided.
 
 Each role is one Tailwind class: `type-title`, `type-section`, `type-sub`, `type-number`, `type-body`, `type-table`, `type-small`, `type-label`, `type-nav`, `type-button`. Fonts: `font-body` (Inter), `font-display` (Inter Tight).
 
-Clean and compact, in the spirit of Apple Sports. Chosen on the Records preview (`lab-records.html`).
+Clean and compact, in the spirit of Apple Sports. Chosen on a Records preview page (since removed).
 
 | Role | Phone | Desktop (≥768px) | Weight | Line height | Letter spacing | Font |
 | --- | --- | --- | --- | --- | --- | --- |
