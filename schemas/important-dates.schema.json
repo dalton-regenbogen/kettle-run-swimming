@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Important dates (team events)",
+  "description": "src/assets/data/importantDates.json. Team events only — practices and championship meets are added to the home page automatically.",
+  "type": "object",
+  "required": ["seasonLabel", "items"],
+  "properties": {
+    "seasonLabel": { "type": "string", "pattern": "^\\d{4}-\\d{4}$", "description": "The season, like \"2026-2027\"." },
+    "title": { "type": "string" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["date", "name"],
+        "additionalProperties": false,
+        "properties": {
+          "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$", "description": "Like \"2026-10-22\"." },
+          "name": { "type": "string", "description": "Like \"Swim Team Interest Meeting\". A name with \"interest\" in it also feeds the Join page." },
+          "details": { "type": "string", "description": "Where and when, like \"KRHS Health Room 10:30 AM\"." }
+        }
+      }
+    }
+  }
+}

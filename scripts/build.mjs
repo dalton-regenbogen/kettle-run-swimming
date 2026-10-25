@@ -2,7 +2,8 @@
 //
 //   src/pages/*.html     → dist/*.html          (include comments replaced with partials,
 //                                                current page marked in the nav)
-//   src/assets, src/js   → dist/assets, dist/js (copied unchanged)
+//   src/assets, src/js   → dist/assets, dist/js (copied; the data files you edit are checked
+//                                                and expanded first — see scripts/data.mjs)
 //   src/css/input.css    → dist/css/output.css  (compiled by Tailwind)
 //   CNAME                → dist/CNAME           (keeps the custom domain working)
 //
@@ -12,6 +13,7 @@
 
 import fs from "node:fs";
 import { execSync } from "node:child_process";
+import { Problems, readJson, expandMeets, expandPractices, checkImportantDates } from "./data.mjs";
 
 const SRC = "src";
 const OUT = "dist";
@@ -20,17 +22,55 @@ const minify = process.argv.includes("--minify");
 // Matches comments like <!-- include: header.html --> and captures the file name.
 const INCLUDE = /<!-- include: (.+?) -->/g;
 
-// 1. Start fresh so deleted or renamed pages don't linger in dist/.
+// 1. Check the data files first. If anything is wrong, stop here — before touching dist/ — so the
+//    last good build stays in place and a typo never gets published.
+const problems = new Problems();
+const DATA = `${SRC}/assets/data`;
+const MEETS = `${SRC}/assets/meets`;
+const lookups = {
+  schools: readJson(`${MEETS}/schools.json`, problems) ?? {},
+  pools: readJson(`${MEETS}/pools.json`, problems) ?? {},
+};
+const meetIndex = readJson(`${MEETS}/meets-index.json`, problems);
+const expandedMeets = {}; // file name → expanded season
+for (const { file } of meetIndex?.seasons ?? []) {
+  const path = `${MEETS}/${file}`;
+  if (!fs.existsSync(path)) {
+    problems.add(`${MEETS}/meets-index.json`, "", `lists "${file}", but that file doesn't exist.`);
+    continue;
+  }
+  expandedMeets[file] = expandMeets(readJson(path, problems), lookups, problems, path);
+}
+// Practices on a meet day are turned off automatically, so the practice schedule needs the newest
+// season's meet dates.
+const newestMeets = expandedMeets[meetIndex?.seasons?.[0]?.file]?.meets ?? [];
+const practicePath = `${DATA}/practice-schedule.json`;
+const expandedPractices = expandPractices(readJson(practicePath, problems), new Set(newestMeets.map((m) => m.date)), problems, practicePath);
+checkImportantDates(readJson(`${DATA}/importantDates.json`, problems), problems, `${DATA}/importantDates.json`);
+for (const path of [`${DATA}/season.json`, `${DATA}/records.json`, `${DATA}/records-meta.json`]) readJson(path, problems);
+
+if (problems.list.length) {
+  console.error(`\nThe site wasn't built — please fix ${problems.list.length === 1 ? "this" : `these ${problems.list.length} things`} in your data files:\n`);
+  for (const problem of problems.list) console.error(`  • ${problem}`);
+  console.error("");
+  process.exit(1);
+}
+
+// 2. Start fresh so deleted or renamed pages don't linger in dist/.
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT);
 
-// 2. Copy files that need no changes.
+// 3. Copy files that need no changes, then write the expanded data over the copied originals.
 for (const folder of ["assets", "js"]) {
   fs.cpSync(`${SRC}/${folder}`, `${OUT}/${folder}`, { recursive: true });
 }
 fs.copyFileSync("CNAME", `${OUT}/CNAME`);
+for (const [file, season] of Object.entries(expandedMeets)) {
+  fs.writeFileSync(`${OUT}/assets/meets/${file}`, JSON.stringify(season, null, 2));
+}
+fs.writeFileSync(`${OUT}/assets/data/practice-schedule.json`, JSON.stringify(expandedPractices, null, 2));
 
-// 3. Build each page by swapping include comments for partial files.
+// 4. Build each page by swapping include comments for partial files.
 const pages = fs.readdirSync(`${SRC}/pages`).filter((file) => file.endsWith(".html"));
 
 for (const file of pages) {
@@ -54,7 +94,7 @@ for (const file of pages) {
 }
 console.log(`Built ${pages.length} pages.`);
 
-// 4. Compile the CSS. This runs the same Tailwind command you'd type in the terminal.
+// 5. Compile the CSS. This runs the same Tailwind command you'd type in the terminal.
 execSync(
   `npx tailwindcss -i ${SRC}/css/input.css -o ${OUT}/css/output.css${minify ? " --minify" : ""}`,
   { stdio: "inherit" }, // show Tailwind's output in this terminal

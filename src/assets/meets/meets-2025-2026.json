@@ -4,17 +4,12 @@
   "meets": [
     {
       "date": "2025-12-06",
+      "time": "6:00 PM",
       "type": "Double Dual",
-      "opponents": [
-        { "short": "BDHS", "full": "Brentsville District High School" },
-        { "short": "SHS", "full": "Sherando High School" }
-      ],
+      "opponents": ["BDHS", "SHS"],
       "homeAway": "Away",
-      "hostSchool": "Brentsville",
-      "location": "PWAC",
-      "locationFull": "Prince William Aquatic Center",
-      "startTime": "18:00",
-      "seasonDesignation": "Regular Season",
+      "host": "Brentsville",
+      "pool": "PWAC",
       "results": {
         "pdf": "https://drive.google.com/file/d/1oWQ1uB0nyT3YHvgDV9jr17bnQvRDN355/view?usp=sharing",
         "boys": {
@@ -33,17 +28,12 @@
     },
     {
       "date": "2025-12-09",
+      "time": "7:00 PM",
       "type": "Double Dual",
-      "opponents": [
-        { "short": "MBHS", "full": "Millbrook High School" },
-        { "short": "JHHS", "full": "John Handley High School" }
-      ],
+      "opponents": ["MBHS", "JHHS"],
       "homeAway": "Away",
-      "hostSchool": "Millbrook",
-      "location": "JBP",
-      "locationFull": "Jim Barnett Park",
-      "startTime": "19:00",
-      "seasonDesignation": "Regular Season",
+      "host": "Millbrook",
+      "pool": "JBP",
       "results": {
         "pdf": "https://drive.google.com/file/d/1EYrpQ4DkM1AROQQrLqDdzCvbJGGK3z-u/view?usp=share_link",
         "boys": {
@@ -62,17 +52,12 @@
     },
     {
       "date": "2025-12-20",
+      "time": "6:00 PM",
       "type": "Double Dual",
-      "opponents": [
-        { "short": "FHS", "full": "Fauquier High School" },
-        { "short": "LHS", "full": "Liberty High School" }
-      ],
+      "opponents": ["FHS", "LHS"],
       "homeAway": "Away",
-      "hostSchool": "Liberty",
-      "location": "WARF",
-      "locationFull": "Warrenton Aquatic Center",
-      "startTime": "18:00",
-      "seasonDesignation": "Regular Season",
+      "host": "Liberty",
+      "pool": "WARF",
       "results": {
         "pdf": "https://drive.google.com/file/d/17DJV-0o_q6dwO9wtcD4lTPsTaVcBBNh-/view?usp=sharing",
         "boys": {
@@ -91,17 +76,12 @@
     },
     {
       "date": "2026-01-03",
+      "time": "6:00 PM",
       "type": "Double Dual",
-      "opponents": [
-        { "short": "JWHS", "full": "James Wood High School" },
-        { "short": "SHS", "full": "Sherando High School" }
-      ],
+      "opponents": ["JWHS", "SHS"],
       "homeAway": "Home",
-      "hostSchool": "Kettle Run",
-      "location": "WARF",
-      "locationFull": "Warrenton Aquatic Center",
-      "startTime": "18:00",
-      "seasonDesignation": "Regular Season",
+      "host": "Kettle Run",
+      "pool": "WARF",
       "results": {
         "pdf": "https://drive.google.com/file/d/1CI8e3eZJbnpgSpUcN6W3pZa9BGbDEtBY/view?usp=share_link",
         "boys": {
@@ -120,18 +100,12 @@
     },
     {
       "date": "2026-01-09",
+      "time": "7:00 PM",
       "type": "Triple Dual",
-      "opponents": [
-        { "short": "BDHS", "full": "Brentsville District High School" },
-        { "short": "FHS", "full": "Fauquier High School" },
-        { "short": "LHS", "full": "Liberty High School" }
-      ],
+      "opponents": ["BDHS", "FHS", "LHS"],
       "homeAway": "Home",
-      "hostSchool": "Kettle Run",
-      "location": "WARF",
-      "locationFull": "Warrenton Aquatic Center",
-      "startTime": "19:00",
-      "seasonDesignation": "Regular Season",
+      "host": "Kettle Run",
+      "pool": "WARF",
       "results": {
         "pdf": "https://drive.google.com/file/d/1l5qky4N3OLyMzNyh9pLFQY7YzHaSEZ1c/view?usp=sharing",
         "boys": {
@@ -152,17 +126,12 @@
     },
     {
       "date": "2026-01-16",
+      "time": "7:00 PM",
       "type": "Double Dual",
-      "opponents": [
-        { "short": "MPHS", "full": "Manassas Park High School" },
-        { "short": "SHS", "full": "Sherando High School" }
-      ],
+      "opponents": ["MPHS", "SHS"],
       "homeAway": "Away",
-      "hostSchool": "Manassas Park",
-      "location": "MPCC",
-      "locationFull": "Manassas Park Community Center",
-      "startTime": "19:00",
-      "seasonDesignation": "Regular Season",
+      "host": "Manassas Park",
+      "pool": "MPCC",
       "results": {
         "pdf": "https://drive.google.com/file/d/1NvBthvEJ46lJeGOqatm_ZleMGR6oLit4/view?usp=sharing",
         "boys": {
@@ -181,20 +150,12 @@
     },
     {
       "date": "2026-01-23",
+      "time": "6:00 PM",
       "type": "Multi-team Dual",
-      "opponents": [
-        { "short": "BDHS", "full": "Brentsville District High School" },
-        { "short": "FHS", "full": "Fauquier High School" },
-        { "short": "LHS", "full": "Liberty High School" },
-        { "short": "MPHS", "full": "Manassas Park High School" },
-        { "short": "MHS", "full": "Meridian High School" }
-      ],
+      "opponents": ["BDHS", "FHS", "LHS", "MPHS", "MHS"],
       "homeAway": "Away",
-      "hostSchool": "Liberty",
-      "location": "WARF",
-      "locationFull": "Warrenton Aquatic Center",
-      "startTime": "18:00",
-      "seasonDesignation": "Regular Season",
+      "host": "Liberty",
+      "pool": "WARF",
       "results": {
         "pdf": "https://drive.google.com/file/d/169bWF4cnRBPfdfB9tNQkm_8dek5NIfni/view?usp=sharing",
         "boys": {
@@ -219,31 +180,23 @@
     },
     {
       "date": "2026-01-30",
+      "time": "11:00 AM",
       "type": "District Championship",
-      "status": "canceled",
-      "statusNote": "Weather",
-      "opponents": [
-        { "short": "Northwestern District", "full": "Northwestern District Schools" }
-      ],
+      "opponents": ["Northwestern District"],
       "homeAway": "Neutral",
-      "hostSchool": "Brentsville",
-      "location": "PWAC",
-      "locationFull": "Prince William Aquatic Center",
-      "startTime": "11:00",
-      "seasonDesignation": "Post Season"
+      "host": "Brentsville",
+      "pool": "PWAC",
+      "status": "canceled",
+      "statusNote": "Weather"
     },
     {
       "date": "2026-02-07",
+      "time": "2:00 PM",
       "type": "Regional Championship",
-      "opponents": [
-        { "short": "Class 3 Region B", "full": "Class 3 Region B Schools" }
-      ],
+      "opponents": ["Class 3 Region B"],
       "homeAway": "Neutral",
-      "hostSchool": "Maggie L. Walker",
-      "location": "CSAC",
-      "locationFull": "Collegiate School Aquatic Center",
-      "startTime": "14:00",
-      "seasonDesignation": "Post Season",
+      "host": "Maggie L. Walker",
+      "pool": "CSAC",
       "results": {
         "pdf": "https://drive.google.com/file/d/1reL1tOo4HGODvqMaVKiBwRWxrScCYJKx/view?usp=sharing",
         "boys": {
@@ -258,16 +211,12 @@
     },
     {
       "date": "2026-02-19",
+      "time": "9:00 AM",
       "type": "State Championship",
-      "opponents": [
-        { "short": "VHSL Class 3", "full": "VHSL Class 3 Schools" }
-      ],
+      "opponents": ["VHSL Class 3"],
       "homeAway": "Neutral",
-      "hostSchool": "Maggie L. Walker",
-      "location": "CSAC",
-      "locationFull": "Collegiate School Aquatic Center",
-      "startTime": "9:00",
-      "seasonDesignation": "Post Season",
+      "host": "Maggie L. Walker",
+      "pool": "CSAC",
       "results": {
         "pdf": "",
         "boys": {

@@ -1,3 +1,12 @@
 {
-  "liveServer.settings.root": "/dist"
+  "liveServer.settings.root": "/dist",
+
+  // Data-file checking: VS Code reads these schemas (in schemas/) to suggest fields as you type,
+  // show what each field means on hover, and underline mistakes in red.
+  "json.schemas": [
+    { "fileMatch": ["src/assets/meets/meets-*.json", "!src/assets/meets/meets-index.json"], "url": "./schemas/meets.schema.json" },
+    { "fileMatch": ["src/assets/data/practice-schedule.json"], "url": "./schemas/practice-schedule.schema.json" },
+    { "fileMatch": ["src/assets/data/importantDates.json"], "url": "./schemas/important-dates.schema.json" },
+    { "fileMatch": ["src/assets/meets/schools.json", "src/assets/meets/pools.json"], "url": "./schemas/code-list.schema.json" }
+  ]
 }

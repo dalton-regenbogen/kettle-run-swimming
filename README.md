@@ -35,8 +35,10 @@ archive/             old experiments and notes, kept for reference (not publishe
 
 `npm run build` (and every rebuild during `npm run dev`) runs `scripts/build.mjs`, which:
 
-1. Empties `dist/`.
-2. Copies `src/assets/` and `src/js/` into `dist/` unchanged, plus `CNAME` (the custom domain).
+1. Checks the data files you edit (meets, practices, important dates…). If anything is wrong it stops here and
+   lists the problems, leaving the last good `dist/` alone.
+2. Empties `dist/`, copies `src/assets/` and `src/js/` into it, plus `CNAME` (the custom domain), and writes the
+   expanded meet and practice data over the copied files (see `scripts/data.mjs`).
 3. Reads each page in `src/pages/`, replaces every include comment with the matching partial file, and writes the finished page to `dist/`.
 4. Runs Tailwind to turn `src/css/input.css` into `dist/css/output.css`.
 
@@ -82,29 +84,92 @@ site root. Other pages don't need this.
 
 ## Updating content
 
-Most frequently changed information lives in JSON files under `src/assets/data/` and `src/assets/rosters/`. Edit the file, save, and the dev build picks it up.
+Most frequently changed information lives in JSON files under `src/assets/`. Edit the file, save, and the dev
+build picks it up. The files you edit are kept short; the build fills in the rest (see `scripts/data.mjs`).
 
-- **Team records:** edit `src/assets/data/records.json`, then run `npm run records:meta`. To tag a record, put
-  short text in its `RecordBadge` (e.g. `"State Record"`); leave it `""` for no tag.
-- **Meets and results:** one file per season in `src/assets/meets/` (e.g. `meets-2025-2026.json`), listed newest
-  first in `meets-index.json`. The Meet Schedule page shows the newest season; the Results page has a season picker.
-  - Times are 24-hour (`"18:00"` shows as 6:00 PM). Update `"updated"` to today's date after schedule changes.
-  - A meet that isn't happening: add `"status": "canceled"` and an optional `"statusNote": "Weather"`.
-  - After a meet, add its `"results"`: for a dual meet, each opponent's score as
-    `{ "vs": "BDHS", "us": 90, "them": 130 }` (`vs` is the opponent's `short` name, `us` is Kettle Run); for a
-    championship, `"place"` and an optional `"standings"` list of team names. `"pdf"` is the full-results link
-    (or `""`). See any meet in `meets-2025-2026.json` for the exact shape. The season summary (record, win %,
-    streak, postseason places) is counted from these automatically.
-  - New season: copy the file, rename it (`meets-2026-2027.json`), replace the meets, remove the results, and list
-    it first in `meets-index.json`.
-- **Practice:** `src/assets/data/practice-schedule.json`. Each practice has a `status`: `"normal"` shows
-  "Regular practice" under the date, `"off"` crosses the date out and shows "No practice". (The `note` field is
-  kept in the data but not shown.) The "Standard practice schedule" line is worked out from the practices.
+### Two safety nets
+
+1. **While you type (VS Code):** the files below have a *schema* in `schemas/` — a description of what the file
+   should contain. VS Code uses it to suggest field names as you type (Ctrl+Space shows the choices), explain a
+   field when you hover over it, and underline mistakes in red. It's switched on in `.vscode/settings.json`.
+2. **When the site builds:** the build checks the data before it touches `dist/`. If something's wrong it stops
+   and lists every problem in plain English, for example
+
+   ```
+   The site wasn't built — please fix these 2 things in your data files:
+     • src/assets/meets/meets-2026-2027.json, meet 3 (2026-12-12): "homeAway" must be Home, Away, or Neutral (got "away").
+     • src/assets/data/practice-schedule.json, line 4: isn't valid JSON (…). Look for a missing or extra comma or quote.
+   ```
+
+   The last good version of the site stays in place, so a typo is never published.
+
+### Meets and results — `src/assets/meets/`
+
+One file per season (e.g. `meets-2026-2027.json`), listed newest first in `meets-index.json`. The Meet Schedule
+page shows the newest season; the Results page has a season picker. Each meet:
+
+```json
+{
+  "date": "2026-12-05",
+  "time": "6:00 PM",
+  "type": "Double Dual",
+  "opponents": ["BDHS", "SHS"],
+  "homeAway": "Away",
+  "host": "Brentsville",
+  "pool": "PWAC"
+}
+```
+
+- **Codes:** `opponents` use the school codes in `schools.json`, and `pool` uses the codes in `pools.json`. The site
+  shows the full names from those lists. A new school or pool: add one line to the list.
+  Championships list the meet's field instead (e.g. `["Northwestern District"]`), and any `type` with
+  "Championship" in it counts as postseason.
+- **Home meets:** `host` can be left out (it becomes "Kettle Run").
+- **Not happening:** add `"status": "canceled"` (or `"postponed"`) and an optional `"statusNote": "Weather"`.
+- **After a meet:** add `"results"`. Dual meet: one score per opponent, `{ "vs": "BDHS", "us": 90, "them": 130 }`
+  (`us` is Kettle Run). Championship: `"place": 6` and an optional `"standings"` list of team names. `"pdf"` is the
+  full-results link (or `""`). See `meets-2025-2026.json` for examples. The season summary (record, win %, streak,
+  postseason places) is counted from these automatically.
+- Change `"updated"` to today's date after schedule changes.
+- **New season:** create `meets-2026-2027.json` with `"season"`, `"updated"`, and `"meets"`, and list it first in
+  `meets-index.json`. Last season's file stays, so its results stay on the Results page.
+
+### Practices — `src/assets/data/practice-schedule.json`
+
+Written as rules, not every day:
+
+```json
+{
+  "season": "2026-2027",
+  "updated": "2026-10-25",
+  "first": "2026-11-09",
+  "last": "2027-02-18",
+  "days": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+  "time": "3:30-4:30 PM",
+  "location": "WARF",
+  "changes": [
+    { "date": "2026-11-25", "through": "2026-11-26", "off": true, "note": "Thanksgiving break" },
+    { "date": "2027-01-12", "time": "5:00-6:00 PM" }
+  ]
+}
+```
+
+- Every listed weekday from `first` through `last` is a practice.
+- `changes` lists the exceptions: a day (or a range with `through`) that's `"off"`, or at a different `time` or
+  `location`. `note` is just a reminder for you.
+- **Meet days are automatic:** a meet on a practice day turns that practice off.
+- The Practices page's "Standard practice schedule" line comes from these.
+
+### Everything else
+
 - **Up next dates (home page):** `src/assets/data/importantDates.json` holds **team events** only — interest
   meeting, team pictures, parent meeting, senior night, banquet — as `{ "date", "name", "details" }`. The first and
-  last practice and the championship meets are added automatically from the practice and meet files (if you list
-  something on the same day, yours wins). Meets show with an orange date block, everything else green. Replace the
-  list when the new season's dates are set; until then the home page says they're coming soon.
+  last practice and the championship meets are added automatically (if you list something on the same day, yours
+  wins). A name with "interest" in it also shows on the Join page. Replace the list each season.
+- **This season's links:** `src/assets/data/season.json` — form links, apparel store, state qualifying times,
+  officials info, an optional handbook PDF, and the fundraiser. `""` means "not ready yet".
+- **Team records:** edit `src/assets/data/records.json`, then run `npm run records:meta`. To tag a record, put
+  short text in its `RecordBadge` (e.g. `"State Record"`); leave it `""` for no tag.
 - **Roster:** each season is a file in `src/assets/rosters/` (e.g. `roster-2025-2026.json`). Add a new season's
   file and list it first in `roster-index.json`; the newest season shows by default. Put `"Captain"` in a
   swimmer's `roles` to show the Captain badge.
