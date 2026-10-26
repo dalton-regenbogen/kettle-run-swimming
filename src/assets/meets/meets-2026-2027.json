@@ -1,0 +1,95 @@
+{"season": "2026-2027",
+  "updated": "2026-10-25",
+  "meets": [
+    {
+      "date": "2026-12-04",
+      "time": "6:00 PM",
+      "type": "Triple Dual",
+      "opponents": ["BDHS", "LHS", "MHS"],
+      "homeAway": "Away",
+      "host": "Brentsville",
+      "pool": "PWAC"
+    },
+    {
+      "date": "2026-12-08",
+      "time": "7:00 PM",
+      "type": "Single Dual",
+      "opponents": ["SHS"],
+      "homeAway": "Away",
+      "host": "Sherando",
+      "pool": "WAC"
+    },
+    {
+      "date": "2026-12-12",
+      "time": "9:00 AM",
+      "type": "Double Dual",
+      "opponents": ["JWHS", "MBHS"],
+      "homeAway": "Away",
+      "host": "James Wood",
+      "pool": "WAC"
+    },
+    {
+      "date": "2026-12-18",
+      "time": "7:00 PM",
+      "type": "Double Dual",
+      "opponents": ["FHS", "MBHS"],
+      "homeAway": "Away",
+      "host": "Fauquier",
+      "pool": "WARF"
+    },
+    {
+      "date": "2027-01-08",
+      "time": "7:00 PM",
+      "type": "Single Dual",
+      "opponents": ["MHS"],
+      "homeAway": "Away",
+      "host": "Meridian",
+      "pool": "WARF"
+    },
+    {
+      "date": "2027-01-16",
+      "time": "6:00 PM",
+      "type": "Double Dual",
+      "opponents": ["FHS", "LHS"],
+      "homeAway": "Home",
+      "host": "Kettle Run",
+      "pool": "WARF"
+    },
+    {
+      "date": "2027-01-23",
+      "time": "6:00 PM",
+      "type": "Triple Dual",
+      "opponents": ["FHS", "SHS", "JHHS"],
+      "homeAway": "Home",
+      "host": "Kettle Run",
+      "pool": "WARF"
+    },
+    {
+      "date": "2027-01-29",
+      "time": "11:00 AM",
+      "type": "District Championship",
+      "opponents": ["Northwestern District"],
+      "homeAway": "Neutral",
+      "host": "Brentsville",
+      "pool": "PWAC"
+    },
+    {
+      "date": "2027-02-06",
+      "time": "1:00 PM",
+      "type": "Regional Championship",
+      "opponents": ["Class 3 Region B"],
+      "homeAway": "Neutral",
+      "host": "Maggie L. Walker",
+      "pool": "CSAC"
+    },
+    {
+      "date": "2027-02-17",
+      "time": "9:00 AM",
+      "type": "State Championship",
+      "opponents": ["VHSL Class 3"],
+      "homeAway": "Neutral",
+      "host": "Maggie L. Walker",
+      "pool": "CSAC"
+    }
+  ]
+}
