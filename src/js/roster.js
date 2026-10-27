@@ -98,7 +98,10 @@ function render() {
     .sort((a, b) => (a.last ?? "").localeCompare(b.last ?? "") || (a.first ?? "").localeCompare(b.first ?? ""));
 
   if (athletes.length === 0) {
-    showMessage("No swimmers listed.");
+    // A season with no swimmers yet (the roster is set after the first week of practice), or a
+    // Boys/Girls filter with nobody in it.
+    const notPosted = state.athletes.length === 0 && state.season;
+    showMessage(notPosted ? `The ${seasonText(state.season)} roster will be posted after the first week of practice.` : "No swimmers listed.");
     return;
   }
   tbody.replaceChildren(...athletes.map(athleteRow));
@@ -111,6 +114,7 @@ async function loadSeason(file) {
     if (request !== latestRequest) return; // a newer season was picked meanwhile
 
     state.athletes = data.athletes ?? [];
+    state.season = data.season;
     document.getElementById("roster-season").textContent = data.season ? `(${seasonText(data.season)})` : "";
     document.getElementById("roster-updated").textContent = data.updated ? `Last updated ${formatDate(data.updated)}` : "";
     render();

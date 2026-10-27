@@ -145,19 +145,37 @@ const dateLine = (iso) => mainLine(`${weekday(iso)}, ${formatDate(iso)}`, "font-
 
 // Preseason: how to join, as three steps. Dates come from the season's data:
 //   1. the interest meeting (a team event in importantDates.json with "interest" in its name)
-//   2. forms (text; details on the Join page)
-//   3. the first practice (from the practice schedule)
-function joinCard(season, items, today) {
+//   2. forms: where each one goes
+//   3. the first week of practice (from the practice schedule): dates, time, place, and the forms deadline
+//      (the last practice day of week 1)
+function joinCard(season, items, today, practiceWeeks) {
   const interest = items.find((item) => /interest/i.test(item.name) && item.date >= today);
-  const first = items.find((item) => /first practice/i.test(item.name));
-  const step = (when, details) => (when ? [dateLine(when), ...(details ? [grayLine(details)] : [])] : [grayLine("Date to be announced")]);
+  const firstWeek = (practiceWeeks[0]?.practices ?? []).filter((p) => p.status !== "off");
+  const [start, end] = [firstWeek[0], firstWeek.at(-1)];
+
+  const interestLines = interest
+    ? [dateLine(interest.date), ...(interest.details ? [grayLine(interest.details.replace(/\.$/, ""))] : [])]
+    : [grayLine("Date to be announced")];
+  const formsLines = [
+    mainLine("Turn in four forms", "font-medium"), // medium, like the first line of the other two steps
+    grayLine("Physical, concussion, and acknowledgement: Coach Dalton or the KRHS athletic department"),
+    grayLine("Swim team contact form: Coach Dalton, in person or by email"),
+  ];
+  const weekLines = start
+    ? [
+        mainLine(`${weekday(start.date)}, ${formatDate(start.date)} – ${weekday(end.date)}, ${formatDate(end.date)}`, "font-medium tabular-nums"),
+        grayLine(`${dash(start.time)} @ ${start.location}`),
+        grayLine(`Official intent to join · forms due by ${weekday(end.date)}, ${formatDate(end.date)}`),
+      ]
+    : [grayLine("Dates to be announced")];
+
   return sectionCard(
     "Join the team",
     `${season} season · how to join`,
     threeBlocks(
-      block("1 · Interest meeting", step(interest?.date, interest?.details?.replace(/\.$/, ""))),
-      block("2 · Forms", [mainLine("Turn in the required forms"), grayLine("Before the first practice")], arrowLink("Forms and tryout info", "./join.html#forms-heading")),
-      block("3 · First practice", step(first?.date, first?.details?.replace(/\.$/, ""))),
+      block("1 · Interest meeting", interestLines),
+      block("2 · Forms", formsLines, arrowLink("See the forms", "./join.html#forms-heading")),
+      block("3 · First week", weekLines, arrowLink("How joining works", "./join.html")),
     ),
   );
 }
@@ -364,7 +382,7 @@ function drawSections(state) {
   let now;
   if (phase === "season") now = thisWeekCard(today, meets, practiceWeeks);
   else if (phase === "offseason") now = recapCard(dash(season.season), meets);
-  else now = joinCard(schoolYear(today), items, today);
+  else now = joinCard(schoolYear(today), items, today, practiceWeeks);
   document.getElementById("home-sections").replaceChildren(now, upNextCard(items, today, dash(dates.seasonLabel)));
 }
 
