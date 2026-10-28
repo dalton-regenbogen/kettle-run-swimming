@@ -203,4 +203,32 @@ about 150–300 KB. Then add an `<img data-slide …>` line for it in the carous
 
 ## Publishing
 
-The live site is currently published by GitHub Pages straight from the `main` branch. This `rebuild` branch is not live. Before it goes live, publishing will switch to a GitHub Actions workflow that runs `npm run build` and publishes `dist/`.
+Every push to `main` publishes the site. A GitHub Actions workflow (`.github/workflows/deploy.yml`) does what you
+would do locally (`npm ci`, then `npm run build`) and hands `dist/` to GitHub Pages. The new version is live at
+kettlerunswim.org about a minute after the push.
+
+### Making a change
+
+1. **Get the latest version:** `git pull`. Only needed if something changed elsewhere (an edit on github.com or
+   another computer), but harmless every time.
+2. **Preview while you edit:** `npm run dev`, and open the site with Live Server. Edit files in `src/` only. If a data
+   file has a mistake, the terminal says so; fix it before moving on.
+3. **Check what changed:** `git status` lists the changed files; `git diff` shows the exact lines.
+4. **Commit:** `git add -A`, then `git commit -m "Short note about what changed"`.
+5. **Publish:** `git push`.
+6. **Confirm:** in the repo's **Actions** tab, a "Deploy site" run with a green ✓ means it's live. Hard refresh
+   (Cmd+Shift+R) if you still see the old version.
+
+VS Code's Source Control panel (the branch icon in the sidebar) can do steps 3–5 with buttons: review the changed
+files, type a message, click **Commit**, then **Sync Changes**.
+
+### If something goes wrong
+
+- **Red ✗ in the Actions tab:** the build stopped and the live site didn't change. Click the run to read the error,
+  fix it, then commit and push again.
+- **Published something you regret:** `git revert HEAD`, then `git push`. This adds a commit that undoes the last one.
+
+### One-time setup (already done)
+
+Repo Settings → Pages → Source is set to **GitHub Actions**, and the custom domain is set to kettlerunswim.org. The
+`CNAME` file is copied into `dist/` by the build.
