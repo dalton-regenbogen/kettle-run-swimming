@@ -1,0 +1,52 @@
+# Builds the site and publishes it to GitHub Pages.
+#
+# Runs every time something is pushed to main (and from the Actions tab
+# with "Run workflow"). It does the same thing you do locally:
+#   npm ci         → install the exact packages in package-lock.json
+#   npm run build  → src/ → dist/ (stops here if the data checks fail)
+# then hands dist/ to GitHub Pages.
+#
+# One-time setup: repo Settings → Pages → Source: "GitHub Actions".
+
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# What this workflow is allowed to do: read the repo and publish to Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# If two pushes happen close together, finish one deploy before the next.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
