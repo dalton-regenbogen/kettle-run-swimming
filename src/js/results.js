@@ -71,11 +71,11 @@ function postseasonLabel(meet) {
   return short[meet.type] ?? meet.type;
 }
 
-// "6th", "Canceled", or "—" (not swum yet)
+// "6th", "Canceled", or "–" (not swum yet)
 function postseasonPlace(meet, team) {
   if (meet.status) return meet.status.charAt(0).toUpperCase() + meet.status.slice(1);
   const place = meet.results?.[team]?.place;
-  return place ? ordinal(place) : "—";
+  return place ? ordinal(place) : "–";
 }
 
 // Everything the summary shows for one team, counted from the dual-meet scores.
@@ -92,8 +92,8 @@ function teamSummary(meets, team) {
 
   return {
     record: ties ? `${wins}–${losses}–${ties}` : `${wins}–${losses}`,
-    winPct: outcomes.length ? `${Math.round((wins / outcomes.length) * 100)}%` : "—",
-    streak: last ? `${streakWord} ${streak}` : "—",
+    winPct: outcomes.length ? `${Math.round((wins / outcomes.length) * 100)}%` : "–",
+    streak: last ? `${streakWord} ${streak}` : "–",
   };
 }
 
@@ -294,7 +294,7 @@ function toggleButton(card, closedText, openText) {
 // One team's panel: "BOYS" over two lines.
 //   dual meet:     the first result, then "+2 more" (the rest appear when the card is open)
 //   championship:  "6th of 10", then "Show standings"
-//   no results:    "Canceled" over "Weather", or "—" over "After the meet"
+//   no results:    "Canceled" over "Weather", or "–" over "After the meet"
 function teamPanel(meet, team, label, card) {
   // Centered on phones and tablets (like the original page), left-aligned on laptops and up.
   const panel = el("div", "rounded-lg border border-line px-2.5 py-2 text-center lg:text-left");
@@ -328,7 +328,7 @@ function teamPanel(meet, team, label, card) {
       body.append(second("Team place"));
     }
   } else {
-    body.append(el("div", "font-medium text-fg-subtle", "—"), second("After the meet"));
+    body.append(el("div", "font-medium text-fg-subtle", "–"), second("After the meet"));
   }
   panel.append(body);
   return panel;

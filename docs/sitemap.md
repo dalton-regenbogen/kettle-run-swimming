@@ -34,12 +34,15 @@ felt out of place on desktop. A full Mon–Sun calendar was also set aside (cram
 | Results | Season summary (dual record, win %, streak, postseason places), dual-meet scores by opponent, championship places with full standings, PDF links; season picker. Shares the season files in `src/assets/meets/` with Meets. | Built (`results.html`; `2025-2026-results.html` forwards here) |
 | Roster | Team members by season, with All/Boys/Girls filter and season picker. No PDF. | Built |
 | Records | All-time team bests. Web page only — no PDF download. | Built |
-| Join | For prospective families (Sep–Nov). How joining works (first week of practice is the evaluation), steps and timeline, the 4 required forms, two ways to be on the team (VHSL-primary vs. USA Swimming), high school vs. summer league vs. club, costs and gear, practice basics, FAQ. | Built — first draft (`join.html`) |
-| About | For anyone. Our program (story + quick facts), what we value, coaches, recent highlights, get involved (Join, Volunteer, Email). Placeholders in [brackets] for the coach bio and assistant coach. | Built — first draft (`about.html`) |
-| Resources | For current families. One page with in-page sections: Swim meets 101 (how our meets are scored, order of events, entry limits, what to bring, postseason + state qualifying times), Volunteering & officiating, Team policies (attendance, lettering, conduct), Forms & eligibility, Apparel & gear, Fundraiser. Big sections can split into their own pages later. | Built — first draft (`resources.html`) |
+| Join | **"How do I get on the team?"** For prospective families (Sep–Nov). How joining works (first week is the tryout) beside the 4 steps, the 4 required forms, two ways to be on the team (VHSL-primary vs. USA Swimming), costs, getting to practice, short FAQ. | Built (`join.html`) |
+| About | **"Who is this team, and how does it run?"** Our program (story + quick facts), coach, how we run (values, attendance, lettering, daily expectations), recent highlights, get involved. Side contents list like Resources. | Built (`about.html`) |
+| Resources | **"Where's the thing I need right now?"** For current families: Swim meets 101, volunteering & officiating, forms (links), apparel & gear, levels of swimming (HS vs. summer vs. club), fundraiser. Side contents list. | Built (`resources.html`) |
 | 404 | "Page not found" with links back to main pages. | Built (`src/pages/404.html`) |
 
 ## Content decisions (Join, About, Resources)
+
+- Each page answers one question (see the table above); content lives on the page whose question it answers.
+  Join links to About for the full attendance/lettering rules and to Resources for apparel and the levels table.
 
 - Source: the season handbook, rewritten as web pages. No handbook PDF unless the coach adds one later
   (optional link in the season settings file).

@@ -213,7 +213,7 @@ function thisWeekCard(today, meets, practiceWeeks) {
     resultLines = [dateLine(latest.date), mainLine(latest.type, "mb-1")];
     for (const { key, label } of TEAMS) {
       const result = latest.results[key];
-      let value = "—";
+      let value = "–";
       if (result?.scores) {
         const wins = result.scores.filter((s) => outcome(s) === "W").length;
         const losses = result.scores.length - wins;
@@ -270,7 +270,7 @@ function recapCard(season, meets) {
       const line = el("p");
       if (meet.status) line.append(el("span", "text-fg-subtle", `${short(meet)} ${meet.status}`));
       else if (place) line.append(el("span", "font-medium tabular-nums", ordinal(place)), el("span", "text-fg-muted", ` at ${short(meet)}`));
-      else line.append(el("span", "text-fg-subtle", `${short(meet)}: —`));
+      else line.append(el("span", "text-fg-subtle", `${short(meet)}: –`));
       post.append(line);
     }
     panel.append(post);
