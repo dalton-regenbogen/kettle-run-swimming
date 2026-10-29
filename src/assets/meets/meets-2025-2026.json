@@ -218,14 +218,74 @@
       "host": "Maggie L. Walker",
       "pool": "CSAC",
       "results": {
-        "pdf": "",
+        "pdf": "https://drive.google.com/file/d/1-UaMYlpMDGe2PN0XRT3WJNH-dZhklHyK/view?usp=sharing",
         "boys": {
           "place": 15,
-          "standings": []
+          "standings": [
+            "Western Albemarle",
+            "Maggie Walker Govern School",
+            "Monticello",
+            "Goochland",
+            "Liberty Christian Academy",
+            "Meridian",
+            "Brentsville",
+            "Tabb",
+            "Fauquier",
+            "Christiansburg",
+            "York",
+            "Rockbridge County",
+            "Rocktown",
+            "New Kent",
+            "Kettle Run",
+            "Colonial Heights",
+            "Lord Botetourt",
+            "Carroll County",
+            "Rustburg",
+            "Fluvanna County",
+            "Wilson Memorial",
+            "William Byrd",
+            "Heritage",
+            "Staunton River",
+            "Waynesboro",
+            "William Monroe",
+            "Cave Spring",
+            "Manassas Park",
+            "Hidden Valley",
+            "Abingdon",
+            "Spotswood"
+          ]
         },
         "girls": {
           "place": 3,
-          "standings": []
+          "standings":
+          [
+            "Western Albemarle",
+            "Monticello",
+            "Kettle Run",
+            "Maggie Walker Govern School",
+            "Tabb",
+            "Cave Spring",
+            "Hidden Valley",
+            "Goochland",
+            "Christiansburg",
+            "Fauquier",
+            "William Byrd",
+            "Fluvanna County",
+            "Lord Botetourt",
+            "York",
+            "Meridian",
+            "Brentsville",
+            "Brookville",
+            "Abingdon",
+            "East Rockingham",
+            "Colonial Heights",
+            "James Monroe",
+            "Turner Ashby",
+            "Liberty Christian Academy",
+            "Heritage",
+            "New Kent",
+            "William Monroe"
+          ]
         }
       }
     }
