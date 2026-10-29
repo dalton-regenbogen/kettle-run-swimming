@@ -4,13 +4,15 @@
     { "name": "VHSL Physical", "note": "Turn in to Coach Dalton or the KRHS athletic department", "url": "https://www.vhsl.org/vhsl-physical-form/" },
     { "name": "FCPS Acknowledgement", "note": "Turn in to Coach Dalton or the KRHS athletic department", "url": "https://drive.google.com/file/d/1fVoD1XEEC6zPN2yHFoRIGWdOKmAL6Qqb/view?usp=share_link" },
     { "name": "FCPS Concussion", "note": "Turn in to Coach Dalton or the KRHS athletic department", "url": "https://drive.google.com/file/d/1a25L5rpXpxRcOVXJz9uJguI3sON3yE6l/view?usp=share_link" },
-    { "name": "Swim Team Contact Form", "note": "Declares official intent to join the team · turn in to Coach Dalton, in person or by email", "url": "https://drive.google.com/file/d/1MnuSbXxYR40f3FlI6oxF1NKbTrgVuA3B/view?usp=share_link" }
+    { "name": "Swim Team Contact Form", "note": "Declares official intent to join the team. Turn in to Coach Dalton, in person or by email", "url": "https://drive.google.com/file/d/1MnuSbXxYR40f3FlI6oxF1NKbTrgVuA3B/view?usp=share_link" }
+  ],
+  "documents": [
+    { "name": "Team handbook", "note": "Team policies, expectations, and lettering", "url": "" },
+    { "name": "State qualifying times", "note": "VHSL times that qualify a swimmer for States", "url": "https://drive.google.com/file/d/12g3Hy-SIU6Tv7U_v6pWqNJoRexcgHSkn/view" }
   ],
   "links": {
     "apparelStore": "",
-    "stateQualifyingTimes": "https://drive.google.com/file/d/12g3Hy-SIU6Tv7U_v6pWqNJoRexcgHSkn/view",
-    "officialsInfo": "",
-    "handbookPdf": ""
+    "officialsInfo": ""
   },
   "fundraiser": {
     "title": "",

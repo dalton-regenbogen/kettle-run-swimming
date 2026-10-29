@@ -3,7 +3,7 @@
   <head>
     <!-- include: head.html -->
     <title>About | Kettle Run Swimming</title>
-    <meta name="description" content="About the Kettle Run High School swim team: our program, what a season looks like, our coach, and how the team runs (values, attendance, lettering, and expectations)." />
+    <meta name="description" content="About the Kettle Run High School swim team: our program, what a season looks like, our coach, and how the team runs (values, athletes, and expectations)." />
   </head>
   <body class="flex min-h-dvh flex-col bg-page font-body text-fg antialiased">
     <!-- include: site-header.html -->
@@ -28,13 +28,18 @@
         </section>
 
         <div class="grid gap-6 md:gap-8">
-          <!-- ===== 1. Our program: the story on the left, quick facts on the right (stacked on phones) ===== -->
+          <!--
+            ===== 1. Our program =====
+            Desktop: the story on the left, quick facts on the right as label | value rows with lines between.
+            Phones: the facts come first, in two columns (value over label, like the home page hero), then the story.
+            flex-col-reverse shows the value above its label on phones while the HTML keeps <dt> (label) first.
+          -->
           <section id="program" class="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-surface shadow-sm md:scroll-mt-32" aria-labelledby="program-heading">
             <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
               <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
               <div>
                 <h2 class="type-section" id="program-heading">Our program</h2>
-                <p class="type-small text-fg-muted">Kettle Run High School · Nokesville, Virginia</p>
+                <p class="type-small text-fg-muted">Kettle Run High School in Nokesville, Virginia</p>
               </div>
             </div>
             <div class="grid lg:grid-cols-[minmax(0,1fr)_20rem]">
@@ -48,43 +53,19 @@
                   No matter your experience level, if you’re ready to work, learn, and contribute, there’s a place for you here.
                   High school swimmers and year-round club swimmers train and compete together as one team.
                 </p>
-                <p class="type-small flex flex-wrap gap-x-4 gap-y-1 pt-1">
-                  <a href="./results.html" class="font-medium text-accent underline-offset-2 hover:underline">Meet results →</a>
-                  <a href="./team-records.html" class="font-medium text-accent underline-offset-2 hover:underline">Team records →</a>
-                  <a href="./roster.html" class="font-medium text-accent underline-offset-2 hover:underline">Roster →</a>
-                </p>
               </div>
-              <!-- Quick facts: a term list, divided by lines; a border on its left on desktop -->
-              <dl class="divide-y divide-line border-t border-line px-4 md:px-5 lg:border-t-0 lg:border-l">
-                <div class="flex justify-between gap-4 py-2.5">
-                  <dt class="type-small text-fg-subtle">Established</dt>
-                  <dd class="text-[12px] font-medium md:text-[13px]">2008</dd>
-                </div>
-                <div class="flex justify-between gap-4 py-2.5">
-                  <dt class="type-small text-fg-subtle">Classification</dt>
-                  <dd class="text-[12px] font-medium md:text-[13px]">VHSL Class 3</dd>
-                </div>
-                <div class="flex justify-between gap-4 py-2.5">
-                  <dt class="type-small text-fg-subtle">District</dt>
-                  <dd class="text-[12px] font-medium md:text-[13px]">Northwestern</dd>
-                </div>
-                <div class="flex justify-between gap-4 py-2.5">
-                  <dt class="type-small text-fg-subtle">Region</dt>
-                  <dd class="text-[12px] font-medium md:text-[13px]">Class 3 Region B</dd>
-                </div>
-                <div class="flex justify-between gap-4 py-2.5">
-                  <dt class="type-small text-fg-subtle">Home pool</dt>
-                  <dd class="text-right text-[12px] font-medium md:text-[13px]">WARF, Warrenton</dd>
-                </div>
-                <div class="flex justify-between gap-4 py-2.5">
-                  <dt class="type-small text-fg-subtle">Mascot</dt>
-                  <dd class="text-[12px] font-medium md:text-[13px]">Cougars</dd>
-                </div>
+              <dl class="order-first grid grid-cols-2 gap-x-4 gap-y-3 border-b border-line px-4 py-4 sm:grid-cols-3 md:px-5 lg:order-none lg:grid-cols-1 lg:gap-0 lg:divide-y lg:divide-line lg:border-b-0 lg:border-l lg:py-0">
+                <div class="flex flex-col-reverse lg:flex-row lg:justify-between lg:gap-4 lg:py-2.5"><dt class="type-small text-fg-subtle">Established</dt><dd class="type-body font-semibold lg:font-medium">2008</dd></div>
+                <div class="flex flex-col-reverse lg:flex-row lg:justify-between lg:gap-4 lg:py-2.5"><dt class="type-small text-fg-subtle">Classification</dt><dd class="type-body font-semibold lg:font-medium">VHSL Class 3</dd></div>
+                <div class="flex flex-col-reverse lg:flex-row lg:justify-between lg:gap-4 lg:py-2.5"><dt class="type-small text-fg-subtle">District</dt><dd class="type-body font-semibold lg:font-medium">Northwestern</dd></div>
+                <div class="flex flex-col-reverse lg:flex-row lg:justify-between lg:gap-4 lg:py-2.5"><dt class="type-small text-fg-subtle">Region</dt><dd class="type-body font-semibold lg:font-medium">Class 3 Region B</dd></div>
+                <div class="flex flex-col-reverse lg:flex-row lg:justify-between lg:gap-4 lg:py-2.5"><dt class="type-small text-fg-subtle">Home pool</dt><dd class="type-body font-semibold lg:font-medium">WARF, Warrenton</dd></div>
+                <div class="flex flex-col-reverse lg:flex-row lg:justify-between lg:gap-4 lg:py-2.5"><dt class="type-small text-fg-subtle">Mascot</dt><dd class="type-body font-semibold lg:font-medium">Cougars</dd></div>
               </dl>
             </div>
           </section>
 
-          <!-- ===== 2. The season: numbers across, then three short blocks ===== -->
+          <!-- ===== 2. The season: numbers across (two columns on phones), then three short blocks ===== -->
           <section id="season" class="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-surface shadow-sm md:scroll-mt-32" aria-labelledby="season-heading">
             <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
               <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
@@ -93,53 +74,50 @@
                 <p class="type-small text-fg-muted">What a high school swim season looks like</p>
               </div>
             </div>
-            <ul class="grid gap-3 p-3 sm:grid-cols-2 md:p-4 lg:grid-cols-4">
-              <li class="rounded-xl border border-line p-4">
+            <ul class="grid grid-cols-2 gap-3 p-3 md:p-4 lg:grid-cols-4">
+              <li class="rounded-xl border border-line px-4 py-3">
                 <p class="type-number text-accent">15</p>
-                <p class="mt-1 text-[12px] font-semibold md:text-[13px]">Weeks</p>
+                <p class="type-body mt-1 font-semibold">Weeks</p>
                 <p class="type-small text-fg-subtle">November through February</p>
               </li>
-              <li class="rounded-xl border border-line p-4">
-                <p class="type-number text-accent">About 10</p>
-                <p class="mt-1 text-[12px] font-semibold md:text-[13px]">Meets</p>
-                <p class="type-small text-fg-subtle">7 regular season, 3 postseason</p>
-              </li>
-              <li class="rounded-xl border border-line p-4">
-                <p class="type-number text-accent">1–2</p>
-                <p class="mt-1 text-[12px] font-semibold md:text-[13px]">Meets a week</p>
-                <p class="type-small text-fg-subtle">Most weeks of the season</p>
-              </li>
-              <li class="rounded-xl border border-line p-4">
+              <li class="rounded-xl border border-line px-4 py-3">
                 <p class="type-number text-accent">4</p>
-                <p class="mt-1 text-[12px] font-semibold md:text-[13px]">Practices a week</p>
+                <p class="type-body mt-1 font-semibold">Practices a week</p>
                 <p class="type-small text-fg-subtle">After school at WARF</p>
               </li>
+              <li class="rounded-xl border border-line px-4 py-3">
+                <p class="type-number text-accent">10</p>
+                <p class="type-body mt-1 font-semibold">Meets</p>
+                <p class="type-small text-fg-subtle">7 regular season, 3 postseason</p>
+              </li>
+              <li class="rounded-xl border border-line px-4 py-3">
+                <p class="type-number text-accent">1–2</p>
+                <p class="type-body mt-1 font-semibold">Meets a week</p>
+                <p class="type-small text-fg-subtle">Starting in December</p>
+              </li>
             </ul>
+            <!-- Blocks: a green label (like the cards) rather than a bigger heading -->
             <div class="grid divide-y divide-line border-t border-line lg:grid-cols-3 lg:divide-x lg:divide-y-0">
               <div class="px-4 py-4 md:px-5">
-                <h3 class="type-sub">Meets</h3>
-                <p class="type-small mt-1.5 text-fg-muted">
+                <h3 class="type-label font-semibold text-accent">Meets</h3>
+                <p class="type-card mt-1.5 text-fg-muted">
                   Regular-season meets are either a single dual meet against one team, or several dual meets run at once with
                   three or more teams. The postseason is Districts, Regionals, and States.
                 </p>
                 <a href="./resources.html#meets" class="type-small mt-2 inline-block font-medium text-accent underline-offset-2 hover:underline">How meets work →</a>
               </div>
               <div class="px-4 py-4 md:px-5">
-                <h3 class="type-sub">Senior Recognition Night</h3>
-                <p class="type-small mt-1.5 text-fg-muted">
+                <h3 class="type-label font-semibold text-accent">Senior Recognition Night</h3>
+                <p class="type-card mt-1.5 text-fg-muted">
                   Each January we honor our seniors, usually at a meet with the other two county schools, Fauquier and Liberty,
                   recognizing the seniors on all three teams.
                 </p>
               </div>
               <div class="px-4 py-4 md:px-5">
-                <h3 class="type-sub">For families</h3>
-                <p class="type-small mt-1.5 text-fg-muted">
-                  Every meet needs parent volunteers, so we’ll be asking for help all season. Costs are an activity fee and a
-                  team T-shirt fee, plus team fundraising.
-                </p>
-                <p class="type-small mt-2 flex flex-wrap gap-x-4 gap-y-1">
-                  <a href="./resources.html#volunteer" class="font-medium text-accent underline-offset-2 hover:underline">Volunteering →</a>
-                  <a href="./join.html#costs-heading" class="font-medium text-accent underline-offset-2 hover:underline">Costs →</a>
+                <h3 class="type-label font-semibold text-accent">End-of-season banquet</h3>
+                <p class="type-card mt-1.5 text-fg-muted">
+                  We close out every season together at the team banquet, celebrating our swimmers, the season’s highlights,
+                  and the families who made it all happen.
                 </p>
               </div>
             </div>
@@ -158,21 +136,23 @@
               <li class="flex gap-3 rounded-xl border border-line p-4">
                 <span class="grid size-11 shrink-0 place-items-center rounded-full bg-brand text-[13px] font-semibold text-white" aria-hidden="true">DR</span>
                 <div class="min-w-0">
-                  <p class="text-[12px] font-semibold md:text-[13px]">Dalton Regenbogen</p>
+                  <p class="type-body font-semibold">Dalton Regenbogen</p>
                   <p class="type-small text-fg-subtle">Head Coach</p>
-                  <p class="type-body mt-2 text-fg-muted">
+                  <p class="type-card mt-2 text-fg-muted">
                     I’ve been around swimming my whole life, first as a swimmer and for nearly a decade as a coach. I’m also a
                     founding partner of Northern Virginia Aquatic Club and the head coach of the Brookside Hurricanes, our local
                     summer league team. I believe athletic growth and personal growth go hand in hand, and I want every swimmer to
                     feel supported, challenged, and seen.
                   </p>
-                  <a href="mailto:coachdtr@gmail.com" class="type-small mt-2 inline-block font-medium text-accent underline-offset-2 hover:underline">coachdtr@gmail.com</a>
                 </div>
               </li>
             </ul>
           </section>
 
-          <!-- ===== 4. How we run: values, athletes, absences, lettering, and daily expectations (from the team handbook) ===== -->
+          <!--
+            ===== 4. How we run: values, the two kinds of athletes, and representing the team (from the team handbook).
+            Reporting an absence and the lettering rules live on Resources (#attendance), linked below the athlete panels.
+          -->
           <section id="how-we-run" class="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-surface shadow-sm md:scroll-mt-32" aria-labelledby="run-heading">
             <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
               <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
@@ -187,19 +167,19 @@
                 <ul class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                   <li class="rounded-xl border border-line p-4">
                     <p class="type-label font-semibold text-accent">Effort</p>
-                    <p class="type-small mt-1.5 text-fg-muted">Consistent work at every practice, whatever your level. Improvement comes from showing up and putting in the work.</p>
+                    <p class="type-card mt-1.5 text-fg-muted">Consistent work at every practice, whatever your level. Improvement comes from showing up and putting in the work.</p>
                   </li>
                   <li class="rounded-xl border border-line p-4">
                     <p class="type-label font-semibold text-accent">Attitude</p>
-                    <p class="type-small mt-1.5 text-fg-muted">Positive energy on the deck. Being on time, prepared, and ready to learn.</p>
+                    <p class="type-card mt-1.5 text-fg-muted">Positive energy on the deck. Being on time, prepared, and ready to learn.</p>
                   </li>
                   <li class="rounded-xl border border-line p-4">
                     <p class="type-label font-semibold text-accent">Sportsmanship</p>
-                    <p class="type-small mt-1.5 text-fg-muted">Respect for teammates, opponents, officials, and volunteers, before, during, and after every meet.</p>
+                    <p class="type-card mt-1.5 text-fg-muted">Respect for teammates, opponents, officials, and volunteers, before, during, and after every meet.</p>
                   </li>
                   <li class="rounded-xl border border-line p-4">
                     <p class="type-label font-semibold text-accent">Team first</p>
-                    <p class="type-small mt-1.5 text-fg-muted">Swimming looks individual, but we score, travel, and cheer as a team. Every swimmer counts.</p>
+                    <p class="type-card mt-1.5 text-fg-muted">Swimming looks individual, but we score, travel, and cheer as a team. Every swimmer counts.</p>
                   </li>
                 </ul>
               </div>
@@ -207,113 +187,54 @@
               <!-- Two kinds of athletes: the same panels as on Join, written as expectations -->
               <div class="px-4 py-4 md:px-5">
                 <h3 class="type-sub">Two kinds of athletes</h3>
-                <p class="type-small mt-1 text-fg-subtle">Every swimmer is one or the other, and expectations follow from that.</p>
+                <p class="type-small mt-1 text-fg-muted">Every swimmer is one or the other, and expectations follow from that.</p>
                 <div class="mt-3 grid gap-3 md:grid-cols-2">
                   <div class="rounded-xl border border-line p-4">
                     <p class="type-label font-semibold text-accent">VHSL-primary athlete</p>
-                    <p class="mt-1 text-[12px] font-semibold md:text-[13px]">High school swimming is your main swimming</p>
-                    <ul class="type-small mt-2 list-disc space-y-1.5 pl-4 text-fg-muted marker:text-fg-subtle">
-                      <li>Aim to take part in everything: every practice and every meet.</li>
-                      <li>If you have an absence or a conflict for any reason, tell the coach ahead of time. Otherwise it counts as unexcused and toward lettering.</li>
-                    </ul>
+                    <p class="type-body mt-1 font-semibold">High school swimming is your main swimming</p>
+                    <div class="mt-2 space-y-1.5">
+                      <p class="type-card text-fg-muted">Aim to take part in everything: every practice and every meet.</p>
+                      <p class="type-card text-fg-muted">If you have an absence or a conflict for any reason, tell the coach ahead of time. Otherwise it counts as unexcused and toward lettering.</p>
+                    </div>
                   </div>
                   <div class="rounded-xl border border-line p-4">
                     <p class="type-label font-semibold text-accent">USA Swimming athlete</p>
-                    <p class="mt-1 text-[12px] font-semibold md:text-[13px]">You train with a club at least 6 hours a week</p>
-                    <ul class="type-small mt-2 list-disc space-y-1.5 pl-4 text-fg-muted marker:text-fg-subtle">
-                      <li>Keep training with your club. High school practice isn’t required.</li>
-                      <li>Swim in as many team meets as you can, and tell the coach about any meet absence ahead of time.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Reporting an absence: who can contact the coach, and how -->
-              <div class="px-4 py-4 md:px-5">
-                <h3 class="type-sub">Reporting an absence</h3>
-                <p class="type-small mt-1 text-fg-subtle">Tell the coach before the practice or meet. Every absence is recorded.</p>
-                <div class="mt-3 grid gap-3 md:grid-cols-2">
-                  <div class="rounded-xl border border-line p-4">
-                    <p class="type-label font-semibold text-accent">Swimmers</p>
-                    <ul class="type-small mt-2 list-disc space-y-1.5 pl-4 text-fg-muted marker:text-fg-subtle">
-                      <li>Post in the team GroupMe chat</li>
-                      <li>Send a GroupMe message that includes a parent</li>
-                      <li>Email the coach with a parent copied</li>
-                    </ul>
-                    <p class="type-small mt-2 font-medium">Swimmers can’t call or text the coach, or message one-on-one. Another adult is always included.</p>
-                  </div>
-                  <div class="rounded-xl border border-line p-4">
-                    <p class="type-label font-semibold text-accent">Parents</p>
-                    <ul class="type-small mt-2 list-disc space-y-1.5 pl-4 text-fg-muted marker:text-fg-subtle">
-                      <li>GroupMe (the team chat or a direct message)</li>
-                      <li>Email</li>
-                      <li>A call or a text</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="mt-3 rounded-lg border-l-4 border-highlight bg-highlight/10 px-3 py-2.5">
-                  <p class="text-[12px] font-semibold md:text-[13px]">What counts as excused</p>
-                  <p class="type-small text-fg-muted">
-                    A sick day from school, or a scheduled school event that conflicts with practice. Other situations are
-                    reviewed case by case, but they still need to be communicated as soon as possible.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Earning a varsity letter: by kind of athlete, with big numbers -->
-              <div class="px-4 py-4 md:px-5">
-                <h3 class="type-sub">Earning a varsity letter</h3>
-                <p class="type-small mt-1 text-fg-subtle">The most unexcused absences a swimmer can have over the season and still letter:</p>
-                <div class="mt-3 grid gap-3 md:grid-cols-2">
-                  <div class="rounded-xl border border-line p-4">
-                    <p class="type-label font-semibold text-accent">VHSL-primary athletes</p>
-                    <div class="mt-2 grid grid-cols-2 gap-3">
-                      <div>
-                        <p class="type-number">3</p>
-                        <p class="type-small text-fg-muted">Unexcused practice absences</p>
-                      </div>
-                      <div>
-                        <p class="type-number">1</p>
-                        <p class="type-small text-fg-muted">Unexcused meet absence</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="rounded-xl border border-line p-4">
-                    <p class="type-label font-semibold text-accent">USA Swimming athletes</p>
-                    <div class="mt-2 grid grid-cols-2 gap-3">
-                      <div>
-                        <p class="type-number">1</p>
-                        <p class="type-small text-fg-muted">Unexcused meet absence</p>
-                      </div>
-                      <div>
-                        <p class="type-number text-fg-subtle">–</p>
-                        <p class="type-small text-fg-muted">Practice doesn’t count while you train with your club</p>
-                      </div>
+                    <p class="type-body mt-1 font-semibold">You train with a club at least 6 hours a week</p>
+                    <div class="mt-2 space-y-1.5">
+                      <p class="type-card text-fg-muted">Keep training with your club. High school practice isn’t required.</p>
+                      <p class="type-card text-fg-muted">Swim in as many team meets as you can, and tell the coach about any meet absence ahead of time.</p>
                     </div>
                   </div>
                 </div>
+                <a href="./resources.html#attendance" class="type-small mt-3 inline-block font-medium text-accent underline-offset-2 hover:underline">Reporting an absence and earning a varsity letter →</a>
               </div>
 
+              <!-- Representing the team: who it applies to (everyone on the roster), then four cards like "What we value" -->
               <div class="px-4 py-4 md:px-5">
-                <h3 class="type-sub">Every day, whether or not you plan to letter</h3>
-                <dl class="mt-2 grid gap-x-8 sm:grid-cols-2">
-                  <div class="border-b border-line py-3">
-                    <dt class="text-[12px] font-semibold md:text-[13px]">On time and prepared</dt>
-                    <dd class="type-small mt-0.5 text-fg-muted">Practice: suit, goggles, cap, swim gear, and a water bottle, ready at the start time. Meets: at the pool (or school, for the bus) with all your gear by the arrival time. Being late is noted.</dd>
-                  </div>
-                  <div class="border-b border-line py-3">
-                    <dt class="text-[12px] font-semibold md:text-[13px]">Positive attitude and sportsmanship</dt>
-                    <dd class="type-small mt-0.5 text-fg-muted">No bullying, no foul language, and nothing that brings others down. Issues are handled with a verbal warning, then a parent contact, then a KRHS administrator.</dd>
-                  </div>
-                  <div class="border-b border-line py-3 sm:border-b-0">
-                    <dt class="text-[12px] font-semibold md:text-[13px]">Follow school and FCPS rules</dt>
-                    <dd class="type-small mt-0.5 text-fg-muted">Nothing against the law, the FCPS Code of Student Conduct, or the FCPS Athletic Handbook. A suspension during the season means dismissal from the team and no letter.</dd>
-                  </div>
-                  <div class="py-3">
-                    <dt class="text-[12px] font-semibold md:text-[13px]">Be safe</dt>
-                    <dd class="type-small mt-0.5 text-fg-muted">At the pool, in public areas, and in the parking lot. Student drivers follow Virginia’s passenger laws. Once at the pool, swimmers stay unless the coach says otherwise.</dd>
-                  </div>
-                </dl>
+                <h3 class="type-sub">Representing Kettle Run</h3>
+                <p class="type-body mt-1.5 text-fg-muted">
+                  Every swimmer on the roster represents Kettle Run Swimming, especially during the season and wherever you are:
+                  at practice, at meets, at school, and online. That includes club swimmers, whether you’re at every practice or
+                  mostly at meets, and whether or not you plan to letter.
+                </p>
+                <ul class="mt-3 grid gap-3 sm:grid-cols-2">
+                  <li class="rounded-xl border border-line p-4">
+                    <p class="type-label font-semibold text-accent">On time and prepared</p>
+                    <p class="type-card mt-1.5 text-fg-muted">Practice: suit, goggles, cap, swim gear, and a water bottle, ready at the start time. Meets: at the pool (or school, for the bus) with all your gear by the arrival time. Being late is noted.</p>
+                  </li>
+                  <li class="rounded-xl border border-line p-4">
+                    <p class="type-label font-semibold text-accent">Positive attitude and sportsmanship</p>
+                    <p class="type-card mt-1.5 text-fg-muted">No bullying, no foul language, and nothing that brings others down. Issues are handled with a verbal warning, then a parent contact, then a KRHS administrator.</p>
+                  </li>
+                  <li class="rounded-xl border border-line p-4">
+                    <p class="type-label font-semibold text-accent">Follow school and FCPS rules</p>
+                    <p class="type-card mt-1.5 text-fg-muted">Nothing against the law, the FCPS Code of Student Conduct, or the FCPS Athletic Handbook. A suspension during the season means dismissal from the team and no letter.</p>
+                  </li>
+                  <li class="rounded-xl border border-line p-4">
+                    <p class="type-label font-semibold text-accent">Be safe</p>
+                    <p class="type-card mt-1.5 text-fg-muted">At the pool, in public areas, and in the parking lot. Student drivers follow Virginia’s passenger laws. Once at the pool, swimmers stay unless the coach says otherwise.</p>
+                  </li>
+                </ul>
               </div>
             </div>
           </section>

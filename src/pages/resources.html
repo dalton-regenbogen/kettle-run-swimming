@@ -3,7 +3,7 @@
   <head>
     <!-- include: head.html -->
     <title>Resources | Kettle Run Swimming</title>
-    <meta name="description" content="Kettle Run Swimming resources for families: how swim meets work, volunteering and officiating, forms, apparel, how high school swimming compares to summer league and club, and the team fundraiser." />
+    <meta name="description" content="Kettle Run Swimming resources for families: forms, team documents and links, getting to practices and meets, reporting an absence and lettering, how swim meets work, volunteering and officiating, apparel, and the team fundraiser." />
   </head>
   <body class="flex min-h-dvh flex-col bg-page font-body text-fg antialiased">
     <!-- include: site-header.html -->
@@ -15,7 +15,7 @@
       Layout: on desktop a contents list sticks to the left while the sections scroll on the right;
       on phones the contents become a row of jump links above the sections.
       Each section card has an id (e.g. #meets) so other pages can link straight to it.
-      Season-specific links (forms, store, qualifying times, officials, fundraiser) come from
+      Season-specific links (forms, documents, store, officials, fundraiser) come from
       assets/data/season.json via js/season-info.js.
     -->
     <main class="mx-auto w-full max-w-6xl flex-1 px-3 py-6 md:px-4 md:py-12">
@@ -29,8 +29,6 @@
               <h1 class="type-title mt-1.5">Resources</h1>
               <p class="type-small mt-1 text-white/80">What families need to know during the season.</p>
             </div>
-            <!-- Only shows once season.json has a handbook PDF link -->
-            <a data-link="handbookPdf" data-hide-if-empty href="#" class="type-button rounded-lg border border-white/30 px-3.5 py-2 text-white transition-colors hover:border-white/70">Full handbook (PDF) ↗</a>
           </div>
         </section>
 
@@ -42,18 +40,160 @@
           <nav aria-label="On this page" class="min-w-0 lg:sticky lg:top-32">
             <p class="type-label mb-2 hidden font-semibold text-fg-muted lg:block">On this page</p>
             <ul class="-mx-3 flex gap-2 overflow-x-auto px-3 pb-1 text-[12px] font-medium whitespace-nowrap lg:mx-0 lg:flex-col lg:gap-0 lg:overflow-visible lg:px-0 lg:text-[13px]">
+              <li><a href="#forms" class="block rounded-full border border-line px-3 py-1.5 text-fg-muted hover:text-fg lg:rounded-none lg:border-0 lg:border-l-2 lg:px-3 lg:py-1.5 lg:hover:border-accent">Forms</a></li>
+              <li><a href="#documents" class="block rounded-full border border-line px-3 py-1.5 text-fg-muted hover:text-fg lg:rounded-none lg:border-0 lg:border-l-2 lg:px-3 lg:py-1.5 lg:hover:border-accent">Links &amp; documents</a></li>
+              <li><a href="#getting-there" class="block rounded-full border border-line px-3 py-1.5 text-fg-muted hover:text-fg lg:rounded-none lg:border-0 lg:border-l-2 lg:px-3 lg:py-1.5 lg:hover:border-accent">Getting there</a></li>
+              <li><a href="#attendance" class="block rounded-full border border-line px-3 py-1.5 text-fg-muted hover:text-fg lg:rounded-none lg:border-0 lg:border-l-2 lg:px-3 lg:py-1.5 lg:hover:border-accent">Attendance &amp; lettering</a></li>
               <li><a href="#meets" class="block rounded-full border border-line px-3 py-1.5 text-fg-muted hover:text-fg lg:rounded-none lg:border-0 lg:border-l-2 lg:px-3 lg:py-1.5 lg:hover:border-accent">Swim meets 101</a></li>
               <li><a href="#volunteer" class="block rounded-full border border-line px-3 py-1.5 text-fg-muted hover:text-fg lg:rounded-none lg:border-0 lg:border-l-2 lg:px-3 lg:py-1.5 lg:hover:border-accent">Volunteering &amp; officiating</a></li>
-              <li><a href="#forms" class="block rounded-full border border-line px-3 py-1.5 text-fg-muted hover:text-fg lg:rounded-none lg:border-0 lg:border-l-2 lg:px-3 lg:py-1.5 lg:hover:border-accent">Forms</a></li>
               <li><a href="#apparel" class="block rounded-full border border-line px-3 py-1.5 text-fg-muted hover:text-fg lg:rounded-none lg:border-0 lg:border-l-2 lg:px-3 lg:py-1.5 lg:hover:border-accent">Apparel &amp; gear</a></li>
-              <li><a href="#levels" class="block rounded-full border border-line px-3 py-1.5 text-fg-muted hover:text-fg lg:rounded-none lg:border-0 lg:border-l-2 lg:px-3 lg:py-1.5 lg:hover:border-accent">Levels of swimming</a></li>
               <li><a href="#fundraiser" class="block rounded-full border border-line px-3 py-1.5 text-fg-muted hover:text-fg lg:rounded-none lg:border-0 lg:border-l-2 lg:px-3 lg:py-1.5 lg:hover:border-accent">Fundraiser</a></li>
             </ul>
           </nav>
 
           <!-- scroll-mt-*: when a contents link jumps here, leave room for the sticky site header -->
           <div class="grid min-w-0 gap-6 md:gap-8">
-            <!-- ===== 1. Swim meets 101 ===== -->
+            <!-- ===== 1. Forms (links only; when and where they're due is on Join) ===== -->
+            <section id="forms" class="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-surface shadow-sm md:scroll-mt-32" aria-labelledby="forms-heading">
+              <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
+                <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
+                <div>
+                  <h2 class="type-section" id="forms-heading">Forms</h2>
+                  <p class="type-small text-fg-muted">All four are required to practice and compete</p>
+                </div>
+              </div>
+              <ul data-forms class="divide-y divide-line px-4 md:px-5">
+                <li class="type-small py-3 text-fg-subtle">Loading…</li>
+              </ul>
+              <div class="border-t border-line px-4 py-3 md:px-5">
+                <p class="type-card text-fg-muted">
+                  When they’re due and how joining works: <a href="./join.html#forms-heading" class="font-medium text-accent underline-offset-2 hover:underline">Join the team →</a>
+                </p>
+              </div>
+            </section>
+
+            <!-- ===== 2. Links & documents: the "documents" list in season.json, drawn like the forms ===== -->
+            <section id="documents" class="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-surface shadow-sm md:scroll-mt-32" aria-labelledby="documents-heading">
+              <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
+                <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
+                <div>
+                  <h2 class="type-section" id="documents-heading">Links &amp; documents</h2>
+                  <p class="type-small text-fg-muted">The team handbook, qualifying times, and other useful links</p>
+                </div>
+              </div>
+              <ul data-documents class="divide-y divide-line px-4 md:px-5">
+                <li class="type-small py-3 text-fg-subtle">Loading…</li>
+              </ul>
+            </section>
+
+            <!-- ===== 3. Getting there: practices and meets (three columns of terms on desktop) ===== -->
+            <section id="getting-there" class="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-surface shadow-sm md:scroll-mt-32" aria-labelledby="getting-there-heading">
+              <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
+                <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
+                <div>
+                  <h2 class="type-section" id="getting-there-heading">Getting there</h2>
+                  <p class="type-small text-fg-muted">Practices, away meets, and home meets</p>
+                </div>
+              </div>
+              <dl class="grid divide-y divide-line px-4 md:px-5 lg:grid-cols-3 lg:gap-x-8 lg:divide-y-0">
+                <div class="py-3">
+                  <dt class="type-body font-semibold">Practices</dt>
+                  <dd class="type-card mt-0.5 text-fg-muted">
+                    No school transportation. Families arrange rides to and from WARF, and student drivers must follow Virginia’s
+                    passenger laws. Bring a suit, goggles, a cap, and a water bottle.
+                    <a href="./practice-schedule.html" class="font-medium text-accent underline-offset-2 hover:underline">Practice schedule →</a>
+                  </dd>
+                </div>
+                <div class="py-3">
+                  <dt class="type-body font-semibold">Away meets <span class="font-normal text-fg-subtle">(any meet not at WARF)</span></dt>
+                  <dd class="type-card mt-0.5 text-fg-muted">Swimmers ride the team bus to the meet. Afterward they can go home with a parent, or with another family, but a parent or guardian must sign them out (and note who they’re leaving with).</dd>
+                </div>
+                <div class="py-3">
+                  <dt class="type-body font-semibold">Meets at WARF</dt>
+                  <dd class="type-card mt-0.5 text-fg-muted">There’s no bus to home meets, so swimmers need their own ride to and from WARF, just like practice. No sign-out needed.</dd>
+                </div>
+              </dl>
+            </section>
+
+            <!-- ===== 4. Attendance & lettering: reporting an absence, then the lettering limits (from the team handbook) ===== -->
+            <section id="attendance" class="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-surface shadow-sm md:scroll-mt-32" aria-labelledby="attendance-heading">
+              <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
+                <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
+                <div>
+                  <h2 class="type-section" id="attendance-heading">Attendance &amp; lettering</h2>
+                  <p class="type-small text-fg-muted">Reporting an absence, and earning a varsity letter</p>
+                </div>
+              </div>
+              <div class="divide-y divide-line">
+                <!-- Reporting an absence: the three ways a swimmer can tell the coach -->
+                <div class="px-4 py-4 md:px-5">
+                  <h3 class="type-sub">Reporting an absence</h3>
+                  <p class="type-small mt-1 text-fg-muted">Swimmers tell the coach before the practice or meet. Every absence is recorded.</p>
+                  <ul class="mt-3 grid gap-3 sm:grid-cols-3">
+                    <li class="rounded-xl border border-line p-4">
+                      <p class="type-label font-semibold text-accent">Team chat</p>
+                      <p class="type-card mt-1.5 text-fg-muted">Post in the team GroupMe chat.</p>
+                    </li>
+                    <li class="rounded-xl border border-line p-4">
+                      <p class="type-label font-semibold text-accent">GroupMe message</p>
+                      <p class="type-card mt-1.5 text-fg-muted">Message the coach in a GroupMe message that includes a parent.</p>
+                    </li>
+                    <li class="rounded-xl border border-line p-4">
+                      <p class="type-label font-semibold text-accent">Email</p>
+                      <p class="type-card mt-1.5 text-fg-muted">Email the coach with a parent copied.</p>
+                    </li>
+                  </ul>
+                  <p class="type-body mt-3 text-fg-muted">Swimmers can’t call or text the coach, or message one-on-one. Another adult is always included.</p>
+                  <!-- Note box: the same gray box as "How joining works" on Join -->
+                  <div class="mt-3 rounded-lg bg-fg/4 px-3 py-2.5">
+                    <p class="type-body font-semibold">What counts as excused</p>
+                    <p class="type-card mt-0.5 text-fg-muted">
+                      A sick day from school, or a scheduled school event that conflicts with practice. Other situations are
+                      reviewed case by case, but they still need to be communicated as soon as possible.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Earning a varsity letter: by kind of athlete, with big numbers -->
+                <div class="px-4 py-4 md:px-5">
+                  <h3 class="type-sub">Earning a varsity letter</h3>
+                  <p class="type-small mt-1 text-fg-muted">The most unexcused absences a swimmer can have over the season and still letter:</p>
+                  <div class="mt-3 grid gap-3 md:grid-cols-2">
+                    <div class="rounded-xl border border-line p-4">
+                      <p class="type-label font-semibold text-accent">VHSL-primary athletes</p>
+                      <div class="mt-2 grid grid-cols-2 gap-3">
+                        <div>
+                          <p class="type-number">3</p>
+                          <p class="type-card mt-1 text-fg-muted">Unexcused practice absences</p>
+                        </div>
+                        <div>
+                          <p class="type-number">1</p>
+                          <p class="type-card mt-1 text-fg-muted">Unexcused meet absence</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="rounded-xl border border-line p-4">
+                      <p class="type-label font-semibold text-accent">USA Swimming athletes</p>
+                      <div class="mt-2 grid grid-cols-2 gap-3">
+                        <div>
+                          <p class="type-number">1</p>
+                          <p class="type-card mt-1 text-fg-muted">Unexcused meet absence</p>
+                        </div>
+                        <div>
+                          <p class="type-number text-fg-subtle">–</p>
+                          <p class="type-card mt-1 text-fg-muted">Practice doesn’t count while you train with your club</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="type-small mt-3 text-fg-muted">
+                    The two kinds of athletes are explained on <a href="./about.html#how-we-run" class="font-medium text-accent underline-offset-2 hover:underline">About</a>.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <!-- ===== 5. Swim meets 101 ===== -->
             <section id="meets" class="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-surface shadow-sm md:scroll-mt-32" aria-labelledby="meets-heading">
               <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
                 <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
@@ -75,9 +215,9 @@
                 </div>
                 <div class="px-4 py-4 md:px-5">
                   <h3 class="type-sub">Order of events</h3>
-                  <p class="type-small mt-1 text-fg-subtle">The standard high school order. Diving is only at meets that include it.</p>
+                  <p class="type-small mt-1 text-fg-muted">The standard high school order. Diving is only at meets that include it.</p>
                   <!-- sm:columns-2 fills the first column top to bottom, then the second (1–6, then 7–12) -->
-                  <ol class="mt-3 list-decimal space-y-1 gap-x-8 pl-5 text-[12px] marker:text-fg-subtle sm:columns-2 md:text-[13px]">
+                  <ol class="type-body mt-3 list-decimal space-y-1 gap-x-8 pl-5 marker:text-fg-subtle sm:columns-2">
                     <li>200 Medley Relay</li>
                     <li>200 Freestyle</li>
                     <li>200 Individual Medley</li>
@@ -100,52 +240,54 @@
                     swimmers race, and some allow fewer. The coach sets each meet’s lineup with that in mind.
                   </p>
                 </div>
+                <!-- The postseason: three championship meets in order, as cards like "What we value" on About -->
                 <div class="px-4 py-4 md:px-5">
                   <h3 class="type-sub">The postseason</h3>
-                  <p class="type-body mt-1.5 text-fg-muted">
-                    After the regular season come three championship meets: <strong class="font-semibold text-fg">Districts</strong>,
-                    <strong class="font-semibold text-fg">Regionals</strong>, and <strong class="font-semibold text-fg">States</strong>.
-                  </p>
-                  <dl class="mt-2 grid gap-x-8 sm:grid-cols-2">
-                    <div class="border-b border-line py-3 sm:border-b-0">
-                      <dt class="text-[12px] font-semibold md:text-[13px]">Districts and Regionals</dt>
-                      <dd class="type-small mt-0.5 text-fg-muted">No qualifying times. The only limit is each meet’s entry limits.</dd>
-                    </div>
-                    <div class="py-3">
-                      <dt class="text-[12px] font-semibold md:text-[13px]">States</dt>
-                      <dd class="type-small mt-0.5 text-fg-muted">
+                  <p class="type-small mt-1 text-fg-muted">Three championship meets after the regular season, in this order</p>
+                  <ol class="mt-3 grid gap-3 md:grid-cols-3">
+                    <li class="rounded-xl border border-line p-4">
+                      <p class="type-label font-semibold text-accent">1. Districts</p>
+                      <p class="type-card mt-1.5 text-fg-muted">The Northwestern District championship. No qualifying times: the only limit is the meet’s entry limits.</p>
+                    </li>
+                    <li class="rounded-xl border border-line p-4">
+                      <p class="type-label font-semibold text-accent">2. Regionals</p>
+                      <p class="type-card mt-1.5 text-fg-muted">The Class 3 Region B championship. Also no qualifying times, only entry limits.</p>
+                    </li>
+                    <li class="rounded-xl border border-line p-4">
+                      <p class="type-label font-semibold text-accent">3. States</p>
+                      <p class="type-card mt-1.5 text-fg-muted">
                         Swimmers qualify by place at Regionals (top 5 in individual events, top 4 in relays) or by swimming a state
                         qualifying time.
-                        <a data-link="stateQualifyingTimes" href="#" class="font-medium text-accent underline-offset-2 hover:underline">State qualifying times ↗</a>
-                      </dd>
-                    </div>
-                  </dl>
+                      </p>
+                      <a href="#documents" class="type-small mt-2 inline-block font-medium text-accent underline-offset-2 hover:underline">State qualifying times →</a>
+                    </li>
+                  </ol>
                 </div>
                 <div class="px-4 py-4 md:px-5">
                   <h3 class="type-sub">At the meet</h3>
                   <div class="mt-3 grid gap-3 md:grid-cols-2">
                     <div class="rounded-xl border border-line p-4">
                       <p class="type-label font-semibold text-accent">Swimmers</p>
-                      <ul class="type-small mt-2 list-disc space-y-1.5 pl-4 text-fg-muted marker:text-fg-subtle">
-                        <li>Arrive at the pool (or school, if there’s a bus) by the time the coach sets.</li>
-                        <li>Bring your suit, goggles, team caps, team shirt and jacket, a towel, and a water bottle.</li>
-                        <li>Stay with the team and cheer for your teammates.</li>
-                      </ul>
+                      <div class="mt-2 space-y-1.5">
+                        <p class="type-card text-fg-muted">Arrive at the pool (or school, if there’s a bus) by the time the coach sets.</p>
+                        <p class="type-card text-fg-muted">Bring your suit, goggles, team caps, team shirt and jacket, a towel, and a water bottle.</p>
+                        <p class="type-card text-fg-muted">Stay with the team and cheer for your teammates.</p>
+                      </div>
                     </div>
                     <div class="rounded-xl border border-line p-4">
                       <p class="type-label font-semibold text-accent">Families</p>
-                      <ul class="type-small mt-2 list-disc space-y-1.5 pl-4 text-fg-muted marker:text-fg-subtle">
-                        <li>Check the <a href="./competition-schedule.html" class="font-medium text-accent underline-offset-2 hover:underline">meet schedule</a> for the date, start time, and pool.</li>
-                        <li>Pool decks are warm and busy, so spectators usually sit in the stands.</li>
-                        <li>Every meet needs volunteers. See <a href="#volunteer" class="font-medium text-accent underline-offset-2 hover:underline">Volunteering</a>.</li>
-                      </ul>
+                      <div class="mt-2 space-y-1.5">
+                        <p class="type-card text-fg-muted">Families are encouraged to come to meets and cheer on the team.</p>
+                        <p class="type-card text-fg-muted">Check the <a href="./competition-schedule.html" class="font-medium text-accent underline-offset-2 hover:underline">meet schedule</a> for the date, start time, and pool.</p>
+                        <p class="type-card text-fg-muted">Every meet runs on parent volunteers, so please plan to help at a few. See <a href="#volunteer" class="font-medium text-accent underline-offset-2 hover:underline">Volunteering</a>.</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </section>
 
-            <!-- ===== 2. Volunteering & officiating ===== -->
+            <!-- ===== 6. Volunteering & officiating ===== -->
             <section id="volunteer" class="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-surface shadow-sm md:scroll-mt-32" aria-labelledby="volunteer-heading">
               <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
                 <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
@@ -165,40 +307,40 @@
                   <h3 class="type-sub">Volunteer roles</h3>
                   <dl class="mt-2 grid gap-x-8 sm:grid-cols-2">
                     <div class="border-b border-line py-3">
-                      <dt class="text-[12px] font-semibold md:text-[13px]">Timer</dt>
-                      <dd class="type-small mt-0.5 text-fg-muted">Times one lane from the end of the pool. The most common role, and the easiest to start with.</dd>
+                      <dt class="type-body font-semibold">Timer</dt>
+                      <dd class="type-card mt-0.5 text-fg-muted">Times one lane from the end of the pool. The most common role, and the easiest to start with.</dd>
                     </div>
                     <div class="border-b border-line py-3">
-                      <dt class="text-[12px] font-semibold md:text-[13px]">Head timer</dt>
-                      <dd class="type-small mt-0.5 text-fg-muted">Runs the timers, keeps backup times, and steps in if a watch fails.</dd>
+                      <dt class="type-body font-semibold">Head timer</dt>
+                      <dd class="type-card mt-0.5 text-fg-muted">Runs the timers, keeps backup times, and steps in if a watch fails.</dd>
                     </div>
                     <div class="border-b border-line py-3">
-                      <dt class="text-[12px] font-semibold md:text-[13px]">Runner</dt>
-                      <dd class="type-small mt-0.5 text-fg-muted">Collects times and results from the deck and brings them to the scoring table.</dd>
+                      <dt class="type-body font-semibold">Runner</dt>
+                      <dd class="type-card mt-0.5 text-fg-muted">Collects times and results from the deck and brings them to the scoring table.</dd>
                     </div>
                     <div class="border-b border-line py-3">
-                      <dt class="text-[12px] font-semibold md:text-[13px]">Deck marshal</dt>
-                      <dd class="type-small mt-0.5 text-fg-muted">Helps keep the pool deck safe and orderly during warm-ups and the meet.</dd>
+                      <dt class="type-body font-semibold">Deck marshal</dt>
+                      <dd class="type-card mt-0.5 text-fg-muted">Helps keep the pool deck safe and orderly during warm-ups and the meet.</dd>
                     </div>
                     <div class="border-b border-line py-3 sm:border-b-0">
-                      <dt class="text-[12px] font-semibold md:text-[13px]">Computer</dt>
-                      <dd class="type-small mt-0.5 text-fg-muted">Runs the meet software for entries and results.</dd>
+                      <dt class="type-body font-semibold">Computer</dt>
+                      <dd class="type-card mt-0.5 text-fg-muted">Runs the meet software for entries and results.</dd>
                     </div>
                     <div class="py-3">
-                      <dt class="text-[12px] font-semibold md:text-[13px]">Official</dt>
-                      <dd class="type-small mt-0.5 text-fg-muted">Makes sure races follow the rules. Takes certification (see below).</dd>
+                      <dt class="type-body font-semibold">Official</dt>
+                      <dd class="type-card mt-0.5 text-fg-muted">Makes sure races follow the rules. Takes certification (see below).</dd>
                     </div>
                   </dl>
-                  <p class="type-small mt-3 text-fg-muted">
+                  <p class="type-body mt-3 text-fg-muted">
                     To sign up, watch for the volunteer sign-up from our parent volunteer coordinator, or
                     <a href="mailto:coachdtr@gmail.com" class="font-medium text-accent underline-offset-2 hover:underline">email the coach</a>.
                   </p>
                 </div>
                 <div class="px-4 py-4 md:px-5">
                   <h3 class="type-sub">Become an official</h3>
-                  <div class="mt-3 rounded-lg border-l-4 border-highlight bg-highlight/10 px-3 py-2.5">
-                    <p class="text-[12px] font-semibold md:text-[13px]">We need more stroke &amp; turn officials</p>
-                    <p class="type-small text-fg-muted">It’s one of the most helpful ways to support the team, and every meet needs them.</p>
+                  <div class="mt-3 rounded-lg bg-fg/4 px-3 py-2.5">
+                    <p class="type-body font-semibold">We need more stroke &amp; turn officials</p>
+                    <p class="type-card mt-0.5 text-fg-muted">It’s one of the most helpful ways to support the team, and every meet needs them.</p>
                   </div>
                   <p class="type-body mt-3 text-fg-muted">
                     Stroke &amp; turn officials watch swimmers’ strokes, turns, and finishes to make sure every race is fair.
@@ -212,26 +354,7 @@
               </div>
             </section>
 
-            <!-- ===== 3. Forms (links only; when and where they're due is on Join) ===== -->
-            <section id="forms" class="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-surface shadow-sm md:scroll-mt-32" aria-labelledby="forms-heading">
-              <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
-                <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
-                <div>
-                  <h2 class="type-section" id="forms-heading">Forms</h2>
-                  <p class="type-small text-fg-muted">All four are required to practice and compete</p>
-                </div>
-              </div>
-              <ul data-forms class="divide-y divide-line px-4 md:px-5">
-                <li class="type-small py-3 text-fg-subtle">Loading…</li>
-              </ul>
-              <div class="border-t border-line px-4 py-3 md:px-5">
-                <p class="type-small text-fg-muted">
-                  When they’re due and how joining works: <a href="./join.html#forms-heading" class="font-medium text-accent underline-offset-2 hover:underline">Join the team →</a>
-                </p>
-              </div>
-            </section>
-
-            <!-- ===== 4. Apparel & gear ===== -->
+            <!-- ===== 7. Apparel & gear ===== -->
             <section id="apparel" class="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-surface shadow-sm md:scroll-mt-32" aria-labelledby="apparel-heading">
               <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
                 <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
@@ -242,24 +365,24 @@
               </div>
               <dl class="grid gap-x-8 px-4 sm:grid-cols-2 md:px-5">
                 <div class="border-b border-line py-3">
-                  <dt class="text-[12px] font-semibold md:text-[13px]">Swim caps</dt>
-                  <dd class="type-small mt-0.5 text-fg-muted">Provided by the team.</dd>
+                  <dt class="type-body font-semibold">Swim caps</dt>
+                  <dd class="type-card mt-0.5 text-fg-muted">Provided by the team.</dd>
                 </div>
                 <div class="border-b border-line py-3">
-                  <dt class="text-[12px] font-semibold md:text-[13px]">Team jacket</dt>
-                  <dd class="type-small mt-0.5 text-fg-muted">Signed out for the season. Return it at the end, or buy it to keep.</dd>
+                  <dt class="type-body font-semibold">Team jacket</dt>
+                  <dd class="type-card mt-0.5 text-fg-muted">Signed out for the season. Return it at the end, or buy it to keep.</dd>
                 </div>
                 <div class="border-b border-line py-3 sm:border-b-0">
-                  <dt class="text-[12px] font-semibold md:text-[13px]">Team T-shirt</dt>
-                  <dd class="type-small mt-0.5 text-fg-muted">Paid for by the T-shirt fee on student accounts, and handed out at the first meet.</dd>
+                  <dt class="type-body font-semibold">Team T-shirt</dt>
+                  <dd class="type-card mt-0.5 text-fg-muted">Paid for by the T-shirt fee on student accounts, and handed out at the first meet.</dd>
                 </div>
                 <div class="border-b border-line py-3 sm:border-b-0">
-                  <dt class="text-[12px] font-semibold md:text-[13px]">Team suit <span class="font-normal text-fg-subtle">(optional)</span></dt>
-                  <dd class="type-small mt-0.5 text-fg-muted">Any plain suit works for meets (black is preferred), with no logos from other teams or programs. A durable, competition-style suit is best.</dd>
+                  <dt class="type-body font-semibold">Team suit <span class="font-normal text-fg-subtle">(optional)</span></dt>
+                  <dd class="type-card mt-0.5 text-fg-muted">Any plain suit works for meets (black is preferred), with no logos from other teams or programs. A durable, competition-style suit is best.</dd>
                 </div>
                 <div class="py-3 sm:col-span-2 sm:border-t sm:border-line">
-                  <dt class="text-[12px] font-semibold md:text-[13px]">Spirit wear <span class="font-normal text-fg-subtle">(optional)</span></dt>
-                  <dd class="type-small mt-0.5 text-fg-muted">
+                  <dt class="type-body font-semibold">Spirit wear <span class="font-normal text-fg-subtle">(optional)</span></dt>
+                  <dd class="type-card mt-0.5 text-fg-muted">
                     KRHS swim gear for swimmers and families who want to show Cougar pride. Not required, and it has no effect on being on the team.
                     <a data-link="apparelStore" href="#" class="font-medium text-accent underline-offset-2 hover:underline">Team apparel store ↗</a>
                   </dd>
@@ -267,69 +390,7 @@
               </dl>
             </section>
 
-            <!-- ===== 5. Levels of swimming: a comparison table (real columns, so the green header fits) ===== -->
-            <section id="levels" class="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-surface shadow-sm md:scroll-mt-32" aria-labelledby="levels-heading">
-              <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
-                <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
-                <div>
-                  <h2 class="type-section" id="levels-heading">Levels of swimming</h2>
-                  <p class="type-small text-fg-muted">How high school swimming compares to summer league and club</p>
-                </div>
-              </div>
-              <!-- Phones: the table scrolls sideways inside its card rather than squeezing -->
-              <div class="overflow-x-auto">
-                <table class="type-table w-full min-w-[36rem] table-fixed text-[12px] md:text-[13px]">
-                  <thead class="bg-brand text-white">
-                    <tr class="text-left">
-                      <th scope="col" class="w-[18%] py-2.5 pr-2 pl-4 font-semibold md:pl-5"><span class="sr-only">Topic</span></th>
-                      <th scope="col" class="py-2.5 pr-3 font-semibold">High school (VHSL)</th>
-                      <th scope="col" class="py-2.5 pr-3 font-semibold">Summer league</th>
-                      <th scope="col" class="py-2.5 pr-4 font-semibold md:pr-5">Club (USA Swimming)</th>
-                    </tr>
-                  </thead>
-                  <tbody class="align-top">
-                    <tr class="border-b border-line">
-                      <th scope="row" class="py-3 pr-2 pl-4 text-left font-semibold md:pl-5">Season</th>
-                      <td class="py-3 pr-3">Winter: November–February</td>
-                      <td class="py-3 pr-3">Summer: about June–July</td>
-                      <td class="py-3 pr-4 md:pr-5">Year-round</td>
-                    </tr>
-                    <tr class="border-b border-line">
-                      <th scope="row" class="py-3 pr-2 pl-4 text-left font-semibold md:pl-5">Practice</th>
-                      <td class="py-3 pr-3">After school at WARF</td>
-                      <td class="py-3 pr-3">At a neighborhood or community pool</td>
-                      <td class="py-3 pr-4 md:pr-5">Several practices a week, often 6+ hours</td>
-                    </tr>
-                    <tr class="border-b border-line">
-                      <th scope="row" class="py-3 pr-2 pl-4 text-left font-semibold md:pl-5">Meets</th>
-                      <td class="py-3 pr-3">Team meets, then Districts, Regionals, and States</td>
-                      <td class="py-3 pr-3">Weekly meets against other summer teams</td>
-                      <td class="py-3 pr-4 md:pr-5">Weekend meets through the year, local to national</td>
-                    </tr>
-                    <tr class="border-b border-line">
-                      <th scope="row" class="py-3 pr-2 pl-4 text-left font-semibold md:pl-5">You swim for</th>
-                      <td class="py-3 pr-3">Kettle Run High School</td>
-                      <td class="py-3 pr-3">Your neighborhood or community team</td>
-                      <td class="py-3 pr-4 md:pr-5">Your club</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="py-3 pr-2 pl-4 text-left font-semibold md:pl-5">Great for</th>
-                      <td class="py-3 pr-3">KRHS students who want to train and compete with their school</td>
-                      <td class="py-3 pr-3">Swimmers of all ages and levels, often as a first team</td>
-                      <td class="py-3 pr-4 md:pr-5">Swimmers who want year-round training and competition</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="border-t border-line px-4 py-3 md:px-5">
-                <p class="type-small text-fg-muted">
-                  Many swimmers do more than one. Club swimmers can join the high school team as
-                  <a href="./join.html#ways-heading" class="font-medium text-accent underline-offset-2 hover:underline">USA Swimming athletes</a>.
-                </p>
-              </div>
-            </section>
-
-            <!-- ===== 6. Fundraiser (filled in from season.json) ===== -->
+            <!-- ===== 8. Fundraiser (filled in from season.json) ===== -->
             <section id="fundraiser" class="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-surface shadow-sm md:scroll-mt-32" aria-labelledby="fundraiser-heading">
               <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
                 <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>

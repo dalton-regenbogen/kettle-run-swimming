@@ -68,10 +68,10 @@ const isChampionship = (meet) => meet.type.includes("Championship");
 // "vs Brentsville District, Sherando", or just "Northwestern District" for a championship.
 const opponentLine = (meet) => (isChampionship(meet) ? opponentNames(meet) : `vs ${opponentNames(meet)}`);
 
-// "canceled" → "Canceled · Weather"
+// "canceled" → "Canceled (weather)"
 function statusText(meet) {
   const status = meet.status.charAt(0).toUpperCase() + meet.status.slice(1);
-  return meet.statusNote ? `${status} · ${meet.statusNote}` : status;
+  return meet.statusNote ? `${status} (${meet.statusNote.toLowerCase()})` : status;
 }
 
 // A small tag after the meet name. Same shape as the badges on Records/Roster.
@@ -104,7 +104,7 @@ function desktopCells(meet, flags) {
   name.append(nameWithTags(meet, flags, ""), el("div", "type-small text-fg-muted", opponentLine(meet)));
 
   const place = el("td", "hidden px-5 py-2.5 align-top md:table-cell");
-  place.append(el("div", "", meet.locationFull), el("div", "type-small text-fg-subtle", `${meet.homeAway} · Hosted by ${meet.hostSchool}`));
+  place.append(el("div", "", meet.locationFull), el("div", "type-small text-fg-subtle", `${meet.homeAway}, hosted by ${meet.hostSchool}`));
 
   const time = el("td", `hidden px-5 py-2.5 align-top md:table-cell ${timeClass(meet)}`, formatTime(meet.startTime));
   return [date, name, place, time];

@@ -34,23 +34,23 @@ felt out of place on desktop. A full Mon–Sun calendar was also set aside (cram
 | Results | Season summary (dual record, win %, streak, postseason places), dual-meet scores by opponent, championship places with full standings, PDF links; season picker. Shares the season files in `src/assets/meets/` with Meets. | Built (`results.html`; `2025-2026-results.html` forwards here) |
 | Roster | Team members by season, with All/Boys/Girls filter and season picker. No PDF. | Built |
 | Records | All-time team bests. Web page only — no PDF download. | Built |
-| Join | **"How do I get on the team?"** For prospective families (Sep–Nov). How joining works (first week is the tryout) beside the 4 steps, the 4 required forms, two ways to be on the team (VHSL-primary vs. USA Swimming), costs, getting to practice, short FAQ. | Built (`join.html`) |
-| About | **"Who is this team, and how does it run?"** Our program (story + quick facts), coach, how we run (values, attendance, lettering, daily expectations), recent highlights, get involved. Side contents list like Resources. | Built (`about.html`) |
-| Resources | **"Where's the thing I need right now?"** For current families: Swim meets 101, volunteering & officiating, forms (links), apparel & gear, levels of swimming (HS vs. summer vs. club), fundraiser. Side contents list. | Built (`resources.html`) |
+| Join | **"How do I get on the team?"** For prospective families (Sep–Nov). How joining works (no cuts, so no tryout: the first week is for deciding) beside the 4 steps, the 4 required forms, two ways to be on the team (VHSL-primary vs. USA Swimming), costs, short FAQ. | Built (`join.html`) |
+| About | **"Who is this team, and how does it run?"** Our program (story + quick facts), the season, coach, how we run (values, two kinds of athletes, representing Kettle Run), get involved. Side contents list like Resources. | Built (`about.html`) |
+| Resources | **"Where's the thing I need right now?"** For current families: forms (links), links & documents (handbook, qualifying times, …), getting there, attendance & lettering (moved from About), Swim meets 101, volunteering & officiating, apparel & gear, fundraiser. Side contents list. (The levels-of-swimming comparison was removed in Oct 2026.) | Built (`resources.html`) |
 | 404 | "Page not found" with links back to main pages. | Built (`src/pages/404.html`) |
 
 ## Content decisions (Join, About, Resources)
 
 - Each page answers one question (see the table above); content lives on the page whose question it answers.
-  Join links to About for the full attendance/lettering rules and to Resources for apparel and the levels table.
+  Join links to Resources for attendance/lettering, getting there, and apparel.
 
 - Source: the season handbook, rewritten as web pages. No handbook PDF unless the coach adds one later
   (optional link in the season settings file).
 - Privacy: email only (no phone number); volunteer roles listed without parents' names.
 - The four required forms (VHSL Physical, FCPS Acknowledgement, FCPS Concussion, Swim Team Contact Form) are
   links to where they live, set in `src/assets/data/season.json`.
-- Season-specific details (form links, store, fundraiser, qualifying times, officials info, handbook PDF) live in
-  `src/assets/data/season.json`. An empty link shows "coming soon" (or hides, for the handbook PDF).
+- Season-specific details (form links, documents such as the handbook and qualifying times, store, fundraiser,
+  officials info) live in `src/assets/data/season.json`. An empty link shows "coming soon".
 
 ## Removed / deferred
 

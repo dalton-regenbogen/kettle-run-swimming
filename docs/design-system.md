@@ -19,7 +19,7 @@ The visual rules every page follows. Each section is filled in as it's decided.
 
 ### Type scale ("Extra compact")
 
-Each role is one Tailwind class: `type-title`, `type-section`, `type-sub`, `type-number`, `type-body`, `type-table`, `type-small`, `type-label`, `type-nav`, `type-button`. Fonts: `font-body` (Inter), `font-display` (Inter Tight).
+Each role is one Tailwind class: `type-title`, `type-section`, `type-sub`, `type-number`, `type-body`, `type-card`, `type-table`, `type-small`, `type-label`, `type-nav`, `type-button`. Fonts: `font-body` (Inter), `font-display` (Inter Tight).
 
 Clean and compact, in the spirit of Apple Sports. Chosen on a Records preview page (since removed).
 
@@ -28,8 +28,9 @@ Clean and compact, in the spirit of Apple Sports. Chosen on a Records preview pa
 | Page title | 24px | 28px | 650 | 1.1 | -0.025em | Inter Tight |
 | Section heading | 17px | 18px | 600 | 1.2 | -0.015em | Inter Tight |
 | Subheading / card title | 14px | 15px | 600 | 1.3 | -0.01em | Inter Tight |
-| Big number (scores, featured times) | 20px | 24px | 600 | 1 | -0.02em | Inter Tight, tabular |
-| Body | 14px | 14px | 400 | 1.55 | — | Inter |
+| Big number (scores, featured times) | 18px | 20px | 600 | 1 | -0.02em | Inter Tight, tabular |
+| Body (paragraphs, item titles) | 13px | 13px | 400 | 1.55 | — | Inter |
+| Card text (sentences inside cards, rows, steps, FAQ answers) | 12px | 12px | 400 | 1.5 | — | Inter |
 | Table text | 13px | 13px | 400; times 500 | 1.4 | — | Inter, tabular |
 | Small / meta (dates, "Updated") | 11px | 12px | 400 | 1.45 | — | Inter |
 | Label (uppercase) | 10px | 10px | 500 | 1.3 | 0.06em | Inter |
@@ -175,7 +176,7 @@ Small yellow tags (`bg-badge text-badge-fg`, 9px on phones / 10px on desktop, se
 standout facts: "State Record" next to a record time, "Captain" next to a roster name. Text explains itself; no legend.
 
 Two other tags use the same shape: **"Next meet" / "This week"** (`bg-highlight text-black`, with the row tinted
-`bg-highlight/10`) and **status** such as "Canceled · Weather" (`bg-fg/10 text-fg`, row dimmed, time crossed out).
+`bg-highlight/10`) and **status** such as "Canceled (weather)" (`bg-fg/10 text-fg`, row dimmed, time crossed out).
 
 ### Link cards (first used on the 404 page)
 
@@ -191,7 +192,7 @@ Standard table, grouped by part of the season ("Regular Season" / "Post Season",
   - Date: "Dec 6" (medium) over the weekday "Sat" (gray).
   - Meet: the type ("Double Dual") with any tags, over "vs Brentsville District, Sherando" (school names without
     "High School"; championships show their name, e.g. "Northwestern District").
-  - Location: the pool's full name over "Away · Hosted by Brentsville".
+  - Location: the pool's full name over "Away, hosted by Brentsville".
 - **Phones:** Date · Meet · Time. The meet cell adds the pool as a third line; Home/Away goes under the time.
 - **In season:** the next meet that's still on gets the "Next meet" tag; earlier meets are dimmed. In the
   offseason nothing is dimmed.
@@ -211,7 +212,7 @@ Standard table, grouped by part of the season ("Regular Season" / "Post Season",
     green (`bg-brand`) away, `bg-fg` neutral. A column with sideways text on desktop (`[writing-mode:vertical-rl]
     rotate-180`), a strip across the top on phones.
   - **Date:** weekday / "Dec 6" (13px medium) / time on desktop; one 12px medium line on phones
-    ("Saturday, Dec 6 · 6:00 PM").
+    ("Saturday, Dec 6, 6:00 PM").
   - **Meet:** type (main item: 13px regular desktop, 12px semibold phones) with any status tag, the opponents in
     gray, and the pool in a gray chip (`bg-fg/5`).
   - **Boys / Girls panels** side by side (`rounded-lg border border-line`), `type-label` heading, two 20px lines
@@ -265,13 +266,15 @@ size. All text — no tiles.
   pauses on hover/focus; only the visible photo is exposed to screen readers.
 - **Below the hero:** two full-width section cards, stacked (nothing has to line up, so no leftover white space).
   - **"Right now"** changes with the date. All three versions share one shape where possible:
-    - Preseason — **Join the team**: three steps across (1 · Interest meeting, 2 · Forms, 3 · First practice).
+    - Preseason — **Join the team** (subtitle "2026–2027 season"): three steps across (1. Interest meeting,
+      2. Forms, 3. First week).
     - In season — **This week**: three blocks across — Practice (days; a time only when different from usual),
-      Latest result (spelled out: "Won 2 · Lost 1", "6th place"), Next meet — each ending in an accent "… →" link.
+      Latest result (spelled out: "Won 2, lost 1", "6th place"), Next meet — each ending in an accent "… →" link.
     - Offseason — **Season recap**: Boys / Girls panels with the dual record and places spelled out
       ("6th at Regionals", "Districts canceled").
     - Blocks use a `type-label` heading, 12/13px main lines (dates medium), 11/12px gray second lines.
-  - **Up next**: rows of three dates read left to right (one column on phones), one full-width line between rows.
+  - **Up next** (subtitle "Team events, practices, and championships"): from `lg`, rows of three dates read left
+    to right with one full-width line between rows; phones and tablets get one date per row, each with its own line.
     Each date is a small solid block ("NOV" over "10"): school green for team events and practices, school
     orange with black text for meets. Next 6 upcoming; "Show all season dates" swaps in the whole season
     (past dates dimmed). No green table header — that's for data tables.
@@ -283,17 +286,38 @@ size. All text — no tiles.
 
 Join, Resources, and About are mostly words. They reuse the section cards and add:
 
-- **Body text:** `type-body text-fg-muted`, kept to `max-w-prose` so lines stay readable.
-- **Steps:** an `<ol>` of blocks across (`sm:grid-cols-2 lg:grid-cols-4`, thin dividers); `type-label` heading with
-  an orange step number, a 12/13px main line, an 11/12px gray line.
-- **Link rows** (e.g. the four forms, filled from `season.json`): a small accent-tinted icon tile, name over note,
-  and "Open form ↗" on the right — or gray "Link coming soon" while the link is empty.
+- **Text rules (Oct 2026).** The same few styles everywhere, so the pages don't feel like a mix of sizes:
+
+  | What | Classes |
+  | --- | --- |
+  | Section title / sub-section heading | `type-section` / `type-sub` |
+  | Subtitle under any heading (one line) | `type-small text-fg-muted` |
+  | Card / block label ("EFFORT", "1. DISTRICTS", "MEETS") | `type-label font-semibold text-accent` (green) |
+  | Item title (term, FAQ question, panel line, step, name) | `type-body font-semibold` |
+  | Paragraph that stands on its own under a heading | `type-body text-fg-muted` |
+  | Sentence inside a card, panel, term row, step, note box, card footer, or FAQ answer | `type-card text-fg-muted` |
+  | Short notes (fact labels, "(optional)", "Head Coach", form notes) | `type-small text-fg-subtle` |
+  | Standalone links ("How meets work →") | `type-small font-medium text-accent` |
+
+  Two sentence sizes only: paragraphs (13px) and card text one step smaller (12px), the same on phones and desktop
+  (reading text doesn't shrink on phones; only titles and headings do). Every label at the top
+  of a card or block is green, on every page (home blocks and Join steps included). The home page's blocks use the
+  table style for their lines (12/13px main line over 11/12px gray), since they're data, like the tables.
+- **No bullets or "·" separators**, anywhere. Lists inside panels are short separate paragraphs (`space-y-1.5`);
+  numbered lists and steps use "1." (e.g. "1. Interest meeting"); two facts on one line are joined with a comma,
+  "at", or "@" ("6:00 PM @ WARF", "Away, hosted by Brentsville", "Canceled (weather)").
+- **Steps:** an `<ol>` of blocks with thin dividers: a `type-label` heading with its number ("1. Forms"), an item
+  title, and a sentence.
+- **Link rows** (the four forms and the Resources "Links & documents" list, both filled from `season.json`): a
+  small accent-tinted icon tile, name over note, and "Open form ↗" / "Open ↗" on the right — or gray "Link coming
+  soon" while the link is empty.
 - **Term list:** `<dl>` rows — 12/13px semibold term ("Fees", "Team suit (optional)") over gray small text.
-- **Side-by-side panels:** two `rounded-xl border` panels; `type-label` accent heading, a semibold line, a small
-  bulleted list (`list-disc marker:text-fg-subtle`).
-- **Comparison table:** the standard green-header table (it has real columns); scrolls sideways inside its card on
-  phones (`overflow-x-auto`, `min-w-[40rem]`) instead of squeezing.
-- **Callout:** an important note with an orange edge — `border-l-4 border-highlight bg-highlight/10`.
+- **Side-by-side panels / small cards:** `rounded-xl border` panels; `type-label` accent heading, an optional item
+  title, then sentences. Used for athlete types, values, ways to report an absence, the postseason, and "At the meet".
+- **Quick facts** (About, "Our program"): desktop — a column beside the text, label left / value right
+  (`font-medium`) with lines between; phones — above the text, a two-column grid of value (semibold) over label.
+- **Note box:** something to point out (e.g. "What counts as excused") goes in a plain gray box —
+  `rounded-lg bg-fg/4 px-3 py-2.5`, semibold title over card text. (The orange-edged callout was retired.)
 - **FAQ:** `<details>`/`<summary>` rows with a + / − marker; the answer in small gray text.
 - **Contents list** (long pages, first used on Resources): desktop — a list in a left column that stays in view
   (`lg:sticky lg:top-32`), each link with a left border that turns accent on hover; phones — the same links as a
@@ -302,7 +326,7 @@ Join, Resources, and About are mostly words. They reuse the section cards and ad
 - **Sub-sections inside a card:** `type-sub` headings, divided by thin lines.
 - **Big-number panels** (e.g. lettering limits): `type-number` in accent over a semibold label and a gray line.
 - **Placeholders:** a link that isn't set in `season.json` yet becomes the same text in gray with "(link coming
-  soon)"; the handbook PDF link hides instead.
+  soon)".
 - **External links** open in a new tab with a hidden "(opens in a new tab)" note for screen readers.
 
 ### Logo

@@ -70,7 +70,7 @@ function athleteRow(athlete) {
     nameLine.append(el("span", "rounded-sm bg-badge px-1 py-0.5 text-[9px] leading-none font-semibold text-badge-fg md:text-[10px]", "Captain"));
   }
   const otherRoles = roles.filter((role) => role !== "Captain");
-  const subline = [athlete.team ? `${athlete.team} Team` : "", ...otherRoles].filter(Boolean).join(" · ");
+  const subline = [athlete.team ? `${athlete.team} Team` : "", ...otherRoles].filter(Boolean).join(", ");
   nameCell.append(nameLine, el("div", "type-small text-fg-subtle", subline));
 
   row.append(

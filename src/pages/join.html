@@ -17,7 +17,7 @@
     -->
     <main class="mx-auto w-full max-w-6xl flex-1 px-3 py-6 md:px-4 md:py-12">
       <div class="md:rounded-2xl md:border md:border-line md:bg-surface md:p-6 md:shadow-xs">
-        <!-- Hero band -->
+        <!-- Hero band. "Email the coach" is a quiet text link, since the footer and the FAQ also have it. -->
         <section class="relative mb-6 overflow-hidden rounded-2xl bg-black text-white md:mb-8 dark:ring-1 dark:ring-white/15">
           <div class="hero-texture pointer-events-none absolute inset-0" aria-hidden="true"></div>
           <div class="relative flex flex-col items-center gap-3 px-6 py-6 text-center md:flex-row md:items-end md:justify-between md:py-8 md:text-left">
@@ -26,7 +26,7 @@
               <h1 class="type-title mt-1.5">Join the Team</h1>
               <p class="type-small mt-1 text-white/80">How to become part of Kettle Run Swimming.</p>
             </div>
-            <a href="mailto:coachdtr@gmail.com" class="type-button rounded-lg border border-white/30 px-3.5 py-2 text-white transition-colors hover:border-white/70">Email the coach</a>
+            <a href="mailto:coachdtr@gmail.com" class="type-small font-medium text-white/80 underline-offset-2 transition-colors hover:text-white hover:underline">Questions? Email the coach →</a>
           </div>
         </section>
 
@@ -43,57 +43,44 @@
             <div class="grid lg:grid-cols-2">
               <div class="space-y-3 px-4 py-4 md:px-5">
                 <p class="type-body text-fg-muted">
-                  There’s no one-day tryout. Instead, the first week of practice is when swimmers decide about the season, and it
-                  works a little differently depending on the swimmer:
+                  There’s no tryout. With the size of our team, we don’t need to make cuts, so there’s no one-day or multi-day
+                  tryout process. Instead, the first week of practice is for each swimmer to decide for themselves. High school
+                  swimmers can come to a practice or a few, get a feel for the team, the training, and the environment, and see
+                  if it’s for them. Club swimmers can use the week to come to their one required practice. The roster is set at
+                  the end of the week.
                 </p>
                 <dl class="space-y-2.5">
                   <div class="rounded-lg bg-fg/4 px-3 py-2.5">
-                    <dt class="text-[12px] font-semibold md:text-[13px]">Club swimmers (USA Swimming athletes)</dt>
-                    <dd class="type-small mt-0.5 text-fg-muted">Come to one practice during the first week. That declares your intent to be on the team this season. After that, most club swimmers stick with their club training, which is completely fine.</dd>
+                    <dt class="type-body font-semibold">High school swimmers (VHSL-primary athletes)</dt>
+                    <dd class="type-card mt-0.5 text-fg-muted">Use the first week to try it out: the team, the training, and the environment. Decide by the end of the week whether you’re continuing.</dd>
                   </div>
                   <div class="rounded-lg bg-fg/4 px-3 py-2.5">
-                    <dt class="text-[12px] font-semibold md:text-[13px]">High school swimmers (VHSL-primary athletes)</dt>
-                    <dd class="type-small mt-0.5 text-fg-muted">Use the first week to try it out: the team, the training, and the environment. Decide by the end of the week whether you’re continuing.</dd>
+                    <dt class="type-body font-semibold">Club swimmers (USA Swimming athletes)</dt>
+                    <dd class="type-card mt-0.5 text-fg-muted">Come to one practice during the first week. That declares your intent to be on the team this season. After that, most club swimmers stick with their club training, which is completely fine.</dd>
                   </div>
                 </dl>
-                <p class="type-body text-fg-muted">
-                  The first week also sets the scene for the season: expectations, routines, and what’s ahead. The roster is set
-                  at the end of it.
-                </p>
               </div>
-              <!-- Steps: a numbered list, with an orange number like the home page -->
+              <!-- Steps: a numbered list. The label carries the number ("1. Interest meeting"), like the home page. -->
               <ol class="divide-y divide-line border-t border-line lg:border-t-0 lg:border-l">
-                <li class="flex gap-3 px-4 py-3.5 md:px-5">
-                  <span class="type-label w-4 shrink-0 pt-0.5 font-semibold text-highlight">1</span>
-                  <div>
-                    <p class="type-label font-semibold text-fg-muted">Interest meeting</p>
-                    <p class="mt-1 text-[12px] font-medium md:text-[13px]" data-interest-meeting>Announced each fall, in October</p>
-                    <p class="type-small text-fg-subtle">Meet the coach and hear what the season looks like</p>
-                  </div>
+                <li class="px-4 py-3.5 md:px-5">
+                  <p class="type-label font-semibold text-accent">1. Interest meeting</p>
+                  <p class="type-body mt-1 font-semibold" data-interest-meeting>Announced each fall, in October</p>
+                  <p class="type-card text-fg-muted">Meet the coach and hear what the season looks like.</p>
                 </li>
-                <li class="flex gap-3 px-4 py-3.5 md:px-5">
-                  <span class="type-label w-4 shrink-0 pt-0.5 font-semibold text-highlight">2</span>
-                  <div>
-                    <p class="type-label font-semibold text-fg-muted">Forms</p>
-                    <p class="mt-1 text-[12px] font-medium md:text-[13px]">Turn in all four required forms</p>
-                    <p class="type-small text-fg-subtle">Practice once they’re in. All are due by the end of the first week.</p>
-                  </div>
+                <li class="px-4 py-3.5 md:px-5">
+                  <p class="type-label font-semibold text-accent">2. Forms</p>
+                  <p class="type-body mt-1 font-semibold">Turn in all four required forms</p>
+                  <p class="type-card text-fg-muted">Practice once they’re in. All are due by the end of the first week.</p>
                 </li>
-                <li class="flex gap-3 px-4 py-3.5 md:px-5">
-                  <span class="type-label w-4 shrink-0 pt-0.5 font-semibold text-highlight">3</span>
-                  <div>
-                    <p class="type-label font-semibold text-fg-muted">First week</p>
-                    <p class="mt-1 text-[12px] font-medium md:text-[13px]">Declare your intent</p>
-                    <p class="type-small text-fg-subtle">Club swimmers come to one practice; high school swimmers try it out and decide</p>
-                  </div>
+                <li class="px-4 py-3.5 md:px-5">
+                  <p class="type-label font-semibold text-accent">3. First week</p>
+                  <p class="type-body mt-1 font-semibold">Declare your intent</p>
+                  <p class="type-card text-fg-muted">Club swimmers come to one practice. High school swimmers try it out and decide.</p>
                 </li>
-                <li class="flex gap-3 px-4 py-3.5 md:px-5">
-                  <span class="type-label w-4 shrink-0 pt-0.5 font-semibold text-highlight">4</span>
-                  <div>
-                    <p class="type-label font-semibold text-fg-muted">Roster</p>
-                    <p class="mt-1 text-[12px] font-medium md:text-[13px]">The roster is set</p>
-                    <p class="type-small text-fg-subtle">Fees go on student accounts, and gear comes at the first meet</p>
-                  </div>
+                <li class="px-4 py-3.5 md:px-5">
+                  <p class="type-label font-semibold text-accent">4. Roster</p>
+                  <p class="type-body mt-1 font-semibold">The roster is set</p>
+                  <p class="type-card text-fg-muted">Fees go on student accounts, and gear comes at the first meet.</p>
                 </li>
               </ol>
             </div>
@@ -112,7 +99,7 @@
               <li class="type-small py-3 text-fg-subtle">Loading…</li>
             </ul>
             <div class="border-t border-line px-4 py-3 md:px-5">
-              <p class="type-small text-fg-muted">
+              <p class="type-card text-fg-muted">
                 Swimmers can practice once their forms are in, and every form has to be approved by the school. If a swimmer’s
                 forms aren’t complete, the coach will email the family.
               </p>
@@ -131,91 +118,65 @@
             <div class="grid gap-3 p-3 md:grid-cols-2 md:p-4">
               <div class="rounded-xl border border-line p-4">
                 <p class="type-label font-semibold text-accent">VHSL-primary athlete</p>
-                <p class="mt-1 text-[12px] font-semibold md:text-[13px]">High school swimming is your main swimming</p>
-                <ul class="type-small mt-2 list-disc space-y-1.5 pl-4 text-fg-muted marker:text-fg-subtle">
-                  <li>Aim to take part in everything: every practice and every meet.</li>
-                  <li>If you have an absence or a conflict for any reason, tell the coach ahead of time. Otherwise it counts as unexcused and toward lettering.</li>
-                </ul>
+                <p class="type-body mt-1 font-semibold">High school swimming is your main swimming</p>
+                <div class="mt-2 space-y-1.5">
+                  <p class="type-card text-fg-muted">Aim to take part in everything: every practice and every meet.</p>
+                  <p class="type-card text-fg-muted">If you have an absence or a conflict for any reason, tell the coach ahead of time. Otherwise it counts as unexcused and toward lettering.</p>
+                </div>
               </div>
               <div class="rounded-xl border border-line p-4">
                 <p class="type-label font-semibold text-accent">USA Swimming athlete</p>
-                <p class="mt-1 text-[12px] font-semibold md:text-[13px]">You train with a club at least 6 hours a week</p>
-                <ul class="type-small mt-2 list-disc space-y-1.5 pl-4 text-fg-muted marker:text-fg-subtle">
-                  <li>Keep training with your club. High school practice isn’t required.</li>
-                  <li>Swim in as many team meets as you can, and tell the coach about any meet absence ahead of time.</li>
-                </ul>
+                <p class="type-body mt-1 font-semibold">You train with a club at least 6 hours a week</p>
+                <div class="mt-2 space-y-1.5">
+                  <p class="type-card text-fg-muted">Keep training with your club. High school practice isn’t required.</p>
+                  <p class="type-card text-fg-muted">Swim in as many team meets as you can, and tell the coach about any meet absence ahead of time.</p>
+                </div>
               </div>
             </div>
             <div class="border-t border-line px-4 py-3 md:px-5">
-              <p class="type-small text-fg-muted">
-                New to high school swimming? See how it compares to summer league and club swimming on
-                <a href="./resources.html#levels" class="font-medium text-accent underline-offset-2 hover:underline">Resources</a>.
-                How to report an absence, and the lettering rules, are on <a href="./about.html#how-we-run" class="font-medium text-accent underline-offset-2 hover:underline">About</a>.
+              <p class="type-card text-fg-muted">
+                How to report an absence, and the lettering rules, are on <a href="./resources.html#attendance" class="font-medium text-accent underline-offset-2 hover:underline">Resources</a>.
               </p>
             </div>
           </section>
 
-          <!-- 4. Costs | Getting to practice: two cards side by side, stretched to the same height -->
-          <div class="grid gap-6 md:gap-8 lg:grid-cols-2">
-            <section class="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm" aria-labelledby="costs-heading">
-              <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
-                <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
-                <div>
-                  <h2 class="type-section scroll-mt-40" id="costs-heading">Costs</h2>
-                  <p class="type-small text-fg-muted">What families pay, and what the team provides</p>
-                </div>
+          <!-- 4. Costs: two columns of terms on desktop (getting to practice and meets is on Resources, #getting-there) -->
+          <section class="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm" aria-labelledby="costs-heading">
+            <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
+              <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
+              <div>
+                <h2 class="type-section scroll-mt-40" id="costs-heading">Costs</h2>
+                <p class="type-small text-fg-muted">What families pay, and what the team provides</p>
               </div>
-              <dl class="divide-y divide-line px-4 md:px-5">
-                <div class="py-3">
-                  <dt class="text-[12px] font-semibold md:text-[13px]">Fees</dt>
-                  <dd class="type-small mt-0.5 text-fg-muted">An activity fee and a T-shirt fee (which covers your team T-shirt). The school adds both to student accounts once the roster is final.</dd>
-                </div>
-                <div class="py-3">
-                  <dt class="text-[12px] font-semibold md:text-[13px]">Fundraising</dt>
-                  <dd class="type-small mt-0.5 text-fg-muted">The team fundraises during the season to help cover senior gifts, Senior Night, apparel for state qualifiers, and other team needs.</dd>
-                </div>
-                <div class="py-3">
-                  <dt class="text-[12px] font-semibold md:text-[13px]">From the team</dt>
-                  <dd class="type-small mt-0.5 text-fg-muted">Swim caps, and a team jacket that’s signed out for the season (return it at the end, or buy it).</dd>
-                </div>
-                <div class="py-3">
-                  <dt class="text-[12px] font-semibold md:text-[13px]">Optional</dt>
-                  <dd class="type-small mt-0.5 text-fg-muted">
-                    A team suit and spirit wear. Neither is required.
-                    <a href="./resources.html#apparel" class="font-medium text-accent underline-offset-2 hover:underline">Apparel &amp; gear →</a>
-                  </dd>
-                </div>
-              </dl>
-            </section>
-
-            <section class="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm" aria-labelledby="practice-heading">
-              <div class="flex items-center gap-3 border-b border-line px-4 py-4 md:px-5">
-                <div class="h-9 w-1.5 rounded-full bg-accent" aria-hidden="true"></div>
-                <div>
-                  <h2 class="type-section" id="practice-heading">Getting there</h2>
-                  <p class="type-small text-fg-muted">Practices, away meets, and home meets</p>
-                </div>
+            </div>
+            <dl class="grid gap-x-8 px-4 sm:grid-cols-2 md:px-5">
+              <div class="border-b border-line py-3">
+                <dt class="type-body font-semibold">Fees</dt>
+                <dd class="type-card mt-0.5 text-fg-muted">An activity fee and a T-shirt fee (which covers your team T-shirt). The school adds both to student accounts once the roster is final.</dd>
               </div>
-              <dl class="divide-y divide-line px-4 md:px-5">
-                <div class="py-3">
-                  <dt class="text-[12px] font-semibold md:text-[13px]">Practices</dt>
-                  <dd class="type-small mt-0.5 text-fg-muted">
-                    No school transportation. Families arrange rides to and from WARF, and student drivers must follow Virginia’s
-                    passenger laws. Bring a suit, goggles, a cap, and a water bottle.
-                    <a href="./practice-schedule.html" class="font-medium text-accent underline-offset-2 hover:underline">Practice schedule →</a>
-                  </dd>
-                </div>
-                <div class="py-3">
-                  <dt class="text-[12px] font-semibold md:text-[13px]">Away meets <span class="font-normal text-fg-subtle">(any meet not at WARF)</span></dt>
-                  <dd class="type-small mt-0.5 text-fg-muted">Swimmers ride the team bus to the meet. Afterward they can go home with a parent, or with another family, but a parent or guardian must sign them out (and note who they’re leaving with).</dd>
-                </div>
-                <div class="py-3">
-                  <dt class="text-[12px] font-semibold md:text-[13px]">Meets at WARF</dt>
-                  <dd class="type-small mt-0.5 text-fg-muted">No bus, and no sign-out needed.</dd>
-                </div>
-              </dl>
-            </section>
-          </div>
+              <div class="border-b border-line py-3">
+                <dt class="type-body font-semibold">Fundraising</dt>
+                <dd class="type-card mt-0.5 text-fg-muted">The team fundraises during the season to help cover senior gifts, Senior Night, apparel for state qualifiers, and other team needs.</dd>
+              </div>
+              <div class="border-b border-line py-3 sm:border-b-0">
+                <dt class="type-body font-semibold">From the team</dt>
+                <dd class="type-card mt-0.5 text-fg-muted">Swim caps, and a team jacket that’s signed out for the season (return it at the end, or buy it).</dd>
+              </div>
+              <div class="py-3">
+                <dt class="type-body font-semibold">Optional</dt>
+                <dd class="type-card mt-0.5 text-fg-muted">
+                  A team suit and spirit wear. Neither is required.
+                  <a href="./resources.html#apparel" class="font-medium text-accent underline-offset-2 hover:underline">Apparel &amp; gear →</a>
+                </dd>
+              </div>
+            </dl>
+            <div class="border-t border-line px-4 py-3 md:px-5">
+              <p class="type-card text-fg-muted">
+                Rides to practice, the team bus, and signing out after away meets:
+                <a href="./resources.html#getting-there" class="font-medium text-accent underline-offset-2 hover:underline">Getting there →</a>
+              </p>
+            </div>
+          </section>
 
           <!-- 5. FAQ: two columns of questions on desktop -->
           <section class="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm" aria-labelledby="faq-heading">
@@ -233,60 +194,60 @@
             <!-- Two columns on desktop. The last row's bottom lines are hidden (md:[&:nth-last-child(-n+2)]:border-b-0). -->
             <div class="grid px-4 md:grid-cols-2 md:gap-x-8 md:px-5 [&>details:last-child]:border-b-0 md:[&>details:nth-last-child(-n+2)]:border-b-0">
               <details class="group border-b border-line py-3">
-                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[12px] font-semibold md:text-[13px] [&::-webkit-details-marker]:hidden">
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 type-body font-semibold [&::-webkit-details-marker]:hidden">
                   Does my swimmer need meet experience?
                   <span class="text-fg-subtle group-open:hidden" aria-hidden="true">+</span><span class="hidden text-fg-subtle group-open:inline" aria-hidden="true">−</span>
                 </summary>
-                <p class="type-small mt-1.5 text-fg-muted">No. High school swimmers use the first week to try it out and decide if the team is a good fit.</p>
+                <p class="type-card mt-1.5 text-fg-muted">No. High school swimmers use the first week to try it out and decide if the team is a good fit.</p>
               </details>
               <details class="group border-b border-line py-3">
-                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[12px] font-semibold md:text-[13px] [&::-webkit-details-marker]:hidden">
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 type-body font-semibold [&::-webkit-details-marker]:hidden">
                   I swim for a club. Can I still swim for Kettle Run?
                   <span class="text-fg-subtle group-open:hidden" aria-hidden="true">+</span><span class="hidden text-fg-subtle group-open:inline" aria-hidden="true">−</span>
                 </summary>
-                <p class="type-small mt-1.5 text-fg-muted">Yes. Come to one practice during the first week to declare your intent, then keep training with your club and swim in as many team meets as you can.</p>
+                <p class="type-card mt-1.5 text-fg-muted">Yes. Come to one practice during the first week to declare your intent, then keep training with your club and swim in as many team meets as you can.</p>
               </details>
               <details class="group border-b border-line py-3">
-                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[12px] font-semibold md:text-[13px] [&::-webkit-details-marker]:hidden">
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 type-body font-semibold [&::-webkit-details-marker]:hidden">
                   What if a swimmer misses a practice or meet?
                   <span class="text-fg-subtle group-open:hidden" aria-hidden="true">+</span><span class="hidden text-fg-subtle group-open:inline" aria-hidden="true">−</span>
                 </summary>
-                <p class="type-small mt-1.5 text-fg-muted">Tell the coach ahead of time, or it counts as unexcused. See <a href="./about.html#how-we-run" class="font-medium text-accent underline-offset-2 hover:underline">how to report an absence</a>.</p>
+                <p class="type-card mt-1.5 text-fg-muted">Tell the coach ahead of time, or it counts as unexcused. See <a href="./resources.html#attendance" class="font-medium text-accent underline-offset-2 hover:underline">how to report an absence</a>.</p>
               </details>
               <details class="group border-b border-line py-3">
-                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[12px] font-semibold md:text-[13px] [&::-webkit-details-marker]:hidden">
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 type-body font-semibold [&::-webkit-details-marker]:hidden">
                   How can swimmers contact the coach?
                   <span class="text-fg-subtle group-open:hidden" aria-hidden="true">+</span><span class="hidden text-fg-subtle group-open:inline" aria-hidden="true">−</span>
                 </summary>
-                <p class="type-small mt-1.5 text-fg-muted">In the team GroupMe chat, in a GroupMe message that includes a parent, or by email with a parent copied. Swimmers can’t call or text the coach. Parents can use any of these, including a call or text.</p>
+                <p class="type-card mt-1.5 text-fg-muted">In the team GroupMe chat, in a GroupMe message that includes a parent, or by email with a parent copied. Swimmers can’t call or text the coach. Parents can use any of these, including a call or text.</p>
               </details>
               <details class="group border-b border-line py-3">
-                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[12px] font-semibold md:text-[13px] [&::-webkit-details-marker]:hidden">
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 type-body font-semibold [&::-webkit-details-marker]:hidden">
                   How do swimmers get to away meets?
                   <span class="text-fg-subtle group-open:hidden" aria-hidden="true">+</span><span class="hidden text-fg-subtle group-open:inline" aria-hidden="true">−</span>
                 </summary>
-                <p class="type-small mt-1.5 text-fg-muted">On the team bus. Any meet that isn’t at WARF is an away meet.</p>
+                <p class="type-card mt-1.5 text-fg-muted">On the team bus. Any meet that isn’t at WARF is an away meet.</p>
               </details>
               <details class="group border-b border-line py-3">
-                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[12px] font-semibold md:text-[13px] [&::-webkit-details-marker]:hidden">
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 type-body font-semibold [&::-webkit-details-marker]:hidden">
                   Can my swimmer ride home with another family?
                   <span class="text-fg-subtle group-open:hidden" aria-hidden="true">+</span><span class="hidden text-fg-subtle group-open:inline" aria-hidden="true">−</span>
                 </summary>
-                <p class="type-small mt-1.5 text-fg-muted">Yes, after an away meet, as long as a parent or guardian signs them out and notes who they’re leaving with.</p>
+                <p class="type-card mt-1.5 text-fg-muted">Yes, after an away meet, as long as a parent or guardian signs them out and notes who they’re leaving with.</p>
               </details>
               <details class="group border-b border-line py-3">
-                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[12px] font-semibold md:text-[13px] [&::-webkit-details-marker]:hidden">
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 type-body font-semibold [&::-webkit-details-marker]:hidden">
                   What does it cost?
                   <span class="text-fg-subtle group-open:hidden" aria-hidden="true">+</span><span class="hidden text-fg-subtle group-open:inline" aria-hidden="true">−</span>
                 </summary>
-                <p class="type-small mt-1.5 text-fg-muted">An activity fee and a T-shirt fee, added to student accounts, plus team fundraising. See <a href="#costs-heading" class="font-medium text-accent underline-offset-2 hover:underline">Costs</a>.</p>
+                <p class="type-card mt-1.5 text-fg-muted">An activity fee and a T-shirt fee, added to student accounts, plus team fundraising. See <a href="#costs-heading" class="font-medium text-accent underline-offset-2 hover:underline">Costs</a>.</p>
               </details>
               <details class="group border-b border-line py-3">
-                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[12px] font-semibold md:text-[13px] [&::-webkit-details-marker]:hidden">
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 type-body font-semibold [&::-webkit-details-marker]:hidden">
                   Who do we contact with questions?
                   <span class="text-fg-subtle group-open:hidden" aria-hidden="true">+</span><span class="hidden text-fg-subtle group-open:inline" aria-hidden="true">−</span>
                 </summary>
-                <p class="type-small mt-1.5 text-fg-muted">Coach Dalton Regenbogen at <a href="mailto:coachdtr@gmail.com" class="font-medium text-accent underline-offset-2 hover:underline">coachdtr@gmail.com</a>.</p>
+                <p class="type-card mt-1.5 text-fg-muted">Coach Dalton Regenbogen at <a href="mailto:coachdtr@gmail.com" class="font-medium text-accent underline-offset-2 hover:underline">coachdtr@gmail.com</a>.</p>
               </details>
             </div>
           </section>

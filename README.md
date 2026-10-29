@@ -166,8 +166,10 @@ Written as rules, not every day:
   meeting, team pictures, parent meeting, senior night, banquet — as `{ "date", "name", "details" }`. The first and
   last practice and the championship meets are added automatically (if you list something on the same day, yours
   wins). A name with "interest" in it also shows on the Join page. Replace the list each season.
-- **This season's links:** `src/assets/data/season.json` — form links, apparel store, state qualifying times,
-  officials info, an optional handbook PDF, and the fundraiser. `""` means "not ready yet".
+- **This season's links:** `src/assets/data/season.json` — form links, the **documents** list (handbook, state
+  qualifying times, and anything else, shown under "Links & documents" on Resources: add a
+  `{ "name", "note", "url" }` line to add one), apparel store, officials info, and the fundraiser.
+  `""` means "not ready yet" (shown as "Link coming soon").
 - **Team records:** edit `src/assets/data/records.json`, then run `npm run records:meta`. To tag a record, put
   short text in its `RecordBadge` (e.g. `"State Record"`); leave it `""` for no tag.
 - **Roster:** each season is a file in `src/assets/rosters/` (e.g. `roster-2025-2026.json`). Add a new season's

@@ -49,10 +49,10 @@ function ordinal(n) {
 
 const isChampionship = (meet) => meet.type.includes("Championship");
 
-// "canceled" → "Canceled · Weather"
+// "canceled" → "Canceled (weather)"
 function statusText(meet) {
   const status = meet.status.charAt(0).toUpperCase() + meet.status.slice(1);
-  return meet.statusNote ? `${status} · ${meet.statusNote}` : status;
+  return meet.statusNote ? `${status} (${meet.statusNote.toLowerCase()})` : status;
 }
 
 const TEAMS = [
@@ -353,7 +353,7 @@ function meetCard(meet) {
   rail.append(el("span", "type-label font-semibold lg:rotate-180 lg:[writing-mode:vertical-rl]", meet.homeAway));
 
   // Date: one line on phones; weekday / date / time stacked on desktop (date medium, like other tables).
-  const phoneDate = el("p", "border-b border-line px-3 py-1.5 text-center text-[12px] font-medium lg:hidden", `${longWeekday(meet.date)}, ${formatDate(meet.date, { year: false })} · ${formatTime(meet.startTime)}`);
+  const phoneDate = el("p", "border-b border-line px-3 py-1.5 text-center text-[12px] font-medium lg:hidden", `${longWeekday(meet.date)}, ${formatDate(meet.date, { year: false })}, ${formatTime(meet.startTime)}`);
   const date = el("div", "hidden w-24 shrink-0 flex-col justify-center border-r border-line px-4 py-2.5 lg:flex");
   date.append(
     el("span", "type-small text-fg-subtle", longWeekday(meet.date)),
