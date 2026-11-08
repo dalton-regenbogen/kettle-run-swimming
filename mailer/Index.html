@@ -1,0 +1,1111 @@
+<!doctype html>
+<!--
+  KR Mailer — the editor page (runs in your browser).
+
+  Sections below, in order:
+    1. Styles for the editor page itself
+    2. The page layout (recipients, message, blocks, send)
+    3. Script:
+       a. Talking to Code.gs (google.script.run), plus a demo mode for opening this file locally
+       b. THE EMAIL TEMPLATE: renderEmail() and renderText(). Change the email's look here.
+       c. Templates you can start from (Weekly update, Meet reminder, Blank)
+       d. The editor: drawing blocks, live preview, saving the draft, sending
+
+  You can open this file straight from your computer (double-click) to try the editor and
+  the email design. It runs in "demo mode" with made-up families and never sends anything.
+-->
+<html lang="en">
+  <head>
+    <base target="_top" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KR Mailer</title>
+    <!-- Same fonts as the website (src/partials/head.html) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Inter+Tight:wght@500..700&display=swap" />
+    <style>
+      /* ---------- 1. Editor page styles ----------
+         Copied from the website's design system (docs/design-system.md, src/css/input.css):
+         same color roles, type scale, cards and controls, written as plain CSS because this
+         page lives in Apps Script, where Tailwind isn't available. */
+      :root {
+        --page: #f4f4f5;
+        --surface: #ffffff;
+        --line: #e4e4e7;
+        --fg: #111111;
+        --fg-muted: #52525b;
+        --fg-subtle: #71717a;
+        --accent: #005130;
+        --on-accent: #ffffff;
+        --brand: #005130;
+        --highlight: #f37322;
+        --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+
+        /* Type scale ("Extra compact"): phone sizes, bumped up at 768px below */
+        --size-section: 17px;
+        --size-body: 13px;
+        --size-card: 12px;
+        --size-small: 11px;
+        --size-label: 10px;
+        --size-button: 13px;
+        --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+        --font-display: "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
+      }
+      @media (min-width: 768px) {
+        :root { --size-section: 18px; --size-small: 12px; --size-button: 14px; }
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --page: #000000;
+          --surface: #1c1c1e;
+          --line: #2c2c2e;
+          --fg: #f5f5f7;
+          --fg-muted: #c7c7cc;
+          --fg-subtle: #a1a1a6;
+          --accent: #34c77b;
+          --on-accent: #000000;
+        }
+      }
+      /* Tailwind's bg-fg/5 and bg-fg/4: the text color at 5% / 4% */
+      :root { --fg-5: color-mix(in srgb, var(--fg) 5%, transparent); --fg-4: color-mix(in srgb, var(--fg) 4%, transparent); }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--page);
+        color: var(--fg);
+        font-family: var(--font-body);
+        font-size: var(--size-body);
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      button, input, textarea, select { font: inherit; color: inherit; }
+      p { margin: 0; }
+      :focus-visible { outline: 2px solid var(--highlight); outline-offset: 2px; }
+
+      /* Top bar: black like the site header, logo + name like the footer's top row */
+      .bar {
+        position: sticky; top: 0; z-index: 5;
+        display: flex; align-items: center; gap: 12px;
+        padding: 10px 16px; background: #000; color: #fff;
+        border-bottom: 1px solid rgb(255 255 255 / 0.12);
+      }
+      .brand { display: flex; align-items: center; gap: 10px; }
+      .brand img { height: 20px; width: auto; display: block; }
+      .brand h1 { margin: 0; font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; }
+      .status { margin-left: auto; font-size: 11px; color: rgb(255 255 255 / 0.6); }
+
+      .layout {
+        display: grid; grid-template-columns: minmax(0, 1fr) 640px; gap: 16px;
+        max-width: 1320px; margin: 0 auto; padding: 16px;
+      }
+      .editor { display: grid; gap: 16px; align-content: start; }
+      .preview-pane { position: sticky; top: 58px; align-self: start; }
+
+      /* Section card: rounded-2xl border border-line bg-surface shadow-sm */
+      .card { overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow-sm); }
+      .card-head { display: flex; align-items: center; gap: 12px; padding: 16px; border-bottom: 1px solid var(--line); }
+      .card-head .bar-accent { width: 6px; height: 36px; border-radius: 999px; background: var(--accent); flex: none; }
+      .card-head h2 {
+        margin: 0; font-family: var(--font-display); font-size: var(--size-section);
+        font-weight: 600; line-height: 1.2; letter-spacing: -0.015em;
+      }
+      .card-head p { font-size: var(--size-small); line-height: 1.45; color: var(--fg-muted); }
+      .card-body { padding: 16px; }
+      @media (min-width: 768px) {
+        .card-head, .card-body { padding-left: 20px; padding-right: 20px; }
+      }
+
+      /* Text roles */
+      .label { font-size: var(--size-label); font-weight: 600; line-height: 1.3; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+      .field-label { display: block; margin: 12px 0 4px; font-size: var(--size-small); font-weight: 500; color: var(--fg); }
+      .field-label:first-child { margin-top: 0; }
+      .hint { font-weight: 400; color: var(--fg-subtle); }
+      .small { font-size: var(--size-small); line-height: 1.45; color: var(--fg-muted); }
+
+      /* Inputs: like the site's select — rounded-lg border border-line bg-surface px-2.5 py-1.5 */
+      input[type="text"], input[type="email"], textarea, select {
+        width: 100%; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px;
+        background: var(--surface); font-size: 13px;
+      }
+      select { font-weight: 500; }
+      input::placeholder, textarea::placeholder { color: var(--fg-subtle); }
+      textarea { resize: none; overflow: hidden; min-height: 60px; line-height: 1.5; }
+
+      /* Segmented control (Roster's All / Boys / Girls) */
+      .segmented { display: inline-flex; gap: 4px; padding: 4px; border-radius: 8px; background: var(--fg-5); }
+      .segmented button {
+        border: 0; border-radius: 6px; padding: 4px 10px; background: transparent;
+        font-size: 12px; font-weight: 600; color: var(--fg-muted); cursor: pointer;
+      }
+      .segmented button[aria-pressed="true"] { background: var(--surface); color: var(--fg); box-shadow: var(--shadow-sm); }
+      .bar .segmented { background: rgb(255 255 255 / 0.1); }
+      .bar .segmented button { color: rgb(255 255 255 / 0.7); }
+      .bar .segmented button[aria-pressed="true"] { background: rgb(255 255 255 / 0.2); color: #fff; box-shadow: none; }
+      .tabs { display: none; }
+
+      /* Group chips (more than one can be on) */
+      .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+      .chip {
+        border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px;
+        background: var(--surface); font-size: 12px; font-weight: 500; cursor: pointer;
+      }
+      .chip[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+      /* Buttons: type-button rounded-lg px-3.5 py-2 */
+      .btn {
+        border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px;
+        background: var(--surface); font-size: var(--size-button); font-weight: 600;
+        cursor: pointer; white-space: nowrap;
+      }
+      .btn:hover { border-color: var(--fg-subtle); }
+      .btn-primary { background: var(--brand); border-color: var(--brand); color: #fff; }
+      .btn-primary:hover { border-color: var(--brand); filter: brightness(1.15); }
+      .btn-small { padding: 4px 10px; font-size: 12px; }
+      .btn:disabled { opacity: 0.5; cursor: default; }
+
+      .row { display: flex; gap: 8px; align-items: center; }
+      .row > input, .row > select { flex: 1; min-width: 0; }
+
+      /* Recipients summary */
+      .summary { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
+      .summary-line { display: flex; align-items: center; gap: 8px; }
+      .summary-line strong { font-weight: 600; }
+      .summary-line .btn { margin-left: auto; }
+      .summary details { margin-top: 6px; font-size: var(--size-card); color: var(--fg-muted); }
+      .summary summary { cursor: pointer; font-size: var(--size-small); font-weight: 500; color: var(--accent); }
+      .summary ul { margin: 6px 0 0; padding: 0; list-style: none; display: grid; gap: 2px; }
+
+      /* Note box: rounded-lg bg-fg/4 px-3 py-2.5, semibold title over card text */
+      .note { margin-top: 10px; padding: 10px 12px; border-radius: 8px; background: var(--fg-4); }
+      .note strong { display: block; font-weight: 600; }
+      .note p, .note li { font-size: var(--size-card); line-height: 1.5; color: var(--fg-muted); }
+      .note ul { margin: 2px 0 0; padding: 0; list-style: none; }
+
+      /* Content blocks: rounded-xl panels with a green label, like Join's panels */
+      .block { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px 12px; margin-bottom: 8px; }
+      .block-head { display: flex; align-items: center; gap: 2px; margin-bottom: 6px; }
+      .block-head .label { margin-right: auto; }
+      .icon-btn {
+        width: 26px; height: 24px; border: 0; border-radius: 6px; background: transparent;
+        color: var(--fg-subtle); cursor: pointer;
+      }
+      .icon-btn:hover { background: var(--fg-5); color: var(--fg); }
+      .block .field-label { margin-top: 8px; }
+      .block .field-label:first-of-type { margin-top: 0; }
+      .add { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+
+      .send-row { display: flex; align-items: center; gap: 12px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+      .result { margin-top: 10px; font-size: var(--size-small); line-height: 1.45; }
+      .result.ok { color: var(--accent); font-weight: 500; }
+      .result.err { color: var(--fg); font-weight: 500; }
+      .confirm .row { margin-top: 8px; }
+
+      .preview-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+      .preview-head .label { margin-right: auto; color: var(--fg-subtle); }
+      .lab { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin-bottom: 8px; padding: 8px 10px; border: 1px dashed var(--line); border-radius: 12px; }
+      .lab .label { color: var(--fg-subtle); }
+      .frame-wrap { display: flex; justify-content: center; }
+      #preview {
+        width: 100%; height: calc(100vh - 110px); border: 1px solid var(--line);
+        border-radius: 16px; background: #fff; box-shadow: var(--shadow-sm);
+      }
+      #preview.phone { width: 375px; }
+
+      @media (max-width: 1000px) {
+        .layout { grid-template-columns: minmax(0, 1fr); }
+        .tabs { display: inline-flex; }
+        body[data-tab="edit"] .preview-pane { display: none; }
+        body[data-tab="preview"] .editor { display: none; }
+        .preview-pane { position: static; }
+      }
+    </style>
+  </head>
+  <body data-tab="edit">
+    <!-- ---------- 2. Page layout ---------- -->
+    <header class="bar">
+      <div class="brand">
+        <img id="bar-logo" alt="" />
+        <h1>KR Mailer</h1>
+      </div>
+      <div class="segmented tabs" role="group" aria-label="View">
+        <button type="button" data-tab="edit" aria-pressed="true">Edit</button>
+        <button type="button" data-tab="preview" aria-pressed="false">Preview</button>
+      </div>
+      <span class="status" id="status">Loading…</span>
+    </header>
+
+    <main class="layout">
+      <div class="editor">
+        <section class="card">
+          <div class="card-head">
+            <div class="bar-accent" aria-hidden="true"></div>
+            <div><h2>Recipients</h2><p>Who gets this email</p></div>
+          </div>
+          <div class="card-body">
+            <span class="field-label">Groups</span>
+            <div class="chips" id="groups"></div>
+            <span class="field-label">On each email</span>
+            <div class="segmented" id="audience" role="group" aria-label="Who's on each email">
+              <button type="button" data-audience="family">Swimmers + parents</button>
+              <button type="button" data-audience="parents">Parents only</button>
+            </div>
+            <div class="summary" id="summary"><p class="small">Counting…</p></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-head">
+            <div class="bar-accent" aria-hidden="true"></div>
+            <div><h2>Message</h2><p>What families see in their inbox</p></div>
+          </div>
+          <div class="card-body">
+            <label class="field-label" for="subject">Subject</label>
+            <input type="text" id="subject" data-field="subject" />
+            <label class="field-label" for="preheader">Preview text <span class="hint">(the gray line after the subject)</span></label>
+            <input type="text" id="preheader" data-field="preheader" />
+            <label class="field-label" for="title">Headline <span class="hint">(optional, big title at the top)</span></label>
+            <input type="text" id="title" data-field="title" />
+            <label class="field-label" for="label">Header strip <span class="hint">(e.g. “Weekly Update #1”, “Meet #1 Update”; leave blank for none)</span></label>
+            <input type="text" id="label" data-field="label" />
+            <label class="field-label" for="cheer">Sign-off cheer</label>
+            <input type="text" id="cheer" data-field="cheer" />
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-head">
+            <div class="bar-accent" aria-hidden="true"></div>
+            <div><h2>Content</h2><p>Build the email from blocks</p></div>
+          </div>
+          <div class="card-body">
+            <div class="row" style="margin-bottom: 12px">
+              <select id="template" aria-label="Template"></select>
+              <button type="button" class="btn btn-small" id="use-template">Start over from this</button>
+            </div>
+            <div id="blocks"></div>
+            <div class="add" id="add"></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-head">
+            <div class="bar-accent" aria-hidden="true"></div>
+            <div><h2>Send</h2><p>Test it first, then send to families</p></div>
+          </div>
+          <div class="card-body">
+            <label class="field-label" for="test-to">Send a test to</label>
+            <div class="row">
+              <input type="email" id="test-to" />
+              <button type="button" class="btn" id="send-test">Send test</button>
+            </div>
+            <div class="send-row">
+              <button type="button" class="btn btn-primary" id="send">Send</button>
+            </div>
+            <div id="confirm"></div>
+            <div class="result" id="result"></div>
+          </div>
+        </section>
+      </div>
+
+      <div class="preview-pane">
+        <div class="preview-head">
+          <span class="label">Preview</span>
+          <div class="segmented" role="group" aria-label="Preview width">
+            <button type="button" data-width="desktop" aria-pressed="true">Desktop</button>
+            <button type="button" data-width="phone" aria-pressed="false">Phone</button>
+          </div>
+        </div>
+        <!-- DESIGN LAB (temporary): remove once an upcoming meet style is picked -->
+        <div class="lab">
+          <span class="label">Upcoming meet</span>
+          <div class="segmented" id="lab-upcoming" role="group" aria-label="Upcoming meet style"></div>
+        </div>
+        <div class="frame-wrap"><iframe id="preview" title="Email preview"></iframe></div>
+      </div>
+    </main>
+
+    <script>
+      /* ---------- 3a. Talking to Code.gs ---------- */
+
+      // Inside Apps Script, google.script.run calls a function in Code.gs and waits for the answer.
+      // This wraps it in a Promise so the code below can say: const x = await api('getGroups').
+      const LIVE = typeof google !== 'undefined' && google.script && google.script.run;
+
+      function api(fn, ...args) {
+        if (!LIVE) return DEMO[fn](...args);
+        return new Promise((resolve, reject) => {
+          google.script.run.withSuccessHandler(resolve).withFailureHandler(reject)[fn](...args);
+        });
+      }
+
+      // Demo mode: made-up data so this file works when opened on your computer. Never sends.
+      const DEMO = {
+        getGroups: async () => ['seniors', 'state team', 'staff'],
+        getMyEmail: async () => 'headcoach@kettlerunswim.org',
+        getPhone: async () => '703-555-0100',
+        loadDraft: async () => { try { return localStorage.getItem('kr-mailer-demo') || ''; } catch (e) { return ''; } },
+        saveDraft: async (json) => { try { localStorage.setItem('kr-mailer-demo', json); } catch (e) {} },
+        getAudience: async (groups, audience) => {
+          const all = [
+            { label: 'Doe (Jane, Sam)', n: 4, g: ['seniors', 'state team'] },
+            { label: 'Lee (Alex)', n: 2, g: ['state team'] },
+            { label: 'Park (Chris)', n: 3, g: [] },
+            { label: 'coach@example.com', n: 1, g: ['staff'] }
+          ];
+          const fams = all.filter((f) => !groups.length || f.g.some((g) => groups.includes(g)));
+          return {
+            familyCount: fams.length,
+            addressCount: fams.reduce((n, f) => n + (audience === 'parents' ? f.n - 1 : f.n), 0),
+            families: fams.map((f) => f.label),
+            skipped: [{ row: 9, name: 'Riley Smith', reason: 'No parent email' }]
+          };
+        },
+      };
+
+      /* ---------- 3b. THE EMAIL TEMPLATE ----------
+         Email apps are far behind web browsers: no Tailwind classes, no <style> tags you can
+         trust, no JavaScript. So every style is written inline (style="...") and the layout is
+         built from tables, which every email app understands. Change colors and sizes here. */
+
+      // The logo must be a PNG on the website: most email apps, Gmail included, don't show SVG.
+      // (Demo mode uses the copy in this repo so the preview works before the site is updated.)
+      const LOGO_URL = LIVE
+        ? 'https://kettlerunswim.org/assets/email/kr-logo-email.png'
+        : new URL('../src/assets/email/kr-logo-email.png', location.href).href;
+      const SITE_URL = 'https://kettlerunswim.org';
+      // Body text follows the Brookside fall emails: Helvetica 14px, dark gray, roomy lines.
+      const FONT = 'Helvetica,Arial,sans-serif';
+      const C = {
+        green: '#005130',
+        orange: '#F37322',
+        orangeText: '#C2550F', // KR orange darkened enough to read as text on white
+        ink: '#000000',
+        text: '#222222',
+        muted: '#666666',
+        line: '#e5e5e5',
+        page: '#f2f2f2'
+      };
+      // The phone number is filled in from the mailer's Script Properties, so it stays out of the public repo.
+      const COACH = { name: 'Coach Dalton', phone: '', email: 'headcoach@kettlerunswim.org' };
+      const SCHOOL = 'Kettle Run High School Swimming';
+      const ADDRESS = '7403 Academic Ave, Nokesville, VA 20181';
+
+      // School year like "2026–2027": rolls over each August, the same as the website footer.
+      function seasonName() {
+        const now = new Date();
+        const start = now.getMonth() >= 7 ? now.getFullYear() : now.getFullYear() - 1;
+        return `${start}–${start + 1}`;
+      }
+
+      function esc(s) {
+        return String(s || '').replace(/[&<>"']/g, (ch) =>
+          ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]);
+      }
+
+      function safeUrl(u) {
+        u = String(u || '').trim();
+        return /^(https?:\/\/|mailto:)/i.test(u) ? u : '';
+      }
+
+      // Light formatting inside text: **bold**, [link text](https://...), and bare web addresses.
+      function inline(text) {
+        const links = [];
+        const hold = (html) => `${links.push(html) - 1}`;
+        const a = (url, label) => `<a href="${url}" style="color:${C.green};text-decoration:underline;">${label}</a>`;
+        let out = esc(text);
+        out = out.replace(/\[([^\]]+)\]\(((?:https?:\/\/|mailto:)[^\s)]+)\)/g, (m, label, url) => hold(a(url, label)));
+        out = out.replace(/https?:\/\/[^\s<]+[^\s<.,;:!?)]/g, (url) => hold(a(url, url)));
+        out = out.replace(/\*\*(.+?)\*\*/g, '<strong style="color:' + C.ink + ';">$1</strong>');
+        out = out.replace(/(\d+)/g, (m, i) => links[i]);
+        return out.replace(/\n/g, '<br>');
+      }
+
+      function plain(text) {
+        return String(text || '')
+          .replace(/\[([^\]]+)\]\(([^\s)]+)\)/g, '$1 ($2)')
+          .replace(/\*\*(.+?)\*\*/g, '$1');
+      }
+
+      const P = `margin:0 0 14px;font-family:${FONT};font-size:14px;line-height:1.6;color:${C.text};`;
+
+      // Section heading (green) and subheading (black), used by blocks below too.
+      const heading = (text) =>
+        `<p style="margin:6px 0 8px;font-family:${FONT};font-size:16px;line-height:1.35;font-weight:bold;color:${C.green};">${esc(text)}</p>`;
+      const subheading = (text) =>
+        `<p style="margin:0 0 6px;font-family:${FONT};font-size:14px;line-height:1.4;font-weight:bold;color:${C.ink};">${esc(text)}</p>`;
+
+      const lines = (text) => String(text || '').split('\n').map((l) => l.trim()).filter(Boolean);
+      const parts = (line) => line.split(',').map((p) => p.trim());
+      const CELL = `font-family:${FONT};font-size:13px;line-height:1.4;color:${C.text};`;
+
+      // "Boys, Manassas Park, 104, 38" → { team, opponent, result: 'W', score: '104–38' }.
+      // A line with words instead of numbers ("Girls, Districts, 3rd of 8") is shown as written.
+      function parseScore(line) {
+        const [team, opponent = '', a, b] = parts(line);
+        if (/^\d+(\.\d+)?$/.test(a) && /^\d+(\.\d+)?$/.test(b)) {
+          const kr = Number(a), opp = Number(b);
+          return { team, opponent, result: kr > opp ? 'W' : kr < opp ? 'L' : 'T', score: `${a}–${b}` };
+        }
+        return { team, opponent, result: '', score: [a, b].filter(Boolean).join(', ') };
+      }
+
+      // "Mon 1/19, 3:30–4:30, WARF" → one column of the week table.
+      function parseDay(line) {
+        const [day, time = '', place = ''] = parts(line);
+        const sp = day.indexOf(' ');
+        return {
+          name: sp === -1 ? day : day.slice(0, sp),
+          date: sp === -1 ? '' : day.slice(sp + 1),
+          time, place,
+          off: /^(off|no practice|none)$/i.test(time)
+        };
+      }
+
+      const RENDER = {
+        heading: (b) => !b.text ? '' : heading(b.text),
+
+        subheading: (b) => !b.text ? '' : subheading(b.text),
+
+        paragraph: (b) => String(b.text || '').split(/\n\s*\n/).filter((p) => p.trim())
+          .map((p) => `<p style="${P}">${inline(p.trim())}</p>`).join(''),
+
+        // "Label: value" lines with the label in bold, under an optional green title.
+        info: (b) => {
+          const rows = String(b.rows || '').split('\n').filter((r) => r.trim()).map((r) => {
+            const i = r.indexOf(':');
+            const line = i === -1 ? inline(r.trim())
+              : `<strong style="color:${C.ink};">${esc(r.slice(0, i).trim())}:</strong> ${inline(r.slice(i + 1).trim())}`;
+            return `<tr><td style="padding:0 0 2px 7px;font-family:${FONT};font-size:14px;line-height:1.5;color:${C.text};">${line}</td></tr>`;
+          }).join('');
+          if (!rows && !b.title) return '';
+          const title = b.title ? `<tr><td style="padding:0 0 4px;font-family:${FONT};font-size:14px;line-height:1.4;font-weight:bold;color:${C.ink};">${esc(b.title)}</td></tr>` : '';
+          return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 14px;">${title}${rows}</table>`;
+        },
+
+        list: (b) => {
+          const items = String(b.items || '').split('\n').filter((i) => i.trim());
+          if (!items.length) return '';
+          return `<ul style="margin:0 0 14px;padding-left:22px;">${items.map((i) =>
+            `<li style="margin:0 0 2px;font-family:${FONT};font-size:14px;line-height:1.5;color:${C.text};">${inline(i.trim())}</li>`).join('')}</ul>`;
+        },
+
+        // A "bulletproof" button: a colored table cell with a link inside, so it still looks
+        // like a button in Outlook, which ignores most link styling.
+        button: (b) => {
+          const url = safeUrl(b.url);
+          if (!b.label || !url) return '';
+          return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:2px 0 16px;"><tr>
+            <td bgcolor="${C.green}" style="border-radius:4px;background:${C.green};">
+              <a href="${esc(url)}" style="display:inline-block;padding:10px 18px;font-family:${FONT};font-size:14px;font-weight:bold;color:#ffffff;text-decoration:none;border-radius:4px;">${esc(b.label)}</a>
+            </td></tr></table>`;
+        },
+
+        // Meet recap and results, like the "Meet #6 — Recap & Results" emails.
+        results: (b) => {
+          const recap = String(b.recap || '').split(/\n\s*\n/).filter((p) => p.trim())
+            .map((p) => `<p style="${P}">${inline(p.trim())}</p>`).join('');
+          const url = safeUrl(b.url);
+          const link = url ? `<p style="${P}"><strong style="color:${C.ink};">Meet Results:</strong> <a href="${esc(url)}" style="color:${C.green};text-decoration:underline;">${esc(b.linkText || 'Full results')}</a></p>` : '';
+          const scores = lines(b.scores).map(parseScore);
+          const table = !scores.length ? '' : `${subheading('Final Scores')}
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 14px;border-collapse:collapse;">
+              <tr>
+                <td bgcolor="${C.green}" style="${CELL}padding:7px 10px;background:${C.green};color:#ffffff;font-weight:bold;">Team</td>
+                <td bgcolor="${C.green}" style="${CELL}padding:7px 10px;background:${C.green};color:#ffffff;font-weight:bold;">Opponent</td>
+                <td bgcolor="${C.green}" style="${CELL}padding:7px 10px;background:${C.green};color:#ffffff;font-weight:bold;">Score</td>
+              </tr>
+              ${scores.map((r) => `<tr>
+                <td style="${CELL}padding:7px 10px;border-bottom:1px solid ${C.line};font-weight:bold;color:${C.ink};">${esc(r.team)}</td>
+                <td style="${CELL}padding:7px 10px;border-bottom:1px solid ${C.line};">${esc(r.opponent)}</td>
+                <td style="${CELL}padding:7px 10px;border-bottom:1px solid ${C.line};white-space:nowrap;">${r.result
+                  ? `<strong style="color:${r.result === 'W' ? C.green : C.muted};">${r.result}</strong>&nbsp;&nbsp;` : ''}${esc(r.score)}</td>
+              </tr>`).join('')}
+            </table>`;
+          return (b.title ? heading(b.title) : '') + recap + link + table;
+        },
+
+        // DESIGN LAB (temporary): the upcoming meet section in a few styles to compare.
+        upcoming: (b, d) => (UPCOMING[d.upcomingStyle] || UPCOMING.below).html(b),
+      };
+
+      // Pieces shared by the upcoming meet styles.
+      const detailParts = (r) => {
+        const i = r.indexOf(':');
+        return i === -1 ? { label: '', value: r } : { label: r.slice(0, i).trim(), value: r.slice(i + 1).trim() };
+      };
+      const boldLabel = ({ label, value }) =>
+        (label ? `<strong style="color:${C.ink};">${esc(label)}:</strong> ` : '') + inline(value);
+      const upcomingButton = (b, align) => {
+        const url = safeUrl(b.url);
+        return b.label && url ? `<table role="presentation" ${align === 'center' ? 'align="center" ' : ''}cellpadding="0" cellspacing="0" border="0" style="margin:${align === 'center' ? '12px auto 0' : '2px 0 16px'};"><tr>
+          <td bgcolor="${C.green}" style="border-radius:4px;background:${C.green};">
+            <a href="${esc(url)}" style="display:inline-block;padding:10px 18px;font-family:${FONT};font-size:14px;font-weight:bold;color:#ffffff;text-decoration:none;border-radius:4px;">${esc(b.label)}</a>
+          </td></tr></table>` : '';
+      };
+
+      // The green title bar with the orange underline, shared by the week table and the meet tables.
+      const tableTitle = (text, span) => `<tr><td colspan="${span}" align="center" bgcolor="${C.green}" style="${CELL}padding:9px 10px;background:${C.green};color:#ffffff;font-weight:bold;letter-spacing:0.5px;text-transform:uppercase;border-bottom:3px solid ${C.orange};">${esc(text)}</td></tr>`;
+      const BOX = `border:1px solid ${C.line};`;
+      const HEAD_CELL = `color:${C.green};font-weight:bold;`;
+      const meetNameRow = (b, span) => !b.name ? '' :
+        `<tr><td class="wkf" colspan="${span}" align="center" style="${CELL}padding:8px;font-weight:bold;color:${C.ink};${BOX}">${esc(b.name)}</td></tr>`;
+      const meetButtonRow = (b, span) => !(b.label && safeUrl(b.url)) ? '' :
+        `<tr><td colspan="${span}" align="center" style="padding:0 8px 12px;${BOX}">${upcomingButton(b, 'center')}</td></tr>`;
+      const meetFrame = (margin, html) =>
+        `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:${margin};border-collapse:collapse;table-layout:fixed;">${html}</table>`;
+
+      // Short details ("Warm-up: 6:25 PM") become columns, like the week table. Longer ones
+      // (Location, Travel) stay out of the grid; "mode" decides where they go.
+      function meetTable(b, mode) {
+        const items = lines(b.rows).map(detailParts);
+        if (!items.length && !b.name) return '';
+        const short = items.filter((it) => it.label && it.value.length <= 14).slice(0, 4);
+        const rest = items.filter((it) => !short.includes(it)).map(boldLabel);
+        const span = short.length || 1;
+        const w = Math.floor(100 / span);
+        const cell = (extra) => `class="wk" align="center" valign="top" width="${w}%" style="${CELL}padding:7px 3px;${BOX}${extra}"`;
+        const columns = !short.length ? '' : `<tr>${short.map((it) => `<td ${cell(HEAD_CELL)}>${esc(it.label)}</td>`).join('')}</tr>
+          <tr>${short.map((it) => `<td ${cell('')}>${inline(it.value)}</td>`).join('')}</tr>`;
+        const title = tableTitle(b.title || 'Upcoming Meet', span);
+        const wide = (html) => `<tr><td class="wkf" colspan="${span}" align="center" style="${CELL}padding:9px 8px;line-height:1.6;${BOX}">${html}</td></tr>`;
+
+        if (mode === 'under') {
+          const name = b.name ? `<strong style="color:${C.ink};">${esc(b.name)}</strong>` : '';
+          return meetFrame('4px 0 16px', title + wide([name, ...rest].filter(Boolean).join('<br>')) + columns + meetButtonRow(b, span));
+        }
+        if (mode === 'cell') {
+          return meetFrame('4px 0 16px', title + meetNameRow(b, span) + columns + (rest.length ? wide(rest.join('<br>')) : '') + meetButtonRow(b, span));
+        }
+        const notes = rest.map((t) => `<p class="wkf" style="margin:0 0 3px;${CELL}text-align:center;">${t}</p>`).join('');
+        return meetFrame('4px 0 8px', title + meetNameRow(b, span) + columns) +
+          `<div style="margin:0 0 16px;">${notes}${upcomingButton(b, 'center')}</div>`;
+      }
+
+      const UPCOMING = {
+        below: { name: 'Details below', html: (b) => meetTable(b, 'below') },
+        under: { name: 'Details under name', html: (b) => meetTable(b, 'under') },
+        cell: { name: 'One bottom cell', html: (b) => meetTable(b, 'cell') }
+      };
+
+      const RENDER_MORE = {
+        // Week table: one column per day, like the "Upcoming Practice Schedule" table.
+        schedule: (b) => {
+          const days = lines(b.days).map(parseDay);
+          if (!days.length) return '';
+          const w = Math.floor(100 / days.length);
+          const td = (extra) => `class="wk" align="center" valign="top" width="${w}%" style="${CELL}padding:7px 3px;border:1px solid ${C.line};${extra}"`;
+          return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:4px 0 16px;border-collapse:collapse;table-layout:fixed;">
+            ${tableTitle(b.title || 'Practice Schedule', days.length)}
+            <tr>${days.map((d) => `<td ${td(HEAD_CELL)}>${esc(d.name)}${d.date ? `<br><span style="font-weight:normal;color:${C.text};">${esc(d.date)}</span>` : ''}</td>`).join('')}</tr>
+            <tr>${days.map((d) => `<td ${td(d.off ? `color:${C.muted};` : '')}>${esc(d.time)}</td>`).join('')}</tr>
+            ${days.some((d) => d.place) ? `<tr>${days.map((d) => `<td ${td(`color:${C.muted};`)}>${esc(d.place)}</td>`).join('')}</tr>` : ''}
+          </table>`;
+        },
+
+        divider: () => `<div style="margin:4px 0 18px;border-top:1px solid ${C.line};font-size:0;line-height:0;">&nbsp;</div>`
+      };
+      Object.assign(RENDER, RENDER_MORE);
+
+      const BAR = `<tr><td height="4" bgcolor="${C.orange}" style="height:4px;background:${C.orange};font-size:0;line-height:0;">&nbsp;</td></tr>`;
+      const LOGO = `<a href="${SITE_URL}" style="text-decoration:none;"><img src="${LOGO_URL}" width="100" height="58" alt="Kettle Run Swimming" style="display:block;margin:0 auto;border:0;width:100px;height:58px;font-family:${FONT};font-size:14px;font-weight:bold;color:#ffffff;"></a>`;
+      const SMALL_CAPS = `font-family:${FONT};font-size:11px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;`;
+      const UNSUB = 'To stop receiving team emails, reply “unsubscribe.”';
+
+      const RADIUS = 4; // the card's corners; Outlook on Windows shows them square
+
+      // Header: green band with the logo and team name, an orange line, then a green strip
+      // with this email's label ("Weekly Update #1", "Meet #1 Update"). No label, no strip.
+      function header(d) {
+        const strip = d.label ? `
+          <tr><td align="center" bgcolor="${C.green}" style="background:${C.green};padding:10px 16px;">
+            <p style="margin:0;${SMALL_CAPS}color:#ffffff;">${esc(d.label)}</p>
+          </td></tr>` : '';
+        return `
+          <tr><td class="top" align="center" bgcolor="${C.green}" style="background:${C.green};padding:18px 24px 14px;border-radius:${RADIUS}px ${RADIUS}px 0 0;">
+            ${LOGO}
+            <p style="margin:10px 0 0;${SMALL_CAPS}color:#ffffff;">Kettle Run Swimming</p>
+          </td></tr>${BAR}${strip}`;
+      }
+
+      // Footer: orange line, then a green band with the school, address and unsubscribe note.
+      function footer() {
+        return `${BAR}
+          <tr><td class="bot" align="center" bgcolor="${C.green}" style="background:${C.green};padding:16px 24px;border-radius:0 0 ${RADIUS}px ${RADIUS}px;">
+            <p style="margin:0 0 4px;font-family:${FONT};font-size:13px;font-weight:bold;color:#ffffff;"><a href="${SITE_URL}" style="color:#ffffff;text-decoration:none;">${SCHOOL}</a></p>
+            <p style="margin:0;font-family:${FONT};font-size:11px;line-height:1.6;color:#d9e6df;">${ADDRESS}<br>${UNSUB}</p>
+          </td></tr>`;
+      }
+
+      // Sign-off, the same on every email (like the Brookside emails).
+      function signOff(d) {
+        const cheer = d.cheer ? `<p style="margin:0 0 4px;font-family:${FONT};font-size:14px;font-weight:bold;letter-spacing:0.5px;color:${C.green};">${esc(d.cheer)}</p>` : '';
+        return `${cheer}<p style="margin:10px 0 0;font-family:${FONT};font-size:14px;line-height:1.6;color:${C.text};">
+          Thank you,<br>${COACH.name}<br>
+          ${COACH.phone ? `<a href="tel:${COACH.phone.replace(/\D/g, '')}" style="color:${C.text};text-decoration:none;">${esc(COACH.phone)}</a><br>` : ''}
+          <a href="mailto:${COACH.email}" style="color:${C.text};text-decoration:none;">${COACH.email}</a></p>`;
+      }
+
+      function renderEmail(d) {
+        const title = d.title
+          ? `<p style="margin:0 0 14px;font-family:${FONT};font-size:20px;line-height:1.3;font-weight:bold;color:${C.ink};">${esc(d.title)}</p>`
+          : '';
+        const body = d.blocks.map((b) => RENDER[b.type](b, d)).join('');
+        // The hidden preheader is followed by invisible spacer characters so the inbox preview
+        // doesn't fill up with the start of the email.
+        const spacer = '&#847;&zwnj;&nbsp;'.repeat(40);
+        return `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light"><meta name="supported-color-schemes" content="light"><title>${esc(d.subject)}</title>
+<style>
+  /* Phones: slightly smaller text in the week table so five days fit comfortably.
+     Apple Mail and the Gmail app use this; other apps keep the normal 13px, which still fits. */
+  @media only screen and (max-width: 480px) {
+    td.wk { font-size: 12px !important; padding: 6px 1px !important; }
+    .wkf { font-size: 12px !important; }
+    /* A thin gray edge on phones, with the inner padding trimmed so tables keep their full width. */
+    td.outer { padding: 6px !important; }
+    td.body { padding: 20px 10px !important; }
+  }
+</style></head>
+<body style="margin:0;padding:0;background:${C.page};">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">${esc(d.preheader)}${spacer}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:${C.page};">
+  <tr><td class="outer" align="center" style="padding:24px 12px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;background:#ffffff;">
+      ${header(d)}
+      <tr><td class="body" style="padding:24px 16px;">${title}${body}${signOff(d)}</td></tr>
+      ${footer()}
+    </table>
+  </td></tr>
+</table>
+</body></html>`;
+      }
+
+      // The plain-text version, for email apps that don't show HTML.
+      const TEXT = {
+        heading: (b) => b.text ? `${b.text.toUpperCase()}\n` : '',
+        subheading: (b) => b.text ? `${b.text}\n` : '',
+        paragraph: (b) => b.text ? `${plain(b.text)}\n` : '',
+        info: (b) => [b.title, ...String(b.rows || '').split('\n')].filter((r) => r && r.trim()).map(plain).join('\n') + '\n',
+        list: (b) => String(b.items || '').split('\n').filter((i) => i.trim()).map((i) => `- ${plain(i.trim())}`).join('\n') + '\n',
+        button: (b) => safeUrl(b.url) ? `${b.label}: ${safeUrl(b.url)}\n` : '',
+        results: (b) => [
+          b.title && b.title.toUpperCase(), plain(b.recap),
+          safeUrl(b.url) && `Meet Results: ${b.linkText || 'Full results'} (${safeUrl(b.url)})`,
+          lines(b.scores).length && 'Final Scores:\n' + lines(b.scores).map(parseScore)
+            .map((r) => `- ${r.team} v. ${r.opponent}: ${r.result ? r.result + ' ' : ''}${r.score}`).join('\n')
+        ].filter(Boolean).join('\n\n') + '\n',
+        upcoming: (b) => [(b.title || 'Upcoming Meet').toUpperCase(), b.name, ...lines(b.rows).map(plain),
+          b.label && safeUrl(b.url) && `${b.label}: ${safeUrl(b.url)}`].filter(Boolean).join('\n') + '\n',
+        schedule: (b) => (b.title || 'Practice Schedule').toUpperCase() + '\n' +
+          lines(b.days).map(parseDay).map((d) => `- ${d.name} ${d.date}: ${d.time}${d.place ? ' @ ' + d.place : ''}`).join('\n') + '\n',
+        divider: () => '----------\n'
+      };
+
+      function renderText(d) {
+        const parts = [d.title, ...d.blocks.map((b) => TEXT[b.type](b))].filter(Boolean);
+        return parts.join('\n') + '\n' +
+          (d.cheer ? `${d.cheer}\n\n` : '') +
+          `Thank you,\n${COACH.name}\n${COACH.phone ? COACH.phone + '\n' : ''}${COACH.email}\n\n` +
+          `${SCHOOL}\n${ADDRESS}\n${UNSUB}\n`;
+      }
+
+      /* ---------- 3c. Starting templates ---------- */
+
+      const TEMPLATES = {
+        weekly: {
+          name: 'Weekly update',
+          subject: 'KR Swim: Weekly Update #1',
+          preheader: 'Practices, meets and reminders for the week',
+          label: 'Weekly Update #1',
+          title: '',
+          blocks: [
+            { type: 'paragraph', text: 'Good Afternoon KRHS Swim Families,\n\nHere’s what’s happening this week.' },
+            { type: 'subheading', text: 'Reminders' },
+            { type: 'list', items: 'First reminder\nSecond reminder' },
+            { type: 'schedule', title: 'Practice Schedule', days: 'Mon 1/19, 3:30–4:30, WARF\nTue 1/20, 3:30–4:30, WARF\nWed 1/21, 3:30–4:30, WARF\nThu 1/22, 3:30–4:30, WARF\nFri 1/23, Meet' },
+            { type: 'upcoming', name: 'Meet #7 vs. Fauquier, Liberty, Manassas Park', rows: 'Date: Fri 1/23\nWarm-up: 6:25 PM\nStart: 7:00 PM\nEst. end: 9:30–10:00 PM\nLocation: WARF, 800 Waterloo Rd, Warrenton, VA 20186\nTravel: On your own, swimmers arrive at WARF by 5:30 PM' }
+          ]
+        },
+        results: {
+          name: 'Meet results',
+          subject: 'KR Swim: Meet #6 Recap & Results',
+          preheader: 'Recap, final scores and the full results',
+          label: 'Meet #6 Results',
+          title: '',
+          blocks: [
+            { type: 'paragraph', text: 'Good Evening KRHS Swim Families,\n\nBelow is a small recap from the meet along with the final scores and a link to the full results PDF.' },
+            { type: 'results', title: 'Meet #6 — Recap & Results', recap: 'Thank you to all the families and swimmers who came out to support the team!', linkText: 'Kettle Run v. Manassas Park v. Sherando', url: '', scores: 'Boys, Manassas Park, 104, 38\nBoys, Sherando, 96, 56\nGirls, Manassas Park, 106, 48\nGirls, Sherando, 97, 55' },
+            { type: 'paragraph', text: 'Please don’t hesitate to reach out if you have any questions!' }
+          ]
+        },
+        meet: {
+          name: 'Meet information',
+          subject: 'KR Swim: Meet #7 Information',
+          preheader: 'Warm-up time, location and travel',
+          label: 'Meet #7 Update',
+          title: '',
+          blocks: [
+            { type: 'paragraph', text: 'Good Afternoon KRHS Swim Families,\n\nPlease take a moment to read through the important details for this week’s meet.' },
+            { type: 'upcoming', name: 'Meet #7 vs. Fauquier, Liberty, Manassas Park', rows: 'Date: Fri 1/23\nWarm-up: 6:25 PM\nStart: 7:00 PM\nEst. end: 9:30–10:00 PM\nLocation: WARF, 800 Waterloo Rd, Warrenton, VA 20186', label: 'Volunteer Sign-Up', url: '' },
+            { type: 'subheading', text: 'Travel' },
+            { type: 'list', items: 'To the pool: school transportation, bus leaves KRHS at 5:00 PM\nFrom the pool: school bus or parent pick-up (must be signed out)' },
+            { type: 'paragraph', text: 'Please don’t hesitate to reach out if you have any questions!' }
+          ]
+        },
+        blank: { name: 'Blank', subject: '', preheader: '', label: '', title: '', blocks: [{ type: 'paragraph', text: '' }] }
+      };
+
+      /* ---------- 3d. The editor ---------- */
+
+      const BLOCKS = {
+        heading: { label: 'Heading', fields: [{ key: 'text', placeholder: 'Section title (green)' }] },
+        subheading: { label: 'Subheading', fields: [{ key: 'text', placeholder: 'e.g. Reminders (black)' }] },
+        paragraph: { label: 'Paragraph', fields: [{ key: 'text', area: true, placeholder: 'Write here. Blank line = new paragraph. **bold**  [link text](https://…)' }] },
+        info: { label: 'Key info box', fields: [
+          { key: 'title', label: 'Box title (optional)' },
+          { key: 'rows', area: true, label: 'One per line — Label: value', placeholder: 'Date: Saturday, Nov 15\nWarm-up: 7:00 AM' }
+        ] },
+        list: { label: 'Bullet list', fields: [{ key: 'items', area: true, placeholder: 'One item per line' }] },
+        button: { label: 'Button', fields: [
+          { key: 'label', label: 'Button text', placeholder: 'Sign up' },
+          { key: 'url', label: 'Link (Drive file, form, site page…)', placeholder: 'https://…' }
+        ] },
+        results: { label: 'Meet results', fields: [
+          { key: 'title', label: 'Heading', placeholder: 'Meet #6 — Recap & Results' },
+          { key: 'recap', area: true, label: 'Recap', placeholder: 'How the meet went. Blank line = new paragraph.' },
+          { key: 'linkText', label: 'Results link text', placeholder: 'Kettle Run v. Manassas Park v. Sherando' },
+          { key: 'url', label: 'Results PDF link', placeholder: 'https://…' },
+          { key: 'scores', area: true, label: 'Final scores — Team, Opponent, KR score, Their score', placeholder: 'Boys, Manassas Park, 104, 38\nGirls, Manassas Park, 106, 48' }
+        ] },
+        upcoming: { label: 'Upcoming meet', fields: [
+          { key: 'name', label: 'Meet', placeholder: 'Meet #7 vs. Fauquier, Liberty, Manassas Park' },
+          { key: 'rows', area: true, label: 'Details — one per line, Label: value', placeholder: 'Date: Fri 1/23\nWarm-up: 6:25 PM\nStart: 7:00 PM\nEst. end: 9:30–10:00 PM\nLocation: WARF, 800 Waterloo Rd, Warrenton' },
+          { key: 'label', label: 'Button text (optional)', placeholder: 'Volunteer Sign-Up' },
+          { key: 'url', label: 'Button link', placeholder: 'https://…' }
+        ] },
+        schedule: { label: 'Week schedule', fields: [
+          { key: 'title', label: 'Table title', placeholder: 'Practice Schedule' },
+          { key: 'days', area: true, label: 'One day per line — Day Date, Time, Place', placeholder: 'Mon 1/19, 3:30–4:30, WARF\nTue 1/20, 3:30–4:30, WARF\nWed 1/21, Off' }
+        ] },
+        divider: { label: 'Divider', fields: [] }
+      };
+
+      let state = {
+        subject: '', preheader: '', title: '', label: '', cheer: 'Go Cougars!', blocks: [],
+        groups: [], audience: 'family', testTo: '', lastSent: null, upcomingStyle: 'below'
+      };
+      let allGroups = [];
+      let audienceInfo = null;
+
+      const $ = (sel) => document.querySelector(sel);
+      const setStatus = (text) => ($('#status').textContent = LIVE ? text : `Demo mode: ${text}`);
+
+      function debounce(fn, ms) {
+        let t;
+        return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
+      }
+
+      const email = () => ({ subject: state.subject, html: renderEmail(state), text: renderText(state) });
+
+      const updatePreview = debounce(() => { $('#preview').srcdoc = renderEmail(state); }, 150);
+
+      const save = debounce(async () => {
+        setStatus('Saving…');
+        try {
+          await api('saveDraft', JSON.stringify(state));
+          setStatus('Draft saved');
+        } catch (e) {
+          setStatus('Couldn’t save draft');
+        }
+      }, 1200);
+
+      function changed() {
+        updatePreview();
+        save();
+      }
+
+      function autosize(el) {
+        el.style.height = 'auto';
+        el.style.height = el.scrollHeight + 2 + 'px';
+      }
+
+      // Draws the list of blocks. Typing doesn't redraw (so you don't lose your place);
+      // only adding, moving and removing blocks do.
+      function drawBlocks() {
+        const wrap = $('#blocks');
+        wrap.innerHTML = '';
+        state.blocks.forEach((b, i) => {
+          const def = BLOCKS[b.type];
+          const el = document.createElement('div');
+          el.className = 'block';
+          el.innerHTML = `<div class="block-head">
+            <span class="label">${def.label}</span>
+            <button type="button" class="icon-btn" data-move="-1" title="Move up" aria-label="Move up">↑</button>
+            <button type="button" class="icon-btn" data-move="1" title="Move down" aria-label="Move down">↓</button>
+            <button type="button" class="icon-btn" data-remove title="Remove" aria-label="Remove">✕</button>
+          </div>`;
+          def.fields.forEach((f) => {
+            if (f.label) {
+              const l = document.createElement('span');
+              l.className = 'field-label';
+              l.textContent = f.label;
+              el.appendChild(l);
+            }
+            const input = document.createElement(f.area ? 'textarea' : 'input');
+            if (!f.area) input.type = 'text';
+            input.placeholder = f.placeholder || '';
+            input.value = b[f.key] || '';
+            input.setAttribute('aria-label', `${def.label} ${f.label || f.key}`);
+            input.addEventListener('input', () => {
+              b[f.key] = input.value;
+              if (f.area) autosize(input);
+              changed();
+            });
+            el.appendChild(input);
+          });
+          el.querySelectorAll('[data-move]').forEach((btn) => btn.addEventListener('click', () => {
+            const j = i + Number(btn.dataset.move);
+            if (j < 0 || j >= state.blocks.length) return;
+            [state.blocks[i], state.blocks[j]] = [state.blocks[j], state.blocks[i]];
+            drawBlocks();
+            changed();
+          }));
+          el.querySelector('[data-remove]').addEventListener('click', () => {
+            state.blocks.splice(i, 1);
+            drawBlocks();
+            changed();
+          });
+          wrap.appendChild(el);
+        });
+        wrap.querySelectorAll('textarea').forEach(autosize);
+      }
+
+      function drawMessageFields() {
+        document.querySelectorAll('[data-field]').forEach((el) => (el.value = state[el.dataset.field] || ''));
+        $('#test-to').value = state.testTo;
+      }
+
+
+      // DESIGN LAB (temporary): buttons for each upcoming meet style.
+      function drawLab() {
+        const wrap = $('#lab-upcoming');
+        wrap.innerHTML = Object.entries(UPCOMING).map(([id, u]) =>
+          `<button type="button" data-style="${id}" aria-pressed="${state.upcomingStyle === id}">${u.name}</button>`).join('');
+        wrap.querySelectorAll('button').forEach((btn) => btn.addEventListener('click', () => {
+          state.upcomingStyle = btn.dataset.style;
+          drawLab();
+          changed();
+        }));
+      }
+
+      function drawGroups() {
+        const wrap = $('#groups');
+        wrap.innerHTML = '';
+        const everyone = document.createElement('button');
+        everyone.type = 'button';
+        everyone.className = 'chip';
+        everyone.textContent = 'Everyone';
+        everyone.setAttribute('aria-pressed', String(!state.groups.length));
+        everyone.addEventListener('click', () => { state.groups = []; drawGroups(); recipientsChanged(); });
+        wrap.appendChild(everyone);
+        allGroups.forEach((g) => {
+          const chip = document.createElement('button');
+          chip.type = 'button';
+          chip.className = 'chip';
+          chip.textContent = g;
+          chip.setAttribute('aria-pressed', String(state.groups.includes(g)));
+          chip.addEventListener('click', () => {
+            state.groups = state.groups.includes(g) ? state.groups.filter((x) => x !== g) : [...state.groups, g];
+            drawGroups();
+            recipientsChanged();
+          });
+          wrap.appendChild(chip);
+        });
+        document.querySelectorAll('[data-audience]').forEach((b) =>
+          b.setAttribute('aria-pressed', String(b.dataset.audience === state.audience)));
+      }
+
+      async function reloadContacts() {
+        allGroups = await api('getGroups');
+        state.groups = state.groups.filter((g) => allGroups.includes(g));
+        drawGroups();
+        loadAudience();
+      }
+
+      const recipientsChanged = () => { $('#confirm').innerHTML = ''; save(); loadAudience(); };
+
+      const loadAudience = debounce(async () => {
+        $('#summary').innerHTML = '<p class="small">Counting…</p>';
+        try {
+          audienceInfo = await api('getAudience', state.groups, state.audience);
+          drawSummary();
+        } catch (e) {
+          $('#summary').innerHTML = `<div class="note"><strong>Couldn’t read the contacts</strong><p>${esc(e.message)}</p></div>`;
+        }
+      }, 250);
+
+      function drawSummary() {
+        const a = audienceInfo;
+        const fam = a.familyCount === 1 ? 'family' : 'families';
+        let html = `<div class="summary-line"><p><strong>${a.familyCount} ${fam}</strong>, ${a.addressCount} addresses</p>
+            <button type="button" class="btn btn-small" id="refresh">Reload contacts</button></div>
+          <details><summary>Show list</summary><ul>${a.families.map((f) => `<li>${esc(f)}</li>`).join('')}</ul></details>`;
+        if (a.skipped.length) {
+          html += `<div class="note"><strong>${a.skipped.length} skipped</strong>
+            <ul>${a.skipped.map((s) => `<li>Row ${s.row}, ${esc(s.name)}: ${esc(s.reason)}</li>`).join('')}</ul>
+            <p>Fix these in the Contacts tab, then Reload contacts.</p></div>`;
+        }
+        $('#summary').innerHTML = html;
+        $('#refresh').addEventListener('click', reloadContacts);
+        $('#send').textContent = `Send to ${a.familyCount} ${fam}`;
+        $('#send').disabled = !a.familyCount;
+      }
+
+      function useTemplate(key) {
+        const t = JSON.parse(JSON.stringify(TEMPLATES[key]));
+        Object.assign(state, { subject: t.subject, preheader: t.preheader, title: t.title, label: t.label, blocks: t.blocks, lastSent: null });
+        drawMessageFields();
+        drawBlocks();
+        changed();
+      }
+
+      function showResult(text, ok) {
+        const el = $('#result');
+        el.className = 'result ' + (ok ? 'ok' : 'err');
+        el.textContent = text;
+      }
+
+      const DEMO_NOTE = 'Demo mode: nothing was sent. To send for real, open the mailer from its Google web address.';
+
+      async function sendTest() {
+        if (!LIVE) return showResult(DEMO_NOTE, false);
+        const btn = $('#send-test');
+        btn.disabled = true;
+        showResult('Sending test…', true);
+        try {
+          const to = await api('sendTest', email(), state.testTo);
+          showResult(`Test sent to ${to}. Check it on your phone too.`, true);
+        } catch (e) {
+          showResult(e.message, false);
+        }
+        btn.disabled = false;
+      }
+
+      // Sending asks you to confirm first, and warns if this subject was already sent.
+      function askToSend() {
+        if (!LIVE) return showResult(DEMO_NOTE, false);
+        if (!state.subject.trim()) return showResult('Add a subject first.', false);
+        if (!audienceInfo) return showResult('Still counting recipients — try again in a second.', false);
+        const a = audienceInfo;
+        const who = state.groups.length ? state.groups.join(', ') : 'Everyone';
+        const again = state.lastSent && state.lastSent.subject === state.subject
+          ? `<p>Heads up: you already sent this subject on ${esc(state.lastSent.at)}.</p>` : '';
+        $('#confirm').innerHTML = `<div class="note confirm">
+          <strong>Send “${esc(state.subject)}” to ${a.familyCount} families (${a.addressCount} addresses)?</strong>
+          <p>Groups: ${esc(who)}, ${state.audience === 'parents' ? 'parents only' : 'swimmers + parents'}</p>${again}
+          <div class="row"><button type="button" class="btn btn-primary btn-small" id="confirm-yes">Yes, send it</button>
+          <button type="button" class="btn btn-small" id="confirm-no">Cancel</button></div></div>`;
+        $('#confirm-no').addEventListener('click', () => ($('#confirm').innerHTML = ''));
+        $('#confirm-yes').addEventListener('click', send);
+      }
+
+      async function send() {
+        $('#confirm').innerHTML = '';
+        $('#send').disabled = true;
+        showResult(`Sending to ${audienceInfo.familyCount} families… keep this page open.`, true);
+        try {
+          const r = await api('sendToFamilies', email(), state.groups, state.audience);
+          state.lastSent = { subject: state.subject, at: new Date().toLocaleString() };
+          save();
+          if (r.failed.length) {
+            showResult(`Sent to ${r.sent}. ${r.failed.length} failed (see the Log tab): ${r.failed.join(' | ')}`, false);
+          } else {
+            showResult(`Sent to ${r.sent} ${r.sent === 1 ? 'family' : 'families'} ✓ Every send is in the Log tab.`, true);
+          }
+        } catch (e) {
+          showResult(`Stopped: ${e.message}. Check the Log tab to see who already got it.`, false);
+        }
+        $('#send').disabled = false;
+      }
+
+      async function start() {
+        $('#bar-logo').src = LIVE ? `${SITE_URL}/assets/kr-logo-tight.svg` : '../src/assets/kr-logo-tight.svg';
+        // Fill the template picker and the "add block" buttons.
+        $('#template').innerHTML = Object.entries(TEMPLATES).map(([k, t]) => `<option value="${k}">${t.name}</option>`).join('');
+        $('#add').innerHTML = Object.entries(BLOCKS).map(([k, b]) => `<button type="button" class="btn btn-small" data-add="${k}">+ ${b.label}</button>`).join('');
+
+        // Wire up the buttons and fields.
+        document.querySelectorAll('[data-field]').forEach((el) => el.addEventListener('input', () => {
+          state[el.dataset.field] = el.value;
+          changed();
+        }));
+        $('#test-to').addEventListener('input', (e) => { state.testTo = e.target.value; save(); });
+        document.querySelectorAll('[data-add]').forEach((btn) => btn.addEventListener('click', () => {
+          state.blocks.push({ type: btn.dataset.add });
+          drawBlocks();
+          changed();
+          const last = $('#blocks').lastElementChild;
+          const field = last && last.querySelector('input, textarea');
+          if (field) field.focus();
+        }));
+        document.querySelectorAll('[data-audience]').forEach((btn) => btn.addEventListener('click', () => {
+          state.audience = btn.dataset.audience;
+          drawGroups();
+          recipientsChanged();
+        }));
+        // Starting over replaces your work, so it takes two clicks.
+        let armed = false;
+        $('#use-template').addEventListener('click', (e) => {
+          const hasContent = state.blocks.some((b) => Object.keys(b).length > 1);
+          if (hasContent && !armed) {
+            armed = true;
+            e.target.textContent = 'Click again to replace';
+            setTimeout(() => { armed = false; e.target.textContent = 'Start over from this'; }, 4000);
+            return;
+          }
+          armed = false;
+          e.target.textContent = 'Start over from this';
+          useTemplate($('#template').value);
+        });
+        $('#send-test').addEventListener('click', sendTest);
+        $('#send').addEventListener('click', askToSend);
+        document.querySelectorAll('[data-width]').forEach((btn) => btn.addEventListener('click', () => {
+          $('#preview').classList.toggle('phone', btn.dataset.width === 'phone');
+          document.querySelectorAll('[data-width]').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+        }));
+        document.querySelectorAll('.tabs button').forEach((btn) => btn.addEventListener('click', () => {
+          document.body.dataset.tab = btn.dataset.tab;
+          document.querySelectorAll('.tabs button').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+        }));
+
+        // Load the saved draft (or start from the weekly template), then the contacts.
+        try {
+          const [draft, me, groups, phone] = await Promise.all([api('loadDraft'), api('getMyEmail'), api('getGroups'), api('getPhone')]);
+          COACH.phone = phone || '';
+          allGroups = groups;
+          if (draft) Object.assign(state, JSON.parse(draft));
+          else Object.assign(state, JSON.parse(JSON.stringify(TEMPLATES.weekly)));
+          if (!state.testTo) state.testTo = me;
+          state.groups = state.groups.filter((g) => allGroups.includes(g));
+          if (!UPCOMING[state.upcomingStyle]) state.upcomingStyle = 'below';
+          setStatus(draft ? 'Draft loaded' : 'Ready');
+        } catch (e) {
+          setStatus('Problem loading');
+          showResult(e.message, false);
+        }
+        drawMessageFields();
+        drawBlocks();
+        drawGroups();
+        drawLab();
+        updatePreview();
+        loadAudience();
+      }
+
+      start();
+    </script>
+  </body>
+</html>
