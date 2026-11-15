@@ -186,6 +186,7 @@
 
       /* Content blocks: rounded-xl panels with a green label, like Join's panels */
       .block { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px 12px; margin-bottom: 8px; }
+      .block.new-section { margin-top: 20px; }
       .block-head { display: flex; align-items: center; gap: 2px; margin-bottom: 6px; }
       .block-head .label { margin-right: auto; }
       .icon-btn {
@@ -205,8 +206,6 @@
 
       .preview-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
       .preview-head .label { margin-right: auto; color: var(--fg-subtle); }
-      .lab { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin-bottom: 8px; padding: 8px 10px; border: 1px dashed var(--line); border-radius: 12px; }
-      .lab .label { color: var(--fg-subtle); }
       .frame-wrap { display: flex; justify-content: center; }
       #preview {
         width: 100%; height: calc(100vh - 110px); border: 1px solid var(--line);
@@ -318,11 +317,6 @@
             <button type="button" data-width="phone" aria-pressed="false">Phone</button>
           </div>
         </div>
-        <!-- DESIGN LAB (temporary): remove once an upcoming meet style is picked -->
-        <div class="lab">
-          <span class="label">Upcoming meet</span>
-          <div class="segmented" id="lab-upcoming" role="group" aria-label="Upcoming meet style"></div>
-        </div>
         <div class="frame-wrap"><iframe id="preview" title="Email preview"></iframe></div>
       </div>
     </main>
@@ -334,25 +328,48 @@
       // This wraps it in a Promise so the code below can say: const x = await api('getGroups').
       const LIVE = typeof google !== 'undefined' && google.script && google.script.run;
 
-      function api(fn, ...args) {
-        if (!LIVE) return DEMO[fn](...args);
+      function callGoogle(fn, args) {
         return new Promise((resolve, reject) => {
           google.script.run.withSuccessHandler(resolve).withFailureHandler(reject)[fn](...args);
         });
       }
 
+      // Google occasionally answers with a random "internal error" that goes away if you ask
+      // again, so calls are retried automatically after a short wait.
+      // Two are never retried: a real send (some emails may already have gone out, so a retry
+      // could send duplicates) and saving (a late retry could overwrite newer work).
+      const RETRY_WAITS = [400, 1200, 2500];
+      const NO_AUTO_RETRY = ['sendToFamilies', 'saveDraft'];
+
+      async function api(fn, ...args) {
+        if (!LIVE) return DEMO[fn](...args);
+        const waits = NO_AUTO_RETRY.includes(fn) ? [] : RETRY_WAITS;
+        for (let attempt = 0; ; attempt++) {
+          try {
+            return await callGoogle(fn, args);
+          } catch (e) {
+            if (attempt >= waits.length) throw e;
+            await new Promise((r) => setTimeout(r, waits[attempt]));
+          }
+        }
+      }
+
       // Demo mode: made-up data so this file works when opened on your computer. Never sends.
       const DEMO = {
-        getGroups: async () => ['seniors', 'state team', 'staff'],
+        getGroups: async () => ['missing forms', 'seniors', 'staff', 'state team'],
         getMyEmail: async () => 'headcoach@kettlerunswim.org',
         getPhone: async () => '703-555-0100',
+        getPastEmails: async () => [{
+          date: 'Nov 9', subject: 'KRHS Swim: Weekly Update #3',
+          content: JSON.stringify({ ...TEMPLATES.weekly, subject: 'KRHS Swim: Weekly Update #3', label: 'Weekly Update #3' })
+        }],
         loadDraft: async () => { try { return localStorage.getItem('kr-mailer-demo') || ''; } catch (e) { return ''; } },
         saveDraft: async (json) => { try { localStorage.setItem('kr-mailer-demo', json); } catch (e) {} },
         getAudience: async (groups, audience) => {
           const all = [
             { label: 'Doe (Jane, Sam)', n: 4, g: ['seniors', 'state team'] },
             { label: 'Lee (Alex)', n: 2, g: ['state team'] },
-            { label: 'Park (Chris)', n: 3, g: [] },
+            { label: 'Park (Chris)', n: 3, g: ['missing forms'] },
             { label: 'coach@example.com', n: 1, g: ['staff'] }
           ];
           const fams = all.filter((f) => !groups.length || f.g.some((g) => groups.includes(g)));
@@ -389,7 +406,7 @@
         page: '#f2f2f2'
       };
       // The phone number is filled in from the mailer's Script Properties, so it stays out of the public repo.
-      const COACH = { name: 'Coach Dalton', phone: '', email: 'headcoach@kettlerunswim.org' };
+      const COACH = { name: 'Coach Dalton', title: 'Head Coach, KRHS Swim', phone: '', email: 'headcoach@kettlerunswim.org' };
       const SCHOOL = 'Kettle Run High School Swimming';
       const ADDRESS = '7403 Academic Ave, Nokesville, VA 20181';
 
@@ -429,13 +446,57 @@
           .replace(/\*\*(.+?)\*\*/g, '$1');
       }
 
-      const P = `margin:0 0 14px;font-family:${FONT};font-size:14px;line-height:1.6;color:${C.text};`;
+      const P = `margin:0;font-family:${FONT};font-size:14px;line-height:1.6;color:${C.text};`;
 
       // Section heading (green) and subheading (black), used by blocks below too.
       const heading = (text) =>
-        `<p style="margin:6px 0 8px;font-family:${FONT};font-size:16px;line-height:1.35;font-weight:bold;color:${C.green};">${esc(text)}</p>`;
+        `<p style="margin:0;font-family:${FONT};font-size:15px;line-height:1.35;font-weight:bold;color:${C.green};">${esc(text)}</p>`;
       const subheading = (text) =>
-        `<p style="margin:0 0 6px;font-family:${FONT};font-size:14px;line-height:1.4;font-weight:bold;color:${C.ink};">${esc(text)}</p>`;
+        `<p style="margin:0;font-family:${FONT};font-size:14px;line-height:1.4;font-weight:bold;color:${C.ink};">${esc(text)}</p>`;
+
+      // SPACING: every gap in the email is set here, and blocks have no margins of their own.
+      // The gap depends on which two pieces are next to each other, so a heading stays tied to
+      // its text and a new section gets a clear break. Change a number to retune every email.
+      const GAP = {
+        tie: 3,       // a heading and the text it belongs to
+        tieList: 4,   // a sentence and the bullets or details it introduces
+        tieTable: 8,  // a heading and a table or button
+        near: 10,     // paragraph to paragraph, inside one group
+        group: 16,    // around tables, dividers and subheadings
+        section: 24   // before a new heading, or at a Section break
+      };
+      const TABLES = ['schedule', 'upcoming', 'scores'];
+
+      function gapBetween(a, b) {
+        if (a === 'divider' || b === 'divider') return GAP.group;
+        if (b === 'heading') return GAP.section;
+        if (a === 'heading' || a === 'subheading') return TABLES.includes(b) || b === 'button' ? GAP.tieTable : GAP.tie;
+        if (b === 'subheading' || TABLES.includes(a) || TABLES.includes(b)) return GAP.group;
+        if (a === 'paragraph' && (b === 'list' || b === 'info')) return GAP.tieList;
+        return GAP.near;
+      }
+
+      // An empty row of an exact height. Outlook ignores margins on tables but respects this.
+      const spacer = (px) => `<div style="height:${px}px;line-height:${px}px;font-size:1px;mso-line-height-rule:exactly;">&nbsp;</div>`;
+
+      // One block can be several pieces (two paragraphs, or a results block's heading and table).
+      const pieces = (b) => [].concat(RENDER[b.type](b)).filter(Boolean)
+        .map((p) => (typeof p === 'string' ? { type: b.type, html: p } : p));
+
+      // Puts the pieces in order with the right gap between each pair.
+      function stack(list) {
+        let html = '';
+        let prev = null;
+        let forceSection = false;
+        list.forEach((p) => {
+          if (p.type === 'space') { forceSection = true; return; }
+          if (prev) html += spacer(forceSection ? GAP.section : gapBetween(prev.type, p.type));
+          html += p.html;
+          prev = p;
+          forceSection = false;
+        });
+        return html;
+      }
 
       const lines = (text) => String(text || '').split('\n').map((l) => l.trim()).filter(Boolean);
       const parts = (line) => line.split(',').map((p) => p.trim());
@@ -464,13 +525,53 @@
         };
       }
 
+      // Green title bar with the orange underline, shared by the week table and the meet table.
+      const tableTitle = (text, span) => `<tr><td colspan="${span}" align="center" bgcolor="${C.green}" style="${SMALL_CAPS}padding:9px 10px;background:${C.green};color:#ffffff;border-bottom:3px solid ${C.orange};">${esc(text)}</td></tr>`;
+      const BOX = `border:1px solid ${C.line};`;
+      const HEAD_CELL = `color:${C.green};font-weight:bold;`;
+
+      // "Warm-up: 6:25 PM" → { label: 'Warm-up', value: '6:25 PM' }.
+      const detailParts = (r) => {
+        const i = r.indexOf(':');
+        return i === -1 ? { label: '', value: r } : { label: r.slice(0, i).trim(), value: r.slice(i + 1).trim() };
+      };
+      const boldLabel = ({ label, value }) =>
+        (label ? `<strong style="color:${C.ink};">${esc(label)}:</strong> ` : '') + inline(value);
+
+      // Upcoming meet, built like the week table. Short details ("Warm-up: 6:25 PM") become
+      // columns; longer ones (Location, Travel) sit under the meet name in the top cell.
+      function meetTable(b) {
+        const items = lines(b.rows).map(detailParts);
+        if (!items.length && !b.name) return '';
+        const short = items.filter((it) => it.label && it.value.length <= 14).slice(0, 4);
+        const rest = items.filter((it) => !short.includes(it)).map(boldLabel);
+        const span = short.length || 1;
+        const w = Math.floor(100 / span);
+        const cell = (extra) => `class="wk" align="center" valign="top" width="${w}%" style="${CELL}padding:7px 3px;${BOX}${extra}"`;
+        const name = b.name ? `<strong style="color:${C.ink};">${esc(b.name)}</strong>` : '';
+        const top = [name, ...rest].filter(Boolean).join('<br>');
+        const url = safeUrl(b.url);
+        return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0;border-collapse:collapse;table-layout:fixed;">
+          ${tableTitle(b.title || 'Upcoming Meet', span)}
+          ${top ? `<tr><td class="wkf" colspan="${span}" align="center" style="${CELL}padding:9px 8px;line-height:1.6;${BOX}">${top}</td></tr>` : ''}
+          ${short.length ? `<tr>${short.map((it) => `<td ${cell(HEAD_CELL)}>${esc(it.label)}</td>`).join('')}</tr>
+            <tr>${short.map((it) => `<td ${cell('')}>${inline(it.value)}</td>`).join('')}</tr>` : ''}
+          ${b.label && url ? `<tr><td colspan="${span}" align="center" style="padding:12px 8px;${BOX}">
+            <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;"><tr>
+              <td bgcolor="${C.green}" style="border-radius:4px;background:${C.green};">
+                <a href="${esc(url)}" style="display:inline-block;padding:10px 18px;font-family:${FONT};font-size:14px;font-weight:bold;color:#ffffff;text-decoration:none;border-radius:4px;">${esc(b.label)}</a>
+              </td></tr></table>
+          </td></tr>` : ''}
+        </table>`;
+      }
+
       const RENDER = {
         heading: (b) => !b.text ? '' : heading(b.text),
 
         subheading: (b) => !b.text ? '' : subheading(b.text),
 
         paragraph: (b) => String(b.text || '').split(/\n\s*\n/).filter((p) => p.trim())
-          .map((p) => `<p style="${P}">${inline(p.trim())}</p>`).join(''),
+          .map((p) => `<p style="${P}">${inline(p.trim())}</p>`),
 
         // "Label: value" lines with the label in bold, under an optional green title.
         info: (b) => {
@@ -482,13 +583,13 @@
           }).join('');
           if (!rows && !b.title) return '';
           const title = b.title ? `<tr><td style="padding:0 0 4px;font-family:${FONT};font-size:14px;line-height:1.4;font-weight:bold;color:${C.ink};">${esc(b.title)}</td></tr>` : '';
-          return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 14px;">${title}${rows}</table>`;
+          return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0;">${title}${rows}</table>`;
         },
 
         list: (b) => {
           const items = String(b.items || '').split('\n').filter((i) => i.trim());
           if (!items.length) return '';
-          return `<ul style="margin:0 0 14px;padding-left:22px;">${items.map((i) =>
+          return `<ul style="margin:0;padding-left:22px;">${items.map((i) =>
             `<li style="margin:0 0 2px;font-family:${FONT};font-size:14px;line-height:1.5;color:${C.text};">${inline(i.trim())}</li>`).join('')}</ul>`;
         },
 
@@ -497,7 +598,7 @@
         button: (b) => {
           const url = safeUrl(b.url);
           if (!b.label || !url) return '';
-          return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:2px 0 16px;"><tr>
+          return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0;"><tr>
             <td bgcolor="${C.green}" style="border-radius:4px;background:${C.green};">
               <a href="${esc(url)}" style="display:inline-block;padding:10px 18px;font-family:${FONT};font-size:14px;font-weight:bold;color:#ffffff;text-decoration:none;border-radius:4px;">${esc(b.label)}</a>
             </td></tr></table>`;
@@ -506,12 +607,12 @@
         // Meet recap and results, like the "Meet #6 — Recap & Results" emails.
         results: (b) => {
           const recap = String(b.recap || '').split(/\n\s*\n/).filter((p) => p.trim())
-            .map((p) => `<p style="${P}">${inline(p.trim())}</p>`).join('');
+            .map((p) => `<p style="${P}">${inline(p.trim())}</p>`);
           const url = safeUrl(b.url);
           const link = url ? `<p style="${P}"><strong style="color:${C.ink};">Meet Results:</strong> <a href="${esc(url)}" style="color:${C.green};text-decoration:underline;">${esc(b.linkText || 'Full results')}</a></p>` : '';
           const scores = lines(b.scores).map(parseScore);
-          const table = !scores.length ? '' : `${subheading('Final Scores')}
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 14px;border-collapse:collapse;">
+          const table = !scores.length ? '' : `
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0;border-collapse:collapse;">
               <tr>
                 <td bgcolor="${C.green}" style="${CELL}padding:7px 10px;background:${C.green};color:#ffffff;font-weight:bold;">Team</td>
                 <td bgcolor="${C.green}" style="${CELL}padding:7px 10px;background:${C.green};color:#ffffff;font-weight:bold;">Opponent</td>
@@ -524,80 +625,24 @@
                   ? `<strong style="color:${r.result === 'W' ? C.green : C.muted};">${r.result}</strong>&nbsp;&nbsp;` : ''}${esc(r.score)}</td>
               </tr>`).join('')}
             </table>`;
-          return (b.title ? heading(b.title) : '') + recap + link + table;
+          return [
+            b.title && { type: 'heading', html: heading(b.title) },
+            ...recap.map((html) => ({ type: 'paragraph', html })),
+            link && { type: 'paragraph', html: link },
+            table && { type: 'subheading', html: subheading('Final Scores') },
+            table && { type: 'scores', html: table }
+          ];
         },
 
-        // DESIGN LAB (temporary): the upcoming meet section in a few styles to compare.
-        upcoming: (b, d) => (UPCOMING[d.upcomingStyle] || UPCOMING.below).html(b),
-      };
+        upcoming: (b) => meetTable(b),
 
-      // Pieces shared by the upcoming meet styles.
-      const detailParts = (r) => {
-        const i = r.indexOf(':');
-        return i === -1 ? { label: '', value: r } : { label: r.slice(0, i).trim(), value: r.slice(i + 1).trim() };
-      };
-      const boldLabel = ({ label, value }) =>
-        (label ? `<strong style="color:${C.ink};">${esc(label)}:</strong> ` : '') + inline(value);
-      const upcomingButton = (b, align) => {
-        const url = safeUrl(b.url);
-        return b.label && url ? `<table role="presentation" ${align === 'center' ? 'align="center" ' : ''}cellpadding="0" cellspacing="0" border="0" style="margin:${align === 'center' ? '12px auto 0' : '2px 0 16px'};"><tr>
-          <td bgcolor="${C.green}" style="border-radius:4px;background:${C.green};">
-            <a href="${esc(url)}" style="display:inline-block;padding:10px 18px;font-family:${FONT};font-size:14px;font-weight:bold;color:#ffffff;text-decoration:none;border-radius:4px;">${esc(b.label)}</a>
-          </td></tr></table>` : '';
-      };
-
-      // The green title bar with the orange underline, shared by the week table and the meet tables.
-      const tableTitle = (text, span) => `<tr><td colspan="${span}" align="center" bgcolor="${C.green}" style="${CELL}padding:9px 10px;background:${C.green};color:#ffffff;font-weight:bold;letter-spacing:0.5px;text-transform:uppercase;border-bottom:3px solid ${C.orange};">${esc(text)}</td></tr>`;
-      const BOX = `border:1px solid ${C.line};`;
-      const HEAD_CELL = `color:${C.green};font-weight:bold;`;
-      const meetNameRow = (b, span) => !b.name ? '' :
-        `<tr><td class="wkf" colspan="${span}" align="center" style="${CELL}padding:8px;font-weight:bold;color:${C.ink};${BOX}">${esc(b.name)}</td></tr>`;
-      const meetButtonRow = (b, span) => !(b.label && safeUrl(b.url)) ? '' :
-        `<tr><td colspan="${span}" align="center" style="padding:0 8px 12px;${BOX}">${upcomingButton(b, 'center')}</td></tr>`;
-      const meetFrame = (margin, html) =>
-        `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:${margin};border-collapse:collapse;table-layout:fixed;">${html}</table>`;
-
-      // Short details ("Warm-up: 6:25 PM") become columns, like the week table. Longer ones
-      // (Location, Travel) stay out of the grid; "mode" decides where they go.
-      function meetTable(b, mode) {
-        const items = lines(b.rows).map(detailParts);
-        if (!items.length && !b.name) return '';
-        const short = items.filter((it) => it.label && it.value.length <= 14).slice(0, 4);
-        const rest = items.filter((it) => !short.includes(it)).map(boldLabel);
-        const span = short.length || 1;
-        const w = Math.floor(100 / span);
-        const cell = (extra) => `class="wk" align="center" valign="top" width="${w}%" style="${CELL}padding:7px 3px;${BOX}${extra}"`;
-        const columns = !short.length ? '' : `<tr>${short.map((it) => `<td ${cell(HEAD_CELL)}>${esc(it.label)}</td>`).join('')}</tr>
-          <tr>${short.map((it) => `<td ${cell('')}>${inline(it.value)}</td>`).join('')}</tr>`;
-        const title = tableTitle(b.title || 'Upcoming Meet', span);
-        const wide = (html) => `<tr><td class="wkf" colspan="${span}" align="center" style="${CELL}padding:9px 8px;line-height:1.6;${BOX}">${html}</td></tr>`;
-
-        if (mode === 'under') {
-          const name = b.name ? `<strong style="color:${C.ink};">${esc(b.name)}</strong>` : '';
-          return meetFrame('4px 0 16px', title + wide([name, ...rest].filter(Boolean).join('<br>')) + columns + meetButtonRow(b, span));
-        }
-        if (mode === 'cell') {
-          return meetFrame('4px 0 16px', title + meetNameRow(b, span) + columns + (rest.length ? wide(rest.join('<br>')) : '') + meetButtonRow(b, span));
-        }
-        const notes = rest.map((t) => `<p class="wkf" style="margin:0 0 3px;${CELL}text-align:center;">${t}</p>`).join('');
-        return meetFrame('4px 0 8px', title + meetNameRow(b, span) + columns) +
-          `<div style="margin:0 0 16px;">${notes}${upcomingButton(b, 'center')}</div>`;
-      }
-
-      const UPCOMING = {
-        below: { name: 'Details below', html: (b) => meetTable(b, 'below') },
-        under: { name: 'Details under name', html: (b) => meetTable(b, 'under') },
-        cell: { name: 'One bottom cell', html: (b) => meetTable(b, 'cell') }
-      };
-
-      const RENDER_MORE = {
         // Week table: one column per day, like the "Upcoming Practice Schedule" table.
         schedule: (b) => {
           const days = lines(b.days).map(parseDay);
           if (!days.length) return '';
           const w = Math.floor(100 / days.length);
           const td = (extra) => `class="wk" align="center" valign="top" width="${w}%" style="${CELL}padding:7px 3px;border:1px solid ${C.line};${extra}"`;
-          return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:4px 0 16px;border-collapse:collapse;table-layout:fixed;">
+          return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0;border-collapse:collapse;table-layout:fixed;">
             ${tableTitle(b.title || 'Practice Schedule', days.length)}
             <tr>${days.map((d) => `<td ${td(HEAD_CELL)}>${esc(d.name)}${d.date ? `<br><span style="font-weight:normal;color:${C.text};">${esc(d.date)}</span>` : ''}</td>`).join('')}</tr>
             <tr>${days.map((d) => `<td ${td(d.off ? `color:${C.muted};` : '')}>${esc(d.time)}</td>`).join('')}</tr>
@@ -605,9 +650,11 @@
           </table>`;
         },
 
-        divider: () => `<div style="margin:4px 0 18px;border-top:1px solid ${C.line};font-size:0;line-height:0;">&nbsp;</div>`
+        divider: () => `<div style="margin:0;border-top:1px solid ${C.line};font-size:0;line-height:0;">&nbsp;</div>`,
+
+        // Shows nothing itself; it makes the next gap a full section gap.
+        space: () => ({ type: 'space', html: '' })
       };
-      Object.assign(RENDER, RENDER_MORE);
 
       const BAR = `<tr><td height="4" bgcolor="${C.orange}" style="height:4px;background:${C.orange};font-size:0;line-height:0;">&nbsp;</td></tr>`;
       const LOGO = `<a href="${SITE_URL}" style="text-decoration:none;"><img src="${LOGO_URL}" width="100" height="58" alt="Kettle Run Swimming" style="display:block;margin:0 auto;border:0;width:100px;height:58px;font-family:${FONT};font-size:14px;font-weight:bold;color:#ffffff;"></a>`;
@@ -643,7 +690,7 @@
       function signOff(d) {
         const cheer = d.cheer ? `<p style="margin:0 0 4px;font-family:${FONT};font-size:14px;font-weight:bold;letter-spacing:0.5px;color:${C.green};">${esc(d.cheer)}</p>` : '';
         return `${cheer}<p style="margin:10px 0 0;font-family:${FONT};font-size:14px;line-height:1.6;color:${C.text};">
-          Thank you,<br>${COACH.name}<br>
+          Thank you,<br>${COACH.name}<br>${COACH.title}<br>
           ${COACH.phone ? `<a href="tel:${COACH.phone.replace(/\D/g, '')}" style="color:${C.text};text-decoration:none;">${esc(COACH.phone)}</a><br>` : ''}
           <a href="mailto:${COACH.email}" style="color:${C.text};text-decoration:none;">${COACH.email}</a></p>`;
       }
@@ -652,10 +699,10 @@
         const title = d.title
           ? `<p style="margin:0 0 14px;font-family:${FONT};font-size:20px;line-height:1.3;font-weight:bold;color:${C.ink};">${esc(d.title)}</p>`
           : '';
-        const body = d.blocks.map((b) => RENDER[b.type](b, d)).join('');
+        const body = stack(d.blocks.flatMap(pieces));
         // The hidden preheader is followed by invisible spacer characters so the inbox preview
         // doesn't fill up with the start of the email.
-        const spacer = '&#847;&zwnj;&nbsp;'.repeat(40);
+        const inboxFiller = '&#847;&zwnj;&nbsp;'.repeat(40);
         return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light"><meta name="supported-color-schemes" content="light"><title>${esc(d.subject)}</title>
@@ -671,12 +718,12 @@
   }
 </style></head>
 <body style="margin:0;padding:0;background:${C.page};">
-<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">${esc(d.preheader)}${spacer}</div>
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">${esc(d.preheader)}${inboxFiller}</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:${C.page};">
   <tr><td class="outer" align="center" style="padding:24px 12px;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;background:#ffffff;">
       ${header(d)}
-      <tr><td class="body" style="padding:24px 16px;">${title}${body}${signOff(d)}</td></tr>
+      <tr><td class="body" style="padding:24px 16px;">${title}${body}${body ? spacer(GAP.group) : ''}${signOff(d)}</td></tr>
       ${footer()}
     </table>
   </td></tr>
@@ -702,61 +749,153 @@
           b.label && safeUrl(b.url) && `${b.label}: ${safeUrl(b.url)}`].filter(Boolean).join('\n') + '\n',
         schedule: (b) => (b.title || 'Practice Schedule').toUpperCase() + '\n' +
           lines(b.days).map(parseDay).map((d) => `- ${d.name} ${d.date}: ${d.time}${d.place ? ' @ ' + d.place : ''}`).join('\n') + '\n',
-        divider: () => '----------\n'
+        divider: () => '----------\n',
+        space: () => ''
       };
 
       function renderText(d) {
         const parts = [d.title, ...d.blocks.map((b) => TEXT[b.type](b))].filter(Boolean);
         return parts.join('\n') + '\n' +
           (d.cheer ? `${d.cheer}\n\n` : '') +
-          `Thank you,\n${COACH.name}\n${COACH.phone ? COACH.phone + '\n' : ''}${COACH.email}\n\n` +
+          `Thank you,\n${COACH.name}\n${COACH.title}\n${COACH.phone ? COACH.phone + '\n' : ''}${COACH.email}\n\n` +
           `${SCHOOL}\n${ADDRESS}\n${UNSUB}\n`;
       }
 
       /* ---------- 3c. Starting templates ---------- */
 
+      // Your regular emails. Anything that changes each time is a ___ blank, and the Send
+      // step warns you if one is left. A button with no link stays hidden until you add one.
+      const CLOSING = { type: 'paragraph', text: 'Please don’t hesitate to reach out if you have any questions!' };
+      const ENDING = [{ type: 'space' }, CLOSING]; // the closing line stands apart from the last section
+      const WEEK = 'Mon ___, 3:30–4:30, WARF\nTue ___, 3:30–4:30, WARF\nWed ___, 3:30–4:30, WARF\nThu ___, 3:30–4:30, WARF';
+      const MEET_TIMES = 'Date: ___\nWarm-up: ___\nStart: ___\nEst. end: ___\n';
+
       const TEMPLATES = {
         weekly: {
           name: 'Weekly update',
-          subject: 'KR Swim: Weekly Update #1',
-          preheader: 'Practices, meets and reminders for the week',
-          label: 'Weekly Update #1',
-          title: '',
+          subject: 'KRHS Swim: Weekly Update #___',
+          preheader: 'Practice schedule, reminders and this week’s meet',
+          label: 'Weekly Update #___',
           blocks: [
-            { type: 'paragraph', text: 'Good Afternoon KRHS Swim Families,\n\nHere’s what’s happening this week.' },
+            { type: 'paragraph', text: 'Good Afternoon KRHS Swim Families,\n\n___' },
             { type: 'subheading', text: 'Reminders' },
-            { type: 'list', items: 'First reminder\nSecond reminder' },
-            { type: 'schedule', title: 'Practice Schedule', days: 'Mon 1/19, 3:30–4:30, WARF\nTue 1/20, 3:30–4:30, WARF\nWed 1/21, 3:30–4:30, WARF\nThu 1/22, 3:30–4:30, WARF\nFri 1/23, Meet' },
-            { type: 'upcoming', name: 'Meet #7 vs. Fauquier, Liberty, Manassas Park', rows: 'Date: Fri 1/23\nWarm-up: 6:25 PM\nStart: 7:00 PM\nEst. end: 9:30–10:00 PM\nLocation: WARF, 800 Waterloo Rd, Warrenton, VA 20186\nTravel: On your own, swimmers arrive at WARF by 5:30 PM' }
+            { type: 'list', items: '___\n___' },
+            { type: 'schedule', title: 'Practice Schedule', days: WEEK },
+            { type: 'upcoming', name: 'Meet #___ vs. ___', rows: MEET_TIMES + 'Location: ___\nTravel: ___' }
           ]
         },
-        results: {
-          name: 'Meet results',
-          subject: 'KR Swim: Meet #6 Recap & Results',
-          preheader: 'Recap, final scores and the full results',
-          label: 'Meet #6 Results',
-          title: '',
+        weeklyNoMeet: {
+          name: 'Weekly update (no meet)',
+          subject: 'KRHS Swim: Weekly Update #___',
+          preheader: 'Practice schedule and reminders for the week',
+          label: 'Weekly Update #___',
           blocks: [
-            { type: 'paragraph', text: 'Good Evening KRHS Swim Families,\n\nBelow is a small recap from the meet along with the final scores and a link to the full results PDF.' },
-            { type: 'results', title: 'Meet #6 — Recap & Results', recap: 'Thank you to all the families and swimmers who came out to support the team!', linkText: 'Kettle Run v. Manassas Park v. Sherando', url: '', scores: 'Boys, Manassas Park, 104, 38\nBoys, Sherando, 96, 56\nGirls, Manassas Park, 106, 48\nGirls, Sherando, 97, 55' },
-            { type: 'paragraph', text: 'Please don’t hesitate to reach out if you have any questions!' }
+            { type: 'paragraph', text: 'Good Afternoon KRHS Swim Families,\n\n___' },
+            { type: 'subheading', text: 'Reminders' },
+            { type: 'list', items: '___\n___' },
+            { type: 'schedule', title: 'Practice Schedule', days: WEEK }
           ]
         },
         meet: {
-          name: 'Meet information',
-          subject: 'KR Swim: Meet #7 Information',
-          preheader: 'Warm-up time, location and travel',
-          label: 'Meet #7 Update',
-          title: '',
+          name: 'Meet information & entries',
+          subject: 'KRHS Swim: ___ Meet Information, Entries, & More',
+          preheader: 'Entries, warm-up time, location and travel',
+          label: 'Meet #___ Information',
           blocks: [
-            { type: 'paragraph', text: 'Good Afternoon KRHS Swim Families,\n\nPlease take a moment to read through the important details for this week’s meet.' },
-            { type: 'upcoming', name: 'Meet #7 vs. Fauquier, Liberty, Manassas Park', rows: 'Date: Fri 1/23\nWarm-up: 6:25 PM\nStart: 7:00 PM\nEst. end: 9:30–10:00 PM\nLocation: WARF, 800 Waterloo Rd, Warrenton, VA 20186', label: 'Volunteer Sign-Up', url: '' },
+            { type: 'paragraph', text: 'Good Afternoon KRHS Swim Families,\n\nIf you’re with the Cougars for our meet on ___, please take a moment to read through the important details below.' },
+            { type: 'upcoming', title: 'Meet Information', name: 'Meet #___ vs. ___', rows: MEET_TIMES + 'Location: ___\nSwimmer arrival: ___', label: 'Meet Entries', url: '' },
             { type: 'subheading', text: 'Travel' },
-            { type: 'list', items: 'To the pool: school transportation, bus leaves KRHS at 5:00 PM\nFrom the pool: school bus or parent pick-up (must be signed out)' },
-            { type: 'paragraph', text: 'Please don’t hesitate to reach out if you have any questions!' }
+            { type: 'list', items: 'To the pool: ___\nFrom the pool: ___' },
+            ...ENDING
           ]
         },
-        blank: { name: 'Blank', subject: '', preheader: '', label: '', title: '', blocks: [{ type: 'paragraph', text: '' }] }
+        heat: {
+          name: 'Heat sheet / psych sheet',
+          subject: 'KRHS Swim: ___ Heat Sheet & Updated Info',
+          preheader: 'The heat sheet and updated meet details',
+          label: '___ Update',
+          blocks: [
+            { type: 'paragraph', text: 'Good Afternoon KRHS Swim Families,\n\nBelow are a few updates and the current heat sheet for the upcoming ___ on ___.' },
+            { type: 'heading', text: 'Updated Meet Information' },
+            { type: 'paragraph', text: 'Below is the updated meet information. Any details not included remain unchanged from previous communications.' },
+            { type: 'info', title: '', rows: 'Estimated End Time: ___\nAdmission: ___' },
+            { type: 'button', label: 'Heat Sheet', url: '' },
+            { type: 'heading', text: 'Volunteering' },
+            { type: 'paragraph', text: '___' },
+            ...ENDING
+          ]
+        },
+        results: {
+          name: 'Meet recap & results',
+          subject: 'KRHS Swim: Meet #___ Recap & Results',
+          preheader: 'Recap, final scores and the full results',
+          label: 'Meet #___ Results',
+          blocks: [
+            { type: 'paragraph', text: 'Good Evening KRHS Swim Families,\n\nBelow is a small recap from the meet along with the final scores and a link to the full results PDF.' },
+            { type: 'results', title: 'Meet #___ — Recap & Results', recap: '___', linkText: '___', url: '', scores: 'Boys, ___, ___, ___\nGirls, ___, ___, ___' },
+            ...ENDING
+          ]
+        },
+        championship: {
+          name: 'Championship travel',
+          subject: 'KRHS Swim: ___ Championship Meet Info, Entries, & More',
+          preheader: 'Travel, hotel, meals and what to expect',
+          label: '___ Championship',
+          blocks: [
+            { type: 'paragraph', text: 'Good Afternoon,\n\nYou are receiving this email because your swimmer has qualified for the KRHS ___ team. Congratulations to you and your athlete on this outstanding accomplishment!\n\nBelow you will find important details regarding our upcoming championship trip.' },
+            { type: 'upcoming', title: 'Meet Information', name: '___ Championship', rows: 'Date: ___\nPrelims: ___\nFinals: ___\nLocation: ___', label: 'Meet Entries', url: '' },
+            { type: 'heading', text: 'Travel & Meals' },
+            { type: 'paragraph', text: '___' },
+            { type: 'info', title: '', rows: 'Depart: ___\nHotel: ___\nAddress: ___' },
+            { type: 'heading', text: 'Expectations & Team Conduct' },
+            { type: 'paragraph', text: '___' },
+            ...ENDING
+          ]
+        },
+        firstEmail: {
+          name: 'First email of the season',
+          subject: 'KRHS Swim: Welcome to the ___ Season',
+          preheader: 'Communication, the parent meeting and required forms',
+          label: 'Welcome to the ___ Season',
+          blocks: [
+            { type: 'paragraph', text: 'Dear KRHS Swim Families,\n\nWelcome to the ___ Kettle Run High School swim season! ___' },
+            { type: 'heading', text: 'Communication This Season' },
+            { type: 'paragraph', text: 'You can expect a short weekly email from me each weekend with the practice schedule, reminders, and any updates families need to know for the upcoming week.\n\nIn addition to email, I will be using ___ with all athletes for daily reminders and time-sensitive updates. Please encourage your swimmer to check it regularly.' },
+            { type: 'heading', text: 'Parent Meeting' },
+            { type: 'info', title: '', rows: 'Date: ___\nTime: ___\nLocation: ___' },
+            { type: 'heading', text: 'Paperwork & Athlete Eligibility' },
+            { type: 'paragraph', text: 'The most important task right now is ensuring all athletes have completed and turned in their required forms. Please make sure all forms are submitted by ___.' },
+            { type: 'button', label: 'Required Forms', url: 'https://kettlerunswim.org/join.html' },
+            { type: 'heading', text: 'Team Suits & Spirit Wear' },
+            { type: 'paragraph', text: '___' },
+            ...ENDING
+          ]
+        },
+        endOfSeason: {
+          name: 'End of season',
+          subject: 'KRHS Swim: End-of-Season Information and Updates',
+          preheader: 'Final reminders, the banquet and championship results',
+          label: 'End-of-Season Update',
+          blocks: [
+            { type: 'paragraph', text: 'Good Evening KRHS Swim Families,\n\nAs we officially wrap up the ___ KR Swim season, please take a moment to check your swimmer’s school account for any unpaid team fees.\n\nThank you to all of our families for the support you’ve given the team throughout the entire season. ___' },
+            { type: 'heading', text: 'End-of-Season Banquet' },
+            { type: 'info', title: '', rows: 'Date: ___\nTime: ___\nLocation: ___' },
+            { type: 'button', label: 'Banquet Sign-Up', url: '' },
+            { type: 'results', title: '___ Championship — Recap & Results', recap: '___', linkText: '___', url: '', scores: '' },
+            ...ENDING
+          ]
+        },
+        quick: {
+          name: 'Quick message',
+          subject: 'KRHS Swim: ___',
+          preheader: '',
+          label: '',
+          cheer: '',
+          blocks: [
+            { type: 'paragraph', text: 'Good Evening KRHS Swim Families,\n\n___\n\nIf you have any questions, please don’t hesitate to reach out.' }
+          ]
+        },
+        blank: { name: 'Blank', subject: '', preheader: '', label: '', blocks: [{ type: 'paragraph', text: '' }] }
       };
 
       /* ---------- 3d. The editor ---------- */
@@ -791,12 +930,13 @@
           { key: 'title', label: 'Table title', placeholder: 'Practice Schedule' },
           { key: 'days', area: true, label: 'One day per line — Day Date, Time, Place', placeholder: 'Mon 1/19, 3:30–4:30, WARF\nTue 1/20, 3:30–4:30, WARF\nWed 1/21, Off' }
         ] },
-        divider: { label: 'Divider', fields: [] }
+        divider: { label: 'Divider', fields: [] },
+        space: { label: 'Section break', fields: [] }
       };
 
       let state = {
         subject: '', preheader: '', title: '', label: '', cheer: 'Go Cougars!', blocks: [],
-        groups: [], audience: 'family', testTo: '', lastSent: null, upcomingStyle: 'below'
+        groups: [], audience: 'family', testTo: '', lastSent: null
       };
       let allGroups = [];
       let audienceInfo = null;
@@ -809,17 +949,31 @@
         return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
       }
 
-      const email = () => ({ subject: state.subject, html: renderEmail(state), text: renderText(state) });
+      // content = what's saved in the Sent emails tab so this email can be reused later.
+      const email = () => ({
+        subject: state.subject, html: renderEmail(state), text: renderText(state),
+        content: JSON.stringify({ subject: state.subject, preheader: state.preheader, title: state.title, label: state.label, cheer: state.cheer, blocks: state.blocks })
+      });
 
-      const updatePreview = debounce(() => { $('#preview').srcdoc = renderEmail(state); }, 150);
+      // Redrawing reloads the preview, so remember how far down it was scrolled and go back there.
+      let previewScroll = 0;
+      const updatePreview = debounce(() => {
+        const frame = $('#preview');
+        try { previewScroll = frame.contentWindow.scrollY; } catch (e) {}
+        frame.srcdoc = renderEmail(state);
+      }, 150);
 
+      let saveFailures = 0;
       const save = debounce(async () => {
         setStatus('Saving…');
         try {
           await api('saveDraft', JSON.stringify(state));
+          saveFailures = 0;
           setStatus('Draft saved');
         } catch (e) {
-          setStatus('Couldn’t save draft');
+          // Try again a few times, always with the newest version of the draft.
+          if (++saveFailures <= 3) save();
+          else setStatus('Couldn’t save draft');
         }
       }, 1200);
 
@@ -841,7 +995,9 @@
         state.blocks.forEach((b, i) => {
           const def = BLOCKS[b.type];
           const el = document.createElement('div');
-          el.className = 'block';
+          // The editor groups blocks the same way the email does.
+          const startsSection = i > 0 && (b.type === 'heading' || b.type === 'results' || state.blocks[i - 1].type === 'space');
+          el.className = startsSection ? 'block new-section' : 'block';
           el.innerHTML = `<div class="block-head">
             <span class="label">${def.label}</span>
             <button type="button" class="icon-btn" data-move="-1" title="Move up" aria-label="Move up">↑</button>
@@ -890,18 +1046,6 @@
       }
 
 
-      // DESIGN LAB (temporary): buttons for each upcoming meet style.
-      function drawLab() {
-        const wrap = $('#lab-upcoming');
-        wrap.innerHTML = Object.entries(UPCOMING).map(([id, u]) =>
-          `<button type="button" data-style="${id}" aria-pressed="${state.upcomingStyle === id}">${u.name}</button>`).join('');
-        wrap.querySelectorAll('button').forEach((btn) => btn.addEventListener('click', () => {
-          state.upcomingStyle = btn.dataset.style;
-          drawLab();
-          changed();
-        }));
-      }
-
       function drawGroups() {
         const wrap = $('#groups');
         wrap.innerHTML = '';
@@ -938,13 +1082,30 @@
 
       const recipientsChanged = () => { $('#confirm').innerHTML = ''; save(); loadAudience(); };
 
-      const loadAudience = debounce(async () => {
+      // Answers from Google can come back out of order, so every click gets a number and only
+      // the answer to the newest click is used. Send stays off until that answer arrives.
+      let audienceRequest = 0;
+
+      function loadAudience() {
+        audienceRequest++;
+        audienceInfo = null;
+        $('#send').disabled = true;
         $('#summary').innerHTML = '<p class="small">Counting…</p>';
+        fetchAudience();
+      }
+
+      const fetchAudience = debounce(async () => {
+        const mine = audienceRequest;
         try {
-          audienceInfo = await api('getAudience', state.groups, state.audience);
+          const info = await api('getAudience', state.groups, state.audience);
+          if (mine !== audienceRequest) return;
+          audienceInfo = info;
           drawSummary();
         } catch (e) {
-          $('#summary').innerHTML = `<div class="note"><strong>Couldn’t read the contacts</strong><p>${esc(e.message)}</p></div>`;
+          if (mine !== audienceRequest) return;
+          $('#summary').innerHTML = `<div class="note"><strong>Couldn’t read the contacts</strong><p>${esc(e.message)}</p>
+            <div class="row"><button type="button" class="btn btn-small" id="retry-count">Try again</button></div></div>`;
+          $('#retry-count').addEventListener('click', loadAudience);
         }
       }, 250);
 
@@ -965,9 +1126,28 @@
         $('#send').disabled = !a.familyCount;
       }
 
+      // The template menu: your templates, then recent emails from the Sent emails tab.
+      let pastEmails = [];
+
+      function drawTemplatePicker() {
+        const sel = $('#template');
+        const keep = sel.value;
+        const opt = (value, text) => `<option value="${value}">${esc(text)}</option>`;
+        sel.innerHTML = `<optgroup label="Templates">${Object.entries(TEMPLATES).map(([k, t]) => opt(k, t.name)).join('')}</optgroup>` +
+          (pastEmails.length ? `<optgroup label="Past emails">${pastEmails.map((p, i) => opt(`past:${i}`, `${p.date}: ${p.subject}`)).join('')}</optgroup>` : '');
+        if (keep && !keep.startsWith('past:')) sel.value = keep;
+      }
+
+      async function loadPastEmails() {
+        try { pastEmails = await api('getPastEmails'); } catch (e) { pastEmails = []; }
+        drawTemplatePicker();
+      }
+
       function useTemplate(key) {
-        const t = JSON.parse(JSON.stringify(TEMPLATES[key]));
-        Object.assign(state, { subject: t.subject, preheader: t.preheader, title: t.title, label: t.label, blocks: t.blocks, lastSent: null });
+        const t = key.startsWith('past:')
+          ? JSON.parse(pastEmails[key.slice(5)].content)
+          : JSON.parse(JSON.stringify(TEMPLATES[key]));
+        Object.assign(state, { subject: t.subject, preheader: t.preheader, title: t.title || '', label: t.label, cheer: t.cheer ?? 'Go Cougars!', blocks: t.blocks, lastSent: null });
         drawMessageFields();
         drawBlocks();
         changed();
@@ -1002,11 +1182,14 @@
         if (!audienceInfo) return showResult('Still counting recipients — try again in a second.', false);
         const a = audienceInfo;
         const who = state.groups.length ? state.groups.join(', ') : 'Everyone';
-        const again = state.lastSent && state.lastSent.subject === state.subject
-          ? `<p>Heads up: you already sent this subject on ${esc(state.lastSent.at)}.</p>` : '';
+        const unfinished = /___/.test(`${state.subject} ${state.label} ${renderText(state)}`) || state.blocks.some((b) => (b.label || b.linkText) && !safeUrl(b.url));
+        const blanks = unfinished ? '<p>Heads up: this email still has a ___ blank or a button with no link.</p>' : '';
+        const prior = pastEmails.find((p) => p.subject.trim() === state.subject.trim());
+        const sentOn = prior ? prior.date : state.lastSent && state.lastSent.subject === state.subject ? state.lastSent.at : '';
+        const again = sentOn ? `<p>Heads up: you already sent this subject on ${esc(sentOn)}.</p>` : '';
         $('#confirm').innerHTML = `<div class="note confirm">
           <strong>Send “${esc(state.subject)}” to ${a.familyCount} families (${a.addressCount} addresses)?</strong>
-          <p>Groups: ${esc(who)}, ${state.audience === 'parents' ? 'parents only' : 'swimmers + parents'}</p>${again}
+          <p>Groups: ${esc(who)}, ${state.audience === 'parents' ? 'parents only' : 'swimmers + parents'}</p>${blanks}${again}
           <div class="row"><button type="button" class="btn btn-primary btn-small" id="confirm-yes">Yes, send it</button>
           <button type="button" class="btn btn-small" id="confirm-no">Cancel</button></div></div>`;
         $('#confirm-no').addEventListener('click', () => ($('#confirm').innerHTML = ''));
@@ -1026,8 +1209,10 @@
           } else {
             showResult(`Sent to ${r.sent} ${r.sent === 1 ? 'family' : 'families'} ✓ Every send is in the Log tab.`, true);
           }
+          if (r.sent && !r.archived) showResult(`${$('#result').textContent} (It couldn’t be saved to the Sent emails tab, so it won’t be in Past emails.)`, !r.failed.length);
+          loadPastEmails();
         } catch (e) {
-          showResult(`Stopped: ${e.message}. Check the Log tab to see who already got it.`, false);
+          showResult(`Google reported a problem: ${e.message}. Some emails may have gone out. Check the Log tab before sending again, or families could get it twice.`, false);
         }
         $('#send').disabled = false;
       }
@@ -1035,7 +1220,7 @@
       async function start() {
         $('#bar-logo').src = LIVE ? `${SITE_URL}/assets/kr-logo-tight.svg` : '../src/assets/kr-logo-tight.svg';
         // Fill the template picker and the "add block" buttons.
-        $('#template').innerHTML = Object.entries(TEMPLATES).map(([k, t]) => `<option value="${k}">${t.name}</option>`).join('');
+        drawTemplatePicker();
         $('#add').innerHTML = Object.entries(BLOCKS).map(([k, b]) => `<button type="button" class="btn btn-small" data-add="${k}">+ ${b.label}</button>`).join('');
 
         // Wire up the buttons and fields.
@@ -1071,6 +1256,9 @@
           e.target.textContent = 'Start over from this';
           useTemplate($('#template').value);
         });
+        $('#preview').addEventListener('load', (e) => {
+          try { e.target.contentWindow.scrollTo(0, previewScroll); } catch (err) {}
+        });
         $('#send-test').addEventListener('click', sendTest);
         $('#send').addEventListener('click', askToSend);
         document.querySelectorAll('[data-width]').forEach((btn) => btn.addEventListener('click', () => {
@@ -1091,7 +1279,6 @@
           else Object.assign(state, JSON.parse(JSON.stringify(TEMPLATES.weekly)));
           if (!state.testTo) state.testTo = me;
           state.groups = state.groups.filter((g) => allGroups.includes(g));
-          if (!UPCOMING[state.upcomingStyle]) state.upcomingStyle = 'below';
           setStatus(draft ? 'Draft loaded' : 'Ready');
         } catch (e) {
           setStatus('Problem loading');
@@ -1100,9 +1287,9 @@
         drawMessageFields();
         drawBlocks();
         drawGroups();
-        drawLab();
         updatePreview();
         loadAudience();
+        loadPastEmails();
       }
 
       start();
