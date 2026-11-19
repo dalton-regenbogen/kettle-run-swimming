@@ -287,41 +287,57 @@ function recapCard(season, meets) {
 // ---------- Up next: what goes in the list ----------
 //
 // Team events come from importantDates.json. Added automatically from the other data:
-//   - first and last practice (practice-schedule.json)
-//   - championship meets (the season's meet file)
-// If a team event is on the same day as an automatic item, the team event wins (no duplicates).
+//   - every meet (the season's meet file): regular season meets as "vs Sherando", championships by name
+//   - first and last practice (practice-schedule.json), unless a team event is already on that day
+// Each item has a kind, which picks the color of its date block:
+//   "meet" (regular season) green, "postseason" (championships) orange, "event" (everything else) gray.
 
 function seasonDates(data, meets, practiceWeeks) {
-  const items = (data.items ?? []).map((item) => ({ ...item }));
+  const items = (data.items ?? []).map((item) => ({ ...item, kind: "event" }));
   const taken = new Set(items.map((item) => item.date));
-  const auto = [];
   const held = practiceWeeks.flatMap((w) => w.practices ?? []).filter((p) => p.status !== "off");
   if (held.length) {
-    auto.push({ date: held[0].date, name: "First practice", details: `${dash(held[0].time)} @ ${held[0].location}` });
-    auto.push({ date: held.at(-1).date, name: "Last practice", details: `${dash(held.at(-1).time)} @ ${held.at(-1).location}` });
+    for (const [practice, name] of [[held[0], "First practice"], [held.at(-1), "Last practice"]]) {
+      if (!taken.has(practice.date)) items.push({ date: practice.date, name, details: `${dash(practice.time)} @ ${practice.location}`, kind: "event" });
+    }
   }
-  for (const meet of meets.filter(isChampionship)) {
-    auto.push({ date: meet.date, name: meet.type, details: `${formatTime(meet.startTime)} @ ${meet.locationFull}`, status: meet.status, meet: true });
+  for (const meet of meets) {
+    const postseason = isChampionship(meet);
+    items.push({
+      date: meet.date,
+      name: postseason ? meet.type : `vs ${opponentNames(meet)}`,
+      details: `${formatTime(meet.startTime)} @ ${meet.locationFull}`,
+      status: meet.status,
+      kind: postseason ? "postseason" : "meet",
+    });
   }
-  for (const item of auto) if (!taken.has(item.date)) items.push(item);
-  return items.sort((a, b) => a.date.localeCompare(b.date));
+  // By date; on a shared date (a meet and Senior Night) the meet comes first.
+  const order = { meet: 0, postseason: 0, event: 1 };
+  return items.sort((a, b) => a.date.localeCompare(b.date) || order[a.kind] - order[b.kind]);
 }
 
 // ---------- Up next: how it looks ----------
 
-// The date as a small solid block: "NOV" over a big "10". School green for team events and practices;
-// school orange for meets, so competitions stand out. Orange uses black text (white on orange is hard to read).
-function dateBlock(iso, { meet = false } = {}) {
-  const colors = meet ? "bg-highlight text-black" : "bg-brand text-white";
+// The date as a small solid block: "NOV" over a big "10". The color says what kind of date it is:
+// school green for regular season meets, school orange for the postseason, gray for team events and
+// practices. Orange uses black text (white on orange is hard to read).
+const BLOCK_COLORS = {
+  meet: ["bg-brand text-white", "text-white/80"],
+  postseason: ["bg-highlight text-black", "text-black/70"],
+  event: ["bg-fg/10 text-fg", "text-fg-muted"],
+};
+
+function dateBlock(iso, kind = "event") {
+  const [colors, monthColor] = BLOCK_COLORS[kind];
   const mark = el("div", `flex w-11 shrink-0 flex-col items-center rounded-lg py-1 ${colors}`);
   mark.append(
-    el("span", `type-label font-semibold ${meet ? "text-black/70" : "text-white/80"}`, toDate(iso).toLocaleDateString("en-US", { month: "short" })),
+    el("span", `type-label font-semibold ${monthColor}`, toDate(iso).toLocaleDateString("en-US", { month: "short" })),
     el("span", "font-display text-[17px] leading-tight font-semibold tabular-nums", String(toDate(iso).getDate())),
   );
   return mark;
 }
 
-// One date: the green block, then the name (+ a status tag) over the details.
+// One date: the colored block, then the name (+ a status tag) over the details.
 function dateItem(item, today) {
   const row = el("li", `flex items-start gap-3 px-4 py-3 md:px-5 lg:p-0${item.date < today ? " opacity-55" : ""}`);
   const text = el("div", "min-w-0 pt-0.5");
@@ -330,7 +346,7 @@ function dateItem(item, today) {
   if (item.status) top.append(el("span", "rounded-sm bg-fg/10 px-1 py-0.5 text-[9px] leading-none font-semibold md:text-[10px]", item.status.charAt(0).toUpperCase() + item.status.slice(1)));
   text.append(top);
   if (item.details) text.append(grayLine(item.details.replace(/\.$/, "")));
-  row.append(dateBlock(item.date, { meet: item.meet }), text);
+  row.append(dateBlock(item.date, item.kind), text);
   return row;
 }
 
@@ -358,9 +374,11 @@ function upNextCard(items, today) {
   const short = dateRows(upcoming.slice(0, 6), today);
   const full = dateRows(items, today);
   full.hidden = true;
-  const card = sectionCard("Up next", "Team events, practices, and championships", short, full);
+  const card = sectionCard("Up next", "Meets, team events, and practices", short, full);
+  const footer = el("div", "flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t border-line px-4 py-3 md:px-5");
+  footer.append(colorKey());
+  card.append(footer);
   if (items.length > 6 || upcoming.length < items.length) {
-    const footer = el("div", "border-t border-line px-4 py-3 md:px-5");
     const button = el("button", "type-small cursor-pointer font-medium text-accent underline-offset-2 hover:underline", "Show all season dates");
     button.type = "button";
     button.setAttribute("aria-expanded", "false");
@@ -371,10 +389,22 @@ function upNextCard(items, today) {
       button.textContent = open ? "Show upcoming only" : "Show all season dates";
       button.setAttribute("aria-expanded", String(open));
     });
-    footer.append(button);
-    card.append(footer);
+    footer.prepend(button);
   }
   return card;
+}
+
+// What the date block colors mean: a small square of each color and its name.
+function colorKey() {
+  const key = el("ul", "flex flex-wrap gap-x-3 gap-y-1");
+  for (const [kind, label] of [["meet", "Meet"], ["postseason", "Postseason"], ["event", "Team event"]]) {
+    const item = el("li", "type-small flex items-center gap-1.5 text-fg-subtle");
+    const swatch = el("span", `size-2.5 rounded-sm ${BLOCK_COLORS[kind][0].split(" ")[0]}`);
+    swatch.setAttribute("aria-hidden", "true");
+    item.append(swatch, label);
+    key.append(item);
+  }
+  return key;
 }
 
 // ---------- Below the hero ----------

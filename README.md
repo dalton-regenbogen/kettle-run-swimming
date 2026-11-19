@@ -163,9 +163,9 @@ Written as rules, not every day:
 ### Everything else
 
 - **Up next dates (home page):** `src/assets/data/importantDates.json` holds **team events** only — interest
-  meeting, team pictures, parent meeting, senior night, banquet — as `{ "date", "name", "details" }`. The first and
-  last practice and the championship meets are added automatically (if you list something on the same day, yours
-  wins). A name with "interest" in it also shows on the Join page. Replace the list each season.
+  meeting, team pictures, parent meeting, senior night, banquet — as `{ "date", "name", "details" }`. Every meet is
+  added automatically from the meet file, and so are the first and last practice (if you list something on a
+  practice day, yours wins). A name with "interest" in it also shows on the Join page. Replace the list each season.
 - **This season's links:** `src/assets/data/season.json` — form links, the **documents** list (handbook, state
   qualifying times, and anything else, shown under "Links & documents" on Resources: add a
   `{ "name", "note", "url" }` line to add one), apparel store, officials info, and the fundraiser.

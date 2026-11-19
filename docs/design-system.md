@@ -273,10 +273,11 @@ size. All text — no tiles.
     - Offseason — **Season recap**: Boys / Girls panels with the dual record and places spelled out
       ("6th at Regionals", "Districts canceled").
     - Blocks use a `type-label` heading, 12/13px main lines (dates medium), 11/12px gray second lines.
-  - **Up next** (subtitle "Team events, practices, and championships"): from `lg`, rows of three dates read left
+  - **Up next** (subtitle "Meets, team events, and practices"): from `lg`, rows of three dates read left
     to right with one full-width line between rows; phones and tablets get one date per row, each with its own line.
-    Each date is a small solid block ("NOV" over "10"): school green for team events and practices, school
-    orange with black text for meets. Next 6 upcoming; "Show all season dates" swaps in the whole season
+    Each date is a small solid block ("NOV" over "10"): school green for regular season meets ("vs Sherando"),
+    school orange with black text for the postseason (championships), gray for team events and practices. A small
+    color key sits in the footer. On a shared date the meet comes first. Next 6 upcoming; "Show all season dates" swaps in the whole season
     (past dates dimmed). No green table header — that's for data tables.
 - **No separate contact card:** "Contact coach" is always in the hero, and the footer has Email the coach and
   Resources, so each action shows once on screen.
