@@ -7,12 +7,13 @@
     { "name": "Swim Team Contact Form", "note": "Declares official intent to join the team. Turn in to Coach Dalton, in person or by email", "url": "https://drive.google.com/file/d/1MnuSbXxYR40f3FlI6oxF1NKbTrgVuA3B/view?usp=share_link" }
   ],
   "documents": [
-    { "name": "Team handbook", "note": "Team policies, expectations, and lettering", "url": "" },
+    { "name": "Team handbook", "note": "Team policies, expectations, and lettering", "url": "https://drive.google.com/file/d/1ZslKt7EkgBl_wSnH6aXvpc0qQylcH4w_/view?usp=share_link" },
     { "name": "State qualifying times", "note": "VHSL times that qualify a swimmer for States", "url": "https://drive.google.com/file/d/12g3Hy-SIU6Tv7U_v6pWqNJoRexcgHSkn/view" }
   ],
   "links": {
-    "apparelStore": "",
-    "officialsInfo": ""
+    "swimsuitStore": "https://www.swimoutlet.com/collections/kettlerunswimteam",
+    "apparelStore": "https://stores.athletesmark.com/kettle_run_swimming_/shop/home",
+    "officialsInfo": "https://whistle.vhsl.org"
   },
   "fundraiser": {
     "title": "",

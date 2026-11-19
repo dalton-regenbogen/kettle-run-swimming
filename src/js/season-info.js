@@ -3,7 +3,7 @@
 // The page marks where things go:
 //   <ul data-forms>                      → one row per required form (name, note, link)
 //   <ul data-documents>                  → one row per team document or link (handbook, qualifying times…)
-//   <a data-link="apparelStore">…</a>    → gets its href from "links"; with no link yet it becomes
+//   <a data-link="apparelStore">…</a>    → gets its href from "links" (apparelStore, swimsuitStore, officialsInfo); with no link yet it becomes
 //                                          gray "(link coming soon)" text
 //   [data-interest-meeting]              → "Fri, Oct 24, Health Room 10:30 AM", from importantDates.json
 //   [data-fundraiser]                    → this season's fundraiser (title, details, link), or "coming soon"
