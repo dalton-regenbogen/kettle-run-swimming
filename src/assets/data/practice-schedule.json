@@ -7,6 +7,7 @@
   "time": "3:30-4:30 PM",
   "location": "WARF",
   "changes": [
+    {"date": "2026-11-23", "off": true, "note": "Picture day"},
     {"date": "2026-11-25", "through": "2026-11-26", "off": true, "note": "Thanksgiving break"},
     {"date": "2026-12-23", "through": "2026-12-24", "off": true, "note": "Winter break"},
     {"date": "2026-12-28", "through": "2026-12-31", "off": true, "note": "Winter break"},

@@ -1,9 +1,9 @@
 {
   "season": "2026-2027",
-  "updated": "2026-11-15",
+  "updated": "2026-11-18",
   "athletes": [
     {
-      "first": "Mitchell",
+      "first": "Mitch",
       "middle": "P",
       "last": "Abraham",
       "team": "Boys",
@@ -223,6 +223,16 @@
       "roles": [""]
     },
     {
+      "first": "Jackson",
+      "middle": "",
+      "last": "Lane",
+      "team": "Boys",
+      "class": "Fr.",
+      "yearOnTeam": "1st",
+      "stroke": "Free",
+      "roles": [""]
+    },
+    {
       "first": "Carter",
       "middle": "B",
       "last": "Livengood",
@@ -327,7 +337,7 @@
       "middle": "H",
       "last": "Stone",
       "team": "Boys",
-      "class": "Fr.",
+      "class": "Sr.",
       "yearOnTeam": "1st",
       "stroke": "Free",
       "roles": [""]
