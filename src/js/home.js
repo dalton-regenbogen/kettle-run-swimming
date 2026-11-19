@@ -375,10 +375,8 @@ function upNextCard(items, today) {
   const full = dateRows(items, today);
   full.hidden = true;
   const card = sectionCard("Up next", "Meets, team events, and practices", short, full);
-  const footer = el("div", "flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t border-line px-4 py-3 md:px-5");
-  footer.append(colorKey());
-  card.append(footer);
   if (items.length > 6 || upcoming.length < items.length) {
+    const footer = el("div", "border-t border-line px-4 py-3 md:px-5");
     const button = el("button", "type-small cursor-pointer font-medium text-accent underline-offset-2 hover:underline", "Show all season dates");
     button.type = "button";
     button.setAttribute("aria-expanded", "false");
@@ -389,22 +387,10 @@ function upNextCard(items, today) {
       button.textContent = open ? "Show upcoming only" : "Show all season dates";
       button.setAttribute("aria-expanded", String(open));
     });
-    footer.prepend(button);
+    footer.append(button);
+    card.append(footer);
   }
   return card;
-}
-
-// What the date block colors mean: a small square of each color and its name.
-function colorKey() {
-  const key = el("ul", "flex flex-wrap gap-x-3 gap-y-1");
-  for (const [kind, label] of [["meet", "Meet"], ["postseason", "Postseason"], ["event", "Team event"]]) {
-    const item = el("li", "type-small flex items-center gap-1.5 text-fg-subtle");
-    const swatch = el("span", `size-2.5 rounded-sm ${BLOCK_COLORS[kind][0].split(" ")[0]}`);
-    swatch.setAttribute("aria-hidden", "true");
-    item.append(swatch, label);
-    key.append(item);
-  }
-  return key;
 }
 
 // ---------- Below the hero ----------
