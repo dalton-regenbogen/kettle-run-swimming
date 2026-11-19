@@ -8,7 +8,9 @@
   ],
   "documents": [
     { "name": "Team handbook", "note": "Team policies, expectations, and lettering", "url": "https://drive.google.com/file/d/1ZslKt7EkgBl_wSnH6aXvpc0qQylcH4w_/view?usp=share_link" },
-    { "name": "State qualifying times", "note": "VHSL times that qualify a swimmer for States", "url": "https://drive.google.com/file/d/12g3Hy-SIU6Tv7U_v6pWqNJoRexcgHSkn/view" }
+    { "name": "State qualifying times", "note": "VHSL times that qualify a swimmer for States", "url": "https://drive.google.com/file/d/12g3Hy-SIU6Tv7U_v6pWqNJoRexcgHSkn/view" },
+    { "name": "Team apparel store", "note": "Optional KRHS swim spirit wear", "url": "https://stores.athletesmark.com/kettle_run_swimming_/shop/home" },
+    { "name": "Team suit store", "note": "Optional team suits from SwimOutlet", "url": "https://www.swimoutlet.com/collections/kettlerunswimteam" }
   ],
   "links": {
     "swimsuitStore": "https://www.swimoutlet.com/collections/kettlerunswimteam",
